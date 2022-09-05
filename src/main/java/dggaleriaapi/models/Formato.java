@@ -19,7 +19,4 @@ public class Formato {
 
     @Column(name ="tipo", nullable = false)
     private String tipo;
-
-    @Column(name = "enlace", nullable = false)
-    private String enlaceImagen;
 }
