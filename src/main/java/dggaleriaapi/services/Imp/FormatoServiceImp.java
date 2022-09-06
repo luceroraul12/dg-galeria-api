@@ -6,12 +6,12 @@ import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class FacturaServiceImp implements FormatoService {
+public class FormatoServiceImp implements FormatoService {
 
     @Autowired
     FormatoRepository formatoRepository;
 
-    public FacturaServiceImp(FormatoRepository formatoRepository) {
+    public FormatoServiceImp(FormatoRepository formatoRepository) {
         this.formatoRepository = formatoRepository;
     }
 
