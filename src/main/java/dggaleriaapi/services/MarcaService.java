@@ -1,5 +1,7 @@
 package dggaleriaapi.services;
 
+import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Sabor;
 import dggaleriaapi.responses.GaleriaResponse;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,6 @@ import org.springframework.stereotype.Service;
 public interface MarcaService {
 
     GaleriaResponse getAll();
-    GaleriaResponse getById();
-    GaleriaResponse saveMarca();
+    GaleriaResponse getById(Long id);
+    GaleriaResponse saveMarca(Marca sabor);
 }
