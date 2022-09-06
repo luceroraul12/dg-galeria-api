@@ -1,5 +1,6 @@
 package dggaleriaapi.services.Imp;
 
+import dggaleriaapi.models.Marca;
 import dggaleriaapi.repositories.MarcaRepository;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.MarcaService;
@@ -16,16 +17,28 @@ public class MarcaServiceImp implements MarcaService {
 
     @Override
     public GaleriaResponse getAll() {
-        return null;
+        GaleriaResponse respuesta = new GaleriaResponse();
+        respuesta.setMarcasDisponibles(
+                marcaRepository.findAll()
+        );
+        return respuesta;
     }
 
     @Override
-    public GaleriaResponse getById() {
-        return null;
+    public GaleriaResponse getById(Long id) {
+        GaleriaResponse respuesta = new GaleriaResponse();
+        respuesta.setMarcasTrabajado(
+                marcaRepository.findById(id).get()
+        );
+        return respuesta;
     }
 
     @Override
-    public GaleriaResponse saveMarca() {
+    public GaleriaResponse saveMarca(Marca marca) {
+        GaleriaResponse respuesta = new GaleriaResponse();
+        respuesta.setMarcasTrabajado(
+                marcaRepository.save(marca)
+        );
         return null;
     }
 }
