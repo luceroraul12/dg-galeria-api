@@ -1,6 +1,9 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.responses.GaleriaResponse;
+import dggaleriaapi.services.FormatoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/galeria")
 public class GaleriaBebidasController {
 
+    @Autowired
+    FormatoService formatoService;
+
+    public GaleriaBebidasController(FormatoService formatoService) {
+        this.formatoService = formatoService;
+    }
+
     @GetMapping(name = "/formatos")
     public ResponseEntity<GaleriaResponse> getAllFormatos(){
-        return null;
+        GaleriaResponse respuesta = formatoService.getAllFormatos();
+        return new ResponseEntity<GaleriaResponse>(respuesta, HttpStatus.OK);
     }
 
     @PostMapping(name = "/formatos")
