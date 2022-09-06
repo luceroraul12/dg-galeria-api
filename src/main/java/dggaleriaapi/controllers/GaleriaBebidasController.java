@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GaleriaBebidasController {
 
     @Autowired
-    FormatoService formatoService;
+    private FormatoService formatoService;
 
     public GaleriaBebidasController(FormatoService formatoService) {
         this.formatoService = formatoService;
