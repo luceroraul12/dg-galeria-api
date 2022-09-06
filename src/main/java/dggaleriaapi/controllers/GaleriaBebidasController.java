@@ -1,5 +1,6 @@
 package dggaleriaapi.controllers;
 
+import dggaleriaapi.responses.GaleriaResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,32 +12,37 @@ import org.springframework.web.bind.annotation.RestController;
 public class GaleriaBebidasController {
 
     @GetMapping(name = "/formatos")
-    public ResponseEntity getAllFormatos(){
+    public ResponseEntity<GaleriaResponse> getAllFormatos(){
         return null;
     }
 
     @PostMapping(name = "/formatos")
-    public ResponseEntity saveFormato(String tipo){
+    public ResponseEntity<GaleriaResponse> saveFormato(String tipo){
         return null;
     }
 
     @GetMapping(name = "/marcas")
-    public ResponseEntity getAllMarcas(){
+    public ResponseEntity<GaleriaResponse> getAllMarcas(){
         return null;
     }
 
     @PostMapping(name = "/marcas")
-    public ResponseEntity saveMarca(String nombre){
+    public ResponseEntity<GaleriaResponse> saveMarca(String nombre){
         return null;
     }
 
     @GetMapping(name = "/sabores")
-    public ResponseEntity getAllSaboresByIdMarca(){
+    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(){
+        return null;
+    }
+
+    @GetMapping(name = "/sabores/")
+    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcayEnStock() {
         return null;
     }
 
     @PostMapping(name = "/sabores")
-    public ResponseEntity saveSaborByIdMarca(String tipo){
+    public ResponseEntity<GaleriaResponse> saveSaborByIdMarca(String tipo){
         return null;
     }
 }
