@@ -19,4 +19,9 @@ public class Formato {
 
     @Column(name ="tipo", nullable = false)
     private String tipo;
+
+    public Formato(Long id, String tipo) {
+        this.id = id;
+        this.tipo = tipo;
+    }
 }

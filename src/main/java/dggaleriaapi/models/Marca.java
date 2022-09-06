@@ -20,4 +20,9 @@ public class Marca {
     private String nombre;
     @Column(name = "enlace", nullable = false)
     private String enlace;
+
+    public Marca(Long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 }

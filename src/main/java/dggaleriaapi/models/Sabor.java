@@ -23,4 +23,10 @@ public class Sabor {
     @ManyToOne
     @JoinColumn(name = "marca_id_fk")
     private Marca marca;
+
+    public Sabor(Long id, String nombre, Marca marca) {
+        this.id = id;
+        this.nombre = nombre;
+        this.marca = marca;
+    }
 }
