@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Formato</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">dggaleriaapi.models</a>
+</div>
+
+<h1>Coverage Summary for Class: Formato (dggaleriaapi.models)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Formato</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Formato$HibernateProxy$LiZXJJX2</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.models;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.sun.istack.NotNull;
+<i class="no-highlight">4</i>&nbsp;import lombok.Getter;
+<i class="no-highlight">5</i>&nbsp;import lombok.NoArgsConstructor;
+<i class="no-highlight">6</i>&nbsp;import lombok.Setter;
+<i class="no-highlight">7</i>&nbsp;import org.hibernate.tuple.GeneratedValueGeneration;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import javax.persistence.*;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;@Entity
+<i class="no-highlight">12</i>&nbsp;@Getter
+<b class="fc"><i class="no-highlight">13</i>&nbsp;@Setter</b>
+<b class="fc"><i class="no-highlight">14</i>&nbsp;@NoArgsConstructor</b>
+<i class="no-highlight">15</i>&nbsp;@Table(name = &quot;formatos&quot;)
+<i class="no-highlight">16</i>&nbsp;public class Formato {
+<i class="no-highlight">17</i>&nbsp;    @Id
+<i class="no-highlight">18</i>&nbsp;    @Column(name = &quot;formatos_id_pk&quot;, nullable = false)
+<i class="no-highlight">19</i>&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<b class="fc"><i class="no-highlight">20</i>&nbsp;    private Long id;</b>
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @Column(name =&quot;tipo&quot;, nullable = false)
+<b class="fc"><i class="no-highlight">23</i>&nbsp;    private String tipo;</b>
+<i class="no-highlight">24</i>&nbsp;
+<b class="fc"><i class="no-highlight">25</i>&nbsp;    public Formato(Long id, String tipo) {</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        this.id = id;</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;        this.tipo = tipo;</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-09-07 16:53</div>
+</div>
+</body>
+</html>
