@@ -50,19 +50,10 @@ class GaleriaBebidasControllerTest {
     }
 
     @Test
-    void saveFormato() {
-    }
-
-    @Test
     void getAllMarcas() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllMarcas();
         assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getMarcasDisponibles().toArray());
     }
-
-    @Test
-    void saveMarca() {
-    }
-
     @Test
     void getAllSaboresByIdMarca() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarca(0L);
@@ -73,9 +64,5 @@ class GaleriaBebidasControllerTest {
     void getAllSaboresByIdMarcayEnStock() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarcayEnStock(0L);
         assertArrayEquals(DatosPrueba.saboresMismaMarcayEnStock.toArray(), respuesta.getBody().getSaboresDisponibles().toArray());
-    }
-
-    @Test
-    void saveSaborByIdMarca() {
     }
 }
