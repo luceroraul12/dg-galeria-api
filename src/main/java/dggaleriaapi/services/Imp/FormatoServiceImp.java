@@ -37,4 +37,24 @@ public class FormatoServiceImp implements FormatoService {
         );
         return respuesta;
     }
+
+    @Override
+    public GaleriaResponse updateFormato(Formato formato) {
+        GaleriaResponse respuesta = new GaleriaResponse();
+
+        respuesta.setFormatoTrabajado(
+                formatoRepository.save(formato)
+        );
+        return respuesta;
+    }
+
+    @Override
+    public GaleriaResponse deleteFormato(Long idFormato) {
+        Formato formato = new Formato();
+        GaleriaResponse respuesta = new GaleriaResponse();
+        formato.setId(idFormato);
+        formatoRepository.delete(formato);
+        respuesta.setFormatoTrabajado(formato);
+        return respuesta;
+    }
 }
