@@ -28,12 +28,12 @@ INTO
   (sabores_id_pk, nombre, estado_stock, formatos_id_fk, marcas_id_fk)
 VALUES
   (7, 'Limon', true, 4, 3),
-  (8, 'Coca', true, 4, 3),
+  (8, 'Coca', false, 4, 3),
   (9, 'Uva', true, 4, 3),
-  (10, 'Rubia', true, 3, 6),
-  (11, 'Negra', true, 3, 6),
-  (12, 'Rubia', true, 3, 7),
-  (13, 'Tinto Suave', true, 2, 8),
-  (14, 'Tinto', true, 2, 8),
+  (10, 'Rubia', false, 3, 6),
+  (11, 'Negra', false, 3, 6),
+  (12, 'Rubia', false, 3, 7),
+  (13, 'Tinto Suave', false, 2, 8),
+  (14, 'Tinto', false, 2, 8),
   (15, 'Tinto Fuerte', true, 2, 8),
   (16, 'Tinto Patero', true, 2, 8);
