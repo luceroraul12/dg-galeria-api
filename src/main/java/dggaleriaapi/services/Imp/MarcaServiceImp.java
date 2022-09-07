@@ -41,16 +41,25 @@ public class MarcaServiceImp implements MarcaService {
         respuesta.setMarcaTrabajada(
                 marcaRepository.save(marca)
         );
-        return null;
+        return respuesta;
     }
 
     @Override
-    public GaleriaResponse updateMarca(Marca sabor) {
-        return null;
+    public GaleriaResponse updateMarca(Marca marca) {
+        GaleriaResponse respuesta = new GaleriaResponse();
+        respuesta.setMarcaTrabajada(
+                marcaRepository.save(marca)
+        );
+        return respuesta;
     }
 
     @Override
     public GaleriaResponse deleteMarca(Long idMarca) {
-        return null;
+        GaleriaResponse respuesta = new GaleriaResponse();
+        Marca marca = new Marca();
+        marca.setId(idMarca);
+        marcaRepository.delete(marca);
+        respuesta.setMarcaTrabajada(marca);
+        return respuesta;
     }
 }
