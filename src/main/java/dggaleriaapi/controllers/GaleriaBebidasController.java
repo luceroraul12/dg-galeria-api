@@ -43,7 +43,14 @@ public class GaleriaBebidasController {
 
     @PostMapping(value = "/formatos")
     public ResponseEntity<GaleriaResponse> saveFormato(@RequestParam(name = "tipo") String tipo){
-        return null;
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = formatoService.saveFormato(tipo);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
     }
 
     @PutMapping(value = "/formatos", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -59,10 +66,10 @@ public class GaleriaBebidasController {
     }
 
     @DeleteMapping(value = "/formatos")
-    public ResponseEntity<GaleriaResponse> deleteFormato(@RequestParam(name = "id-formato") Long formato){
+    public ResponseEntity<GaleriaResponse> deleteFormato(@RequestParam(name = "id-formato") Long idFormato){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = formatoService.getAllFormatos();
+            GaleriaResponse resultado = formatoService.deleteFormato(idFormato);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
