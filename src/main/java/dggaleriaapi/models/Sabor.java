@@ -29,4 +29,11 @@ public class Sabor {
         this.nombre = nombre;
         this.marca = marca;
     }
+
+    public Sabor(Long id, String nombre, Marca marca, Boolean estadoStock) {
+        this.id = id;
+        this.nombre = nombre;
+        this.estadoStock = estadoStock;
+        this.marca = marca;
+    }
 }
