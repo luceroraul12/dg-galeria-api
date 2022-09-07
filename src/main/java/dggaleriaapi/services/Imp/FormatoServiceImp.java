@@ -20,7 +20,7 @@ public class FormatoServiceImp implements FormatoService {
     @Override
     public GaleriaResponse getAllFormatos() {
         GaleriaResponse respuesta = new GaleriaResponse();
-        respuesta.setFormatosDiponibles(
+        respuesta.setFormatosCreados(
                 formatoRepository.findAll()
         );
         return respuesta;

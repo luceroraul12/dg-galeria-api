@@ -38,7 +38,7 @@ public class SaborServiceImp implements SaborService {
     @Override
     public GaleriaResponse saveSabor(Sabor sabor) {
         GaleriaResponse resultado = new GaleriaResponse();
-        resultado.setSaboresTrabajado(
+        resultado.setSaborTrabajado(
                 saborRepository.save(sabor)
         );
         return resultado;

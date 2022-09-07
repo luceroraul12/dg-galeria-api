@@ -20,7 +20,7 @@ public class MarcaServiceImp implements MarcaService {
     @Override
     public GaleriaResponse getAll() {
         GaleriaResponse respuesta = new GaleriaResponse();
-        respuesta.setMarcasDisponibles(
+        respuesta.setMarcasCreadas(
                 marcaRepository.findAll()
         );
         return respuesta;
@@ -29,7 +29,7 @@ public class MarcaServiceImp implements MarcaService {
     @Override
     public GaleriaResponse getById(Long id) {
         GaleriaResponse respuesta = new GaleriaResponse();
-        respuesta.setMarcasTrabajado(
+        respuesta.setMarcaTrabajada(
                 marcaRepository.findById(id).get()
         );
         return respuesta;
@@ -38,7 +38,7 @@ public class MarcaServiceImp implements MarcaService {
     @Override
     public GaleriaResponse saveMarca(Marca marca) {
         GaleriaResponse respuesta = new GaleriaResponse();
-        respuesta.setMarcasTrabajado(
+        respuesta.setMarcaTrabajada(
                 marcaRepository.save(marca)
         );
         return null;
