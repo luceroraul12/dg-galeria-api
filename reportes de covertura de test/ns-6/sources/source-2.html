@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    100%
   </span>
   <span class="absValue">
-    (3/6)
+    (5/5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    41.7%
+    100%
   </span>
   <span class="absValue">
-    (10/24)
+    (20/20)
   </span>
 </td>
 </tr>
@@ -102,16 +102,16 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">27</i>&nbsp;    }
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    @Override
-<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse getMarcaById(Long id) {
-<b class="nc"><i class="no-highlight">31</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="nc"><i class="no-highlight">32</i>&nbsp;        respuesta.setMarcaTrabajada(</b>
-<b class="nc"><i class="no-highlight">33</i>&nbsp;                marcaRepository.findById(id).get()</b>
+<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveMarca(Marca marca) {
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;        respuesta.setMarcaTrabajada(</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                marcaRepository.save(marca)</b>
 <i class="no-highlight">34</i>&nbsp;        );
-<b class="nc"><i class="no-highlight">35</i>&nbsp;        return respuesta;</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">36</i>&nbsp;    }
 <i class="no-highlight">37</i>&nbsp;
 <i class="no-highlight">38</i>&nbsp;    @Override
-<i class="no-highlight">39</i>&nbsp;    public GaleriaResponse saveMarca(Marca marca) {
+<i class="no-highlight">39</i>&nbsp;    public GaleriaResponse updateMarca(Marca marca) {
 <b class="fc"><i class="no-highlight">40</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">41</i>&nbsp;        respuesta.setMarcaTrabajada(</b>
 <b class="fc"><i class="no-highlight">42</i>&nbsp;                marcaRepository.save(marca)</b>
@@ -120,24 +120,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">45</i>&nbsp;    }
 <i class="no-highlight">46</i>&nbsp;
 <i class="no-highlight">47</i>&nbsp;    @Override
-<i class="no-highlight">48</i>&nbsp;    public GaleriaResponse updateMarca(Marca marca) {
-<b class="nc"><i class="no-highlight">49</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="nc"><i class="no-highlight">50</i>&nbsp;        respuesta.setMarcaTrabajada(</b>
-<b class="nc"><i class="no-highlight">51</i>&nbsp;                marcaRepository.save(marca)</b>
-<i class="no-highlight">52</i>&nbsp;        );
-<b class="nc"><i class="no-highlight">53</i>&nbsp;        return respuesta;</b>
-<i class="no-highlight">54</i>&nbsp;    }
-<i class="no-highlight">55</i>&nbsp;
-<i class="no-highlight">56</i>&nbsp;    @Override
-<i class="no-highlight">57</i>&nbsp;    public GaleriaResponse deleteMarca(Long idMarca) {
-<b class="nc"><i class="no-highlight">58</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="nc"><i class="no-highlight">59</i>&nbsp;        Marca marca = new Marca();</b>
-<b class="nc"><i class="no-highlight">60</i>&nbsp;        marca.setId(idMarca);</b>
-<b class="nc"><i class="no-highlight">61</i>&nbsp;        marcaRepository.delete(marca);</b>
-<b class="nc"><i class="no-highlight">62</i>&nbsp;        respuesta.setMarcaTrabajada(marca);</b>
-<b class="nc"><i class="no-highlight">63</i>&nbsp;        return respuesta;</b>
-<i class="no-highlight">64</i>&nbsp;    }
-<i class="no-highlight">65</i>&nbsp;}
+<i class="no-highlight">48</i>&nbsp;    public GaleriaResponse deleteMarca(Long idMarca) {
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        Marca marca = new Marca();</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        marca.setId(idMarca);</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        marcaRepository.delete(marca);</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        respuesta.setMarcaTrabajada(marca);</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        return respuesta;</b>
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -164,7 +155,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-09-07 17:16</div>
+    <div style="float:right;">generated on 2022-09-07 17:36</div>
 </div>
 </body>
 </html>
