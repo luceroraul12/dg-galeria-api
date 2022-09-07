@@ -1,6 +1,7 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.Marca;
 import dggaleriaapi.responses.GaleriaResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,11 @@ class GaleriaBebidasControllerH2Test {
 
     @Test
     void saveMarca() {
+        Marca marca = new Marca();
+        marca.setNombre("Toyota");
+        marca.setEnlace("www.wawas.com");
+        ResponseEntity<GaleriaResponse> respuesta = controller.saveMarca(marca);
+        assertEquals(marca.getNombre(), respuesta.getBody().getMarcaTrabajada().getNombre());
     }
 
     @Test
