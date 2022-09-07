@@ -5,7 +5,7 @@ import dggaleriaapi.responses.GaleriaResponse;
 
 public interface SaborService {
 
-    GaleriaResponse getAllByIdMarca();
-    GaleriaResponse getAllByIdMarcayStock();
+    GaleriaResponse getAllByIdMarca(Long idMarca);
+    GaleriaResponse getAllByIdMarcayStock(Long idMarca);
     GaleriaResponse saveSabor(Sabor sabor);
 }
