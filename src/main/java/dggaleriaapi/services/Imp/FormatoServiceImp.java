@@ -5,7 +5,9 @@ import dggaleriaapi.repositories.FormatoRepository;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FormatoServiceImp implements FormatoService {
 
     @Autowired

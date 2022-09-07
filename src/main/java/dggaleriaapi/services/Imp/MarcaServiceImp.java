@@ -5,7 +5,9 @@ import dggaleriaapi.repositories.MarcaRepository;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MarcaServiceImp implements MarcaService {
 
     @Autowired

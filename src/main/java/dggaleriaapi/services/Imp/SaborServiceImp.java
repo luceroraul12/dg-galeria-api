@@ -5,7 +5,9 @@ import dggaleriaapi.repositories.SaborRepository;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.SaborService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SaborServiceImp implements SaborService {
 
     @Autowired
