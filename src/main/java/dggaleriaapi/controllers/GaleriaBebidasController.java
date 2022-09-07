@@ -29,7 +29,7 @@ public class GaleriaBebidasController {
         this.saborService = saborService;
     }
 
-    @GetMapping(name = "/formatos")
+    @GetMapping(value = "/formatos")
     public ResponseEntity<GaleriaResponse> getAllFormatos(){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
@@ -41,12 +41,12 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @PostMapping(name = "/formatos")
+    @PostMapping(value = "/formatos")
     public ResponseEntity<GaleriaResponse> saveFormato(String tipo){
         return null;
     }
 
-    @GetMapping(name = "/marcas")
+    @GetMapping(value = "/marcas")
     public ResponseEntity<GaleriaResponse> getAllMarcas(){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
@@ -58,12 +58,12 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @PostMapping(name = "/marcas")
+    @PostMapping(value = "/marcas")
     public ResponseEntity<GaleriaResponse> saveMarca(String nombre){
         return null;
     }
 
-    @GetMapping(name = "/sabores")
+    @GetMapping(value = "/sabores")
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(Long id){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
@@ -75,7 +75,7 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @GetMapping(name = "/sabores/")
+    @GetMapping(value = "/sabores/con-stock")
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcayEnStock(Long id) {
         ResponseEntity<GaleriaResponse> respuesta;
         try {
@@ -87,7 +87,7 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @PostMapping(name = "/sabores")
+    @PostMapping(value = "/sabores")
     public ResponseEntity<GaleriaResponse> saveSaborByIdMarca(String tipo){
         return null;
     }
