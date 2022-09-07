@@ -2,6 +2,8 @@ package dggaleriaapi.controllers;
 
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
+import dggaleriaapi.services.MarcaService;
+import dggaleriaapi.services.SaborService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,15 @@ public class GaleriaBebidasController {
 
     @Autowired
     private FormatoService formatoService;
+    @Autowired
+    private MarcaService marcaService;
+    @Autowired
+    private SaborService saborService;
 
-    public GaleriaBebidasController(FormatoService formatoService) {
+    public GaleriaBebidasController(FormatoService formatoService, MarcaService marcaService, SaborService saborService) {
         this.formatoService = formatoService;
+        this.marcaService = marcaService;
+        this.saborService = saborService;
     }
 
     @GetMapping(name = "/formatos")
