@@ -20,7 +20,7 @@ public class Marca {
     private Long id;
     @Column(name = "nombre", nullable = false)
     private String nombre;
-    @Column(name = "enlace", nullable = false)
+    @Column(name = "enlace", columnDefinition = "TEXT",nullable = false)
     private String enlace;
 
     public Marca(Long id, String nombre) {
