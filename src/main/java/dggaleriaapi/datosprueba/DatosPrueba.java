@@ -34,6 +34,24 @@ public class DatosPrueba {
             new Sabor(5L, "Rubia", marcas.get(4))
     );
 
+    public static List<Sabor> saboresMismaMarca0 = Arrays.asList(
+            new Sabor(1L, "Naranja", marcas.get(0)),
+            new Sabor(2L, "Pomelo", marcas.get(0)),
+            new Sabor(3L, "Limon", marcas.get(0)),
+            new Sabor(4L, "Coca", marcas.get(0)),
+            new Sabor(5L, "CocaLight", marcas.get(0)),
+            new Sabor(6L, "Iokese", marcas.get(0))
+    );
+
+    public static List<Sabor> saboresMismaMarcayEnStock = Arrays.asList(
+            new Sabor(1L, "Naranja", marcas.get(0), true),
+            new Sabor(2L, "Pomelo", marcas.get(0), true),
+            new Sabor(3L, "Limon", marcas.get(0), true),
+            new Sabor(4L, "Coca", marcas.get(0), true),
+            new Sabor(5L, "CocaLight", marcas.get(0), true),
+            new Sabor(6L, "Iokese", marcas.get(0),true)
+    );
+
 
 
 }
