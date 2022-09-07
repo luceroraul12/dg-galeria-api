@@ -2,6 +2,7 @@ package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Sabor;
 import dggaleriaapi.responses.GaleriaResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -129,6 +130,50 @@ class GaleriaBebidasControllerH2Test {
     }
 
     @Test
-    void saveSaborByIdMarca() {
+    void saveSabor() {
+
+        Formato formato = new Formato();
+        formato.setId(2L);
+        Marca marca = new Marca();
+        marca.setId(1L);
+        Sabor sabor = new Sabor();
+        sabor.setFormato(formato);
+        sabor.setMarca(marca);
+        sabor.setNombre("Narampol");
+        sabor.setEstadoStock(true);
+
+        ResponseEntity<GaleriaResponse> respuesta = controller.saveSabor(sabor);
+        sabor.setId(11L);
+        assertEquals(sabor, respuesta.getBody().getSaborTrabajado());
     }
+
+    @Test
+    void updateSabor() {
+        Formato formato = new Formato();
+        formato.setId(2L);
+        Marca marca = new Marca();
+        marca.setId(1L);
+        Sabor sabor = new Sabor();
+        sabor.setId(10L);
+        sabor.setFormato(formato);
+        sabor.setMarca(marca);
+        sabor.setNombre("Limón");
+        sabor.setEstadoStock(true);
+
+        ResponseEntity<GaleriaResponse> respuesta = controller.updateSabor(sabor);
+        //no deben ser iguales por que la bd devuelve los datos completos del formato y marca
+        assertNotEquals(sabor.toString(), respuesta.getBody().getSaborTrabajado().toString());
+    }
+
+    @Test
+    void deleteSabor() {
+        Sabor sabor = new Sabor();
+        sabor.setId(10L);
+
+        ResponseEntity<GaleriaResponse> respuesta = controller.deleteSabor(sabor);
+        //no deben ser iguales por que la bd devuelve los datos completos del formato y marca
+        assertEquals(sabor.toString(), respuesta.getBody().getSaborTrabajado().toString());
+    }
+
+
 }
