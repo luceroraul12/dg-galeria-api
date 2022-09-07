@@ -8,4 +8,9 @@ public interface SaborService {
     GaleriaResponse getAllByIdMarca(Long idMarca);
     GaleriaResponse getAllByIdMarcayStock(Long idMarca);
     GaleriaResponse saveSabor(Sabor sabor);
+
+    GaleriaResponse updateSabor(Sabor sabor);
+
+    GaleriaResponse deleteSabor(Sabor sabor);
+
 }

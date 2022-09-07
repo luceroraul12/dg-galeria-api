@@ -43,4 +43,22 @@ public class SaborServiceImp implements SaborService {
         );
         return resultado;
     }
+
+    @Override
+    public GaleriaResponse updateSabor(Sabor sabor) {
+        GaleriaResponse resultado = new GaleriaResponse();
+        resultado.setSaborTrabajado(
+                saborRepository.save(sabor)
+        );
+        return resultado;
+    }
+
+    @Override
+    public GaleriaResponse deleteSabor(Sabor sabor) {
+        GaleriaResponse resultado = new GaleriaResponse();
+        saborRepository.delete(sabor);
+
+        resultado.setSaborTrabajado(sabor);
+        return resultado;
+    }
 }
