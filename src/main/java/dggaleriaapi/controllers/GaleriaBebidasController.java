@@ -152,7 +152,38 @@ public class GaleriaBebidasController {
     }
 
     @PostMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GaleriaResponse> saveSaborByIdMarca(@RequestBody Sabor sabor){
-        return null;
+    public ResponseEntity<GaleriaResponse> saveSabor(@RequestBody Sabor sabor){
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = saborService.saveSabor(sabor);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
+    }
+
+    @PostMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GaleriaResponse> updateSabor(@RequestBody Sabor sabor){
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = saborService.updateSabor(sabor);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
+    }
+
+    @PostMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GaleriaResponse> deleteSabor(@RequestBody Sabor sabor){
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = saborService.deleteSabor(sabor);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
     }
 }
