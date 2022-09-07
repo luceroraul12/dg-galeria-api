@@ -1,13 +1,12 @@
 package dggaleriaapi.models;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.tuple.GeneratedValueGeneration;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -17,6 +16,7 @@ import javax.persistence.Table;
 public class Formato {
     @Id
     @Column(name = "formatos_id_pk", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name ="tipo", nullable = false)

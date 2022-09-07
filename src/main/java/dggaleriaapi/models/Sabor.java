@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Sabor {
     @Id
     @Column(name = "sabores_id_pk", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "nombre")
     private String nombre;
