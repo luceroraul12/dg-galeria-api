@@ -38,11 +38,14 @@ class GaleriaBebidasControllerTest {
     @BeforeAll
     static void beforeAll() {
         Mockito.when( formatoRepository.findAll()).thenReturn(DatosPrueba.formatos);
+        Mockito.when( marcaRepository.findAll()).thenReturn(DatosPrueba.marcas);
+        Mockito.when( saborRepository.findByMarca_Id(0L) ).thenReturn(DatosPrueba.saboresMismaMarca0);
+        Mockito.when( saborRepository.getAllByIdMacaryStock(0L) ).thenReturn(DatosPrueba.saboresMismaMarcayEnStock);
     }
 
     @Test
     void getAllFormatos() {
-        ResponseEntity<GaleriaResponse> respuesta = galeriaBebidasController.getAllFormatos();
+        ResponseEntity<GaleriaResponse> respuesta = controller.getAllFormatos();
         assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getFormatosDiponibles().toArray() );
     }
 
@@ -52,6 +55,8 @@ class GaleriaBebidasControllerTest {
 
     @Test
     void getAllMarcas() {
+        ResponseEntity<GaleriaResponse> respuesta = controller.getAllMarcas();
+        assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getMarcasDisponibles().toArray());
     }
 
     @Test
@@ -60,10 +65,14 @@ class GaleriaBebidasControllerTest {
 
     @Test
     void getAllSaboresByIdMarca() {
+        ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarca(0L);
+        assertArrayEquals(DatosPrueba.saboresMismaMarca0.toArray(), respuesta.getBody().getSaboresCreados().toArray());
     }
 
     @Test
     void getAllSaboresByIdMarcayEnStock() {
+        ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarcayEnStock(0L);
+        assertArrayEquals(DatosPrueba.saboresMismaMarcayEnStock.toArray(), respuesta.getBody().getSaboresDisponibles().toArray());
     }
 
     @Test
