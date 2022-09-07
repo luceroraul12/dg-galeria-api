@@ -76,6 +76,26 @@ class GaleriaBebidasControllerH2Test {
     }
 
     @Test
+    void updateMarca(){
+        Marca marca = new Marca();
+        marca.setId(2L);
+        marca.setNombre("Toyota");
+        marca.setEnlace("www.wawas.com");
+        ResponseEntity<GaleriaResponse> respuesta = controller.updateMarca(marca);
+        assertEquals(marca.getNombre(), respuesta.getBody().getMarcaTrabajada().getNombre());
+    }
+
+    @Test
+    void deleteMarca(){
+        Marca marca = new Marca();
+        marca.setId(2L);
+        marca.setNombre("Toyota");
+        marca.setEnlace("www.wawas.com");
+        ResponseEntity<GaleriaResponse> respuesta = controller.deleteMarca(marca);
+        assertEquals(marca.getId(), respuesta.getBody().getMarcaTrabajada().getId());
+    }
+
+    @Test
     void getAllSaboresByIdMarca() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarca(3L);
         //ninguno con idMarca 3
