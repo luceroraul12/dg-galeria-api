@@ -27,7 +27,7 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public GaleriaResponse getById(Long id) {
+    public GaleriaResponse getMarcaById(Long id) {
         GaleriaResponse respuesta = new GaleriaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.findById(id).get()
