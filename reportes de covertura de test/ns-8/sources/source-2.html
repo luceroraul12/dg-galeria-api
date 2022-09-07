@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > MarcaService</title>
+  <title>Coverage Report > FormatoService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,14 +20,14 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">dggaleriaapi.services</a>
 </div>
 
-<h1>Coverage Summary for Class: MarcaService (dggaleriaapi.services)</h1>
+<h1>Coverage Summary for Class: FormatoService (dggaleriaapi.services)</h1>
 
 <table class="coverageStats">
 <tr>
   <th class="name">Class</th>
 </tr>
 <tr>
-  <td class="name">MarcaService</td>
+  <td class="name">FormatoService</td>
 </tr>
 
 </table>
@@ -39,19 +39,19 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.services;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Marca;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Formato;
 <i class="no-highlight">4</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
 <i class="no-highlight">5</i>&nbsp;import org.springframework.stereotype.Service;
 <i class="no-highlight">6</i>&nbsp;
 <i class="no-highlight">7</i>&nbsp;@Service
-<i class="no-highlight">8</i>&nbsp;public interface MarcaService {
+<i class="no-highlight">8</i>&nbsp;public interface FormatoService {
 <i class="no-highlight">9</i>&nbsp;
-<i class="no-highlight">10</i>&nbsp;    GaleriaResponse getAll();
-<i class="no-highlight">11</i>&nbsp;    GaleriaResponse getMarcaById(Long id);
-<i class="no-highlight">12</i>&nbsp;    GaleriaResponse saveMarca(Marca marca);
-<i class="no-highlight">13</i>&nbsp;    GaleriaResponse updateMarca(Marca marca);
-<i class="no-highlight">14</i>&nbsp;    GaleriaResponse deleteMarca(Long idMarca);
-<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;    GaleriaResponse getAllFormatos();
+<i class="no-highlight">11</i>&nbsp;    GaleriaResponse saveFormato(String tipo);
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;    GaleriaResponse updateFormato(Formato formato);
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;    GaleriaResponse deleteFormato(Long idFormato);
 <i class="no-highlight">16</i>&nbsp;}
 </div>
 </pre>
@@ -79,7 +79,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-09-07 16:53</div>
+    <div style="float:right;">generated on 2022-09-07 17:01</div>
 </div>
 </body>
 </html>

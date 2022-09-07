@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    70%
+    80%
   </span>
   <span class="absValue">
-    (7/10)
+    (8/10)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    52.8%
+    60.4%
   </span>
   <span class="absValue">
-    (28/53)
+    (32/53)
   </span>
 </td>
 </tr>
@@ -133,12 +133,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">58</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateFormato(@RequestBody Formato formato){
 <i class="no-highlight">59</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">60</i>&nbsp;        try {
-<b class="nc"><i class="no-highlight">61</i>&nbsp;            GaleriaResponse resultado = formatoService.updateFormato(formato);</b>
-<b class="nc"><i class="no-highlight">62</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;            GaleriaResponse resultado = formatoService.updateFormato(formato);</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">63</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">64</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
-<b class="nc"><i class="no-highlight">65</i>&nbsp;        }</b>
-<b class="nc"><i class="no-highlight">66</i>&nbsp;        return respuesta;</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">66</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">67</i>&nbsp;    }
 <i class="no-highlight">68</i>&nbsp;
 <i class="no-highlight">69</i>&nbsp;    @DeleteMapping(value = &quot;/formatos&quot;)
@@ -232,7 +232,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-09-07 16:53</div>
+    <div style="float:right;">generated on 2022-09-07 17:01</div>
 </div>
 </body>
 </html>

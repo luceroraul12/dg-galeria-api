@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > SaborRepository</title>
+  <title>Coverage Report > FormatoRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">dggaleriaapi.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: SaborRepository (dggaleriaapi.repositories)</h1>
+<h1>Coverage Summary for Class: FormatoRepository (dggaleriaapi.repositories)</h1>
 
 <table class="coverageStats">
 
@@ -28,16 +28,16 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$hHMqX5J7</td>
+    <td class="name">FormatoRepository$MockitoMock$rqL2Rqdy</td>
   </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$hHMqX5J7$auxiliary$DYMXMoJz</td>
+    <td class="name">FormatoRepository$MockitoMock$rqL2Rqdy$auxiliary$J43huwX2</td>
   </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$hHMqX5J7$auxiliary$nPXe9GHc</td>
+    <td class="name">FormatoRepository$MockitoMock$rqL2Rqdy$auxiliary$jyF5UqKC</td>
   </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$hHMqX5J7$auxiliary$W33xC8LB</td>
+    <td class="name">FormatoRepository$MockitoMock$rqL2Rqdy$auxiliary$ZLxZkLqL</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -51,19 +51,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.repositories;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Sabor;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Formato;
 <i class="no-highlight">4</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.data.jpa.repository.Query;
-<i class="no-highlight">6</i>&nbsp;
-<i class="no-highlight">7</i>&nbsp;import java.util.List;
-<i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;public interface SaborRepository extends JpaRepository&lt;Sabor, Long&gt; {
-<i class="no-highlight">10</i>&nbsp;    List&lt;Sabor&gt; findByMarca_Id(Long id);
-<i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;    @Query(&quot;select s from Sabor s where s.marca.id = ?1 and s.estadoStock = true&quot;)
-<i class="no-highlight">13</i>&nbsp;    List&lt;Sabor&gt; getAllByIdMacaryStock(Long id);
-<i class="no-highlight">14</i>&nbsp;
-<i class="no-highlight">15</i>&nbsp;}
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;public interface FormatoRepository extends JpaRepository&lt;Formato, Long&gt; {
+<i class="no-highlight">7</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -90,7 +82,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-09-07 16:53</div>
+    <div style="float:right;">generated on 2022-09-07 17:01</div>
 </div>
 </body>
 </html>
