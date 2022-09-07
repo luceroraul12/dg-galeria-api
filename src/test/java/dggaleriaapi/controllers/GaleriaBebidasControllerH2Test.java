@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 class GaleriaBebidasControllerH2Test {
 
 
@@ -41,6 +43,15 @@ class GaleriaBebidasControllerH2Test {
         assertEquals(formato.getTipo(), respuesta.getBody().getFormatoTrabajado().getTipo());
     }
 
+    @Test
+    void updateFormat(){
+        Formato formato = new Formato();
+        formato.setId(2L);
+        formato.setTipo("300LSX");
+
+        ResponseEntity<GaleriaResponse> respuesta = controller.saveFormato(formato.getTipo());
+        assertEquals(formato.getTipo(), respuesta.getBody().getFormatoTrabajado().getTipo());
+    }
     @Test
     void getAllMarcas() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllMarcas();
