@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "formatos")
 public class Formato {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "formnatos_id_pk", nullable = false)
     private Long id;
 
     @Column(name ="tipo", nullable = false)

@@ -1,6 +1,7 @@
 package dggaleriaapi.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -11,10 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "marcas")
 public class Marca {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "marcas_id_pk", nullable = false)
     private Long id;
     @Column(name = "nombre", nullable = false)
     private String nombre;

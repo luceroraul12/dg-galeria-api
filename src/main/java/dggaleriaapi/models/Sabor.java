@@ -1,6 +1,7 @@
 package dggaleriaapi.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,20 +9,21 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "sabores")
 public class Sabor {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "sabores_id_pk", nullable = false)
     private Long id;
     @Column(name = "nombre")
     private String nombre;
-    @Column(name = "estadoStock")
+    @Column(name = "estado_stock")
     private Boolean estadoStock;
     @ManyToOne
-    @JoinColumn(name = "formato_id_fk")
+    @JoinColumn(name = "formatos_id_fk")
     private Formato formato;
     @ManyToOne
-    @JoinColumn(name = "marca_id_fk")
+    @JoinColumn(name = "marcas_id_fk")
     private Marca marca;
 
     public Sabor(Long id, String nombre, Marca marca) {
