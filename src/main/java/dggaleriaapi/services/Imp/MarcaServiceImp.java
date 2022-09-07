@@ -43,4 +43,14 @@ public class MarcaServiceImp implements MarcaService {
         );
         return null;
     }
+
+    @Override
+    public GaleriaResponse updateMarca(Marca sabor) {
+        return null;
+    }
+
+    @Override
+    public GaleriaResponse deleteMarca(Long idMarca) {
+        return null;
+    }
 }
