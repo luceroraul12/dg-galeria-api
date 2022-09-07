@@ -1,6 +1,7 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.Marca;
 import dggaleriaapi.models.Sabor;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
@@ -89,8 +90,8 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @PostMapping(value = "/marcas")
-    public ResponseEntity<GaleriaResponse> saveMarca(@RequestParam(name = "nombre") String nombre){
+    @PostMapping(value = "/marcas", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GaleriaResponse> saveMarca(@RequestBody Marca marca){
         return null;
     }
 
