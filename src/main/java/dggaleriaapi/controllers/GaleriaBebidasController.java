@@ -31,8 +31,14 @@ public class GaleriaBebidasController {
 
     @GetMapping(name = "/formatos")
     public ResponseEntity<GaleriaResponse> getAllFormatos(){
-        GaleriaResponse respuesta = formatoService.getAllFormatos();
-        return new ResponseEntity<GaleriaResponse>(respuesta, HttpStatus.OK);
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = formatoService.getAllFormatos();
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
     }
 
     @PostMapping(name = "/formatos")
@@ -42,7 +48,14 @@ public class GaleriaBebidasController {
 
     @GetMapping(name = "/marcas")
     public ResponseEntity<GaleriaResponse> getAllMarcas(){
-        return null;
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = marcaService.getAll();
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
     }
 
     @PostMapping(name = "/marcas")
@@ -51,13 +64,27 @@ public class GaleriaBebidasController {
     }
 
     @GetMapping(name = "/sabores")
-    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(){
-        return null;
+    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(Long id){
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = saborService.getAllByIdMarca(id);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
     }
 
     @GetMapping(name = "/sabores/")
-    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcayEnStock() {
-        return null;
+    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcayEnStock(Long id) {
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = saborService.getAllByIdMarcayStock(id);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
     }
 
     @PostMapping(name = "/sabores")
