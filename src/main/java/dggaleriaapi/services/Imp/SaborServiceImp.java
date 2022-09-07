@@ -19,18 +19,26 @@ public class SaborServiceImp implements SaborService {
     public GaleriaResponse getAllByIdMarca(Long idMarca) {
         GaleriaResponse resultado = new GaleriaResponse();
         resultado.setSaboresCreados(
-            saborRepository.findByMarca_Id(idMarca);
+            saborRepository.findByMarca_Id(idMarca)
         );
         return resultado;
     }
 
     @Override
     public GaleriaResponse getAllByIdMarcayStock(Long idMarca) {
-        return null;
+        GaleriaResponse resultado = new GaleriaResponse();
+        resultado.setSaboresDisponibles(
+                saborRepository.getAllByIdMacaryStock(idMarca)
+        );
+        return resultado;
     }
 
     @Override
     public GaleriaResponse saveSabor(Sabor sabor) {
-        return null;
+        GaleriaResponse resultado = new GaleriaResponse();
+        resultado.setSaboresTrabajado(
+                saborRepository.save(sabor)
+        );
+        return resultado;
     }
 }
