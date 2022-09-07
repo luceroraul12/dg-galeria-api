@@ -70,17 +70,27 @@ class GaleriaBebidasControllerH2Test {
     @Test
     void getAllSaboresByIdMarca() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarca(3L);
-        assertEquals(3, respuesta.getBody().getSaboresCreados().size());
+        //ninguno con idMarca 3
+        assertEquals(0, respuesta.getBody().getSaboresCreados().size());
+        respuesta = controller.getAllSaboresByIdMarca(4L);
+        //2 con idMarca 4
+        assertEquals(2, respuesta.getBody().getSaboresCreados().size());
+
     }
 
     @Test
     void getSaboresIdStockBien() {
-        ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarcayEnStock(3L);
+        ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarcayEnStock(1L);
+        //2 con idMarca 2
         assertEquals(2, respuesta.getBody().getSaboresDisponibles().size());
+        respuesta = controller.getAllSaboresByIdMarcayEnStock(6L);
+        //2 con idMarca 6
+        assertEquals(2, respuesta.getBody().getSaboresDisponibles().size());
+
     }
     @Test
     void getSaboresIdStockVacio() {
-        ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarcayEnStock(6L);
+        ResponseEntity<GaleriaResponse> respuesta = controller.getAllSaboresByIdMarcayEnStock(4L);
         assertEquals(0, respuesta.getBody().getSaboresDisponibles().size());
     }
 
