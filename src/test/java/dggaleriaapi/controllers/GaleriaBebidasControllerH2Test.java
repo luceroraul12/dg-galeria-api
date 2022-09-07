@@ -3,10 +3,12 @@ package dggaleriaapi.controllers;
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.Marca;
 import dggaleriaapi.responses.GaleriaResponse;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,8 +51,14 @@ class GaleriaBebidasControllerH2Test {
         formato.setId(2L);
         formato.setTipo("300LSX");
 
-        ResponseEntity<GaleriaResponse> respuesta = controller.saveFormato(formato.getTipo());
+        ResponseEntity<GaleriaResponse> respuesta = controller.updateFormato(formato);
         assertEquals(formato.getTipo(), respuesta.getBody().getFormatoTrabajado().getTipo());
+    }
+
+    @Test
+    void deleteFormato(){
+        ResponseEntity<GaleriaResponse> respuesta = controller.deleteFormato(2L);
+        assertEquals(2, respuesta.getBody().getFormatoTrabajado().getId());
     }
     @Test
     void getAllMarcas() {
