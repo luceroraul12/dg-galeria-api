@@ -1,5 +1,6 @@
 package dggaleriaapi.controllers;
 
+import dggaleriaapi.models.Formato;
 import dggaleriaapi.responses.GaleriaResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,11 @@ class GaleriaBebidasControllerH2Test {
 
     @Test
     void saveFormato() {
+        Formato formato = new Formato();
+        formato.setTipo("300LSX");
+
+        ResponseEntity<GaleriaResponse> respuesta = controller.saveFormato(formato.getTipo());
+        assertEquals(formato.getTipo(), respuesta.getBody().getFormatoTrabajado().getTipo());
     }
 
     @Test
