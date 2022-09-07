@@ -13,7 +13,6 @@ import dggaleriaapi.services.MarcaService;
 import dggaleriaapi.services.SaborService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.http.ResponseEntity;
 
@@ -46,13 +45,13 @@ class GaleriaBebidasControllerTest {
     @Test
     void getAllFormatos() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllFormatos();
-        assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getFormatosDiponibles().toArray() );
+        assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getFormatosCreados().toArray() );
     }
 
     @Test
     void getAllMarcas() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllMarcas();
-        assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getMarcasDisponibles().toArray());
+        assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getMarcasCreadas().toArray());
     }
     @Test
     void getAllSaboresByIdMarca() {
