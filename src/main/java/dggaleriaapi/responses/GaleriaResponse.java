@@ -16,6 +16,7 @@ public class GaleriaResponse {
     private List<Formato>   formatosDiponibles;
     private List<Marca>     marcasDisponibles;
     private List<Sabor>     saboresDisponibles;
+    private List<Sabor>     saboresCreados;
 
     private Formato     formatoTrabajado;
     private Marca       marcasTrabajado;
