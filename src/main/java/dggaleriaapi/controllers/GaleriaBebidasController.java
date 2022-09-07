@@ -163,7 +163,7 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @PostMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GaleriaResponse> updateSabor(@RequestBody Sabor sabor){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
@@ -175,7 +175,7 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
-    @PostMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GaleriaResponse> deleteSabor(@RequestBody Sabor sabor){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
