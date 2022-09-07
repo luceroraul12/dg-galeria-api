@@ -51,7 +51,7 @@ class GaleriaBebidasControllerTest {
     @Test
     void getAllMarcas() {
         ResponseEntity<GaleriaResponse> respuesta = controller.getAllMarcas();
-        assertArrayEquals(DatosPrueba.formatos.toArray(), respuesta.getBody().getMarcasCreadas().toArray());
+        assertArrayEquals(DatosPrueba.marcas.toArray(), respuesta.getBody().getMarcasCreadas().toArray());
     }
     @Test
     void getAllSaboresByIdMarca() {
