@@ -11,7 +11,7 @@ public interface MarcaService {
     GaleriaResponse getAll();
     GaleriaResponse getById(Long id);
     GaleriaResponse saveMarca(Marca marca);
-    GaleriaResponse updateMarca(Marca sabor);
+    GaleriaResponse updateMarca(Marca marca);
     GaleriaResponse deleteMarca(Long idMarca);
 
 }
