@@ -36,5 +36,4 @@ VALUES
   ( 'Tinto Fuerte', true, 1, 6),
   ( 'Tinto Fuerte', true, 2, 6),
   ( 'Tinto Fuerte', true, 3, 6),
-  ( 'Tinto SQ', true, 4, 6),
-  ( 'Tinto Suave', false, 5, 6),
+  ( 'Tinto SQ', false, 4, 6);
