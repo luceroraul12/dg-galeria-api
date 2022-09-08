@@ -81,7 +81,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
 <i class="no-highlight">7</i>&nbsp;import dggaleriaapi.services.FormatoService;
 <i class="no-highlight">8</i>&nbsp;import dggaleriaapi.services.MarcaService;
-<i class="no-highlight">9</i>&nbsp;import dggaleriaapi.services.SaborService;
+<i class="no-highlight">9</i>&nbsp;import dggaleriaapi.services.SaborAsociadoService;
 <i class="no-highlight">10</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">11</i>&nbsp;import org.springframework.http.HttpStatus;
 <i class="no-highlight">12</i>&nbsp;import org.springframework.http.MediaType;
@@ -97,12 +97,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">22</i>&nbsp;    @Autowired
 <i class="no-highlight">23</i>&nbsp;    private MarcaService marcaService;
 <i class="no-highlight">24</i>&nbsp;    @Autowired
-<i class="no-highlight">25</i>&nbsp;    private SaborService saborService;
+<i class="no-highlight">25</i>&nbsp;    private SaborService saborAsociadoService;
 <i class="no-highlight">26</i>&nbsp;
-<b class="fc"><i class="no-highlight">27</i>&nbsp;    public GaleriaBebidasController(FormatoService formatoService, MarcaService marcaService, SaborService saborService) {</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    public GaleriaBebidasController(FormatoService formatoService, MarcaService marcaService, SaborService saborAsociadoService) {</b>
 <b class="fc"><i class="no-highlight">28</i>&nbsp;        this.formatoService = formatoService;</b>
 <b class="fc"><i class="no-highlight">29</i>&nbsp;        this.marcaService = marcaService;</b>
-<b class="fc"><i class="no-highlight">30</i>&nbsp;        this.saborService = saborService;</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        this.saborAsociadoService = saborAsociadoService;</b>
 <i class="no-highlight">31</i>&nbsp;    }
 <i class="no-highlight">32</i>&nbsp;
 <i class="no-highlight">33</i>&nbsp;    @GetMapping(value = &quot;/formatos&quot;)
@@ -206,7 +206,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">131</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllSaboresByIdMarca(@RequestParam(name = &quot;id-marca&quot;) Long id){
 <i class="no-highlight">132</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">133</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">134</i>&nbsp;            GaleriaResponse resultado = saborService.getAllByIdMarca(id);</b>
+<b class="fc"><i class="no-highlight">134</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarca(id);</b>
 <b class="fc"><i class="no-highlight">135</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">136</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">137</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -218,7 +218,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">143</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllSaboresByIdMarcayEnStock(@RequestParam(name = &quot;id-marca&quot;) Long id) {
 <i class="no-highlight">144</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">145</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">146</i>&nbsp;            GaleriaResponse resultado = saborService.getAllByIdMarcayStock(id);</b>
+<b class="fc"><i class="no-highlight">146</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcayStock(id);</b>
 <b class="fc"><i class="no-highlight">147</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">148</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">149</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -230,7 +230,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">155</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveSabor(@RequestBody Sabor saborAsociado){
 <i class="no-highlight">156</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">157</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">158</i>&nbsp;            GaleriaResponse resultado = saborService.saveSabor(saborAsociado);</b>
+<b class="fc"><i class="no-highlight">158</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.saveSabor(saborAsociado);</b>
 <b class="fc"><i class="no-highlight">159</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">160</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">161</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -242,7 +242,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">167</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateSabor(@RequestBody Sabor saborAsociado){
 <i class="no-highlight">168</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">169</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">170</i>&nbsp;            GaleriaResponse resultado = saborService.updateSabor(saborAsociado);</b>
+<b class="fc"><i class="no-highlight">170</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.updateSabor(saborAsociado);</b>
 <b class="fc"><i class="no-highlight">171</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">172</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">173</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -254,7 +254,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">179</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteSabor(@RequestBody Sabor saborAsociado){
 <i class="no-highlight">180</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">181</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">182</i>&nbsp;            GaleriaResponse resultado = saborService.deleteSabor(saborAsociado);</b>
+<b class="fc"><i class="no-highlight">182</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.deleteSabor(saborAsociado);</b>
 <b class="fc"><i class="no-highlight">183</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">184</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">185</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>

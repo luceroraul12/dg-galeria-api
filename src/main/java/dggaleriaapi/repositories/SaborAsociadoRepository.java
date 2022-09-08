@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface SaborRepository extends JpaRepository<SaborAsociado, Long> {
+public interface SaborAsociadoRepository extends JpaRepository<SaborAsociado, Long> {
     List<SaborAsociado> findByMarca_Id(Long id);
 
     @Query("select s from SaborAsociado s where s.marca.id = ?1 and s.estadoStock = true")

@@ -3,14 +3,14 @@ package dggaleriaapi.controllers;
 import dggaleriaapi.datosprueba.DatosPrueba;
 import dggaleriaapi.repositories.FormatoRepository;
 import dggaleriaapi.repositories.MarcaRepository;
-import dggaleriaapi.repositories.SaborRepository;
+import dggaleriaapi.repositories.SaborAsociadoRepository;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
 import dggaleriaapi.services.Imp.FormatoServiceImp;
 import dggaleriaapi.services.Imp.MarcaServiceImp;
-import dggaleriaapi.services.Imp.SaborServiceImp;
+import dggaleriaapi.services.Imp.SaborAsociadoServiceImp;
 import dggaleriaapi.services.MarcaService;
-import dggaleriaapi.services.SaborService;
+import dggaleriaapi.services.SaborAsociadoService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -22,24 +22,24 @@ class GaleriaBebidasControllerTest {
 
     static FormatoRepository formatoRepository = Mockito.mock(FormatoRepository.class);
     static MarcaRepository marcaRepository = Mockito.mock(MarcaRepository.class);
-    static SaborRepository saborRepository = Mockito.mock(SaborRepository.class);
+    static SaborAsociadoRepository saborAsociadoRepository = Mockito.mock(SaborAsociadoRepository.class);
 
     FormatoService formatoService = new FormatoServiceImp(formatoRepository);
     MarcaService marcaService = new MarcaServiceImp(marcaRepository);
-    SaborService saborService = new SaborServiceImp(saborRepository);
+    SaborAsociadoService saborAsociadoService = new SaborAsociadoServiceImp(saborAsociadoRepository);
 
     GaleriaBebidasController controller = new GaleriaBebidasController(
             formatoService,
             marcaService,
-            saborService
+            saborAsociadoService
     );
 
     @BeforeAll
     static void beforeAll() {
         Mockito.when( formatoRepository.findAll()).thenReturn(DatosPrueba.formatos);
         Mockito.when( marcaRepository.findAll()).thenReturn(DatosPrueba.marcas);
-        Mockito.when( saborRepository.findByMarca_Id(0L) ).thenReturn(DatosPrueba.saboresMismaMarca0);
-        Mockito.when( saborRepository.getAllByIdMacaryStock(0L) ).thenReturn(DatosPrueba.saboresMismaMarcayEnStock);
+        Mockito.when( saborAsociadoRepository.findByMarca_Id(0L) ).thenReturn(DatosPrueba.saboresMismaMarca0);
+        Mockito.when( saborAsociadoRepository.getAllByIdMacaryStock(0L) ).thenReturn(DatosPrueba.saboresMismaMarcayEnStock);
     }
 
     @Test

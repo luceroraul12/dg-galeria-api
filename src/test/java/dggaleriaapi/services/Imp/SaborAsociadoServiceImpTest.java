@@ -1,9 +1,8 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.SaborCliente;
-import dggaleriaapi.repositories.SaborRepository;
-import dggaleriaapi.services.SaborService;
-import org.junit.jupiter.api.BeforeEach;
+import dggaleriaapi.repositories.SaborAsociadoRepository;
+import dggaleriaapi.services.SaborAsociadoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class SaborAsociadoServiceImpTest {
 
     @Autowired
-    SaborRepository saborRepository;
+    SaborAsociadoRepository saborAsociadoRepository;
     @Autowired
-    SaborService saborService;
+    SaborAsociadoService saborAsociadoService;
 
     @Test
     void getAllByIdMarcaParaVer() {
-        List<SaborCliente> resultado = saborService.getAllByIdMarcaParaVer(6L).getSaboresResumidos();
+        List<SaborCliente> resultado = saborAsociadoService.getAllByIdMarcaParaVer(6L).getSaboresResumidos();
         //solo se tiene 2 sabores
         assertEquals(2, resultado.size());
         //para el primero tiene que tener 3 formatos
@@ -30,7 +29,7 @@ class SaborAsociadoServiceImpTest {
         //para el segundo tiene que tener 1 formato
         assertEquals(1, resultado.get(1).getFormatos().size());
         //otra busqueda, 3 sabores, 1 formato cada uno
-        resultado = saborService.getAllByIdMarcaParaVer(1L).getSaboresResumidos();
+        resultado = saborAsociadoService.getAllByIdMarcaParaVer(1L).getSaboresResumidos();
         assertEquals(3, resultado.size());
         assertEquals(1, resultado.get(0).getFormatos().size());
         assertEquals(1, resultado.get(1).getFormatos().size());

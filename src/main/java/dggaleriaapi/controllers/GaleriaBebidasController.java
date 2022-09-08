@@ -6,7 +6,7 @@ import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
 import dggaleriaapi.services.MarcaService;
-import dggaleriaapi.services.SaborService;
+import dggaleriaapi.services.SaborAsociadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,12 +23,12 @@ public class GaleriaBebidasController {
     @Autowired
     private MarcaService marcaService;
     @Autowired
-    private SaborService saborService;
+    private SaborAsociadoService saborAsociadoService;
 
-    public GaleriaBebidasController(FormatoService formatoService, MarcaService marcaService, SaborService saborService) {
+    public GaleriaBebidasController(FormatoService formatoService, MarcaService marcaService, SaborAsociadoService saborAsociadoService) {
         this.formatoService = formatoService;
         this.marcaService = marcaService;
-        this.saborService = saborService;
+        this.saborAsociadoService = saborAsociadoService;
     }
 
     @GetMapping(value = "/formatos")
@@ -145,7 +145,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(@RequestParam(name = "id-marca") Long id){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.getAllByIdMarca(id);
+            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarca(id);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -157,7 +157,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcaParaVer(@RequestParam(name = "id-marca") Long id){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.getAllByIdMarcaParaVer(id);
+            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcaParaVer(id);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -169,7 +169,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcayEnStock(@RequestParam(name = "id-marca") Long id) {
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.getAllByIdMarcayStock(id);
+            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcayStock(id);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -181,7 +181,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> saveSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.saveSabor(saborAsociado);
+            GaleriaResponse resultado = saborAsociadoService.saveSabor(saborAsociado);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -193,7 +193,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> updateSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.updateSabor(saborAsociado);
+            GaleriaResponse resultado = saborAsociadoService.updateSabor(saborAsociado);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -205,7 +205,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> deleteSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.deleteSabor(saborAsociado);
+            GaleriaResponse resultado = saborAsociadoService.deleteSabor(saborAsociado);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

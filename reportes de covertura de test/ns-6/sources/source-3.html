@@ -76,9 +76,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.services.Imp;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.SaborAsociado;
-<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.SaborRepository;
+<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.SaborAsociadoRepository;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
-<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.SaborService;
+<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.SaborAsociadoService;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
 <i class="no-highlight">9</i>&nbsp;
@@ -86,17 +86,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">11</i>&nbsp;public class SaborServiceImp implements SaborService {
 <i class="no-highlight">12</i>&nbsp;
 <i class="no-highlight">13</i>&nbsp;    @Autowired
-<i class="no-highlight">14</i>&nbsp;    SaborRepository saborRepository;
+<i class="no-highlight">14</i>&nbsp;    SaborRepository saborAsociadoRepository;
 <i class="no-highlight">15</i>&nbsp;
-<b class="fc"><i class="no-highlight">16</i>&nbsp;    public SaborServiceImp(SaborRepository saborRepository) {</b>
-<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.saborRepository = saborRepository;</b>
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    public SaborServiceImp(SaborRepository saborAsociadoRepository) {</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.saborAsociadoRepository = saborAsociadoRepository;</b>
 <i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @Override
 <i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAllByIdMarca(Long idMarca) {
 <b class="fc"><i class="no-highlight">22</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">23</i>&nbsp;        resultado.setSaboresCreados(</b>
-<b class="fc"><i class="no-highlight">24</i>&nbsp;            saborRepository.findByMarca_Id(idMarca)</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;            saborAsociadoRepository.findByMarca_Id(idMarca)</b>
 <i class="no-highlight">25</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">26</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">27</i>&nbsp;    }
@@ -105,7 +105,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">30</i>&nbsp;    public GaleriaResponse getAllByIdMarcayStock(Long idMarca) {
 <b class="fc"><i class="no-highlight">31</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">32</i>&nbsp;        resultado.setSaboresDisponibles(</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;                saborRepository.getAllByIdMacaryStock(idMarca)</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                saborAsociadoRepository.getAllByIdMacaryStock(idMarca)</b>
 <i class="no-highlight">34</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">36</i>&nbsp;    }
@@ -114,7 +114,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">39</i>&nbsp;    public GaleriaResponse saveSabor(Sabor saborAsociado) {
 <b class="fc"><i class="no-highlight">40</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">41</i>&nbsp;        resultado.setSaborTrabajado(</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;                saborRepository.save(saborAsociado)</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;                saborAsociadoRepository.save(saborAsociado)</b>
 <i class="no-highlight">43</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">44</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">45</i>&nbsp;    }
@@ -123,7 +123,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">48</i>&nbsp;    public GaleriaResponse updateSabor(Sabor saborAsociado) {
 <b class="fc"><i class="no-highlight">49</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">50</i>&nbsp;        resultado.setSaborTrabajado(</b>
-<b class="fc"><i class="no-highlight">51</i>&nbsp;                saborRepository.save(saborAsociado)</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;                saborAsociadoRepository.save(saborAsociado)</b>
 <i class="no-highlight">52</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">53</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">54</i>&nbsp;    }
@@ -131,7 +131,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">56</i>&nbsp;    @Override
 <i class="no-highlight">57</i>&nbsp;    public GaleriaResponse deleteSabor(Sabor saborAsociado) {
 <b class="fc"><i class="no-highlight">58</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">59</i>&nbsp;        saborRepository.delete(saborAsociado);</b>
+<b class="fc"><i class="no-highlight">59</i>&nbsp;        saborAsociadoRepository.delete(saborAsociado);</b>
 <i class="no-highlight">60</i>&nbsp;
 <b class="fc"><i class="no-highlight">61</i>&nbsp;        resultado.setSaborTrabajado(saborAsociado);</b>
 <b class="fc"><i class="no-highlight">62</i>&nbsp;        return resultado;</b>

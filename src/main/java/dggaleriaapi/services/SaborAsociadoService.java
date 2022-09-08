@@ -3,7 +3,7 @@ package dggaleriaapi.services;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.GaleriaResponse;
 
-public interface SaborService {
+public interface SaborAsociadoService {
 
     GaleriaResponse getAllByIdMarca(Long idMarca);
     GaleriaResponse getAllByIdMarcaParaVer(Long idMarca);

@@ -3,9 +3,9 @@ package dggaleriaapi.services.Imp;
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborCliente;
-import dggaleriaapi.repositories.SaborRepository;
+import dggaleriaapi.repositories.SaborAsociadoRepository;
 import dggaleriaapi.responses.GaleriaResponse;
-import dggaleriaapi.services.SaborService;
+import dggaleriaapi.services.SaborAsociadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,20 +15,20 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class SaborServiceImp implements SaborService {
+public class SaborAsociadoServiceImp implements SaborAsociadoService {
 
     @Autowired
-    SaborRepository saborRepository;
+    SaborAsociadoRepository saborAsociadoRepository;
 
-    public SaborServiceImp(SaborRepository saborRepository) {
-        this.saborRepository = saborRepository;
+    public SaborAsociadoServiceImp(SaborAsociadoRepository saborAsociadoRepository) {
+        this.saborAsociadoRepository = saborAsociadoRepository;
     }
 
     @Override
     public GaleriaResponse getAllByIdMarca(Long idMarca) {
         GaleriaResponse resultado = new GaleriaResponse();
         resultado.setSaboresCreados(
-            saborRepository.findByMarca_Id(idMarca)
+            saborAsociadoRepository.findByMarca_Id(idMarca)
         );
         return resultado;
     }
@@ -38,7 +38,7 @@ public class SaborServiceImp implements SaborService {
         GaleriaResponse resultado = new GaleriaResponse();
         List<SaborCliente> saboresResumidos = new ArrayList<>();
         Set<String> saboresUnicos;
-        List<SaborAsociado> saboresCreados = saborRepository.findByMarca_Id(idMarca);
+        List<SaborAsociado> saboresCreados = saborAsociadoRepository.findByMarca_Id(idMarca);
 
         saboresUnicos = obtenerSaboresUnicos(saboresCreados);
 
@@ -59,7 +59,7 @@ public class SaborServiceImp implements SaborService {
     public GaleriaResponse getAllByIdMarcayStock(Long idMarca) {
         GaleriaResponse resultado = new GaleriaResponse();
         resultado.setSaboresDisponibles(
-                saborRepository.getAllByIdMacaryStock(idMarca)
+                saborAsociadoRepository.getAllByIdMacaryStock(idMarca)
         );
         return resultado;
     }
@@ -68,7 +68,7 @@ public class SaborServiceImp implements SaborService {
     public GaleriaResponse saveSabor(SaborAsociado saborAsociado) {
         GaleriaResponse resultado = new GaleriaResponse();
         resultado.setSaborAsociadoTrabajado(
-                saborRepository.save(saborAsociado)
+                saborAsociadoRepository.save(saborAsociado)
         );
         return resultado;
     }
@@ -77,7 +77,7 @@ public class SaborServiceImp implements SaborService {
     public GaleriaResponse updateSabor(SaborAsociado saborAsociado) {
         GaleriaResponse resultado = new GaleriaResponse();
         resultado.setSaborAsociadoTrabajado(
-                saborRepository.save(saborAsociado)
+                saborAsociadoRepository.save(saborAsociado)
         );
         return resultado;
     }
@@ -85,7 +85,7 @@ public class SaborServiceImp implements SaborService {
     @Override
     public GaleriaResponse deleteSabor(SaborAsociado saborAsociado) {
         GaleriaResponse resultado = new GaleriaResponse();
-        saborRepository.delete(saborAsociado);
+        saborAsociadoRepository.delete(saborAsociado);
 
         resultado.setSaborAsociadoTrabajado(saborAsociado);
         return resultado;
