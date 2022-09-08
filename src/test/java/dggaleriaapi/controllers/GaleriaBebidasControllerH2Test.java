@@ -2,14 +2,12 @@ package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.Marca;
-import dggaleriaapi.models.Sabor;
+import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.GaleriaResponse;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -113,8 +111,8 @@ class GaleriaBebidasControllerH2Test {
         //2 con idMarca 2
         assertEquals(2, respuesta.getBody().getSaboresDisponibles().size());
         respuesta = controller.getAllSaboresByIdMarcayEnStock(6L);
-        //2 con idMarca 6
-        assertEquals(2, respuesta.getBody().getSaboresDisponibles().size());
+        //3 con idMarca 6
+        assertEquals(3, respuesta.getBody().getSaboresDisponibles().size());
 
     }
     @Test
@@ -136,15 +134,15 @@ class GaleriaBebidasControllerH2Test {
         formato.setId(2L);
         Marca marca = new Marca();
         marca.setId(1L);
-        Sabor sabor = new Sabor();
-        sabor.setFormato(formato);
-        sabor.setMarca(marca);
-        sabor.setNombre("Narampol");
-        sabor.setEstadoStock(true);
+        SaborAsociado saborAsociado = new SaborAsociado();
+        saborAsociado.setFormato(formato);
+        saborAsociado.setMarca(marca);
+        saborAsociado.setNombre("Narampol");
+        saborAsociado.setEstadoStock(true);
 
-        ResponseEntity<GaleriaResponse> respuesta = controller.saveSabor(sabor);
-        sabor.setId(11L);
-        assertEquals(sabor, respuesta.getBody().getSaborTrabajado());
+        ResponseEntity<GaleriaResponse> respuesta = controller.saveSabor(saborAsociado);
+        saborAsociado.setId(11L);
+        assertEquals(saborAsociado, respuesta.getBody().getSaborAsociadoTrabajado());
     }
 
     @Test
@@ -153,26 +151,26 @@ class GaleriaBebidasControllerH2Test {
         formato.setId(2L);
         Marca marca = new Marca();
         marca.setId(1L);
-        Sabor sabor = new Sabor();
-        sabor.setId(10L);
-        sabor.setFormato(formato);
-        sabor.setMarca(marca);
-        sabor.setNombre("Limón");
-        sabor.setEstadoStock(true);
+        SaborAsociado saborAsociado = new SaborAsociado();
+        saborAsociado.setId(10L);
+        saborAsociado.setFormato(formato);
+        saborAsociado.setMarca(marca);
+        saborAsociado.setNombre("Limón");
+        saborAsociado.setEstadoStock(true);
 
-        ResponseEntity<GaleriaResponse> respuesta = controller.updateSabor(sabor);
+        ResponseEntity<GaleriaResponse> respuesta = controller.updateSabor(saborAsociado);
         //no deben ser iguales por que la bd devuelve los datos completos del formato y marca
-        assertNotEquals(sabor.toString(), respuesta.getBody().getSaborTrabajado().toString());
+        assertNotEquals(saborAsociado.toString(), respuesta.getBody().getSaborAsociadoTrabajado().toString());
     }
 
     @Test
     void deleteSabor() {
-        Sabor sabor = new Sabor();
-        sabor.setId(10L);
+        SaborAsociado saborAsociado = new SaborAsociado();
+        saborAsociado.setId(10L);
 
-        ResponseEntity<GaleriaResponse> respuesta = controller.deleteSabor(sabor);
+        ResponseEntity<GaleriaResponse> respuesta = controller.deleteSabor(saborAsociado);
         //no deben ser iguales por que la bd devuelve los datos completos del formato y marca
-        assertEquals(sabor.toString(), respuesta.getBody().getSaborTrabajado().toString());
+        assertEquals(saborAsociado.toString(), respuesta.getBody().getSaborAsociadoTrabajado().toString());
     }
 
 

@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "sabores")
-public class Sabor {
+public class SaborAsociado {
     @Id
     @Column(name = "sabores_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +29,13 @@ public class Sabor {
     @JoinColumn(name = "marcas_id_fk")
     private Marca marca;
 
-    public Sabor(Long id, String nombre, Marca marca) {
+    public SaborAsociado(Long id, String nombre, Marca marca) {
         this.id = id;
         this.nombre = nombre;
         this.marca = marca;
     }
 
-    public Sabor(Long id, String nombre, Marca marca, Boolean estadoStock) {
+    public SaborAsociado(Long id, String nombre, Marca marca, Boolean estadoStock) {
         this.id = id;
         this.nombre = nombre;
         this.estadoStock = estadoStock;

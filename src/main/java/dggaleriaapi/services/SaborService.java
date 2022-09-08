@@ -1,6 +1,6 @@
 package dggaleriaapi.services;
 
-import dggaleriaapi.models.Sabor;
+import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.GaleriaResponse;
 
 public interface SaborService {
@@ -8,10 +8,10 @@ public interface SaborService {
     GaleriaResponse getAllByIdMarca(Long idMarca);
     GaleriaResponse getAllByIdMarcaParaVer(Long idMarca);
     GaleriaResponse getAllByIdMarcayStock(Long idMarca);
-    GaleriaResponse saveSabor(Sabor sabor);
+    GaleriaResponse saveSabor(SaborAsociado saborAsociado);
 
-    GaleriaResponse updateSabor(Sabor sabor);
+    GaleriaResponse updateSabor(SaborAsociado saborAsociado);
 
-    GaleriaResponse deleteSabor(Sabor sabor);
+    GaleriaResponse deleteSabor(SaborAsociado saborAsociado);
 
 }

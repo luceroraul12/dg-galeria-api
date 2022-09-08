@@ -1,7 +1,7 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Formato;
-import dggaleriaapi.models.Sabor;
+import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborCliente;
 import dggaleriaapi.repositories.SaborRepository;
 import dggaleriaapi.responses.GaleriaResponse;
@@ -38,7 +38,7 @@ public class SaborServiceImp implements SaborService {
         GaleriaResponse resultado = new GaleriaResponse();
         List<SaborCliente> saboresResumidos = new ArrayList<>();
         Set<String> saboresUnicos;
-        List<Sabor> saboresCreados = saborRepository.findByMarca_Id(idMarca);
+        List<SaborAsociado> saboresCreados = saborRepository.findByMarca_Id(idMarca);
 
         saboresUnicos = obtenerSaboresUnicos(saboresCreados);
 
@@ -65,33 +65,33 @@ public class SaborServiceImp implements SaborService {
     }
 
     @Override
-    public GaleriaResponse saveSabor(Sabor sabor) {
+    public GaleriaResponse saveSabor(SaborAsociado saborAsociado) {
         GaleriaResponse resultado = new GaleriaResponse();
-        resultado.setSaborTrabajado(
-                saborRepository.save(sabor)
+        resultado.setSaborAsociadoTrabajado(
+                saborRepository.save(saborAsociado)
         );
         return resultado;
     }
 
     @Override
-    public GaleriaResponse updateSabor(Sabor sabor) {
+    public GaleriaResponse updateSabor(SaborAsociado saborAsociado) {
         GaleriaResponse resultado = new GaleriaResponse();
-        resultado.setSaborTrabajado(
-                saborRepository.save(sabor)
+        resultado.setSaborAsociadoTrabajado(
+                saborRepository.save(saborAsociado)
         );
         return resultado;
     }
 
     @Override
-    public GaleriaResponse deleteSabor(Sabor sabor) {
+    public GaleriaResponse deleteSabor(SaborAsociado saborAsociado) {
         GaleriaResponse resultado = new GaleriaResponse();
-        saborRepository.delete(sabor);
+        saborRepository.delete(saborAsociado);
 
-        resultado.setSaborTrabajado(sabor);
+        resultado.setSaborAsociadoTrabajado(saborAsociado);
         return resultado;
     }
 
-    private SaborCliente resumirSabor(List<Sabor> saboresCreados, String saborUnico) {
+    private SaborCliente resumirSabor(List<SaborAsociado> saboresCreados, String saborUnico) {
         List<Boolean> estadosStockCreados = new ArrayList<>();
         List<Formato> formatosCreados = new ArrayList<>();
         SaborCliente saborCliente = new SaborCliente();
@@ -109,7 +109,7 @@ public class SaborServiceImp implements SaborService {
         return saborCliente;
     }
 
-    private Set<String> obtenerSaboresUnicos(List<Sabor> saboresCreados) {
+    private Set<String> obtenerSaboresUnicos(List<SaborAsociado> saboresCreados) {
         Set<String> resultado = new LinkedHashSet<>();
         saboresCreados.forEach(sabor ->{
             resultado.add(sabor.getNombre());

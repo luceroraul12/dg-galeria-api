@@ -2,7 +2,7 @@ package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.Marca;
-import dggaleriaapi.models.Sabor;
+import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.services.FormatoService;
 import dggaleriaapi.services.MarcaService;
@@ -177,10 +177,10 @@ public class GaleriaBebidasController {
     }
 
     @PostMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GaleriaResponse> saveSabor(@RequestBody Sabor sabor){
+    public ResponseEntity<GaleriaResponse> saveSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.saveSabor(sabor);
+            GaleriaResponse resultado = saborService.saveSabor(saborAsociado);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -189,10 +189,10 @@ public class GaleriaBebidasController {
     }
 
     @PutMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GaleriaResponse> updateSabor(@RequestBody Sabor sabor){
+    public ResponseEntity<GaleriaResponse> updateSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.updateSabor(sabor);
+            GaleriaResponse resultado = saborService.updateSabor(saborAsociado);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -201,10 +201,10 @@ public class GaleriaBebidasController {
     }
 
     @DeleteMapping(value = "/sabores", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GaleriaResponse> deleteSabor(@RequestBody Sabor sabor){
+    public ResponseEntity<GaleriaResponse> deleteSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.deleteSabor(sabor);
+            GaleriaResponse resultado = saborService.deleteSabor(saborAsociado);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

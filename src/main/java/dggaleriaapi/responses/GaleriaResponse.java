@@ -2,7 +2,7 @@ package dggaleriaapi.responses;
 
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.Marca;
-import dggaleriaapi.models.Sabor;
+import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborCliente;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,12 +15,12 @@ import java.util.List;
 public class GaleriaResponse {
     private List<Formato>           formatosCreados;
     private List<Marca>             marcasCreadas;
-    private List<Sabor>             saboresDisponibles;
-    private List<Sabor>             saboresCreados;
+    private List<SaborAsociado>             saboresDisponibles;
+    private List<SaborAsociado>             saboresCreados;
     private List<SaborCliente>      saboresResumidos;
 
 
     private Formato                 formatoTrabajado;
     private Marca                   marcaTrabajada;
-    private Sabor                   saborTrabajado;
+    private SaborAsociado saborAsociadoTrabajado;
 }

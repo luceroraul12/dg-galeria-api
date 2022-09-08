@@ -2,9 +2,8 @@ package dggaleriaapi.datosprueba;
 
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.models.Marca;
-import dggaleriaapi.models.Sabor;
+import dggaleriaapi.models.SaborAsociado;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,30 +25,30 @@ public class DatosPrueba {
             new Marca(5L, "Lemon")
     );
 
-    public static List<Sabor> sabores = Arrays.asList(
-            new Sabor(1L, "Naranja", marcas.get(0)),
-            new Sabor(2L, "Coca", marcas.get(0)),
-            new Sabor(3L, "Limon", marcas.get(2)),
-            new Sabor(4L, "Tinto", marcas.get(3)),
-            new Sabor(5L, "Rubia", marcas.get(4))
+    public static List<SaborAsociado> sabores = Arrays.asList(
+            new SaborAsociado(1L, "Naranja", marcas.get(0)),
+            new SaborAsociado(2L, "Coca", marcas.get(0)),
+            new SaborAsociado(3L, "Limon", marcas.get(2)),
+            new SaborAsociado(4L, "Tinto", marcas.get(3)),
+            new SaborAsociado(5L, "Rubia", marcas.get(4))
     );
 
-    public static List<Sabor> saboresMismaMarca0 = Arrays.asList(
-            new Sabor(1L, "Naranja", marcas.get(0)),
-            new Sabor(2L, "Pomelo", marcas.get(0)),
-            new Sabor(3L, "Limon", marcas.get(0)),
-            new Sabor(4L, "Coca", marcas.get(0)),
-            new Sabor(5L, "CocaLight", marcas.get(0)),
-            new Sabor(6L, "Iokese", marcas.get(0))
+    public static List<SaborAsociado> saboresMismaMarca0 = Arrays.asList(
+            new SaborAsociado(1L, "Naranja", marcas.get(0)),
+            new SaborAsociado(2L, "Pomelo", marcas.get(0)),
+            new SaborAsociado(3L, "Limon", marcas.get(0)),
+            new SaborAsociado(4L, "Coca", marcas.get(0)),
+            new SaborAsociado(5L, "CocaLight", marcas.get(0)),
+            new SaborAsociado(6L, "Iokese", marcas.get(0))
     );
 
-    public static List<Sabor> saboresMismaMarcayEnStock = Arrays.asList(
-            new Sabor(1L, "Naranja", marcas.get(0), true),
-            new Sabor(2L, "Pomelo", marcas.get(0), true),
-            new Sabor(3L, "Limon", marcas.get(0), true),
-            new Sabor(4L, "Coca", marcas.get(0), true),
-            new Sabor(5L, "CocaLight", marcas.get(0), true),
-            new Sabor(6L, "Iokese", marcas.get(0),true)
+    public static List<SaborAsociado> saboresMismaMarcayEnStock = Arrays.asList(
+            new SaborAsociado(1L, "Naranja", marcas.get(0), true),
+            new SaborAsociado(2L, "Pomelo", marcas.get(0), true),
+            new SaborAsociado(3L, "Limon", marcas.get(0), true),
+            new SaborAsociado(4L, "Coca", marcas.get(0), true),
+            new SaborAsociado(5L, "CocaLight", marcas.get(0), true),
+            new SaborAsociado(6L, "Iokese", marcas.get(0),true)
     );
 
 
