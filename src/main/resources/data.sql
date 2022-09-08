@@ -35,5 +35,7 @@ VALUES
   ( 'Rubia', false, 3, 5),
   ( 'Tinto Suave', false, 2, 6),
   ( 'Tinto', false, 2, 6),
-  ( 'Tinto Fuerte', true, 2, 6),
-  ( 'Tinto Patero', true, 2, 6);
+  ( 'Tinto Fuerte', true, 1, 6),
+  ( 'Tinto Patero', true, 2, 6),
+  ( 'Tinto Patero', true, 3, 6),
+  ( 'Tinto Patero', true, 4, 6),
