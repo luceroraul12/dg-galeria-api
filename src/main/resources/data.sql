@@ -21,23 +21,7 @@ VALUES
     ('Isenbeck', 'https://scontent.fluq3-1.fna.fbcdn.net/v/t1.18169-9/17103302_10154408796478061_3474089334054338498_n.png?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFK4PXb6aPiim-YsdJyrArtm96keNnWTL-b3qR42dZMv_tRDCvsiGDRA1OuhP9qjLFpu0ci4dtllx5wN99el0qx&_nc_ohc=Ytkh-1OPzf0AX-VzVqp&_nc_ht=scontent.fluq3-1.fna&oh=00_AT8z2CJPis_252t0FeQPA6URLBEkFiWuK_Y6Mg-ju9ZJhw&oe=6339C3E9'),
     ('Valmont', 'https://scontent.fluq3-1.fna.fbcdn.net/v/t1.18169-9/22046605_1675749652444909_4086562462651098789_n.png?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG-C78a8xQfNERWpOzm8HK-M1S007NoskYzVLTTs2iyRh4EeM6T-JtVi3PMx8V4s7b0Nzxl6J_0D_g1BC2BhQaX&_nc_ohc=26flt5B1qVkAX_N6AUg&_nc_ht=scontent.fluq3-1.fna&oh=00_AT_wmqkU-EpR5U-xQ3eyfxqve5uAEyoM3uHU9xMyaC2SUQ&oe=633D572F'),
     ('Estancia Mendoza', 'https://scontent.fluq3-1.fna.fbcdn.net/v/t1.6435-9/64607539_2360357210674284_3657424369216389120_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEZ0mZTL8K0Do7esZzGQTDo9pllN0rqV4z2mWU3SupXjKksb42UMxmK2YjaTy7S2-s6xvdcqFzzKNHYm1BnH4US&_nc_ohc=RkMMNaIpy9sAX8jn9lN&_nc_ht=scontent.fluq3-1.fna&oh=00_AT9IiSMn68H4tEaopDwmQXV2lhZfeP1zhoM2w98kaE_SsA&oe=633A6DC6');
---insert para tabla de sabores
-INSERT
-INTO
-  sabores_asociados
-  (nombre, estado_stock, formatos_id_fk, marcas_id_fk)
-VALUES
-  ('Limon', true, 4, 1),
-  ('Coca', false, 4, 1),
-  ('Uva', true, 4, 1),
-  ( 'Rubia', false, 3, 4),
-  ( 'Negra', false, 3, 4),
-  ( 'Rubia', false, 3, 5),
-  ( 'Tinto Fuerte', true, 1, 6),
-  ( 'Tinto Fuerte', true, 2, 6),
-  ( 'Tinto Fuerte', true, 3, 6),
-  ( 'Tinto SQ', false, 4, 6);
----insert  para tabla de sabores
+--------------insert  para tabla de sabores
 INSERT
 INTO
   sabores
@@ -47,7 +31,23 @@ VALUES
   ('Pomelo'),
   ('Coca'),
   ('Limón'),
+  ('Rubia'),
+  ('Negra'),
   ('Tinto'),
   ('Tinto Patero'),
   ('Tinto Dulce'),
   ('Esfumante');
+--insert para tabla de sabores asociados a una marca
+INSERT
+INTO
+  sabores_asociados
+  (estado_stock, marcas_id_fk, sabores_id_fk)
+VALUES
+  (1, 1, 1),
+  (0, 1, 2),
+  (0, 1, 3),
+  (0, 3, 5),
+  (1, 3, 6),
+  (1, 5, 8),
+  (1, 5, 10),
+----------
