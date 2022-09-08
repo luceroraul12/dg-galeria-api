@@ -37,3 +37,17 @@ VALUES
   ( 'Tinto Fuerte', true, 2, 6),
   ( 'Tinto Fuerte', true, 3, 6),
   ( 'Tinto SQ', false, 4, 6);
+---insert  para tabla de sabores
+INSERT
+INTO
+  sabores
+  (nombre)
+VALUES
+  ('Naranja'),
+  ('Pomelo'),
+  ('Coca'),
+  ('Limón'),
+  ('Tinto'),
+  ('Tinto Patero'),
+  ('Tinto Dulce'),
+  ('Esfumante');
