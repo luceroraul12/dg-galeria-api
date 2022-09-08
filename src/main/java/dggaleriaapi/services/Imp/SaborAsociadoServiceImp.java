@@ -20,6 +20,15 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
+    public SaborAsociadoResponse getAll() {
+        SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
+        respuesta.setSaboresAsociadosTrabajados(
+                saborAsociadoRepository.findAll()
+        );
+        return respuesta;
+    }
+
+    @Override
     public SaborAsociadoResponse getAllByIdMarca(Long idMarca) {
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         respuesta.setSaboresAsociadosTrabajados(

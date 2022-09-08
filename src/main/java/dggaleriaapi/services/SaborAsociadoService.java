@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface SaborAsociadoService {
 
+    SaborAsociadoResponse getAll();
     SaborAsociadoResponse getAllByIdMarca(Long idMarca);
     SaborAsociadoResponse save(SaborAsociado saborAsociado);
     SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados);
