@@ -20,6 +20,6 @@ public class SaborFormateado {
     @JoinColumn(name = "formatos_id_fk")
     private Formato formato;
     @ManyToOne
-    @JoinColumn(name = "abores_asociados_id_fk")
+    @JoinColumn(name = "sabores_asociados_id_fk")
     private SaborAsociado saborAsociado;
 }
