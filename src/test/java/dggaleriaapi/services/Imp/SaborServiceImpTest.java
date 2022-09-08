@@ -27,7 +27,7 @@ class SaborServiceImpTest {
     @Test
     void getAll() {
         SaborResponse respuesta = saborService.getAll();
-        assertEquals(8, respuesta.getSaboresTrabajados().size());
+        assertEquals(10, respuesta.getSaboresTrabajados().size());
     }
 
     @Test
@@ -36,7 +36,7 @@ class SaborServiceImpTest {
         Sabor sabor = new Sabor();
         sabor.setNombre("MANAWA");
         SaborResponse respuesta = saborService.save(sabor);
-        assertEquals(9, respuesta.getSaborTrabajado().getId());
+        assertEquals(11, respuesta.getSaborTrabajado().getId());
         assertEquals(sabor.getNombre(), respuesta.getSaborTrabajado().getNombre());
     }
 
@@ -51,9 +51,9 @@ class SaborServiceImpTest {
         sabor2.setNombre("Narampol");
         sabores.add(sabor2);
         SaborResponse respuesta = saborService.savePorMonton(sabores);
-        assertEquals(10, respuesta.getSaboresTrabajados().get(0).getId());
+        assertEquals(12, respuesta.getSaboresTrabajados().get(0).getId());
         assertEquals("AWA MANANTIAL", respuesta.getSaboresTrabajados().get(0).getNombre());
-        assertEquals(11, respuesta.getSaboresTrabajados().get(1).getId());
+        assertEquals(13, respuesta.getSaboresTrabajados().get(1).getId());
         assertEquals("Narampol", respuesta.getSaboresTrabajados().get(1).getNombre());
 
     }
