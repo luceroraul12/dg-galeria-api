@@ -43,11 +43,11 @@ INTO
   sabores_asociados
   (estado_stock, marcas_id_fk, sabores_id_fk)
 VALUES
-  (1, 1, 1),
-  (0, 1, 2),
-  (0, 1, 3),
-  (0, 3, 5),
-  (1, 3, 6),
-  (1, 5, 8),
-  (1, 5, 10),
-----------
+  (true, 1, 1),
+  (false, 1, 2),
+  (false, 1, 3),
+  (false, 3, 5),
+  (true, 3, 6),
+  (true, 5, 8),
+  (true, 5, 10);
+----------insert para table de sabores formateados
