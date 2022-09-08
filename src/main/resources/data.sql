@@ -24,7 +24,7 @@ VALUES
 --insert para tabla de sabores
 INSERT
 INTO
-  sabores
+  sabores_asociados
   (nombre, estado_stock, formatos_id_fk, marcas_id_fk)
 VALUES
   ('Limon', true, 4, 1),

@@ -12,10 +12,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "sabores")
+@Table(name = "sabores_asociados")
 public class SaborAsociado {
     @Id
-    @Column(name = "sabores_id_pk", nullable = false)
+    @Column(name = "sabores_asociados_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "nombre")
