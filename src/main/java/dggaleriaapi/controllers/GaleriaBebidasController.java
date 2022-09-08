@@ -144,72 +144,72 @@ public class GaleriaBebidasController {
     @GetMapping(value = "/sabores-asociados")
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(@RequestParam(name = "id-marca") Long id){
         ResponseEntity<GaleriaResponse> respuesta;
-        try {
-            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarca(id);
-            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
-        } catch (Exception e) {
-            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return respuesta;
+//        try {
+//            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarca(id);
+//            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+//        } catch (Exception e) {
+//            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+        return null;
     }
 
     @GetMapping(value = "/sabores-asociados/ver")
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcaParaVer(@RequestParam(name = "id-marca") Long id){
-        ResponseEntity<GaleriaResponse> respuesta;
-        try {
-            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcaParaVer(id);
-            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
-        } catch (Exception e) {
-            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return respuesta;
+//        ResponseEntity<GaleriaResponse> respuesta;
+//        try {
+//            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcaParaVer(id);
+//            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+//        } catch (Exception e) {
+//            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+        return null;
     }
 
     @GetMapping(value = "/sabores-asociados/con-stock")
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcayEnStock(@RequestParam(name = "id-marca") Long id) {
-        ResponseEntity<GaleriaResponse> respuesta;
-        try {
-            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcayStock(id);
-            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
-        } catch (Exception e) {
-            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return respuesta;
+//        ResponseEntity<GaleriaResponse> respuesta;
+//        try {
+//            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcayStock(id);
+//            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+//        } catch (Exception e) {
+//            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+        return null;
     }
 
     @PostMapping(value = "/sabores-asociados", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GaleriaResponse> saveSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
-        try {
-            GaleriaResponse resultado = saborAsociadoService.saveSabor(saborAsociado);
-            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
-        } catch (Exception e) {
-            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return respuesta;
+//        try {
+//            GaleriaResponse resultado = saborAsociadoService.save(saborAsociado);
+//            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+//        } catch (Exception e) {
+//            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+        return null;
     }
 
     @PutMapping(value = "/sabores-asociados", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GaleriaResponse> updateSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
-        try {
-            GaleriaResponse resultado = saborAsociadoService.updateSabor(saborAsociado);
-            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
-        } catch (Exception e) {
-            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return respuesta;
+//        try {
+//            GaleriaResponse resultado = saborAsociadoService.update(saborAsociado);
+//            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+//        } catch (Exception e) {
+//            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+        return null;
     }
 
     @DeleteMapping(value = "/sabores-asociados", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GaleriaResponse> deleteSabor(@RequestBody SaborAsociado saborAsociado){
         ResponseEntity<GaleriaResponse> respuesta;
-        try {
-            GaleriaResponse resultado = saborAsociadoService.deleteSabor(saborAsociado);
-            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
-        } catch (Exception e) {
-            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return respuesta;
+//        try {
+//            GaleriaResponse resultado = saborAsociadoService.delete(saborAsociado);
+//            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+//        } catch (Exception e) {
+//            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+        return null;
     }
 }
