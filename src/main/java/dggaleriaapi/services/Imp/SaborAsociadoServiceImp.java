@@ -2,10 +2,12 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.repositories.SaborAsociadoRepository;
-import dggaleriaapi.responses.GaleriaResponse;
+import dggaleriaapi.responses.SaborAsociadoResponse;
 import dggaleriaapi.services.SaborAsociadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SaborAsociadoServiceImp implements SaborAsociadoService {
@@ -18,38 +20,47 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public GaleriaResponse getAllByIdMarca(Long idMarca) {
-        GaleriaResponse resultado = new GaleriaResponse();
-        resultado.setSaboresCreados(
+    public SaborAsociadoResponse getAllByIdMarca(Long idMarca) {
+        SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
+        respuesta.setSaboresAsociadosTrabajados(
             saborAsociadoRepository.findByMarca_Id(idMarca)
         );
-        return resultado;
+        return respuesta;
     }
 
     @Override
-    public GaleriaResponse saveSabor(SaborAsociado saborAsociado) {
-        GaleriaResponse resultado = new GaleriaResponse();
-        resultado.setSaborAsociadoTrabajado(
+    public SaborAsociadoResponse save(SaborAsociado saborAsociado) {
+        SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
+        respuesta.setSaborTrabajado(
                 saborAsociadoRepository.save(saborAsociado)
         );
-        return resultado;
+        return respuesta;
     }
 
     @Override
-    public GaleriaResponse updateSabor(SaborAsociado saborAsociado) {
-        GaleriaResponse resultado = new GaleriaResponse();
-        resultado.setSaborAsociadoTrabajado(
+    public SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados) {
+        SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
+        respuesta.setSaboresAsociadosTrabajados(
+                saborAsociadoRepository.saveAll(saboresAsociados)
+        );
+        return respuesta;
+    }
+
+    @Override
+    public SaborAsociadoResponse update(SaborAsociado saborAsociado) {
+        SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
+        respuesta.setSaborTrabajado(
                 saborAsociadoRepository.save(saborAsociado)
         );
-        return resultado;
+        return respuesta;
     }
 
     @Override
-    public GaleriaResponse deleteSabor(SaborAsociado saborAsociado) {
-        GaleriaResponse resultado = new GaleriaResponse();
+    public SaborAsociadoResponse delete(SaborAsociado saborAsociado) {
+        SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         saborAsociadoRepository.delete(saborAsociado);
 
-        resultado.setSaborAsociadoTrabajado(saborAsociado);
-        return resultado;
+        respuesta.setSaborTrabajado(saborAsociado);
+        return respuesta;
     }
 }
