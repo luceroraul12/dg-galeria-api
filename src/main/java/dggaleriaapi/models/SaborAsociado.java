@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 
@@ -18,8 +19,8 @@ public class SaborAsociado {
     @Column(name = "sabores_asociados_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "estado_stock")
-    private Boolean estadoStock;
+    @Column(name = "estado_stock", columnDefinition = "boolean default false")
+    private Boolean estadoStock = true;
 
     @ManyToOne
     @JoinColumn(name = "marcas_id_fk")
