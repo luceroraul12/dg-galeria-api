@@ -11,7 +11,7 @@ public interface SaborFormateadoService {
 
     SaborFormateadoResponse getAll();
 
-    SaborFormateadoResponse getBySaborAsociadoId();
+    SaborFormateadoResponse getBySaborAsociadoId(SaborFormateado saborFormateado);
 
     SaborFormateadoResponse save(SaborFormateado saborFormateado);
 
