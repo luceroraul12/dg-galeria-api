@@ -1,16 +1,18 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.SaborAsociado;
-import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.responses.SaborAsociadoResponse;
+
+import java.util.List;
 
 public interface SaborAsociadoService {
 
     SaborAsociadoResponse getAllByIdMarca(Long idMarca);
-    SaborAsociadoResponse saveSabor(SaborAsociado saborAsociado);
+    SaborAsociadoResponse save(SaborAsociado saborAsociado);
+    SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados);
 
-    SaborAsociadoResponse updateSabor(SaborAsociado saborAsociado);
+    SaborAsociadoResponse update(SaborAsociado saborAsociado);
 
-    SaborAsociadoResponse deleteSabor(SaborAsociado saborAsociado);
+    SaborAsociadoResponse delete(SaborAsociado saborAsociado);
 
 }
