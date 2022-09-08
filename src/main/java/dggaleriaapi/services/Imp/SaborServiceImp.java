@@ -103,7 +103,7 @@ public class SaborServiceImp implements SaborService {
             }
         });
 
-        saborCliente.setNombreSabor(saboresCreados.get(0).getNombre());
+        saborCliente.setNombreSabor(saborUnico);
         saborCliente.setEstadosStock(estadosStockCreados);
         saborCliente.setFormatos(formatosCreados);
         return saborCliente;
