@@ -91,6 +91,18 @@ public class GaleriaBebidasController {
         return respuesta;
     }
 
+    @GetMapping(value = "/marca")
+    public ResponseEntity<GaleriaResponse> getMarcaById(@RequestParam(name = "id-marca") Long idMarca){
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = marcaService.getMarcaById(idMarca);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
+    }
+
     @PostMapping(value = "/marcas", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GaleriaResponse> saveMarca(@RequestBody Marca marca){
         ResponseEntity<GaleriaResponse> respuesta;
@@ -130,6 +142,18 @@ public class GaleriaBebidasController {
 
     @GetMapping(value = "/sabores")
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarca(@RequestParam(name = "id-marca") Long id){
+        ResponseEntity<GaleriaResponse> respuesta;
+        try {
+            GaleriaResponse resultado = saborService.getAllByIdMarca(id);
+            respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
+        } catch (Exception e) {
+            respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
+    }
+
+    @GetMapping(value = "/sabores/ver")
+    public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcaParaVer(@RequestParam(name = "id-marca") Long id){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
             GaleriaResponse resultado = saborService.getAllByIdMarca(id);
