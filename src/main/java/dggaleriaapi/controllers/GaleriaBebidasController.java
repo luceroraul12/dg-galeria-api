@@ -156,7 +156,7 @@ public class GaleriaBebidasController {
     public ResponseEntity<GaleriaResponse> getAllSaboresByIdMarcaParaVer(@RequestParam(name = "id-marca") Long id){
         ResponseEntity<GaleriaResponse> respuesta;
         try {
-            GaleriaResponse resultado = saborService.getAllByIdMarca(id);
+            GaleriaResponse resultado = saborService.getAllByIdMarcaParaVer(id);
             respuesta = new ResponseEntity<GaleriaResponse>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             respuesta = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
