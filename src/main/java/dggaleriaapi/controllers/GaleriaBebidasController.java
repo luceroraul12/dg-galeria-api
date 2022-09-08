@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/galeria")
+@CrossOrigin
 public class GaleriaBebidasController {
 
     @Autowired
