@@ -97,8 +97,10 @@ public class SaborServiceImp implements SaborService {
         SaborCliente saborCliente = new SaborCliente();
 
         saboresCreados.forEach(sabor -> {
-            estadosStockCreados.add(sabor.getEstadoStock());
-            formatosCreados.add(sabor.getFormato());
+            if (sabor.getNombre().equals(saborUnico)){
+                estadosStockCreados.add(sabor.getEstadoStock());
+                formatosCreados.add(sabor.getFormato());
+            }
         });
 
         saborCliente.setNombreSabor(saboresCreados.get(0).getNombre());
