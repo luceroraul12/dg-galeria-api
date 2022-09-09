@@ -39,7 +39,10 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public FormatoResponse updateFormato(Formato formato) {
+    public FormatoResponse updateFormato(Formato formato) throws Exception {
+        if (!formatoRepository.existsById(formato.getId())){
+            throw new Exception();
+        }
         FormatoResponse respuesta = new FormatoResponse();
 
         respuesta.setFormatoTrabajado(
@@ -49,7 +52,10 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public FormatoResponse deleteFormato(Long idFormato) {
+    public FormatoResponse deleteFormato(Long idFormato) throws Exception {
+        if (!formatoRepository.existsById(idFormato)){
+            throw new Exception("formato no existente");
+        }
         Formato formato = new Formato();
         FormatoResponse respuesta = new FormatoResponse();
         formato.setId(idFormato);
