@@ -4,6 +4,7 @@ import dggaleriaapi.models.Marca;
 import dggaleriaapi.models.Sabor;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.SaborAsociadoResponse;
+import dggaleriaapi.responses.SaborResponse;
 import dggaleriaapi.services.SaborAsociadoService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -120,10 +121,9 @@ class SaborAsociadoServiceImpTest {
     void delete() {
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(1L);
-        service.delete(saborAsociado);
-        SaborAsociadoResponse respuesta = service.getAllByIdMarca(1L);
+        SaborAsociadoResponse respuesta = service.delete(saborAsociado);
 
 
-        assertNotEquals(1, respuesta.getSaboresAsociadosTrabajados().get(0).getId());
+        assertEquals(1, respuesta.getSaborTrabajado().getId());
     }
 }
