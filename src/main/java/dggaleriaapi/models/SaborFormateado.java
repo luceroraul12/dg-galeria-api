@@ -15,7 +15,7 @@ public class SaborFormateado {
     @Column(name = "sabores_formateados_id_pk", nullable = false)
     private Long id;
     @Column(name = "estado_stock")
-    private Boolean estadoStock;
+    private Boolean estadoStock = true;
     @ManyToOne
     @JoinColumn(name = "formatos_id_fk")
     private Formato formato;
