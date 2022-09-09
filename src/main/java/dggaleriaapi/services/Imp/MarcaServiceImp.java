@@ -2,7 +2,8 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Marca;
 import dggaleriaapi.repositories.MarcaRepository;
-import dggaleriaapi.responses.GaleriaResponse;
+import dggaleriaapi.responses.FormatoResponse;
+import dggaleriaapi.responses.MarcaResponse;
 import dggaleriaapi.services.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +19,17 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public GaleriaResponse getAll() {
-        GaleriaResponse respuesta = new GaleriaResponse();
-        respuesta.setMarcasCreadas(
+    public MarcaResponse getAll() {
+        MarcaResponse respuesta = new MarcaResponse();
+        respuesta.setMarcasTrabajadas(
                 marcaRepository.findAll()
         );
         return respuesta;
     }
 
     @Override
-    public GaleriaResponse getMarcaById(Long idMarca) {
-        GaleriaResponse respuesta = new GaleriaResponse();
+    public MarcaResponse getMarcaById(Long idMarca) {
+        MarcaResponse respuesta = new MarcaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.findById(idMarca).get()
         );
@@ -36,8 +37,8 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public GaleriaResponse saveMarca(Marca marca) {
-        GaleriaResponse respuesta = new GaleriaResponse();
+    public MarcaResponse saveMarca(Marca marca) {
+        MarcaResponse respuesta = new MarcaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.save(marca)
         );
@@ -45,8 +46,8 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public GaleriaResponse updateMarca(Marca marca) {
-        GaleriaResponse respuesta = new GaleriaResponse();
+    public MarcaResponse updateMarca(Marca marca) {
+        MarcaResponse respuesta = new MarcaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.save(marca)
         );
@@ -54,8 +55,8 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public GaleriaResponse deleteMarca(Long idMarca) {
-        GaleriaResponse respuesta = new GaleriaResponse();
+    public MarcaResponse deleteMarca(Long idMarca) {
+        MarcaResponse respuesta = new MarcaResponse();
         Marca marca = new Marca();
         marca.setId(idMarca);
         marcaRepository.delete(marca);

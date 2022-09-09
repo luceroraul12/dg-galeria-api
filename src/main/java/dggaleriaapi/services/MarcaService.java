@@ -1,19 +1,19 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.Marca;
-import dggaleriaapi.responses.GaleriaResponse;
+import dggaleriaapi.responses.MarcaResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface MarcaService {
 
-    GaleriaResponse getAll();
+    MarcaResponse getAll();
 
-    GaleriaResponse getMarcaById(Long idMarca);
+    MarcaResponse getMarcaById(Long idMarca);
 
-    GaleriaResponse saveMarca(Marca marca);
-    GaleriaResponse updateMarca(Marca marca);
-    GaleriaResponse deleteMarca(Long idMarca);
+    MarcaResponse saveMarca(Marca marca);
+    MarcaResponse updateMarca(Marca marca);
+    MarcaResponse deleteMarca(Long idMarca);
 
 
 }
