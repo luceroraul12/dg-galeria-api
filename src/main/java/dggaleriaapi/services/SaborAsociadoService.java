@@ -8,12 +8,12 @@ import java.util.List;
 public interface SaborAsociadoService {
 
     SaborAsociadoResponse getAll();
-    SaborAsociadoResponse getAllByIdMarca(Long idMarca);
-    SaborAsociadoResponse save(SaborAsociado saborAsociado);
-    SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados);
+    SaborAsociadoResponse getAllByIdMarca(Long idMarca) throws Exception;
+    SaborAsociadoResponse save(SaborAsociado saborAsociado) throws Exception;
+    SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados) throws Exception;
 
-    SaborAsociadoResponse update(SaborAsociado saborAsociado);
+    SaborAsociadoResponse update(SaborAsociado saborAsociado) throws Exception;
 
-    SaborAsociadoResponse delete(SaborAsociado saborAsociado);
+    SaborAsociadoResponse delete(SaborAsociado saborAsociado) throws Exception;
 
 }

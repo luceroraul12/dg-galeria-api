@@ -1,6 +1,7 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.SaborAsociado;
+import dggaleriaapi.repositories.MarcaRepository;
 import dggaleriaapi.repositories.SaborAsociadoRepository;
 import dggaleriaapi.responses.SaborAsociadoResponse;
 import dggaleriaapi.services.SaborAsociadoService;
@@ -14,6 +15,9 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
 
     @Autowired
     SaborAsociadoRepository saborAsociadoRepository;
+
+    @Autowired
+    MarcaRepository marcaRepository;
 
     public SaborAsociadoServiceImp(SaborAsociadoRepository saborAsociadoRepository) {
         this.saborAsociadoRepository = saborAsociadoRepository;
@@ -29,7 +33,10 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public SaborAsociadoResponse getAllByIdMarca(Long idMarca) {
+    public SaborAsociadoResponse getAllByIdMarca(Long idMarca) throws Exception {
+        if (!saborAsociadoRepository.existByIdMarca(idMarca)){
+            throw new Exception();
+        }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         respuesta.setSaboresAsociadosTrabajados(
             saborAsociadoRepository.findByMarca_Id(idMarca)
@@ -38,7 +45,12 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public SaborAsociadoResponse save(SaborAsociado saborAsociado) {
+    public SaborAsociadoResponse save(SaborAsociado saborAsociado) throws Exception {
+        boolean esMarcaRegistrada = marcaRepository.existsById(saborAsociado.getMarca().getId());
+        boolean esSaborYaAsociado = saborAsociadoRepository.existsByMarca_IdAndSabor_Id(saborAsociado.getMarca().getId(),saborAsociado.getSabor().getId());
+        if (!esMarcaRegistrada | esSaborYaAsociado){
+            throw new Exception();
+        }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         respuesta.setSaborTrabajado(
                 saborAsociadoRepository.save(saborAsociado)
@@ -47,7 +59,10 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados) {
+    public SaborAsociadoResponse savePorMonton(List<SaborAsociado> saboresAsociados) throws Exception {
+        if (saboresAsociados == null){
+            throw new Exception();
+        }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         respuesta.setSaboresAsociadosTrabajados(
                 saborAsociadoRepository.saveAll(saboresAsociados)
@@ -56,7 +71,14 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public SaborAsociadoResponse update(SaborAsociado saborAsociado) {
+    public SaborAsociadoResponse update(SaborAsociado saborAsociado) throws Exception {
+        boolean esSaborAsociadoExistente = saborAsociadoRepository.existsByMarca_IdAndSabor_Id(
+                saborAsociado.getMarca().getId(),
+                saborAsociado.getSabor().getId()
+        );
+        if (esSaborAsociadoExistente){
+            throw new Exception();
+        }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         respuesta.setSaborTrabajado(
                 saborAsociadoRepository.save(saborAsociado)
@@ -65,7 +87,10 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public SaborAsociadoResponse delete(SaborAsociado saborAsociado) {
+    public SaborAsociadoResponse delete(SaborAsociado saborAsociado) throws Exception {
+        if (!/**/saborAsociadoRepository.existsById(saborAsociado.getId())){
+            throw new Exception();
+        }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         saborAsociadoRepository.delete(saborAsociado);
 
