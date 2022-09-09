@@ -35,7 +35,7 @@ class SaborAsociadoServiceImpTest {
     }
     @Test
     @Order(5)
-    void getAllByIdMarca() {
+    void getAllByIdMarca() throws Exception {
         SaborAsociadoResponse respuesta = service.getAllByIdMarca(1L);
         assertEquals(3, respuesta.getSaboresAsociadosTrabajados().size());
 
@@ -57,7 +57,7 @@ class SaborAsociadoServiceImpTest {
 
     @Test
     @Order(1)
-    void save() {
+    void save() throws Exception {
 
         Sabor sabor = new Sabor();
         sabor.setId(1L);
@@ -78,7 +78,7 @@ class SaborAsociadoServiceImpTest {
 
     @Test
     @Order(2)
-    void savePorMonton() {
+    void savePorMonton() throws Exception {
 
         Sabor sabor = new Sabor();
         sabor.setId(1L);
@@ -99,7 +99,7 @@ class SaborAsociadoServiceImpTest {
 
     @Test
     @Order(3)
-    void update() {
+    void update() throws Exception {
         Sabor sabor = new Sabor();
         sabor.setId(1L);
         Marca marca = new Marca();
@@ -118,7 +118,7 @@ class SaborAsociadoServiceImpTest {
 
     @Test
     @Order(4)
-    void delete() {
+    void delete() throws Exception {
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(1L);
         SaborAsociadoResponse respuesta = service.delete(saborAsociado);
