@@ -10,7 +10,7 @@ public interface FormatoService {
     FormatoResponse getAllFormatos();
     FormatoResponse saveFormato(String tipo);
 
-    FormatoResponse updateFormato(Formato formato);
+    FormatoResponse updateFormato(Formato formato) throws Exception;
 
-    FormatoResponse deleteFormato(Long idFormato);
+    FormatoResponse deleteFormato(Long idFormato) throws Exception;
 }
