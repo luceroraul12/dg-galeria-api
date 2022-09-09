@@ -50,7 +50,7 @@ public class SaborAsociadoController {
         return respuesta;
     }
     @PostMapping
-    public ResponseEntity<SaborAsociadoResponse> save(SaborAsociado saborAsociado) {
+    public ResponseEntity<SaborAsociadoResponse> save(@RequestBody SaborAsociado saborAsociado) {
         String mensajeAfirmativo = "sabor asociado creado";
         String mensajeNegativo = "error al crear sabor asociado";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
@@ -66,7 +66,7 @@ public class SaborAsociadoController {
         return respuesta;
     }
     @PostMapping(value = "/monton")
-    public ResponseEntity<SaborAsociadoResponse> savePorMonton(List<SaborAsociado> saboresAsociados) {
+    public ResponseEntity<SaborAsociadoResponse> savePorMonton(@RequestBody List<SaborAsociado> saboresAsociados) {
         String mensajeAfirmativo = "sabores asociados por marca creados";
         String mensajeNegativo = "error al crear sabores asociados";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
@@ -82,7 +82,7 @@ public class SaborAsociadoController {
         return respuesta;
     }
     @PutMapping
-    public ResponseEntity<SaborAsociadoResponse> update(SaborAsociado saborAsociado) {
+    public ResponseEntity<SaborAsociadoResponse> update(@RequestBody SaborAsociado saborAsociado) {
         String mensajeAfirmativo = "sabor asociado actualizado";
         String mensajeNegativo = "error al actualizar sabor asociado";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
@@ -98,7 +98,7 @@ public class SaborAsociadoController {
         return respuesta;
     }
     @DeleteMapping
-    public ResponseEntity<SaborAsociadoResponse> delete(SaborAsociado saborAsociado) {
+    public ResponseEntity<SaborAsociadoResponse> delete(@RequestBody SaborAsociado saborAsociado) {
         String mensajeAfirmativo = "sabor asociado eliminado";
         String mensajeNegativo = "error al eliminar sabor asociado";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
