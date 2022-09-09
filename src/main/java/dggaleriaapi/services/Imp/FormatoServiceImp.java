@@ -2,7 +2,7 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Formato;
 import dggaleriaapi.repositories.FormatoRepository;
-import dggaleriaapi.responses.GaleriaResponse;
+import dggaleriaapi.responses.FormatoResponse;
 import dggaleriaapi.services.FormatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,18 +18,18 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public GaleriaResponse getAllFormatos() {
-        GaleriaResponse respuesta = new GaleriaResponse();
-        respuesta.setFormatosCreados(
+    public FormatoResponse getAllFormatos() {
+        FormatoResponse respuesta = new FormatoResponse();
+        respuesta.setFormatosTrabajados(
                 formatoRepository.findAll()
         );
         return respuesta;
     }
 
     @Override
-    public GaleriaResponse saveFormato(String tipo) {
+    public FormatoResponse saveFormato(String tipo) {
         Formato formato = new Formato();
-        GaleriaResponse respuesta = new GaleriaResponse();
+        FormatoResponse respuesta = new FormatoResponse();
 
         formato.setTipo(tipo);
         respuesta.setFormatoTrabajado(
@@ -39,8 +39,8 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public GaleriaResponse updateFormato(Formato formato) {
-        GaleriaResponse respuesta = new GaleriaResponse();
+    public FormatoResponse updateFormato(Formato formato) {
+        FormatoResponse respuesta = new FormatoResponse();
 
         respuesta.setFormatoTrabajado(
                 formatoRepository.save(formato)
@@ -49,9 +49,9 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public GaleriaResponse deleteFormato(Long idFormato) {
+    public FormatoResponse deleteFormato(Long idFormato) {
         Formato formato = new Formato();
-        GaleriaResponse respuesta = new GaleriaResponse();
+        FormatoResponse respuesta = new FormatoResponse();
         formato.setId(idFormato);
         formatoRepository.delete(formato);
         respuesta.setFormatoTrabajado(formato);

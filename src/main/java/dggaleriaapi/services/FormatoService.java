@@ -1,16 +1,16 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.Formato;
-import dggaleriaapi.responses.GaleriaResponse;
+import dggaleriaapi.responses.FormatoResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface FormatoService {
 
-    GaleriaResponse getAllFormatos();
-    GaleriaResponse saveFormato(String tipo);
+    FormatoResponse getAllFormatos();
+    FormatoResponse saveFormato(String tipo);
 
-    GaleriaResponse updateFormato(Formato formato);
+    FormatoResponse updateFormato(Formato formato);
 
-    GaleriaResponse deleteFormato(Long idFormato);
+    FormatoResponse deleteFormato(Long idFormato);
 }
