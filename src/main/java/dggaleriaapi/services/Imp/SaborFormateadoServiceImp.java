@@ -67,10 +67,13 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     @Override
     public SaborFormateadoResponse savePorMontonInicial(List<SaborFormateado> saboresFormateados) {
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
+        List<SaborFormateado> conjuntoSaboresFormateados = new ArrayList<>();
         saboresFormateados.forEach(saborFormateado -> {
-            saveInicial(saborFormateado);
+            conjuntoSaboresFormateados.addAll(
+                    saveInicial(saborFormateado).getSaboresFormateadosTrabajados()
+            );
         });
-        respuesta.setSaboresFormateadosTrabajados(saboresFormateados);
+        respuesta.setSaboresFormateadosTrabajados(conjuntoSaboresFormateados);
         return respuesta;
     }
 
