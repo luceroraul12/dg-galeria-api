@@ -28,7 +28,10 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public MarcaResponse getMarcaById(Long idMarca) {
+    public MarcaResponse getMarcaById(Long idMarca) throws Exception {
+        if (!marcaRepository.existsById(idMarca)){
+            throw new Exception();
+        }
         MarcaResponse respuesta = new MarcaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.findById(idMarca).get()
@@ -37,7 +40,10 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public MarcaResponse saveMarca(Marca marca) {
+    public MarcaResponse saveMarca(Marca marca) throws Exception {
+        if (marca.getNombre().isEmpty() | marca.getEnlace().isEmpty()){
+            throw new Exception();
+        }
         MarcaResponse respuesta = new MarcaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.save(marca)
@@ -46,7 +52,10 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public MarcaResponse updateMarca(Marca marca) {
+    public MarcaResponse updateMarca(Marca marca) throws Exception {
+        if (marca.getNombre().isEmpty() | marca.getEnlace().isEmpty() | !marcaRepository.existsById(marca.getId())){
+            throw new Exception();
+        }
         MarcaResponse respuesta = new MarcaResponse();
         respuesta.setMarcaTrabajada(
                 marcaRepository.save(marca)
@@ -55,7 +64,10 @@ public class MarcaServiceImp implements MarcaService {
     }
 
     @Override
-    public MarcaResponse deleteMarca(Long idMarca) {
+    public MarcaResponse deleteMarca(Long idMarca) throws Exception {
+        if (!marcaRepository.existsById(idMarca)){
+            throw new Exception();
+        }
         MarcaResponse respuesta = new MarcaResponse();
         Marca marca = new Marca();
         marca.setId(idMarca);
