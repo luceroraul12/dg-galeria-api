@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class SaborFormateadoServiceImpTest {
 
@@ -25,12 +27,14 @@ class SaborFormateadoServiceImpTest {
     SaborFormateadoService saborFormateadoService;
 
     @Test
+    @Order(1)
     void getAll() {
         SaborFormateadoResponse respuesta = saborFormateadoService.getAll();
         assertEquals(7, respuesta.getSaboresFormateadosTrabajados().size());
     }
 
     @Test
+    @Order(2)
     void getBySaborAsociadoId() {
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(1L);
@@ -58,7 +62,7 @@ class SaborFormateadoServiceImpTest {
     }
 
     @Test
-    @Order(1)
+    @Order(3)
     void save() {
         Formato formato = new Formato();
         formato.setId(1L);
@@ -74,7 +78,7 @@ class SaborFormateadoServiceImpTest {
     }
 
     @Test
-    @Order(2)
+    @Order(4)
     void saveInicial() {
         Formato formato = new Formato();
         formato.setId(1L);
@@ -90,7 +94,7 @@ class SaborFormateadoServiceImpTest {
     }
 
     @Test
-    @Order(3)
+    @Order(5)
     void savePorMonton() {
         Formato formato1 = new Formato();
         formato1.setId(1L);
@@ -112,13 +116,13 @@ class SaborFormateadoServiceImpTest {
 
         SaborFormateadoResponse respuesta = saborFormateadoService.savePorMonton(saboresFormateados);
 
-        assertEquals(8, respuesta.getSaboresFormateadosTrabajados().get(0).getId());
-        assertEquals(9, respuesta.getSaboresFormateadosTrabajados().get(1).getId());
+        assertEquals(10, respuesta.getSaboresFormateadosTrabajados().get(0).getId());
+        assertEquals(11, respuesta.getSaboresFormateadosTrabajados().get(1).getId());
 
     }
 
     @Test
-    @Order(4)
+    @Order(6)
     void savePorMontonInicial() {
         Formato formato1 = new Formato();
         formato1.setId(1L);
@@ -144,7 +148,7 @@ class SaborFormateadoServiceImpTest {
     }
 
     @Test
-    @Order(5)
+    @Order(7)
     void update() {
         Formato formato = new Formato();
         formato.setId(1L);
@@ -164,6 +168,7 @@ class SaborFormateadoServiceImpTest {
     }
 
     @Test
+    @Order(8)
     void delete() {
         SaborFormateado saborFormateado = new SaborFormateado();
         saborFormateado.setId(1L);
