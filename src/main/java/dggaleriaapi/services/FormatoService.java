@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public interface FormatoService {
 
     FormatoResponse getAllFormatos();
-    FormatoResponse saveFormato(String tipo);
+    FormatoResponse saveFormato(String tipo) throws Exception;
 
     FormatoResponse updateFormato(Formato formato) throws Exception;
 
