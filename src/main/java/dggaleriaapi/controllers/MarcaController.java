@@ -6,14 +6,16 @@ import dggaleriaapi.services.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "marcas")
 public class MarcaController {
 
     @Autowired
     MarcaService marcaService;
 
+    @GetMapping
     public ResponseEntity<MarcaResponse> getAll() {
         String mensajeAfirmativo = "marcas obtenidas";
         String mensajeNegativo = "error al adquirir marcas";
@@ -30,7 +32,8 @@ public class MarcaController {
         return respuesta;
     }
 
-    public ResponseEntity<MarcaResponse> getMarcaById(Long idMarca) {
+    @GetMapping(value = "/by-id")
+    public ResponseEntity<MarcaResponse> getMarcaById(@RequestParam(name = "id") Long idMarca) {
         String mensajeAfirmativo = "marcas obtenidas por id";
         String mensajeNegativo = "error al adquirir marcas por id";
         MarcaResponse marcaResponse = new MarcaResponse();
@@ -46,7 +49,8 @@ public class MarcaController {
         return respuesta;
     }
 
-    public ResponseEntity<MarcaResponse> saveMarca(Marca marca) {
+    @PostMapping
+    public ResponseEntity<MarcaResponse> saveMarca(@RequestBody Marca marca) {
         String mensajeAfirmativo = "marca guardada";
         String mensajeNegativo = "error al guardar marca";
         MarcaResponse marcaResponse = new MarcaResponse();
@@ -62,7 +66,8 @@ public class MarcaController {
         return respuesta;
     }
 
-    public ResponseEntity<MarcaResponse> updateMarca(Marca marca) {
+    @PutMapping
+    public ResponseEntity<MarcaResponse> updateMarca(@RequestBody Marca marca) {
         String mensajeAfirmativo = "marca actualizada";
         String mensajeNegativo = "error al actualizar marca";
         MarcaResponse marcaResponse = new MarcaResponse();
@@ -78,7 +83,8 @@ public class MarcaController {
         return respuesta;
     }
 
-    public ResponseEntity<MarcaResponse> deleteMarca(Long idMarca) {
+    @DeleteMapping
+    public ResponseEntity<MarcaResponse> deleteMarca(@RequestParam(name = "id") Long idMarca) {
         String mensajeAfirmativo = "marca eliminada";
         String mensajeNegativo = "error al eliminar marca";
         MarcaResponse marcaResponse = new MarcaResponse();
