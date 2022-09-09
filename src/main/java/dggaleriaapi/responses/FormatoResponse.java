@@ -11,4 +11,5 @@ import java.util.List;
 public class FormatoResponse {
     private Formato formatoTrabajado;
     private List<Formato> formatosTrabajados;
+    private String mensaje;
 }

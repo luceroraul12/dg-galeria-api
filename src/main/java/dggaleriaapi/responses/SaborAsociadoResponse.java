@@ -12,5 +12,7 @@ public class SaborAsociadoResponse {
 
     private List<SaborAsociado> saboresAsociadosTrabajados;
     private SaborAsociado saborTrabajado;
+    private String mensaje;
+
 
 }

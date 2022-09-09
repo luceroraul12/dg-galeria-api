@@ -11,4 +11,6 @@ import java.util.List;
 public class MarcaResponse {
     private Marca marcaTrabajada;
     private List<Marca> marcasTrabajadas;
+    private String mensaje;
+
 }

@@ -11,4 +11,6 @@ import java.util.List;
 public class SaborFormateadoResponse {
     SaborFormateado saborFormateadoTrabajado;
     List<SaborFormateado> saboresFormateadosTrabajados;
+    private String mensaje;
+
 }
