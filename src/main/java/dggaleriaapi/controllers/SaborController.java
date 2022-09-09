@@ -6,16 +6,18 @@ import dggaleriaapi.services.SaborService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/sabores")
 public class SaborController {
 
     @Autowired
     SaborService saborService;
 
+    @GetMapping
     public ResponseEntity<SaborResponse> getAll() {
         String mensajeAfirmativo = "sabores encontrados";
         String mensajeNegativo = "error al buscar sabores";
@@ -32,7 +34,8 @@ public class SaborController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborResponse> save(Sabor sabor) {
+    @PostMapping
+    public ResponseEntity<SaborResponse> save(@RequestBody Sabor sabor) {
         String mensajeAfirmativo = "sabor creado";
         String mensajeNegativo = "error al crear sabor";
         SaborResponse saborResponse = new SaborResponse();
@@ -48,7 +51,8 @@ public class SaborController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborResponse> savePorMonton(List<Sabor> sabores) {
+    @PostMapping(value = "/monton")
+    public ResponseEntity<SaborResponse> savePorMonton(@RequestBody List<Sabor> sabores) {
         String mensajeAfirmativo = "sabores creados";
         String mensajeNegativo = "error al crear sabores";
         SaborResponse saborResponse = new SaborResponse();
@@ -64,7 +68,8 @@ public class SaborController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborResponse> update(Sabor sabor) {
+    @PutMapping
+    public ResponseEntity<SaborResponse> update(@RequestBody Sabor sabor) {
         String mensajeAfirmativo = "sabor actualizado";
         String mensajeNegativo = "error al actualizar sabor";
         SaborResponse saborResponse = new SaborResponse();
@@ -80,7 +85,8 @@ public class SaborController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborResponse> delete(Sabor sabor) {
+    @DeleteMapping
+    public ResponseEntity<SaborResponse> delete(@RequestBody Sabor sabor) {
         String mensajeAfirmativo = "sabor eliminado";
         String mensajeNegativo = "error al eliminar sabor";
         SaborResponse saborResponse = new SaborResponse();
