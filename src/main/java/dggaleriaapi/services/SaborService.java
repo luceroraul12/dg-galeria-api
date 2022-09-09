@@ -1,7 +1,6 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.Sabor;
-import dggaleriaapi.responses.GaleriaResponse;
 import dggaleriaapi.responses.SaborResponse;
 import org.springframework.stereotype.Service;
 
