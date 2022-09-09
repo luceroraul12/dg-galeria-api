@@ -1,7 +1,6 @@
 package dggaleriaapi.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -17,7 +16,7 @@ public class SaborFormateado {
     private Long id;
     @Column(name = "estado_stock")
     @ColumnDefault("true")
-    private Boolean estadoStock;
+    private Boolean estadoStock = true;
     @ManyToOne
     @JoinColumn(name = "formatos_id_fk")
     private Formato formato;
