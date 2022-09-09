@@ -25,7 +25,10 @@ public class SaborServiceImp implements SaborService {
     }
 
     @Override
-    public SaborResponse save(Sabor sabor) {
+    public SaborResponse save(Sabor sabor) throws Exception {
+        if (sabor.getNombre().isEmpty()){
+            throw new Exception();
+        }
         SaborResponse respuesta = new SaborResponse();
 
         respuesta.setSaborTrabajado(
@@ -35,7 +38,10 @@ public class SaborServiceImp implements SaborService {
     }
 
     @Override
-    public SaborResponse savePorMonton(List<Sabor> sabores) {
+    public SaborResponse savePorMonton(List<Sabor> sabores) throws Exception {
+        if (sabores == null){
+            throw new Exception();
+        }
         SaborResponse respuesta = new SaborResponse();
 
         respuesta.setSaboresTrabajados(
@@ -45,7 +51,10 @@ public class SaborServiceImp implements SaborService {
     }
 
     @Override
-    public SaborResponse update(Sabor sabor) {
+    public SaborResponse update(Sabor sabor) throws Exception {
+        if (!saborRepository.existsById(sabor.getId()) | sabor.getNombre().isEmpty()){
+            throw new Exception();
+        }
         SaborResponse respuesta = new SaborResponse();
 
         respuesta.setSaborTrabajado(
@@ -55,7 +64,10 @@ public class SaborServiceImp implements SaborService {
     }
 
     @Override
-    public SaborResponse delete(Sabor sabor) {
+    public SaborResponse delete(Sabor sabor) throws Exception {
+        if (!saborRepository.existsById(sabor.getId())){
+            throw new Exception();
+        }
         SaborResponse respuesta = new SaborResponse();
         if (saborRepository.existsById(sabor.getId())){
             saborRepository.deleteById(sabor.getId());

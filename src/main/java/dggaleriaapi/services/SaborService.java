@@ -10,9 +10,9 @@ import java.util.List;
 public interface SaborService {
 
     SaborResponse getAll();
-    SaborResponse save(Sabor sabor);
-    SaborResponse savePorMonton(List<Sabor> sabores);
+    SaborResponse save(Sabor sabor) throws Exception;
+    SaborResponse savePorMonton(List<Sabor> sabores) throws Exception;
 
-    SaborResponse update(Sabor sabor);
-    SaborResponse delete(Sabor sabor);
+    SaborResponse update(Sabor sabor) throws Exception;
+    SaborResponse delete(Sabor sabor) throws Exception;
 }
