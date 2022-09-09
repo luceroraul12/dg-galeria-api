@@ -27,7 +27,10 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public FormatoResponse saveFormato(String tipo) {
+    public FormatoResponse saveFormato(String tipo) throws Exception {
+        if (tipo.isEmpty()){
+            throw new Exception();
+        }
         Formato formato = new Formato();
         FormatoResponse respuesta = new FormatoResponse();
 
@@ -40,7 +43,7 @@ public class FormatoServiceImp implements FormatoService {
 
     @Override
     public FormatoResponse updateFormato(Formato formato) throws Exception {
-        if (!formatoRepository.existsById(formato.getId())){
+        if (!formatoRepository.existsById(formato.getId()) | formato.getTipo().isEmpty()){
             throw new Exception();
         }
         FormatoResponse respuesta = new FormatoResponse();
