@@ -72,7 +72,12 @@ class SaborFormateadoServiceImpTest {
         saborFormateado.setFormato(formato);
         saborFormateado.setSaborAsociado(saborAsociado);
 
-        SaborFormateadoResponse respuesta = saborFormateadoService.save(saborFormateado);
+        SaborFormateadoResponse respuesta = null;
+        try {
+            respuesta = saborFormateadoService.save(saborFormateado);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         assertEquals(8, respuesta.getSaborFormateadoTrabajado().getId());
     }

@@ -32,7 +32,7 @@ class SaborServiceImpTest {
 
     @Test
     @Order(1)
-    void save() {
+    void save() throws Exception {
         Sabor sabor = new Sabor();
         sabor.setNombre("MANAWA");
         SaborResponse respuesta = saborService.save(sabor);
@@ -42,7 +42,7 @@ class SaborServiceImpTest {
 
     @Test
     @Order(2)
-    void savePorMonton() {
+    void savePorMonton() throws Exception {
         Sabor sabor1 = new Sabor();
         Sabor sabor2 = new Sabor();
         List<Sabor> sabores = new ArrayList<>();
@@ -59,7 +59,7 @@ class SaborServiceImpTest {
     }
 
     @Test
-    void update() {
+    void update() throws Exception {
         Sabor sabor = new Sabor();
         sabor.setId(1L);
         sabor.setNombre("MANAWA");
@@ -69,7 +69,7 @@ class SaborServiceImpTest {
     }
 
     @Test
-    void delete() {
+    void delete() throws Exception {
         Sabor sabor = new Sabor();
         sabor.setId(1L);
         SaborResponse respuesta = saborService.delete(sabor);
