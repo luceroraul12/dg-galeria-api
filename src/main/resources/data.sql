@@ -51,3 +51,15 @@ VALUES
   (true, 5, 8),
   (true, 5, 10);
 ----------insert para table de sabores formateados
+INSERT
+INTO
+  sabores_formateados
+  (formatos_id_fk, sabores_asociados_id_fk)
+VALUES
+    (1, 1),
+    (2, 2),
+    (1, 3),
+    (1, 3),
+    (2, 4),
+    (3, 5),
+    (4, 4);
