@@ -13,6 +13,9 @@ public interface SaborFormateadoRepository extends JpaRepository<SaborFormateado
     @Query("select (count(s) > 0) from SaborFormateado s where s.formato.id = :id and s.saborAsociado.id = :id1")
     boolean existsByFormato_IdAndSaborAsociado_Id(@Param("id") Long idFormato, @Param("id1") Long idSaborAsociado);
 
+    @Query("select s from SaborFormateado s where s.saborAsociado.marca.id = :id")
+    List<SaborFormateado> getAllByIdMarca(@Param("id") Long id);
+
 
 
 }
