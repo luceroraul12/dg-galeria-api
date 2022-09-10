@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/sabores-formateados")
 public class SaborFormateadoController {
 
@@ -41,6 +42,22 @@ public class SaborFormateadoController {
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.getBySaborAsociadoId(saborFormateado);
+            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
+        } catch (Exception e) {
+            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
+    }
+    @GetMapping("/por-marca")
+    public ResponseEntity<SaborFormateadoResponse> getAllByIdMarca(@RequestParam(name = "id") Long idMarca) {
+        String mensajeAfirmativo = "sabores encontrados";
+        String mensajeNegativo = "error al buscar sabores";
+        SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
+        ResponseEntity<SaborFormateadoResponse> respuesta;
+        try {
+            saborFormateadoResponse = saborFormateadoService.getAllByIdMarca(idMarca);
             saborFormateadoResponse.setMensaje(mensajeAfirmativo);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
