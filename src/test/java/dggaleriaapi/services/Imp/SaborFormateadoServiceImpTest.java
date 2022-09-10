@@ -174,7 +174,7 @@ class SaborFormateadoServiceImpTest {
 
     @Test
     @Order(8)
-    void delete() {
+    void delete() throws Exception {
         SaborFormateado saborFormateado = new SaborFormateado();
         saborFormateado.setId(1L);
 
