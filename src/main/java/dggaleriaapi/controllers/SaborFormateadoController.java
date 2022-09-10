@@ -6,10 +6,7 @@ import dggaleriaapi.services.SaborFormateadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -52,8 +49,8 @@ public class SaborFormateadoController {
         }
         return respuesta;
     }
-
-    public ResponseEntity<SaborFormateadoResponse> save(SaborFormateado saborFormateado) {
+    @PostMapping
+    public ResponseEntity<SaborFormateadoResponse> save(@RequestBody SaborFormateado saborFormateado) {
         String mensajeAfirmativo = "sabor creado";
         String mensajeNegativo = "error al crear sabor";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
@@ -68,8 +65,8 @@ public class SaborFormateadoController {
         }
         return respuesta;
     }
-
-    public ResponseEntity<SaborFormateadoResponse> saveInicial(SaborFormateado saborFormateado) {
+    @PostMapping("/save-inicial")
+    public ResponseEntity<SaborFormateadoResponse> saveInicial(@RequestBody SaborFormateado saborFormateado) {
         String mensajeAfirmativo = "sabores formateados creados inicialmente";
         String mensajeNegativo = "error al crear sabores formateados inicialmente";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
@@ -85,7 +82,8 @@ public class SaborFormateadoController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborFormateadoResponse> savePorMonton(List<SaborFormateado> saboresFormateados) {
+    @PostMapping("/save-monton")
+    public ResponseEntity<SaborFormateadoResponse> savePorMonton(@RequestBody List<SaborFormateado> saboresFormateados) {
         String mensajeAfirmativo = "sabores formateados por monton creados";
         String mensajeNegativo = "error al crear sabores formateados por monton";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
@@ -101,7 +99,8 @@ public class SaborFormateadoController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborFormateadoResponse> savePorMontonInicial(List<SaborFormateado> saboresFormateados) {
+    @PostMapping("/save-monton-inicial")
+    public ResponseEntity<SaborFormateadoResponse> savePorMontonInicial(@RequestBody List<SaborFormateado> saboresFormateados) {
         String mensajeAfirmativo = "sabores formateados por monton inicial creados";
         String mensajeNegativo = "error al crear sabores formateados inicial por monton";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
@@ -116,8 +115,8 @@ public class SaborFormateadoController {
         }
         return respuesta;
     }
-
-    public ResponseEntity<SaborFormateadoResponse> update(SaborFormateado saborFormateado) {
+    @PutMapping
+    public ResponseEntity<SaborFormateadoResponse> update(@RequestBody SaborFormateado saborFormateado) {
         String mensajeAfirmativo = "sabore formateado actualizado";
         String mensajeNegativo = "error al actualizar sabor formateado";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
@@ -133,9 +132,10 @@ public class SaborFormateadoController {
         return respuesta;
     }
 
-    public ResponseEntity<SaborFormateadoResponse> delete(SaborFormateado saborFormateado) {
-        String mensajeAfirmativo = "sabores formateados por monton inicial creados";
-        String mensajeNegativo = "error al crear sabores formateados inicial por monton";
+    @DeleteMapping
+    public ResponseEntity<SaborFormateadoResponse> delete(@RequestBody SaborFormateado saborFormateado) {
+        String mensajeAfirmativo = "sabor formateado eliminado";
+        String mensajeNegativo = "error al borrar sabor formateado";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
