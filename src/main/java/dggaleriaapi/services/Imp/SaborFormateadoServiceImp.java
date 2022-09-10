@@ -1,6 +1,7 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborFormateado;
 import dggaleriaapi.repositories.FormatoRepository;
 import dggaleriaapi.repositories.SaborFormateadoRepository;
@@ -41,7 +42,14 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     }
 
     @Override
-    public SaborFormateadoResponse save(SaborFormateado saborFormateado) {
+    public SaborFormateadoResponse save(SaborFormateado saborFormateado) throws Exception {
+        boolean esSaborExistente = saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
+                saborFormateado.getFormato().getId(),
+                saborFormateado.getSaborAsociado().getId()
+        );
+        if (esSaborExistente){
+            throw new Exception();
+        }
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         respuesta.setSaborFormateadoTrabajado(
                 saborFormateadoRepository.save(saborFormateado)
@@ -50,13 +58,17 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     }
 
     @Override
-    public SaborFormateadoResponse saveInicial(SaborFormateado saborFormateado) {
+    public SaborFormateadoResponse saveInicial(SaborFormateado saborFormateado) throws Exception {
         List<SaborFormateado> saboresFormateadosGenerados = generarFormatosParaSaborAsociado(saborFormateado);
+        SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         return savePorMonton(saboresFormateadosGenerados);
     }
 
     @Override
-    public SaborFormateadoResponse savePorMonton(List<SaborFormateado> saboresFormateados) {
+    public SaborFormateadoResponse savePorMonton(List<SaborFormateado> saboresFormateados) throws Exception {
+        if (saboresFormateados == null){
+            throw new Exception();
+        }
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         respuesta.setSaboresFormateadosTrabajados(
                 saborFormateadoRepository.saveAll(saboresFormateados)
@@ -65,25 +77,40 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     }
 
     @Override
-    public SaborFormateadoResponse savePorMontonInicial(List<SaborFormateado> saboresFormateados) {
+    public SaborFormateadoResponse savePorMontonInicial(List<SaborFormateado> saboresFormateados) throws Exception {
+        if(saboresFormateados == null){
+            throw new Exception();
+        }
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         List<SaborFormateado> conjuntoSaboresFormateados = new ArrayList<>();
-        saboresFormateados.forEach(saborFormateado -> {
+        for (SaborFormateado saborFormateado : saboresFormateados) {
             conjuntoSaboresFormateados.addAll(
                     saveInicial(saborFormateado).getSaboresFormateadosTrabajados()
             );
-        });
+        }
         respuesta.setSaboresFormateadosTrabajados(conjuntoSaboresFormateados);
         return respuesta;
     }
 
     @Override
-    public SaborFormateadoResponse update(SaborFormateado saborFormateado) {
-        return save(saborFormateado);
+    public SaborFormateadoResponse update(SaborFormateado saborFormateado) throws Exception {
+        if (saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
+                saborFormateado.getFormato().getId(),
+                saborFormateado.getSaborAsociado().getId()
+        )){
+            throw new Exception();
+        }
+        SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
+        saborFormateadoRepository.save(saborFormateado);
+        respuesta.setSaborFormateadoTrabajado(saborFormateado);
+        return respuesta;
     }
 
     @Override
-    public SaborFormateadoResponse delete(SaborFormateado saborFormateado) {
+    public SaborFormateadoResponse delete(SaborFormateado saborFormateado) throws Exception {
+        if (!saborFormateadoRepository.existsById(saborFormateado.getId())){
+            throw new Exception();
+        }
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         saborFormateadoRepository.delete(saborFormateado);
         respuesta.setSaborFormateadoTrabajado(saborFormateado);
@@ -95,12 +122,28 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     private List<SaborFormateado> generarFormatosParaSaborAsociado(SaborFormateado saborFormateado) {
         List<SaborFormateado> resultado = new ArrayList<>();
         List<Formato> formatosDisponibles = formatoRepository.findAll();
+
+
         formatosDisponibles.forEach(formato -> {
-            saborFormateado.setFormato(formato);
-            resultado.add(saborFormateado);
+            resultado.add(
+                    generarSaborInmutable(formato, saborFormateado)
+            );
         });
+
         return resultado;
     }
 
+    private SaborFormateado generarSaborInmutable(Formato formato, SaborFormateado saborFormateado) {
 
+        SaborFormateado sabor = new SaborFormateado();
+        SaborAsociado saborAsociado = new SaborAsociado();
+        Formato formato1 = new Formato();
+
+        formato1.setId(formato.getId().longValue());
+        saborAsociado.setId(saborFormateado.getSaborAsociado().getId());
+        sabor.setSaborAsociado(saborAsociado);
+        sabor.setFormato(formato1);
+
+        return sabor;
+    }
 }

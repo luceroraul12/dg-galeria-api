@@ -13,15 +13,15 @@ public interface SaborFormateadoService {
 
     SaborFormateadoResponse getBySaborAsociadoId(SaborFormateado saborFormateado);
 
-    SaborFormateadoResponse save(SaborFormateado saborFormateado);
+    SaborFormateadoResponse save(SaborFormateado saborFormateado) throws Exception;
 
-    SaborFormateadoResponse saveInicial(SaborFormateado saborFormateado);
+    SaborFormateadoResponse saveInicial(SaborFormateado saborFormateado) throws Exception;
 
-    SaborFormateadoResponse savePorMonton(List<SaborFormateado> saboresFormateados);
+    SaborFormateadoResponse savePorMonton(List<SaborFormateado> saboresFormateados) throws Exception;
 
-    SaborFormateadoResponse savePorMontonInicial(List<SaborFormateado> saboresFormateados);
+    SaborFormateadoResponse savePorMontonInicial(List<SaborFormateado> saboresFormateados) throws Exception;
 
-    SaborFormateadoResponse update(SaborFormateado saborFormateado);
+    SaborFormateadoResponse update(SaborFormateado saborFormateado) throws Exception;
 
-    SaborFormateadoResponse delete(SaborFormateado saborFormateado);
+    SaborFormateadoResponse delete(SaborFormateado saborFormateado) throws Exception;
 }
