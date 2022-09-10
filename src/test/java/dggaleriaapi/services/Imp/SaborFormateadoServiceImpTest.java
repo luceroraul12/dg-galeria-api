@@ -84,7 +84,7 @@ class SaborFormateadoServiceImpTest {
 
     @Test
     @Order(4)
-    void saveInicial() {
+    void saveInicial() throws Exception {
         Formato formato = new Formato();
         formato.setId(1L);
         SaborAsociado saborAsociado = new SaborAsociado();
@@ -100,7 +100,7 @@ class SaborFormateadoServiceImpTest {
 
     @Test
     @Order(5)
-    void savePorMonton() {
+    void savePorMonton() throws Exception {
         Formato formato1 = new Formato();
         formato1.setId(1L);
         SaborAsociado saborAsociado1 = new SaborAsociado();
@@ -128,7 +128,7 @@ class SaborFormateadoServiceImpTest {
 
     @Test
     @Order(6)
-    void savePorMontonInicial() {
+    void savePorMontonInicial() throws Exception {
         Formato formato1 = new Formato();
         formato1.setId(1L);
         SaborAsociado saborAsociado1 = new SaborAsociado();
@@ -154,7 +154,7 @@ class SaborFormateadoServiceImpTest {
 
     @Test
     @Order(7)
-    void update() {
+    void update() throws Exception {
         Formato formato = new Formato();
         formato.setId(1L);
         SaborAsociado saborAsociado = new SaborAsociado();
