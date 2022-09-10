@@ -42,6 +42,15 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     }
 
     @Override
+    public SaborFormateadoResponse getAllByIdMarca(Long idMarca) {
+        SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
+        respuesta.setSaboresFormateadosTrabajados(
+                saborFormateadoRepository.getAllByIdMarca(idMarca)
+        );
+        return respuesta;
+    }
+
+    @Override
     public SaborFormateadoResponse save(SaborFormateado saborFormateado) throws Exception {
         boolean esSaborExistente = saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
                 saborFormateado.getFormato().getId(),
