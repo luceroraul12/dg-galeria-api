@@ -1,13 +1,10 @@
 package dggaleriaapi.models;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.tuple.GeneratedValueGeneration;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 
@@ -28,7 +25,7 @@ public class Formato {
 
     @Column(name ="estado_stock")
     @ColumnDefault("true")
-    private Boolean estadoStock;
+    private Boolean estadoStock = true;
 
     public Formato(Long id, String tipo) {
         this.id = id;
