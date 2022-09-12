@@ -26,7 +26,7 @@ public class Formato {
     @Column(name ="tipo", nullable = false)
     private String tipo;
 
-    @Column(name ="estado_stock", nullable = false)
+    @Column(name ="estado_stock")
     @ColumnDefault("true")
     private Boolean estadoStock;
 
