@@ -1,9 +1,8 @@
 package dggaleriaapi.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 
@@ -22,6 +21,9 @@ public class Marca {
     private String nombre;
     @Column(name = "enlace", columnDefinition = "TEXT",nullable = false)
     private String enlace;
+    @Column(name = "estado_stock")
+    @ColumnDefault("true")
+    private Boolean estadoStock = true;
 
     public Marca(Long id, String nombre) {
         this.id = id;
