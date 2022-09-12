@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.tuple.GeneratedValueGeneration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 
@@ -23,6 +25,10 @@ public class Formato {
 
     @Column(name ="tipo", nullable = false)
     private String tipo;
+
+    @Column(name ="estado_stock", nullable = false)
+    @ColumnDefault("true")
+    private Boolean estadoStock;
 
     public Formato(Long id, String tipo) {
         this.id = id;
