@@ -11,7 +11,6 @@ import dggaleriaapi.repositories.SaborAsociadoRepository;
 import dggaleriaapi.repositories.SaborFormateadoRepository;
 import dggaleriaapi.responses.ClienteDTOResponse;
 import dggaleriaapi.services.ClienteService;
-import dggaleriaapi.util.InmutableUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,6 +78,7 @@ public class ClienteServiceImp implements ClienteService {
         Formato formato = new Formato();
         formato.setId(sabor.getFormato().getId());
         formato.setTipo(sabor.getFormato().getTipo());
+        formato.setEstadoStock(sabor.getEstadoStock());
         return formato;
     }
 
