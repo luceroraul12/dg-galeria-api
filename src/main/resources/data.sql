@@ -57,9 +57,8 @@ INTO
   (formatos_id_fk, sabores_asociados_id_fk)
 VALUES
     (1, 1),
-    (2, 2),
     (1, 3),
-    (1, 3),
+    (2, 3),
     (2, 4),
     (3, 5),
     (4, 4);
