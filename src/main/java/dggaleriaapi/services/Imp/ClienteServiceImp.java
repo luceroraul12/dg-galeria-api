@@ -4,10 +4,10 @@ import dggaleriaapi.dto.ClienteDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
 import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.TasteAsociado;
+import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.TasteFormateado;
 import dggaleriaapi.repositories.BrandRepository;
-import dggaleriaapi.repositories.TasteAsociadoRepository;
+import dggaleriaapi.repositories.BrandedTasteRepository;
 import dggaleriaapi.repositories.TasteFormateadoRepository;
 import dggaleriaapi.responses.ClienteDTOResponse;
 import dggaleriaapi.services.ClienteService;
@@ -24,7 +24,7 @@ public class ClienteServiceImp implements ClienteService {
     @Autowired
     BrandRepository brandRepository;
     @Autowired
-    TasteAsociadoRepository tasteAsociadoRepository;
+    BrandedTasteRepository brandedTasteRepository;
     @Autowired
     TasteFormateadoRepository tasteFormateadoRepository;
 
@@ -46,15 +46,15 @@ public class ClienteServiceImp implements ClienteService {
 
     private List<TasteResumenDTO> generarTasteesResumidos(Long idBrand) {
 
-        List<TasteAsociado> tasteesAsociados = tasteAsociadoRepository.findByBrand_Id(idBrand);
+        List<BrandedTaste> tasteesAsociados = brandedTasteRepository.findByBrand_Id(idBrand);
         List<TasteFormateado> tasteesFormateados = tasteFormateadoRepository.getAllByIdBrand(idBrand);
         List<TasteResumenDTO> resultado = new ArrayList<>();
         TasteResumenDTO tasteResumido;
 
-        for (TasteAsociado tasteAsociado : tasteesAsociados){
+        for (BrandedTaste brandedTaste : tasteesAsociados){
             tasteResumido = TasteResumenDTO.builder()
-                            .nombreTaste(tasteAsociado.getTaste().getNombre())
-                            .drinkContainersDisponibles(obtenerDrinkContainers(tasteAsociado.getId(), tasteesFormateados))
+                            .nombreTaste(brandedTaste.getTaste().getNombre())
+                            .drinkContainersDisponibles(obtenerDrinkContainers(brandedTaste.getId(), tasteesFormateados))
                             .build();
             resultado.add(tasteResumido);
         }
@@ -63,11 +63,11 @@ public class ClienteServiceImp implements ClienteService {
         return resultado;
     }
 
-    private List<DrinkContainer> obtenerDrinkContainers(Long idTasteAsociado, List<TasteFormateado> tasteesFormateados) {
+    private List<DrinkContainer> obtenerDrinkContainers(Long idBrandedTaste, List<TasteFormateado> tasteesFormateados) {
         List<DrinkContainer> resultado = new ArrayList<>();
         List<TasteFormateado> tasteesFormateadosFiltrados = tasteesFormateados
                 .stream()
-                .filter(tasteFormateado -> tasteFormateado.getTasteAsociado().getId() == idTasteAsociado).collect(Collectors.toList());
+                .filter(tasteFormateado -> tasteFormateado.getBrandedTaste().getId() == idBrandedTaste).collect(Collectors.toList());
 
         tasteesFormateadosFiltrados.forEach(taste -> resultado.add(obtenerDrinkContainerInmutable(taste)));
 

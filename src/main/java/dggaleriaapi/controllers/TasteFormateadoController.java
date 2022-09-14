@@ -35,13 +35,13 @@ public class TasteFormateadoController {
         return respuesta;
     }
     @GetMapping("/taste-asociado")
-    public ResponseEntity<TasteFormateadoResponse> getByTasteAsociadoId(@RequestBody TasteFormateado tasteFormateado) {
+    public ResponseEntity<TasteFormateadoResponse> getByBrandedTasteId(@RequestBody TasteFormateado tasteFormateado) {
         String successMessage = "tastees encontrados";
         String badMessage = "error al buscar tastees";
         TasteFormateadoResponse tasteFormateadoResponse = new TasteFormateadoResponse();
         ResponseEntity<TasteFormateadoResponse> respuesta;
         try {
-            tasteFormateadoResponse = tasteFormateadoService.getByTasteAsociadoId(tasteFormateado);
+            tasteFormateadoResponse = tasteFormateadoService.getByBrandedTasteId(tasteFormateado);
             tasteFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<TasteFormateadoResponse>(tasteFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {

@@ -2,10 +2,10 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.models.Taste;
-import dggaleriaapi.models.TasteAsociado;
-import dggaleriaapi.responses.TasteAsociadoResponse;
+import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.responses.BrandedTasteResponse;
 import dggaleriaapi.responses.TasteResponse;
-import dggaleriaapi.services.TasteAsociadoService;
+import dggaleriaapi.services.BrandedTasteService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -22,21 +22,21 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class TasteAsociadoServiceImpTest {
+class BrandedTasteServiceImpTest {
 
     @Autowired
-    TasteAsociadoService service;
+    BrandedTasteService service;
 
     @Test()
     @Order(6)
     void getAll(){
-        TasteAsociadoResponse respuesta = service.getAll();
+        BrandedTasteResponse respuesta = service.getAll();
         assertEquals(7, respuesta.getTasteesAsociadosTrabajados().size());
     }
     @Test
     @Order(5)
     void getAllByIdBrand() throws Exception {
-        TasteAsociadoResponse respuesta = service.getAllByIdBrand(1L);
+        BrandedTasteResponse respuesta = service.getAllByIdBrand(1L);
         assertEquals(3, respuesta.getTasteesAsociadosTrabajados().size());
 
         respuesta = service.getAllByIdBrand(2L);
@@ -63,11 +63,11 @@ class TasteAsociadoServiceImpTest {
         taste.setId(1L);
         Brand brand = new Brand();
         brand.setId(3L);
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setTaste(taste);
-        tasteAsociado.setBrand(brand);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setTaste(taste);
+        brandedTaste.setBrand(brand);
 
-        TasteAsociadoResponse respuesta = service.save(tasteAsociado);
+        BrandedTasteResponse respuesta = service.save(brandedTaste);
 
         assertEquals(8, respuesta.getTasteTrabajado().getId());
         //Valor por defecto declarado en la Entidad
@@ -84,14 +84,14 @@ class TasteAsociadoServiceImpTest {
         taste.setId(1L);
         Brand brand = new Brand();
         brand.setId(3L);
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setTaste(taste);
-        tasteAsociado.setBrand(brand);
-        TasteAsociado tasteAsociado2 = new TasteAsociado();
-        tasteAsociado2.setTaste(taste);
-        tasteAsociado2.setBrand(brand);
-        List<TasteAsociado> tasteAsociados = Arrays.asList(tasteAsociado, tasteAsociado2);
-        TasteAsociadoResponse respuesta = service.savePorMonton(tasteAsociados);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setTaste(taste);
+        brandedTaste.setBrand(brand);
+        BrandedTaste brandedTaste2 = new BrandedTaste();
+        brandedTaste2.setTaste(taste);
+        brandedTaste2.setBrand(brand);
+        List<BrandedTaste> brandedTastes = Arrays.asList(brandedTaste, brandedTaste2);
+        BrandedTasteResponse respuesta = service.savePorMonton(brandedTastes);
 
         assertEquals(9, respuesta.getTasteesAsociadosTrabajados().get(0).getId());
         assertEquals(10, respuesta.getTasteesAsociadosTrabajados().get(1).getId());
@@ -104,12 +104,12 @@ class TasteAsociadoServiceImpTest {
         taste.setId(1L);
         Brand brand = new Brand();
         brand.setId(3L);
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setId(1L);
-        tasteAsociado.setTaste(taste);
-        tasteAsociado.setBrand(brand);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setId(1L);
+        brandedTaste.setTaste(taste);
+        brandedTaste.setBrand(brand);
 
-        TasteAsociadoResponse respuesta = service.update(tasteAsociado);
+        BrandedTasteResponse respuesta = service.update(brandedTaste);
 
         assertEquals(1, respuesta.getTasteTrabajado().getId());
         assertEquals(3, respuesta.getTasteTrabajado().getBrand().getId());
@@ -119,9 +119,9 @@ class TasteAsociadoServiceImpTest {
     @Test
     @Order(4)
     void delete() throws Exception {
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setId(1L);
-        TasteAsociadoResponse respuesta = service.delete(tasteAsociado);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setId(1L);
+        BrandedTasteResponse respuesta = service.delete(brandedTaste);
 
 
         assertEquals(1, respuesta.getTasteTrabajado().getId());

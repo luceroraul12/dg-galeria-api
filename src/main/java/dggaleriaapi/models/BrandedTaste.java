@@ -17,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "tastees_asociados")
-public class TasteAsociado {
+public class BrandedTaste {
     @Id
     @Column(name = "tastees_asociados_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

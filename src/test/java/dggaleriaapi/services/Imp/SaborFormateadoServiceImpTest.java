@@ -1,7 +1,7 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.models.TasteAsociado;
+import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.TasteFormateado;
 import dggaleriaapi.responses.TasteFormateadoResponse;
 import dggaleriaapi.services.TasteFormateadoService;
@@ -35,29 +35,29 @@ class TasteFormateadoServiceImpTest {
 
     @Test
     @Order(2)
-    void getByTasteAsociadoId() {
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setId(1L);
+    void getByBrandedTasteId() {
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setId(1L);
         TasteFormateado tasteFormateado = new TasteFormateado();
-        tasteFormateado.setTasteAsociado(tasteAsociado);
+        tasteFormateado.setBrandedTaste(brandedTaste);
 
-        TasteFormateadoResponse respuesta = tasteFormateadoService.getByTasteAsociadoId(tasteFormateado);
+        TasteFormateadoResponse respuesta = tasteFormateadoService.getByBrandedTasteId(tasteFormateado);
         assertEquals(1, respuesta.getTasteesFormateadosTrabajados().size());
 
-        tasteAsociado.setId(2L);
-        respuesta = tasteFormateadoService.getByTasteAsociadoId(tasteFormateado);
+        brandedTaste.setId(2L);
+        respuesta = tasteFormateadoService.getByBrandedTasteId(tasteFormateado);
         assertEquals(1, respuesta.getTasteesFormateadosTrabajados().size());
 
-        tasteAsociado.setId(3L);
-        respuesta = tasteFormateadoService.getByTasteAsociadoId(tasteFormateado);
+        brandedTaste.setId(3L);
+        respuesta = tasteFormateadoService.getByBrandedTasteId(tasteFormateado);
         assertEquals(2, respuesta.getTasteesFormateadosTrabajados().size());
 
-        tasteAsociado.setId(4L);
-        respuesta = tasteFormateadoService.getByTasteAsociadoId(tasteFormateado);
+        brandedTaste.setId(4L);
+        respuesta = tasteFormateadoService.getByBrandedTasteId(tasteFormateado);
         assertEquals(2, respuesta.getTasteesFormateadosTrabajados().size());
 
-        tasteAsociado.setId(5L);
-        respuesta = tasteFormateadoService.getByTasteAsociadoId(tasteFormateado);
+        brandedTaste.setId(5L);
+        respuesta = tasteFormateadoService.getByBrandedTasteId(tasteFormateado);
         assertEquals(1, respuesta.getTasteesFormateadosTrabajados().size());
     }
 
@@ -66,11 +66,11 @@ class TasteFormateadoServiceImpTest {
     void save() {
         DrinkContainer drinkContainer = new DrinkContainer();
         drinkContainer.setId(1L);
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setId(2L);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setId(2L);
         TasteFormateado tasteFormateado = new TasteFormateado();
         tasteFormateado.setDrinkContainer(drinkContainer);
-        tasteFormateado.setTasteAsociado(tasteAsociado);
+        tasteFormateado.setBrandedTaste(brandedTaste);
 
         TasteFormateadoResponse respuesta = null;
         try {
@@ -87,11 +87,11 @@ class TasteFormateadoServiceImpTest {
     void saveInicial() throws Exception {
         DrinkContainer drinkContainer = new DrinkContainer();
         drinkContainer.setId(1L);
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setId(2L);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setId(2L);
         TasteFormateado tasteFormateado = new TasteFormateado();
         tasteFormateado.setDrinkContainer(drinkContainer);
-        tasteFormateado.setTasteAsociado(tasteAsociado);
+        tasteFormateado.setBrandedTaste(brandedTaste);
 
         TasteFormateadoResponse respuesta = tasteFormateadoService.saveInicial(tasteFormateado);
 
@@ -103,19 +103,19 @@ class TasteFormateadoServiceImpTest {
     void savePorMonton() throws Exception {
         DrinkContainer drinkContainer1 = new DrinkContainer();
         drinkContainer1.setId(1L);
-        TasteAsociado tasteAsociado1 = new TasteAsociado();
-        tasteAsociado1.setId(2L);
+        BrandedTaste brandedTaste1 = new BrandedTaste();
+        brandedTaste1.setId(2L);
         TasteFormateado tasteFormateado1 = new TasteFormateado();
         tasteFormateado1.setDrinkContainer(drinkContainer1);
-        tasteFormateado1.setTasteAsociado(tasteAsociado1);
+        tasteFormateado1.setBrandedTaste(brandedTaste1);
 
         DrinkContainer drinkContainer2 = new DrinkContainer();
         drinkContainer2.setId(1L);
-        TasteAsociado tasteAsociado2 = new TasteAsociado();
-        tasteAsociado2.setId(2L);
+        BrandedTaste brandedTaste2 = new BrandedTaste();
+        brandedTaste2.setId(2L);
         TasteFormateado tasteFormateado2 = new TasteFormateado();
         tasteFormateado2.setDrinkContainer(drinkContainer2);
-        tasteFormateado2.setTasteAsociado(tasteAsociado2);
+        tasteFormateado2.setBrandedTaste(brandedTaste2);
 
         List<TasteFormateado> tasteesFormateados = Arrays.asList(tasteFormateado1, tasteFormateado2);
 
@@ -131,19 +131,19 @@ class TasteFormateadoServiceImpTest {
     void savePorMontonInicial() throws Exception {
         DrinkContainer drinkContainer1 = new DrinkContainer();
         drinkContainer1.setId(1L);
-        TasteAsociado tasteAsociado1 = new TasteAsociado();
-        tasteAsociado1.setId(2L);
+        BrandedTaste brandedTaste1 = new BrandedTaste();
+        brandedTaste1.setId(2L);
         TasteFormateado tasteFormateado1 = new TasteFormateado();
         tasteFormateado1.setDrinkContainer(drinkContainer1);
-        tasteFormateado1.setTasteAsociado(tasteAsociado1);
+        tasteFormateado1.setBrandedTaste(brandedTaste1);
 
         DrinkContainer drinkContainer2 = new DrinkContainer();
         drinkContainer2.setId(1L);
-        TasteAsociado tasteAsociado2 = new TasteAsociado();
-        tasteAsociado2.setId(2L);
+        BrandedTaste brandedTaste2 = new BrandedTaste();
+        brandedTaste2.setId(2L);
         TasteFormateado tasteFormateado2 = new TasteFormateado();
         tasteFormateado2.setDrinkContainer(drinkContainer2);
-        tasteFormateado2.setTasteAsociado(tasteAsociado2);
+        tasteFormateado2.setBrandedTaste(brandedTaste2);
 
         List<TasteFormateado> tasteesFormateados = Arrays.asList(tasteFormateado1, tasteFormateado2);
 
@@ -157,17 +157,17 @@ class TasteFormateadoServiceImpTest {
     void update() throws Exception {
         DrinkContainer drinkContainer = new DrinkContainer();
         drinkContainer.setId(1L);
-        TasteAsociado tasteAsociado = new TasteAsociado();
-        tasteAsociado.setId(2L);
+        BrandedTaste brandedTaste = new BrandedTaste();
+        brandedTaste.setId(2L);
         TasteFormateado tasteFormateado = new TasteFormateado();
         tasteFormateado.setId(1L);
         tasteFormateado.setDrinkContainer(drinkContainer);
-        tasteFormateado.setTasteAsociado(tasteAsociado);
+        tasteFormateado.setBrandedTaste(brandedTaste);
 
         TasteFormateadoResponse respuesta = tasteFormateadoService.update(tasteFormateado);
 
         assertEquals(1, respuesta.getTasteFormateadoTrabajado().getId());
-        assertEquals(2, respuesta.getTasteFormateadoTrabajado().getTasteAsociado().getId());
+        assertEquals(2, respuesta.getTasteFormateadoTrabajado().getBrandedTaste().getId());
         assertEquals(true, respuesta.getTasteFormateadoTrabajado().getEstadoStock());
         assertEquals(1, respuesta.getTasteFormateadoTrabajado().getDrinkContainer().getId());
     }

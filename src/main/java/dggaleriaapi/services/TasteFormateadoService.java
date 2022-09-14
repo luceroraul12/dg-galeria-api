@@ -11,7 +11,7 @@ public interface TasteFormateadoService {
 
     TasteFormateadoResponse getAll();
 
-    TasteFormateadoResponse getByTasteAsociadoId(TasteFormateado tasteFormateado);
+    TasteFormateadoResponse getByBrandedTasteId(TasteFormateado tasteFormateado);
 
     TasteFormateadoResponse getAllByIdBrand(Long idBrand);
 

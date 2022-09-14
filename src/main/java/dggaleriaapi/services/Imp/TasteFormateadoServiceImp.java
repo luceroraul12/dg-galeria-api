@@ -1,7 +1,7 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.models.TasteAsociado;
+import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.TasteFormateado;
 import dggaleriaapi.repositories.DrinkContainerRepository;
 import dggaleriaapi.repositories.TasteFormateadoRepository;
@@ -32,11 +32,11 @@ public class TasteFormateadoServiceImp implements TasteFormateadoService {
     }
 
     @Override
-    public TasteFormateadoResponse getByTasteAsociadoId(TasteFormateado tasteFormateado) {
+    public TasteFormateadoResponse getByBrandedTasteId(TasteFormateado tasteFormateado) {
         TasteFormateadoResponse respuesta = new TasteFormateadoResponse();
-        Long idTasteAsociado = tasteFormateado.getTasteAsociado().getId();
+        Long idBrandedTaste = tasteFormateado.getBrandedTaste().getId();
         respuesta.setTasteesFormateadosTrabajados(
-                tasteFormateadoRepository.findByTasteAsociado_Id(idTasteAsociado)
+                tasteFormateadoRepository.findByBrandedTaste_Id(idBrandedTaste)
         );
         return respuesta;
     }
@@ -52,9 +52,9 @@ public class TasteFormateadoServiceImp implements TasteFormateadoService {
 
     @Override
     public TasteFormateadoResponse save(TasteFormateado tasteFormateado) throws Exception {
-        boolean esTasteExistente = tasteFormateadoRepository.existsByDrinkContainer_IdAndTasteAsociado_Id(
+        boolean esTasteExistente = tasteFormateadoRepository.existsByDrinkContainer_IdAndBrandedTaste_Id(
                 tasteFormateado.getDrinkContainer().getId(),
-                tasteFormateado.getTasteAsociado().getId()
+                tasteFormateado.getBrandedTaste().getId()
         );
         if (esTasteExistente){
             throw new Exception();
@@ -68,7 +68,7 @@ public class TasteFormateadoServiceImp implements TasteFormateadoService {
 
     @Override
     public TasteFormateadoResponse saveInicial(TasteFormateado tasteFormateado) throws Exception {
-        List<TasteFormateado> tasteesFormateadosGenerados = generarDrinkContainersParaTasteAsociado(tasteFormateado);
+        List<TasteFormateado> tasteesFormateadosGenerados = generarDrinkContainersParaBrandedTaste(tasteFormateado);
         TasteFormateadoResponse respuesta = new TasteFormateadoResponse();
         return savePorMonton(tasteesFormateadosGenerados);
     }
@@ -103,9 +103,9 @@ public class TasteFormateadoServiceImp implements TasteFormateadoService {
 
     @Override
     public TasteFormateadoResponse update(TasteFormateado tasteFormateado) throws Exception {
-        if (tasteFormateadoRepository.existsByDrinkContainer_IdAndTasteAsociado_Id(
+        if (tasteFormateadoRepository.existsByDrinkContainer_IdAndBrandedTaste_Id(
                 tasteFormateado.getDrinkContainer().getId(),
-                tasteFormateado.getTasteAsociado().getId()
+                tasteFormateado.getBrandedTaste().getId()
         )){
             throw new Exception();
         }
@@ -128,7 +128,7 @@ public class TasteFormateadoServiceImp implements TasteFormateadoService {
 
 
 
-    private List<TasteFormateado> generarDrinkContainersParaTasteAsociado(TasteFormateado tasteFormateado) {
+    private List<TasteFormateado> generarDrinkContainersParaBrandedTaste(TasteFormateado tasteFormateado) {
         List<TasteFormateado> resultado = new ArrayList<>();
         List<DrinkContainer> drinkContainersDisponibles = drinkContainerRepository.findAll();
 
@@ -145,12 +145,12 @@ public class TasteFormateadoServiceImp implements TasteFormateadoService {
     private TasteFormateado generarTasteInmutable(DrinkContainer drinkContainer, TasteFormateado tasteFormateado) {
 
         TasteFormateado taste = new TasteFormateado();
-        TasteAsociado tasteAsociado = new TasteAsociado();
+        BrandedTaste brandedTaste = new BrandedTaste();
         DrinkContainer drinkContainer1 = new DrinkContainer();
 
         drinkContainer1.setId(drinkContainer.getId().longValue());
-        tasteAsociado.setId(tasteFormateado.getTasteAsociado().getId());
-        taste.setTasteAsociado(tasteAsociado);
+        brandedTaste.setId(tasteFormateado.getBrandedTaste().getId());
+        taste.setBrandedTaste(brandedTaste);
         taste.setDrinkContainer(drinkContainer1);
 
         return taste;

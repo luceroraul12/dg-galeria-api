@@ -75,10 +75,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.services.Imp;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.TasteAsociado;
-<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.TasteAsociadoRepository;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.BrandedTaste;
+<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.BrandedTasteRepository;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
-<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.TasteAsociadoService;
+<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.BrandedTasteService;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
 <i class="no-highlight">9</i>&nbsp;
@@ -86,17 +86,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">11</i>&nbsp;public class TasteServiceImp implements TasteService {
 <i class="no-highlight">12</i>&nbsp;
 <i class="no-highlight">13</i>&nbsp;    @Autowired
-<i class="no-highlight">14</i>&nbsp;    TasteRepository tasteAsociadoRepository;
+<i class="no-highlight">14</i>&nbsp;    TasteRepository brandedTasteRepository;
 <i class="no-highlight">15</i>&nbsp;
-<b class="fc"><i class="no-highlight">16</i>&nbsp;    public TasteServiceImp(TasteRepository tasteAsociadoRepository) {</b>
-<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.tasteAsociadoRepository = tasteAsociadoRepository;</b>
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    public TasteServiceImp(TasteRepository brandedTasteRepository) {</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.brandedTasteRepository = brandedTasteRepository;</b>
 <i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @Override
 <i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAllByIdBrand(Long idBrand) {
 <b class="fc"><i class="no-highlight">22</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">23</i>&nbsp;        resultado.setTasteesCreados(</b>
-<b class="fc"><i class="no-highlight">24</i>&nbsp;            tasteAsociadoRepository.findByBrand_Id(idBrand)</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;            brandedTasteRepository.findByBrand_Id(idBrand)</b>
 <i class="no-highlight">25</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">26</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">27</i>&nbsp;    }
@@ -105,35 +105,35 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">30</i>&nbsp;    public GaleriaResponse getAllByIdBrandyStock(Long idBrand) {
 <b class="fc"><i class="no-highlight">31</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">32</i>&nbsp;        resultado.setTasteesDisponibles(</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;                tasteAsociadoRepository.getAllByIdMacaryStock(idBrand)</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                brandedTasteRepository.getAllByIdMacaryStock(idBrand)</b>
 <i class="no-highlight">34</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">36</i>&nbsp;    }
 <i class="no-highlight">37</i>&nbsp;
 <i class="no-highlight">38</i>&nbsp;    @Override
-<i class="no-highlight">39</i>&nbsp;    public GaleriaResponse saveTaste(Taste tasteAsociado) {
+<i class="no-highlight">39</i>&nbsp;    public GaleriaResponse saveTaste(Taste brandedTaste) {
 <b class="fc"><i class="no-highlight">40</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">41</i>&nbsp;        resultado.setTasteTrabajado(</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;                tasteAsociadoRepository.save(tasteAsociado)</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;                brandedTasteRepository.save(brandedTaste)</b>
 <i class="no-highlight">43</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">44</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">45</i>&nbsp;    }
 <i class="no-highlight">46</i>&nbsp;
 <i class="no-highlight">47</i>&nbsp;    @Override
-<i class="no-highlight">48</i>&nbsp;    public GaleriaResponse updateTaste(Taste tasteAsociado) {
+<i class="no-highlight">48</i>&nbsp;    public GaleriaResponse updateTaste(Taste brandedTaste) {
 <b class="fc"><i class="no-highlight">49</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">50</i>&nbsp;        resultado.setTasteTrabajado(</b>
-<b class="fc"><i class="no-highlight">51</i>&nbsp;                tasteAsociadoRepository.save(tasteAsociado)</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;                brandedTasteRepository.save(brandedTaste)</b>
 <i class="no-highlight">52</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">53</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">54</i>&nbsp;    }
 <i class="no-highlight">55</i>&nbsp;
 <i class="no-highlight">56</i>&nbsp;    @Override
-<i class="no-highlight">57</i>&nbsp;    public GaleriaResponse deleteTaste(Taste tasteAsociado) {
+<i class="no-highlight">57</i>&nbsp;    public GaleriaResponse deleteTaste(Taste brandedTaste) {
 <b class="fc"><i class="no-highlight">58</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">59</i>&nbsp;        tasteAsociadoRepository.delete(tasteAsociado);</b>
+<b class="fc"><i class="no-highlight">59</i>&nbsp;        brandedTasteRepository.delete(brandedTaste);</b>
 <i class="no-highlight">60</i>&nbsp;
-<b class="fc"><i class="no-highlight">61</i>&nbsp;        resultado.setTasteTrabajado(tasteAsociado);</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        resultado.setTasteTrabajado(brandedTaste);</b>
 <b class="fc"><i class="no-highlight">62</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">63</i>&nbsp;    }
 <i class="no-highlight">64</i>&nbsp;}

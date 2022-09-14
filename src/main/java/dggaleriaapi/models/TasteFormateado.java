@@ -22,5 +22,5 @@ public class TasteFormateado {
     private DrinkContainer drinkContainer;
     @ManyToOne
     @JoinColumn(name = "tastees_asociados_id_fk")
-    private TasteAsociado tasteAsociado;
+    private BrandedTaste brandedTaste;
 }
