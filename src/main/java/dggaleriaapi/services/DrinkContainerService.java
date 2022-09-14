@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public interface DrinkContainerService {
 
     StockDataResponse getAllDrinkContainers();
-    DrinkContainerResponse saveDrinkContainer(String tipo) throws Exception;
+    DrinkContainerResponse saveDrinkContainer(String containerName) throws Exception;
 
     DrinkContainerResponse updateDrinkContainer(DrinkContainer drinkContainer) throws Exception;
 

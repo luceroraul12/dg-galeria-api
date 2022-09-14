@@ -35,13 +35,13 @@ public class DrinkContainerController {
     }
 
     @PostMapping
-    public ResponseEntity<DrinkContainerResponse> saveDrinkContainer(@RequestParam(name = "tipo") String tipo) {
+    public ResponseEntity<DrinkContainerResponse> saveDrinkContainer(@RequestParam(name = "containerName") String containerName) {
         String mensajeAfirmativo = "drinkContainer guardado";
         String mensajeNegativo = "error al intentar guardar drinkContainer";
         DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
         ResponseEntity<DrinkContainerResponse> respuesta;
         try {
-            drinkContainerResponse = drinkContainerService.saveDrinkContainer(tipo);
+            drinkContainerResponse = drinkContainerService.saveDrinkContainer(containerName);
             drinkContainerResponse.setMensaje(mensajeAfirmativo);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {

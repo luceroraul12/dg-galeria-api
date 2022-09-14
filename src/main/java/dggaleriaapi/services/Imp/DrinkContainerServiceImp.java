@@ -28,14 +28,14 @@ public class DrinkContainerServiceImp implements DrinkContainerService {
     }
 
     @Override
-    public DrinkContainerResponse saveDrinkContainer(String tipo) throws Exception {
-        if (tipo.isEmpty()){
+    public DrinkContainerResponse saveDrinkContainer(String containerName) throws Exception {
+        if (containerName.isEmpty()){
             throw new Exception();
         }
         DrinkContainer drinkContainer = new DrinkContainer();
         DrinkContainerResponse respuesta = new DrinkContainerResponse();
 
-        drinkContainer.setContainerName(tipo);
+        drinkContainer.setContainerName(containerName);
         respuesta.setDrinkContainerTrabajado(
                 drinkContainerRepository.save(drinkContainer)
         );

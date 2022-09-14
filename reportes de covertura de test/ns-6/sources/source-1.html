@@ -102,11 +102,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">27</i>&nbsp;    }
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    @Override
-<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveDrinkContainer(String tipo) {
+<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveDrinkContainer(String containerName) {
 <b class="fc"><i class="no-highlight">31</i>&nbsp;        DrinkContainer drinkContainer = new DrinkContainer();</b>
 <b class="fc"><i class="no-highlight">32</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
 <i class="no-highlight">33</i>&nbsp;
-<b class="fc"><i class="no-highlight">34</i>&nbsp;        drinkContainer.setTipo(tipo);</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        drinkContainer.setContainerName(containerName);</b>
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        respuesta.setDrinkContainerTrabajado(</b>
 <b class="fc"><i class="no-highlight">36</i>&nbsp;                drinkContainerRepository.save(drinkContainer)</b>
 <i class="no-highlight">37</i>&nbsp;        );

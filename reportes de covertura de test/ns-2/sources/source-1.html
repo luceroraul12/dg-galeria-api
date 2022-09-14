@@ -118,10 +118,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">43</i>&nbsp;    }
 <i class="no-highlight">44</i>&nbsp;
 <i class="no-highlight">45</i>&nbsp;    @PostMapping(value = &quot;/drinkContainers&quot;)
-<i class="no-highlight">46</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveDrinkContainer(@RequestParam(name = &quot;tipo&quot;) String tipo){
+<i class="no-highlight">46</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveDrinkContainer(@RequestParam(name = &quot;containerName&quot;) String containerName){
 <i class="no-highlight">47</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">48</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">49</i>&nbsp;            GaleriaResponse resultado = drinkContainerService.saveDrinkContainer(tipo);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;            GaleriaResponse resultado = drinkContainerService.saveDrinkContainer(containerName);</b>
 <b class="fc"><i class="no-highlight">50</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">51</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">52</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
