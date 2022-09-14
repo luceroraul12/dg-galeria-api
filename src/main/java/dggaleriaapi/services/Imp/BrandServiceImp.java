@@ -2,7 +2,6 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.repositories.BrandRepository;
-import dggaleriaapi.responses.DrinkContainerResponse;
 import dggaleriaapi.responses.BrandResponse;
 import dggaleriaapi.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class BrandServiceImp implements BrandService {
 
     @Override
     public BrandResponse saveBrand(Brand brand) throws Exception {
-        if (brand.getNombre().isEmpty() | brand.getEnlace().isEmpty()){
+        if (brand.getBrandName().isEmpty() | brand.getUrl().isEmpty()){
             throw new Exception();
         }
         BrandResponse respuesta = new BrandResponse();
@@ -53,7 +52,7 @@ public class BrandServiceImp implements BrandService {
 
     @Override
     public BrandResponse updateBrand(Brand brand) throws Exception {
-        if (brand.getNombre().isEmpty() | brand.getEnlace().isEmpty() | !brandRepository.existsById(brand.getId())){
+        if (brand.getBrandName().isEmpty() | brand.getUrl().isEmpty() | !brandRepository.existsById(brand.getId())){
             throw new Exception();
         }
         BrandResponse respuesta = new BrandResponse();

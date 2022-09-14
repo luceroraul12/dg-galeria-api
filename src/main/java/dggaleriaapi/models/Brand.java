@@ -2,7 +2,6 @@ package dggaleriaapi.models;
 
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 
@@ -18,15 +17,15 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "brands_name", nullable = false)
-    private String nombre;
+    private String brandName;
     @Column(name = "brands_url", columnDefinition = "TEXT",nullable = false)
-    private String enlace;
+    private String url;
     @Column(name = "brands_is_stocked")
     @ColumnDefault("true")
-    private Boolean estadoStock = true;
+    private Boolean isStocked = true;
 
-    public Brand(Long id, String nombre) {
+    public Brand(Long id, String brandName) {
         this.id = id;
-        this.nombre = nombre;
+        this.brandName = brandName;
     }
 }
