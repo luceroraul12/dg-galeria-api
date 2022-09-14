@@ -1,8 +1,8 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.responses.ClienteDTOResponse;
-import dggaleriaapi.services.ClienteService;
+import dggaleriaapi.responses.CustomerDTOResponse;
+import dggaleriaapi.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/cliente")
-public class ClienteController {
+@RequestMapping("/customer")
+public class CustomerController {
     @Autowired
-    ClienteService service;
+    CustomerService service;
     
     @GetMapping
-    public ResponseEntity<ClienteDTOResponse> getResumenByIdBrand(@RequestParam(name = "id-brand") Long idBrand){
-        ClienteDTOResponse resultado;
-        ResponseEntity<ClienteDTOResponse> respuesta;
+    public ResponseEntity<CustomerDTOResponse> getResumenByIdBrand(@RequestParam(name = "id-brand") Long idBrand){
+        CustomerDTOResponse resultado;
+        ResponseEntity<CustomerDTOResponse> respuesta;
 
         String successMessage = "resumen obtenido";
         String badMessage = "error al obtener resumen";
@@ -31,7 +31,7 @@ public class ClienteController {
             resultado.setMensaje(successMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.OK);
         } catch (Exception e) {
-            resultado = new ClienteDTOResponse();
+            resultado = new CustomerDTOResponse();
             resultado.setMensaje(badMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.BAD_REQUEST);
         }

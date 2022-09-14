@@ -1,6 +1,6 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.dto.ClienteDTO;
+import dggaleriaapi.dto.CustomerDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
 import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.Brand;
@@ -9,8 +9,8 @@ import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.repositories.BrandedTasteRepository;
 import dggaleriaapi.repositories.DrinkContaineredTasteRepository;
-import dggaleriaapi.responses.ClienteDTOResponse;
-import dggaleriaapi.services.ClienteService;
+import dggaleriaapi.responses.CustomerDTOResponse;
+import dggaleriaapi.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClienteServiceImp implements ClienteService {
+public class CustomerServiceImp implements CustomerService {
 
     @Autowired
     BrandRepository brandRepository;
@@ -30,16 +30,16 @@ public class ClienteServiceImp implements ClienteService {
 
 
     @Override
-    public ClienteDTOResponse obtenerResumenPorBrand(Brand brand) {
+    public CustomerDTOResponse obtenerResumenPorBrand(Brand brand) {
 
-        ClienteDTO cliente = new ClienteDTO();
-        ClienteDTOResponse respuesta = new ClienteDTOResponse();
+        CustomerDTO customer = new CustomerDTO();
+        CustomerDTOResponse respuesta = new CustomerDTOResponse();
 
-        cliente.setBrandElegida(brandRepository.findById(brand.getId()).get());
+        customer.setBrandElegida(brandRepository.findById(brand.getId()).get());
 
-        cliente.setTasteesResumidos(generarTasteesResumidos(brand.getId()));
+        customer.setTasteesResumidos(generarTasteesResumidos(brand.getId()));
 
-        respuesta.setResumen(cliente);
+        respuesta.setResumen(customer);
 
         return respuesta;
     }

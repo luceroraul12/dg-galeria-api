@@ -1,12 +1,12 @@
 package dggaleriaapi.responses;
 
-import dggaleriaapi.dto.ClienteDTO;
+import dggaleriaapi.dto.CustomerDTO;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ClienteDTOResponse {
-    private ClienteDTO resumen;
+public class CustomerDTOResponse {
+    private CustomerDTO resumen;
     private String mensaje;
 }

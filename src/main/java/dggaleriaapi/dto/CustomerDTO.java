@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ClienteDTO {
+public class CustomerDTO {
     private Brand brandElegida;
     private List<TasteResumenDTO> tasteesResumidos;
 }
