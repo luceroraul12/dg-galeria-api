@@ -1,7 +1,7 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.responses.BrandResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,87 +17,87 @@ public class BrandController {
     BrandService brandService;
 
     @GetMapping
-    public ResponseEntity<BrandResponse> getAll() {
-        String successMessage = "brands obtenidas";
-        String badMessage = "error al adquirir brands";
-        BrandResponse brandResponse = new BrandResponse();
-        ResponseEntity<BrandResponse> respuesta;
+    public ResponseEntity<StockDataResponse<Brand>> getAll() {
+        String succesMessage = "brand obtenidos";
+        String badMessage = "error al adquirir brand";
+        StockDataResponse<Brand>  brandResponse = new StockDataResponse<Brand> ();
+        ResponseEntity<StockDataResponse<Brand>> response;
         try {
             brandResponse = brandService.getAll();
-            brandResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
+            brandResponse.setMessage(succesMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 
-    @GetMapping(value = "/by-id")
-    public ResponseEntity<BrandResponse> getBrandById(@RequestParam(name = "id") Long idBrand) {
-        String successMessage = "brands obtenidas por id";
-        String badMessage = "error al adquirir brands por id";
-        BrandResponse brandResponse = new BrandResponse();
-        ResponseEntity<BrandResponse> respuesta;
+    @GetMapping(value = "/id")
+    public ResponseEntity<StockDataResponse<Brand>> getBrandById(@RequestBody Brand brand) {
+        String succesMessage = "brand obtenido por id";
+        String badMessage = "error al adquirir brand";
+        StockDataResponse<Brand>  brandResponse = new StockDataResponse<Brand> ();
+        ResponseEntity<StockDataResponse<Brand>> response;
         try {
-            brandResponse = brandService.getBrandById(idBrand);
-            brandResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
+            brandResponse = brandService.getBrandById(brand);
+            brandResponse.setMessage(succesMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 
     @PostMapping
-    public ResponseEntity<BrandResponse> saveBrand(@RequestBody Brand brand) {
-        String successMessage = "brand guardada";
-        String badMessage = "error al guardar brand";
-        BrandResponse brandResponse = new BrandResponse();
-        ResponseEntity<BrandResponse> respuesta;
+    public ResponseEntity<StockDataResponse<Brand>> saveBrand(@RequestBody Brand brand) {
+        String successMessage = "brand creado";
+        String badMessage = "error al crear brand";
+        StockDataResponse<Brand>  brandResponse = new StockDataResponse<Brand> ();
+        ResponseEntity<StockDataResponse<Brand>> response;
         try {
             brandResponse = brandService.saveBrand(brand);
-            brandResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
+            brandResponse.setMessage(successMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 
     @PutMapping
-    public ResponseEntity<BrandResponse> updateBrand(@RequestBody Brand brand) {
+    public ResponseEntity<StockDataResponse<Brand>> updateBrand(@RequestBody Brand brand) {
         String successMessage = "brand actualizada";
         String badMessage = "error al actualizar brand";
-        BrandResponse brandResponse = new BrandResponse();
-        ResponseEntity<BrandResponse> respuesta;
+        StockDataResponse<Brand>  brandResponse = new StockDataResponse<Brand> ();
+        ResponseEntity<StockDataResponse<Brand>> response;
         try {
             brandResponse = brandService.updateBrand(brand);
-            brandResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
+            brandResponse.setMessage(successMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 
     @DeleteMapping
-    public ResponseEntity<BrandResponse> deleteBrand(@RequestParam(name = "id") Long idBrand) {
+    public ResponseEntity<StockDataResponse<Brand>> deleteBrand(@RequestBody Brand brand) {
         String successMessage = "brand eliminada";
         String badMessage = "error al eliminar brand";
-        BrandResponse brandResponse = new BrandResponse();
-        ResponseEntity<BrandResponse> respuesta;
+        StockDataResponse<Brand>  brandResponse = new StockDataResponse<Brand> ();
+        ResponseEntity<StockDataResponse<Brand>> response;
         try {
-            brandResponse = brandService.deleteBrand(idBrand);
-            brandResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
+            brandResponse = brandService.deleteBrand(brand);
+            brandResponse.setMessage(successMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 }

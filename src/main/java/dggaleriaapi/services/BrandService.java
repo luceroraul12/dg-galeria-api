@@ -2,18 +2,19 @@ package dggaleriaapi.services;
 
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.responses.BrandResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface BrandService {
 
-    BrandResponse getAll();
+    StockDataResponse<Brand> getAll();
 
-    BrandResponse getBrandById(Long idBrand) throws Exception;
+    StockDataResponse<Brand> getBrandById(Brand brand) throws Exception;
 
-    BrandResponse saveBrand(Brand brand) throws Exception;
-    BrandResponse updateBrand(Brand brand) throws Exception;
-    BrandResponse deleteBrand(Long idBrand) throws Exception;
+    StockDataResponse<Brand> saveBrand(Brand brand) throws Exception;
+    StockDataResponse<Brand> updateBrand(Brand brand) throws Exception;
+    StockDataResponse<Brand> deleteBrand(Brand brand) throws Exception;
 
 
 }

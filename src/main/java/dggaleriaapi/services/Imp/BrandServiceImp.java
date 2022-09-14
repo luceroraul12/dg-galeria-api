@@ -3,9 +3,12 @@ package dggaleriaapi.services.Imp;
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.responses.BrandResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BrandServiceImp implements BrandService {
@@ -18,60 +21,60 @@ public class BrandServiceImp implements BrandService {
     }
 
     @Override
-    public BrandResponse getAll() {
-        BrandResponse respuesta = new BrandResponse();
-        respuesta.setBrandsTrabajadas(
+    public StockDataResponse<Brand> getAll() {
+        StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
+        respuesta.setStockDataResult(
                 brandRepository.findAll()
         );
         return respuesta;
     }
 
     @Override
-    public BrandResponse getBrandById(Long idBrand) throws Exception {
-        if (!brandRepository.existsById(idBrand)){
+    public StockDataResponse<Brand> getBrandById(Brand brand) throws Exception {
+        if (!brandRepository.existsById(brand.getId())){
             throw new Exception();
         }
-        BrandResponse respuesta = new BrandResponse();
-        respuesta.setBrandTrabajada(
-                brandRepository.findById(idBrand).get()
+        StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
+        respuesta.setStockDataResult(
+                List.of(brandRepository.findById(brand.getId()).get())
         );
         return respuesta;
     }
 
     @Override
-    public BrandResponse saveBrand(Brand brand) throws Exception {
+    public StockDataResponse<Brand> saveBrand(Brand brand) throws Exception {
         if (brand.getBrandName().isEmpty() | brand.getUrl().isEmpty()){
             throw new Exception();
         }
-        BrandResponse respuesta = new BrandResponse();
-        respuesta.setBrandTrabajada(
-                brandRepository.save(brand)
+        StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
+        respuesta.setStockDataResult(
+                List.of(brandRepository.save(brand))
         );
         return respuesta;
     }
 
     @Override
-    public BrandResponse updateBrand(Brand brand) throws Exception {
+    public StockDataResponse<Brand> updateBrand(Brand brand) throws Exception {
         if (brand.getBrandName().isEmpty() | brand.getUrl().isEmpty() | !brandRepository.existsById(brand.getId())){
             throw new Exception();
         }
-        BrandResponse respuesta = new BrandResponse();
-        respuesta.setBrandTrabajada(
-                brandRepository.save(brand)
+        StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
+        respuesta.setStockDataResult(
+                List.of(brandRepository.save(brand))
         );
         return respuesta;
     }
 
     @Override
-    public BrandResponse deleteBrand(Long idBrand) throws Exception {
-        if (!brandRepository.existsById(idBrand)){
+    public StockDataResponse<Brand> deleteBrand(Brand brand) throws Exception {
+        if (!brandRepository.existsById(brand.getId())){
             throw new Exception();
         }
-        BrandResponse respuesta = new BrandResponse();
-        Brand brand = new Brand();
-        brand.setId(idBrand);
-        brandRepository.delete(brand);
-        respuesta.setBrandTrabajada(brand);
+        StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
+        brandRepository.deleteById(brand.getId());
+        respuesta.setStockDataResult(
+                List.of(brand)
+        );
         return respuesta;
     }
 }
