@@ -36,8 +36,8 @@ public class DrinkContainerController {
 
     @PostMapping
     public ResponseEntity<StockDataResponse<DrinkContainer>> saveDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
-        String succesMessage = "drinkContainers obtenidos";
-        String badMessage = "error al adquirir drinkContainers";
+        String succesMessage = "drinkContainer guardado";
+        String badMessage = "error al guardar drinkContainer";
         StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
         ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
@@ -52,8 +52,8 @@ public class DrinkContainerController {
     }
     @PutMapping
     public ResponseEntity<StockDataResponse<DrinkContainer>> updateDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
-        String succesMessage = "drinkContainers obtenidos";
-        String badMessage = "error al adquirir drinkContainers";
+        String succesMessage = "drinkContainer actualizado";
+        String badMessage = "error al actualizar drinkContainer";
         StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
         ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
@@ -69,8 +69,8 @@ public class DrinkContainerController {
 
     @DeleteMapping
     public ResponseEntity<StockDataResponse<DrinkContainer>> deleteDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
-        String succesMessage = "drinkContainers obtenidos";
-        String badMessage = "error al adquirir drinkContainers";
+        String succesMessage = "drinkContainer eliminado";
+        String badMessage = "error al eliminar drinkContainer";
         StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
         ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
