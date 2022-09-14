@@ -20,96 +20,96 @@ public class SaborAsociadoController {
 
     @GetMapping
     public ResponseEntity<SaborAsociadoResponse> getAll() {
-        String mensajeAfirmativo = "sabores asociados encontrados";
-        String mensajeNegativo = "error al buscar sabores asociados";
+        String successMessage = "sabores asociados encontrados";
+        String badMessage = "error al buscar sabores asociados";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
             saborAsociadoResponse = saborAsociadoService.getAll();
-            saborAsociadoResponse.setMensaje(mensajeAfirmativo);
+            saborAsociadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborAsociadoResponse.setMensaje(mensajeNegativo);
+            saborAsociadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @GetMapping(value = "/por-brand")
     public ResponseEntity<SaborAsociadoResponse> getAllByIdBrand(@RequestParam(name = "id") Long idBrand) {
-        String mensajeAfirmativo = "sabores asociados por brand encontrados";
-        String mensajeNegativo = "error al buscar sabores asociados por brand";
+        String successMessage = "sabores asociados por brand encontrados";
+        String badMessage = "error al buscar sabores asociados por brand";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
             saborAsociadoResponse = saborAsociadoService.getAllByIdBrand(idBrand);
-            saborAsociadoResponse.setMensaje(mensajeAfirmativo);
+            saborAsociadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborAsociadoResponse.setMensaje(mensajeNegativo);
+            saborAsociadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PostMapping
     public ResponseEntity<SaborAsociadoResponse> save(@RequestBody SaborAsociado saborAsociado) {
-        String mensajeAfirmativo = "sabor asociado creado";
-        String mensajeNegativo = "error al crear sabor asociado";
+        String successMessage = "sabor asociado creado";
+        String badMessage = "error al crear sabor asociado";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
             saborAsociadoResponse = saborAsociadoService.save(saborAsociado);
-            saborAsociadoResponse.setMensaje(mensajeAfirmativo);
+            saborAsociadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborAsociadoResponse.setMensaje(mensajeNegativo);
+            saborAsociadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PostMapping(value = "/monton")
     public ResponseEntity<SaborAsociadoResponse> savePorMonton(@RequestBody List<SaborAsociado> saboresAsociados) {
-        String mensajeAfirmativo = "sabores asociados por brand creados";
-        String mensajeNegativo = "error al crear sabores asociados";
+        String successMessage = "sabores asociados por brand creados";
+        String badMessage = "error al crear sabores asociados";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
             saborAsociadoResponse = saborAsociadoService.savePorMonton(saboresAsociados);
-            saborAsociadoResponse.setMensaje(mensajeAfirmativo);
+            saborAsociadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborAsociadoResponse.setMensaje(mensajeNegativo);
+            saborAsociadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PutMapping
     public ResponseEntity<SaborAsociadoResponse> update(@RequestBody SaborAsociado saborAsociado) {
-        String mensajeAfirmativo = "sabor asociado actualizado";
-        String mensajeNegativo = "error al actualizar sabor asociado";
+        String successMessage = "sabor asociado actualizado";
+        String badMessage = "error al actualizar sabor asociado";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
             saborAsociadoResponse = saborAsociadoService.update(saborAsociado);
-            saborAsociadoResponse.setMensaje(mensajeAfirmativo);
+            saborAsociadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborAsociadoResponse.setMensaje(mensajeNegativo);
+            saborAsociadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @DeleteMapping
     public ResponseEntity<SaborAsociadoResponse> delete(@RequestBody SaborAsociado saborAsociado) {
-        String mensajeAfirmativo = "sabor asociado eliminado";
-        String mensajeNegativo = "error al eliminar sabor asociado";
+        String successMessage = "sabor asociado eliminado";
+        String badMessage = "error al eliminar sabor asociado";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
             saborAsociadoResponse = saborAsociadoService.delete(saborAsociado);
-            saborAsociadoResponse.setMensaje(mensajeAfirmativo);
+            saborAsociadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborAsociadoResponse.setMensaje(mensajeNegativo);
+            saborAsociadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;

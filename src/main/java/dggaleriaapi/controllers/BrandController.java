@@ -18,16 +18,16 @@ public class BrandController {
 
     @GetMapping
     public ResponseEntity<BrandResponse> getAll() {
-        String mensajeAfirmativo = "brands obtenidas";
-        String mensajeNegativo = "error al adquirir brands";
+        String successMessage = "brands obtenidas";
+        String badMessage = "error al adquirir brands";
         BrandResponse brandResponse = new BrandResponse();
         ResponseEntity<BrandResponse> respuesta;
         try {
             brandResponse = brandService.getAll();
-            brandResponse.setMensaje(mensajeAfirmativo);
+            brandResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(mensajeNegativo);
+            brandResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -35,16 +35,16 @@ public class BrandController {
 
     @GetMapping(value = "/by-id")
     public ResponseEntity<BrandResponse> getBrandById(@RequestParam(name = "id") Long idBrand) {
-        String mensajeAfirmativo = "brands obtenidas por id";
-        String mensajeNegativo = "error al adquirir brands por id";
+        String successMessage = "brands obtenidas por id";
+        String badMessage = "error al adquirir brands por id";
         BrandResponse brandResponse = new BrandResponse();
         ResponseEntity<BrandResponse> respuesta;
         try {
             brandResponse = brandService.getBrandById(idBrand);
-            brandResponse.setMensaje(mensajeAfirmativo);
+            brandResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(mensajeNegativo);
+            brandResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -52,16 +52,16 @@ public class BrandController {
 
     @PostMapping
     public ResponseEntity<BrandResponse> saveBrand(@RequestBody Brand brand) {
-        String mensajeAfirmativo = "brand guardada";
-        String mensajeNegativo = "error al guardar brand";
+        String successMessage = "brand guardada";
+        String badMessage = "error al guardar brand";
         BrandResponse brandResponse = new BrandResponse();
         ResponseEntity<BrandResponse> respuesta;
         try {
             brandResponse = brandService.saveBrand(brand);
-            brandResponse.setMensaje(mensajeAfirmativo);
+            brandResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(mensajeNegativo);
+            brandResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -69,16 +69,16 @@ public class BrandController {
 
     @PutMapping
     public ResponseEntity<BrandResponse> updateBrand(@RequestBody Brand brand) {
-        String mensajeAfirmativo = "brand actualizada";
-        String mensajeNegativo = "error al actualizar brand";
+        String successMessage = "brand actualizada";
+        String badMessage = "error al actualizar brand";
         BrandResponse brandResponse = new BrandResponse();
         ResponseEntity<BrandResponse> respuesta;
         try {
             brandResponse = brandService.updateBrand(brand);
-            brandResponse.setMensaje(mensajeAfirmativo);
+            brandResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(mensajeNegativo);
+            brandResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -86,16 +86,16 @@ public class BrandController {
 
     @DeleteMapping
     public ResponseEntity<BrandResponse> deleteBrand(@RequestParam(name = "id") Long idBrand) {
-        String mensajeAfirmativo = "brand eliminada";
-        String mensajeNegativo = "error al eliminar brand";
+        String successMessage = "brand eliminada";
+        String badMessage = "error al eliminar brand";
         BrandResponse brandResponse = new BrandResponse();
         ResponseEntity<BrandResponse> respuesta;
         try {
             brandResponse = brandService.deleteBrand(idBrand);
-            brandResponse.setMensaje(mensajeAfirmativo);
+            brandResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
-            brandResponse.setMensaje(mensajeNegativo);
+            brandResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<BrandResponse>(brandResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;

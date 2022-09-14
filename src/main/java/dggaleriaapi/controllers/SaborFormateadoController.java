@@ -20,80 +20,80 @@ public class SaborFormateadoController {
 
     @GetMapping
     public ResponseEntity<SaborFormateadoResponse> getAll() {
-        String mensajeAfirmativo = "sabores formateados encontrados";
-        String mensajeNegativo = "error al buscar sabores formateados";
+        String successMessage = "sabores formateados encontrados";
+        String badMessage = "error al buscar sabores formateados";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.getAll();
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @GetMapping("/sabor-asociado")
     public ResponseEntity<SaborFormateadoResponse> getBySaborAsociadoId(@RequestBody SaborFormateado saborFormateado) {
-        String mensajeAfirmativo = "sabores encontrados";
-        String mensajeNegativo = "error al buscar sabores";
+        String successMessage = "sabores encontrados";
+        String badMessage = "error al buscar sabores";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.getBySaborAsociadoId(saborFormateado);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @GetMapping("/por-brand")
     public ResponseEntity<SaborFormateadoResponse> getAllByIdBrand(@RequestParam(name = "id") Long idBrand) {
-        String mensajeAfirmativo = "sabores encontrados";
-        String mensajeNegativo = "error al buscar sabores";
+        String successMessage = "sabores encontrados";
+        String badMessage = "error al buscar sabores";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.getAllByIdBrand(idBrand);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PostMapping
     public ResponseEntity<SaborFormateadoResponse> save(@RequestBody SaborFormateado saborFormateado) {
-        String mensajeAfirmativo = "sabor creado";
-        String mensajeNegativo = "error al crear sabor";
+        String successMessage = "sabor creado";
+        String badMessage = "error al crear sabor";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.save(saborFormateado);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PostMapping("/save-inicial")
     public ResponseEntity<SaborFormateadoResponse> saveInicial(@RequestBody SaborFormateado saborFormateado) {
-        String mensajeAfirmativo = "sabores formateados creados inicialmente";
-        String mensajeNegativo = "error al crear sabores formateados inicialmente";
+        String successMessage = "sabores formateados creados inicialmente";
+        String badMessage = "error al crear sabores formateados inicialmente";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.saveInicial(saborFormateado);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -101,16 +101,16 @@ public class SaborFormateadoController {
 
     @PostMapping("/save-monton")
     public ResponseEntity<SaborFormateadoResponse> savePorMonton(@RequestBody List<SaborFormateado> saboresFormateados) {
-        String mensajeAfirmativo = "sabores formateados por monton creados";
-        String mensajeNegativo = "error al crear sabores formateados por monton";
+        String successMessage = "sabores formateados por monton creados";
+        String badMessage = "error al crear sabores formateados por monton";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.savePorMonton(saboresFormateados);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -118,32 +118,32 @@ public class SaborFormateadoController {
 
     @PostMapping("/save-monton-inicial")
     public ResponseEntity<SaborFormateadoResponse> savePorMontonInicial(@RequestBody List<SaborFormateado> saboresFormateados) {
-        String mensajeAfirmativo = "sabores formateados por monton inicial creados";
-        String mensajeNegativo = "error al crear sabores formateados inicial por monton";
+        String successMessage = "sabores formateados por monton inicial creados";
+        String badMessage = "error al crear sabores formateados inicial por monton";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.savePorMontonInicial(saboresFormateados);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PutMapping
     public ResponseEntity<SaborFormateadoResponse> update(@RequestBody SaborFormateado saborFormateado) {
-        String mensajeAfirmativo = "sabore formateado actualizado";
-        String mensajeNegativo = "error al actualizar sabor formateado";
+        String successMessage = "sabore formateado actualizado";
+        String badMessage = "error al actualizar sabor formateado";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.update(saborFormateado);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -151,16 +151,16 @@ public class SaborFormateadoController {
 
     @DeleteMapping
     public ResponseEntity<SaborFormateadoResponse> delete(@RequestBody SaborFormateado saborFormateado) {
-        String mensajeAfirmativo = "sabor formateado eliminado";
-        String mensajeNegativo = "error al borrar sabor formateado";
+        String successMessage = "sabor formateado eliminado";
+        String badMessage = "error al borrar sabor formateado";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
             saborFormateadoResponse = saborFormateadoService.delete(saborFormateado);
-            saborFormateadoResponse.setMensaje(mensajeAfirmativo);
+            saborFormateadoResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            saborFormateadoResponse.setMensaje(mensajeNegativo);
+            saborFormateadoResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;

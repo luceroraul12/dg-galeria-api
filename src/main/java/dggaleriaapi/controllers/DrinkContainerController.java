@@ -36,32 +36,32 @@ public class DrinkContainerController {
 
     @PostMapping
     public ResponseEntity<DrinkContainerResponse> saveDrinkContainer(@RequestParam(name = "containerName") String containerName) {
-        String mensajeAfirmativo = "drinkContainer guardado";
-        String mensajeNegativo = "error al intentar guardar drinkContainer";
+        String successMessage = "drinkContainer guardado";
+        String badMessage = "error al intentar guardar drinkContainer";
         DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
         ResponseEntity<DrinkContainerResponse> respuesta;
         try {
             drinkContainerResponse = drinkContainerService.saveDrinkContainer(containerName);
-            drinkContainerResponse.setMensaje(mensajeAfirmativo);
+            drinkContainerResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
-            drinkContainerResponse.setMensaje(mensajeNegativo);
+            drinkContainerResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
     }
     @PutMapping
     public ResponseEntity<DrinkContainerResponse> updateDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
-        String mensajeAfirmativo = "drinkContainer actualizado";
-        String mensajeNegativo = "error al intentar actualizar drinkContainer";
+        String successMessage = "drinkContainer actualizado";
+        String badMessage = "error al intentar actualizar drinkContainer";
         DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
         ResponseEntity<DrinkContainerResponse> respuesta;
         try {
             drinkContainerResponse = drinkContainerService.updateDrinkContainer(drinkContainer);
-            drinkContainerResponse.setMensaje(mensajeAfirmativo);
+            drinkContainerResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
-            drinkContainerResponse.setMensaje(mensajeNegativo);
+            drinkContainerResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
@@ -69,16 +69,16 @@ public class DrinkContainerController {
 
     @DeleteMapping
     public ResponseEntity<DrinkContainerResponse> deleteDrinkContainer(@RequestParam(value = "id") Long idDrinkContainer) {
-        String mensajeAfirmativo = "drinkContainer eliminado";
-        String mensajeNegativo = "error al intentar eliminar drinkContainer";
+        String successMessage = "drinkContainer eliminado";
+        String badMessage = "error al intentar eliminar drinkContainer";
         DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
         ResponseEntity<DrinkContainerResponse> respuesta;
         try {
             drinkContainerResponse = drinkContainerService.deleteDrinkContainer(idDrinkContainer);
-            drinkContainerResponse.setMensaje(mensajeAfirmativo);
+            drinkContainerResponse.setMensaje(successMessage);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
-            drinkContainerResponse.setMensaje(mensajeNegativo);
+            drinkContainerResponse.setMensaje(badMessage);
             respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
         return respuesta;

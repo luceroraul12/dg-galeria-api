@@ -20,19 +20,19 @@ public class ClienteController {
         ClienteDTOResponse resultado;
         ResponseEntity<ClienteDTOResponse> respuesta;
 
-        String mensajeAfirmativo = "resumen obtenido";
-        String mensajeNegativo = "error al obtener resumen";
+        String successMessage = "resumen obtenido";
+        String badMessage = "error al obtener resumen";
 
         Brand brand = new Brand();
         brand.setId(idBrand);
 
         try {
             resultado = service.obtenerResumenPorBrand(brand);
-            resultado.setMensaje(mensajeAfirmativo);
+            resultado.setMensaje(successMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             resultado = new ClienteDTOResponse();
-            resultado.setMensaje(mensajeNegativo);
+            resultado.setMensaje(badMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
