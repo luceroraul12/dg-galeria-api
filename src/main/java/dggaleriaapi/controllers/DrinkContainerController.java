@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/drinkcontainers")
+@RequestMapping(value = "/drink-containers")
 public class DrinkContainerController {
 
     @Autowired
