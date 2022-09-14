@@ -17,11 +17,11 @@ public class Brand {
     @Column(name = "brands_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "brands_name", nullable = false)
     private String nombre;
-    @Column(name = "enlace", columnDefinition = "TEXT",nullable = false)
+    @Column(name = "brands_url", columnDefinition = "TEXT",nullable = false)
     private String enlace;
-    @Column(name = "estado_stock")
+    @Column(name = "brands_is_stocked")
     @ColumnDefault("true")
     private Boolean estadoStock = true;
 
