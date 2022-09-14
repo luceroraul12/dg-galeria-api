@@ -1,6 +1,6 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborFormateado;
 import dggaleriaapi.repositories.FormatoRepository;
@@ -53,7 +53,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     @Override
     public SaborFormateadoResponse save(SaborFormateado saborFormateado) throws Exception {
         boolean esSaborExistente = saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
-                saborFormateado.getFormato().getId(),
+                saborFormateado.getDrinkContainer().getId(),
                 saborFormateado.getSaborAsociado().getId()
         );
         if (esSaborExistente){
@@ -104,7 +104,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     @Override
     public SaborFormateadoResponse update(SaborFormateado saborFormateado) throws Exception {
         if (saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
-                saborFormateado.getFormato().getId(),
+                saborFormateado.getDrinkContainer().getId(),
                 saborFormateado.getSaborAsociado().getId()
         )){
             throw new Exception();
@@ -130,7 +130,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
 
     private List<SaborFormateado> generarFormatosParaSaborAsociado(SaborFormateado saborFormateado) {
         List<SaborFormateado> resultado = new ArrayList<>();
-        List<Formato> formatosDisponibles = formatoRepository.findAll();
+        List<DrinkContainer> formatosDisponibles = formatoRepository.findAll();
 
 
         formatosDisponibles.forEach(formato -> {
@@ -142,16 +142,16 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
         return resultado;
     }
 
-    private SaborFormateado generarSaborInmutable(Formato formato, SaborFormateado saborFormateado) {
+    private SaborFormateado generarSaborInmutable(DrinkContainer drinkContainer, SaborFormateado saborFormateado) {
 
         SaborFormateado sabor = new SaborFormateado();
         SaborAsociado saborAsociado = new SaborAsociado();
-        Formato formato1 = new Formato();
+        DrinkContainer drinkContainer1 = new DrinkContainer();
 
-        formato1.setId(formato.getId().longValue());
+        drinkContainer1.setId(drinkContainer.getId().longValue());
         saborAsociado.setId(saborFormateado.getSaborAsociado().getId());
         sabor.setSaborAsociado(saborAsociado);
-        sabor.setFormato(formato1);
+        sabor.setDrinkContainer(drinkContainer1);
 
         return sabor;
     }

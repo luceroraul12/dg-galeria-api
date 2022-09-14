@@ -14,21 +14,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "formatos")
-public class Formato {
+public class DrinkContainer extends StockData{
     @Id
     @Column(name = "formatos_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name ="tipo", nullable = false)
-    private String tipo;
+    private String containerName;
 
     @Column(name ="estado_stock")
     @ColumnDefault("true")
-    private Boolean estadoStock = true;
+    private Boolean isStocked = true;
 
-    public Formato(Long id, String tipo) {
+    public DrinkContainer(Long id, String containerName) {
         this.id = id;
-        this.tipo = tipo;
+        this.containerName = containerName;
     }
 }

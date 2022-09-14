@@ -1,7 +1,8 @@
 package dggaleriaapi.controllers;
 
-import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.responses.FormatoResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.FormatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,20 +18,20 @@ public class FormatoController {
     FormatoService formatoService;
 
     @GetMapping
-    public ResponseEntity<FormatoResponse> getAllFormatos() {
-        String mensajeAfirmativo = "formatos obtenidos";
-        String mensajeNegativo = "error al adquirir formatos";
-        FormatoResponse formatoResponse = new FormatoResponse();
-        ResponseEntity<FormatoResponse> respuesta;
+    public ResponseEntity<StockDataResponse<DrinkContainer>> getAllFormatos() {
+        String succesMessage = "formatos obtenidos";
+        String badMessage = "error al adquirir formatos";
+        StockDataResponse formatoResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
             formatoResponse = formatoService.getAllFormatos();
-            formatoResponse.setMensaje(mensajeAfirmativo);
-            respuesta = new ResponseEntity<FormatoResponse>(formatoResponse, HttpStatus.OK);
+            formatoResponse.setMessage(succesMessage);
+            response = new ResponseEntity<StockDataResponse<DrinkContainer>>(formatoResponse, HttpStatus.OK);
         } catch (Exception e) {
-            formatoResponse.setMensaje(mensajeNegativo);
-            respuesta = new ResponseEntity<FormatoResponse>(formatoResponse, HttpStatus.BAD_REQUEST);
+            formatoResponse.setMessage(badMessage);
+            response = new ResponseEntity<StockDataResponse<DrinkContainer>>(formatoResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 
     @PostMapping
@@ -50,13 +51,13 @@ public class FormatoController {
         return respuesta;
     }
     @PutMapping
-    public ResponseEntity<FormatoResponse> updateFormato(@RequestBody Formato formato) {
-        String mensajeAfirmativo = "formato actualizado";
-        String mensajeNegativo = "error al intentar actualizar formato";
+    public ResponseEntity<FormatoResponse> updateFormato(@RequestBody DrinkContainer drinkContainer) {
+        String mensajeAfirmativo = "drinkContainer actualizado";
+        String mensajeNegativo = "error al intentar actualizar drinkContainer";
         FormatoResponse formatoResponse = new FormatoResponse();
         ResponseEntity<FormatoResponse> respuesta;
         try {
-            formatoResponse = formatoService.updateFormato(formato);
+            formatoResponse = formatoService.updateFormato(drinkContainer);
             formatoResponse.setMensaje(mensajeAfirmativo);
             respuesta = new ResponseEntity<FormatoResponse>(formatoResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -67,7 +68,7 @@ public class FormatoController {
     }
 
     @DeleteMapping
-    public ResponseEntity<FormatoResponse> deleteFormato(@RequestParam(value = "id-formato") Long idFormato) {
+    public ResponseEntity<FormatoResponse> deleteFormato(@RequestParam(value = "id") Long idFormato) {
         String mensajeAfirmativo = "formato eliminado";
         String mensajeNegativo = "error al intentar eliminar formato";
         FormatoResponse formatoResponse = new FormatoResponse();

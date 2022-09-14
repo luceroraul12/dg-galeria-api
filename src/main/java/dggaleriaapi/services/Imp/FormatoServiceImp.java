@@ -1,8 +1,9 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.repositories.FormatoRepository;
 import dggaleriaapi.responses.FormatoResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.FormatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class FormatoServiceImp implements FormatoService {
     }
 
     @Override
-    public FormatoResponse getAllFormatos() {
-        FormatoResponse respuesta = new FormatoResponse();
-        respuesta.setFormatosTrabajados(
+    public StockDataResponse getAllFormatos() {
+        StockDataResponse response = new StockDataResponse<>();
+        response.setStockDataResult(
                 formatoRepository.findAll()
         );
-        return respuesta;
+        return response;
     }
 
     @Override
@@ -31,25 +32,25 @@ public class FormatoServiceImp implements FormatoService {
         if (tipo.isEmpty()){
             throw new Exception();
         }
-        Formato formato = new Formato();
+        DrinkContainer drinkContainer = new DrinkContainer();
         FormatoResponse respuesta = new FormatoResponse();
 
-        formato.setTipo(tipo);
-        respuesta.setFormatoTrabajado(
-                formatoRepository.save(formato)
+        drinkContainer.setContainerName(tipo);
+        respuesta.setDrinkContainerTrabajado(
+                formatoRepository.save(drinkContainer)
         );
         return respuesta;
     }
 
     @Override
-    public FormatoResponse updateFormato(Formato formato) throws Exception {
-        if (!formatoRepository.existsById(formato.getId()) | formato.getTipo().isEmpty()){
+    public FormatoResponse updateFormato(DrinkContainer drinkContainer) throws Exception {
+        if (!formatoRepository.existsById(drinkContainer.getId()) | drinkContainer.getContainerName().isEmpty()){
             throw new Exception();
         }
         FormatoResponse respuesta = new FormatoResponse();
 
-        respuesta.setFormatoTrabajado(
-                formatoRepository.save(formato)
+        respuesta.setDrinkContainerTrabajado(
+                formatoRepository.save(drinkContainer)
         );
         return respuesta;
     }
@@ -57,13 +58,13 @@ public class FormatoServiceImp implements FormatoService {
     @Override
     public FormatoResponse deleteFormato(Long idFormato) throws Exception {
         if (!formatoRepository.existsById(idFormato)){
-            throw new Exception("formato no existente");
+            throw new Exception("drinkContainer no existente");
         }
-        Formato formato = new Formato();
+        DrinkContainer drinkContainer = new DrinkContainer();
         FormatoResponse respuesta = new FormatoResponse();
-        formato.setId(idFormato);
-        formatoRepository.delete(formato);
-        respuesta.setFormatoTrabajado(formato);
+        drinkContainer.setId(idFormato);
+        formatoRepository.delete(drinkContainer);
+        respuesta.setDrinkContainerTrabajado(drinkContainer);
         return respuesta;
     }
 }

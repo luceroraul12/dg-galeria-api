@@ -19,7 +19,7 @@ public class SaborFormateado {
     private Boolean estadoStock = true;
     @ManyToOne
     @JoinColumn(name = "formatos_id_fk")
-    private Formato formato;
+    private DrinkContainer drinkContainer;
     @ManyToOne
     @JoinColumn(name = "sabores_asociados_id_fk")
     private SaborAsociado saborAsociado;

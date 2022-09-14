@@ -75,7 +75,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.controllers;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Formato;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.DrinkContainer;
 <i class="no-highlight">4</i>&nbsp;import dggaleriaapi.models.Marca;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.models.SaborAsociado;
 <i class="no-highlight">6</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
@@ -130,10 +130,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">55</i>&nbsp;    }
 <i class="no-highlight">56</i>&nbsp;
 <i class="no-highlight">57</i>&nbsp;    @PutMapping(value = &quot;/formatos&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">58</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateFormato(@RequestBody Formato formato){
+<i class="no-highlight">58</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateFormato(@RequestBody Formato drinkContainer){
 <i class="no-highlight">59</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">60</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">61</i>&nbsp;            GaleriaResponse resultado = formatoService.updateFormato(formato);</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;            GaleriaResponse resultado = formatoService.updateFormato(drinkContainer);</b>
 <b class="fc"><i class="no-highlight">62</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">63</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">64</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -142,7 +142,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">67</i>&nbsp;    }
 <i class="no-highlight">68</i>&nbsp;
 <i class="no-highlight">69</i>&nbsp;    @DeleteMapping(value = &quot;/formatos&quot;)
-<i class="no-highlight">70</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteFormato(@RequestParam(name = &quot;id-formato&quot;) Long idFormato){
+<i class="no-highlight">70</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteFormato(@RequestParam(name = &quot;id-drinkContainer&quot;) Long idFormato){
 <i class="no-highlight">71</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">72</i>&nbsp;        try {
 <b class="fc"><i class="no-highlight">73</i>&nbsp;            GaleriaResponse resultado = formatoService.deleteFormato(idFormato);</b>

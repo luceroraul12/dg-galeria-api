@@ -1,6 +1,6 @@
 package dggaleriaapi.dto;
 
-import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.DrinkContainer;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,5 +9,5 @@ import java.util.List;
 @Builder
 public class SaborResumenDTO {
     private String nombreSabor;
-    private List<Formato> formatosDisponibles;
+    private List<DrinkContainer> formatosDisponibles;
 }

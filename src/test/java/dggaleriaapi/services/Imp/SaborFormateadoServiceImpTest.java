@@ -1,6 +1,6 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.Formato;
+import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborFormateado;
 import dggaleriaapi.responses.SaborFormateadoResponse;
@@ -64,12 +64,12 @@ class SaborFormateadoServiceImpTest {
     @Test
     @Order(3)
     void save() {
-        Formato formato = new Formato();
-        formato.setId(1L);
+        DrinkContainer drinkContainer = new DrinkContainer();
+        drinkContainer.setId(1L);
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(2L);
         SaborFormateado saborFormateado = new SaborFormateado();
-        saborFormateado.setFormato(formato);
+        saborFormateado.setDrinkContainer(drinkContainer);
         saborFormateado.setSaborAsociado(saborAsociado);
 
         SaborFormateadoResponse respuesta = null;
@@ -85,12 +85,12 @@ class SaborFormateadoServiceImpTest {
     @Test
     @Order(4)
     void saveInicial() throws Exception {
-        Formato formato = new Formato();
-        formato.setId(1L);
+        DrinkContainer drinkContainer = new DrinkContainer();
+        drinkContainer.setId(1L);
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(2L);
         SaborFormateado saborFormateado = new SaborFormateado();
-        saborFormateado.setFormato(formato);
+        saborFormateado.setDrinkContainer(drinkContainer);
         saborFormateado.setSaborAsociado(saborAsociado);
 
         SaborFormateadoResponse respuesta = saborFormateadoService.saveInicial(saborFormateado);
@@ -101,20 +101,20 @@ class SaborFormateadoServiceImpTest {
     @Test
     @Order(5)
     void savePorMonton() throws Exception {
-        Formato formato1 = new Formato();
-        formato1.setId(1L);
+        DrinkContainer drinkContainer1 = new DrinkContainer();
+        drinkContainer1.setId(1L);
         SaborAsociado saborAsociado1 = new SaborAsociado();
         saborAsociado1.setId(2L);
         SaborFormateado saborFormateado1 = new SaborFormateado();
-        saborFormateado1.setFormato(formato1);
+        saborFormateado1.setDrinkContainer(drinkContainer1);
         saborFormateado1.setSaborAsociado(saborAsociado1);
 
-        Formato formato2 = new Formato();
-        formato2.setId(1L);
+        DrinkContainer drinkContainer2 = new DrinkContainer();
+        drinkContainer2.setId(1L);
         SaborAsociado saborAsociado2 = new SaborAsociado();
         saborAsociado2.setId(2L);
         SaborFormateado saborFormateado2 = new SaborFormateado();
-        saborFormateado2.setFormato(formato2);
+        saborFormateado2.setDrinkContainer(drinkContainer2);
         saborFormateado2.setSaborAsociado(saborAsociado2);
 
         List<SaborFormateado> saboresFormateados = Arrays.asList(saborFormateado1, saborFormateado2);
@@ -129,20 +129,20 @@ class SaborFormateadoServiceImpTest {
     @Test
     @Order(6)
     void savePorMontonInicial() throws Exception {
-        Formato formato1 = new Formato();
-        formato1.setId(1L);
+        DrinkContainer drinkContainer1 = new DrinkContainer();
+        drinkContainer1.setId(1L);
         SaborAsociado saborAsociado1 = new SaborAsociado();
         saborAsociado1.setId(2L);
         SaborFormateado saborFormateado1 = new SaborFormateado();
-        saborFormateado1.setFormato(formato1);
+        saborFormateado1.setDrinkContainer(drinkContainer1);
         saborFormateado1.setSaborAsociado(saborAsociado1);
 
-        Formato formato2 = new Formato();
-        formato2.setId(1L);
+        DrinkContainer drinkContainer2 = new DrinkContainer();
+        drinkContainer2.setId(1L);
         SaborAsociado saborAsociado2 = new SaborAsociado();
         saborAsociado2.setId(2L);
         SaborFormateado saborFormateado2 = new SaborFormateado();
-        saborFormateado2.setFormato(formato2);
+        saborFormateado2.setDrinkContainer(drinkContainer2);
         saborFormateado2.setSaborAsociado(saborAsociado2);
 
         List<SaborFormateado> saboresFormateados = Arrays.asList(saborFormateado1, saborFormateado2);
@@ -155,13 +155,13 @@ class SaborFormateadoServiceImpTest {
     @Test
     @Order(7)
     void update() throws Exception {
-        Formato formato = new Formato();
-        formato.setId(1L);
+        DrinkContainer drinkContainer = new DrinkContainer();
+        drinkContainer.setId(1L);
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(2L);
         SaborFormateado saborFormateado = new SaborFormateado();
         saborFormateado.setId(1L);
-        saborFormateado.setFormato(formato);
+        saborFormateado.setDrinkContainer(drinkContainer);
         saborFormateado.setSaborAsociado(saborAsociado);
 
         SaborFormateadoResponse respuesta = saborFormateadoService.update(saborFormateado);
@@ -169,7 +169,7 @@ class SaborFormateadoServiceImpTest {
         assertEquals(1, respuesta.getSaborFormateadoTrabajado().getId());
         assertEquals(2, respuesta.getSaborFormateadoTrabajado().getSaborAsociado().getId());
         assertEquals(true, respuesta.getSaborFormateadoTrabajado().getEstadoStock());
-        assertEquals(1, respuesta.getSaborFormateadoTrabajado().getFormato().getId());
+        assertEquals(1, respuesta.getSaborFormateadoTrabajado().getDrinkContainer().getId());
     }
 
     @Test

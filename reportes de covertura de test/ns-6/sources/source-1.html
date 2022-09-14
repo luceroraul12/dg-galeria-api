@@ -75,7 +75,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.services.Imp;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Formato;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.DrinkContainer;
 <i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.FormatoRepository;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
 <i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.FormatoService;
@@ -103,33 +103,33 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    @Override
 <i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveFormato(String tipo) {
-<b class="fc"><i class="no-highlight">31</i>&nbsp;        Formato formato = new Formato();</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        Formato drinkContainer = new Formato();</b>
 <b class="fc"><i class="no-highlight">32</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
 <i class="no-highlight">33</i>&nbsp;
-<b class="fc"><i class="no-highlight">34</i>&nbsp;        formato.setTipo(tipo);</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        drinkContainer.setTipo(tipo);</b>
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        respuesta.setFormatoTrabajado(</b>
-<b class="fc"><i class="no-highlight">36</i>&nbsp;                formatoRepository.save(formato)</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;                formatoRepository.save(drinkContainer)</b>
 <i class="no-highlight">37</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">38</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">39</i>&nbsp;    }
 <i class="no-highlight">40</i>&nbsp;
 <i class="no-highlight">41</i>&nbsp;    @Override
-<i class="no-highlight">42</i>&nbsp;    public GaleriaResponse updateFormato(Formato formato) {
+<i class="no-highlight">42</i>&nbsp;    public GaleriaResponse updateFormato(Formato drinkContainer) {
 <b class="fc"><i class="no-highlight">43</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
 <i class="no-highlight">44</i>&nbsp;
 <b class="fc"><i class="no-highlight">45</i>&nbsp;        respuesta.setFormatoTrabajado(</b>
-<b class="fc"><i class="no-highlight">46</i>&nbsp;                formatoRepository.save(formato)</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;                formatoRepository.save(drinkContainer)</b>
 <i class="no-highlight">47</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">48</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">49</i>&nbsp;    }
 <i class="no-highlight">50</i>&nbsp;
 <i class="no-highlight">51</i>&nbsp;    @Override
 <i class="no-highlight">52</i>&nbsp;    public GaleriaResponse deleteFormato(Long idFormato) {
-<b class="fc"><i class="no-highlight">53</i>&nbsp;        Formato formato = new Formato();</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        Formato drinkContainer = new Formato();</b>
 <b class="fc"><i class="no-highlight">54</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">55</i>&nbsp;        formato.setId(idFormato);</b>
-<b class="fc"><i class="no-highlight">56</i>&nbsp;        formatoRepository.delete(formato);</b>
-<b class="fc"><i class="no-highlight">57</i>&nbsp;        respuesta.setFormatoTrabajado(formato);</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        drinkContainer.setId(idFormato);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        formatoRepository.delete(drinkContainer);</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        respuesta.setFormatoTrabajado(drinkContainer);</b>
 <b class="fc"><i class="no-highlight">58</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">59</i>&nbsp;    }
 <i class="no-highlight">60</i>&nbsp;}
