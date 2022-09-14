@@ -23,7 +23,7 @@ public class DrinkContainer extends StockData{
     @Column(name ="container_name", nullable = false)
     private String containerName;
 
-    @Column(name ="estado_stock")
+    @Column(name ="is_stocked")
     @ColumnDefault("true")
     private Boolean isStocked = true;
 

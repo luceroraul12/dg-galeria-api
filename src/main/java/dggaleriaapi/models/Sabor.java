@@ -17,7 +17,7 @@ public class Sabor {
     private Long id;
     @Column(name = "nombre", nullable = false)
     private String nombre;
-    @Column(name = "estado_stock")
+    @Column(name = "is_stocked")
     @ColumnDefault("true")
     private Boolean estadoStock;
 

@@ -41,7 +41,7 @@ VALUES
 INSERT
 INTO
   sabores_asociados
-  (estado_stock, brands_id_fk, sabores_id_fk)
+  (is_stocked, brands_id_fk, sabores_id_fk)
 VALUES
   (true, 1, 1),
   (false, 1, 2),

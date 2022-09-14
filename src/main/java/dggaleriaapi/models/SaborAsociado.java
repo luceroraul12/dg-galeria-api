@@ -22,7 +22,7 @@ public class SaborAsociado {
     @Column(name = "sabores_asociados_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "estado_stock")
+    @Column(name = "is_stocked")
     @ColumnDefault("true")
     private Boolean estadoStock;
 

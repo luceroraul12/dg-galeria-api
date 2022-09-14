@@ -14,7 +14,7 @@ public class SaborFormateado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sabores_formateados_id_pk", nullable = false)
     private Long id;
-    @Column(name = "estado_stock")
+    @Column(name = "is_stocked")
     @ColumnDefault("true")
     private Boolean estadoStock = true;
     @ManyToOne
