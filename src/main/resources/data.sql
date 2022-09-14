@@ -25,7 +25,7 @@ VALUES
 INSERT
 INTO
   tastees
-  (nombre)
+  (taste_name)
 VALUES
   ('Naranja'),
   ('Pomelo'),

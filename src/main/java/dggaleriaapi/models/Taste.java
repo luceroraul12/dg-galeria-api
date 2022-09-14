@@ -15,7 +15,7 @@ public class Taste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tastees_id_pk", nullable = false)
     private Long id;
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "taste_name", nullable = false)
     private String nombre;
     @Column(name = "is_stocked")
     @ColumnDefault("true")
