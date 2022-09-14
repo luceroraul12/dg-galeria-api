@@ -2,7 +2,7 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Marca;
 import dggaleriaapi.repositories.MarcaRepository;
-import dggaleriaapi.responses.FormatoResponse;
+import dggaleriaapi.responses.DrinkContainerResponse;
 import dggaleriaapi.responses.MarcaResponse;
 import dggaleriaapi.services.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;

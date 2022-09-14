@@ -8,8 +8,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class FormatoResponse {
+public class DrinkContainerResponse {
     private DrinkContainer drinkContainerTrabajado;
-    private List<DrinkContainer> formatosTrabajados;
+    private List<DrinkContainer> drinkContainersTrabajados;
     private String mensaje;
 }

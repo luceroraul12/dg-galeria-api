@@ -18,7 +18,7 @@ public class SaborFormateado {
     @ColumnDefault("true")
     private Boolean estadoStock = true;
     @ManyToOne
-    @JoinColumn(name = "formatos_id_fk")
+    @JoinColumn(name = "drink_container_id_fk")
     private DrinkContainer drinkContainer;
     @ManyToOne
     @JoinColumn(name = "sabores_asociados_id_fk")

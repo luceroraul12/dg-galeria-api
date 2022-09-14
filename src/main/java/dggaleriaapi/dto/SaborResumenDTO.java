@@ -9,5 +9,5 @@ import java.util.List;
 @Builder
 public class SaborResumenDTO {
     private String nombreSabor;
-    private List<DrinkContainer> formatosDisponibles;
+    private List<DrinkContainer> drinkContainersDisponibles;
 }

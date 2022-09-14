@@ -3,7 +3,7 @@ package dggaleriaapi.services.Imp;
 import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborFormateado;
-import dggaleriaapi.repositories.FormatoRepository;
+import dggaleriaapi.repositories.DrinkContainerRepository;
 import dggaleriaapi.repositories.SaborFormateadoRepository;
 import dggaleriaapi.responses.SaborFormateadoResponse;
 import dggaleriaapi.services.SaborFormateadoService;
@@ -20,7 +20,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     SaborFormateadoRepository saborFormateadoRepository;
 
     @Autowired
-    FormatoRepository formatoRepository;
+    DrinkContainerRepository drinkContainerRepository;
 
     @Override
     public SaborFormateadoResponse getAll() {
@@ -52,7 +52,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
 
     @Override
     public SaborFormateadoResponse save(SaborFormateado saborFormateado) throws Exception {
-        boolean esSaborExistente = saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
+        boolean esSaborExistente = saborFormateadoRepository.existsByDrinkContainer_IdAndSaborAsociado_Id(
                 saborFormateado.getDrinkContainer().getId(),
                 saborFormateado.getSaborAsociado().getId()
         );
@@ -68,7 +68,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
 
     @Override
     public SaborFormateadoResponse saveInicial(SaborFormateado saborFormateado) throws Exception {
-        List<SaborFormateado> saboresFormateadosGenerados = generarFormatosParaSaborAsociado(saborFormateado);
+        List<SaborFormateado> saboresFormateadosGenerados = generarDrinkContainersParaSaborAsociado(saborFormateado);
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         return savePorMonton(saboresFormateadosGenerados);
     }
@@ -103,7 +103,7 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
 
     @Override
     public SaborFormateadoResponse update(SaborFormateado saborFormateado) throws Exception {
-        if (saborFormateadoRepository.existsByFormato_IdAndSaborAsociado_Id(
+        if (saborFormateadoRepository.existsByDrinkContainer_IdAndSaborAsociado_Id(
                 saborFormateado.getDrinkContainer().getId(),
                 saborFormateado.getSaborAsociado().getId()
         )){
@@ -128,14 +128,14 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
 
 
 
-    private List<SaborFormateado> generarFormatosParaSaborAsociado(SaborFormateado saborFormateado) {
+    private List<SaborFormateado> generarDrinkContainersParaSaborAsociado(SaborFormateado saborFormateado) {
         List<SaborFormateado> resultado = new ArrayList<>();
-        List<DrinkContainer> formatosDisponibles = formatoRepository.findAll();
+        List<DrinkContainer> drinkContainersDisponibles = drinkContainerRepository.findAll();
 
 
-        formatosDisponibles.forEach(formato -> {
+        drinkContainersDisponibles.forEach(drinkContainer -> {
             resultado.add(
-                    generarSaborInmutable(formato, saborFormateado)
+                    generarSaborInmutable(drinkContainer, saborFormateado)
             );
         });
 

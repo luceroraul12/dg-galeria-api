@@ -20,7 +20,7 @@ class ClienteServiceImpTest {
         marca.setId(3L);
         ClienteDTOResponse respuesta = service.obtenerResumenPorMarca(marca);
         System.out.println(respuesta);
-        assertEquals(2, respuesta.getResumen().getSaboresResumidos().get(0).getFormatosDisponibles().size());
-        assertEquals(1, respuesta.getResumen().getSaboresResumidos().get(1).getFormatosDisponibles().size());
+        assertEquals(2, respuesta.getResumen().getSaboresResumidos().get(0).getDrinkContainersDisponibles().size());
+        assertEquals(1, respuesta.getResumen().getSaboresResumidos().get(1).getDrinkContainersDisponibles().size());
     }
 }

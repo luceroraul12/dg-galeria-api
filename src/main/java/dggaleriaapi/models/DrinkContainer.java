@@ -13,14 +13,14 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "formatos")
+@Table(name = "drink_containers")
 public class DrinkContainer extends StockData{
     @Id
-    @Column(name = "formatos_id_pk", nullable = false)
+    @Column(name = "drinkContainers_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name ="tipo", nullable = false)
+    @Column(name ="container_name", nullable = false)
     private String containerName;
 
     @Column(name ="estado_stock")

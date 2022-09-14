@@ -1,8 +1,8 @@
--- insert para tabla de formatos
+-- insert para tabla de drinkContainers
 INSERT
 INTO
-  formatos
-  ( tipo)
+  drink_containers
+  (container_name)
 VALUES
   ('500ml'),
   ('750ml'),
@@ -54,7 +54,7 @@ VALUES
 INSERT
 INTO
   sabores_formateados
-  (formatos_id_fk, sabores_asociados_id_fk)
+  (drink_container_id_fk, sabores_asociados_id_fk)
 VALUES
     (1, 1),
     (1, 3),

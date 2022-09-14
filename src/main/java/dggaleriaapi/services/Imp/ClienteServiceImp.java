@@ -54,7 +54,7 @@ public class ClienteServiceImp implements ClienteService {
         for (SaborAsociado saborAsociado : saboresAsociados){
             saborResumido = SaborResumenDTO.builder()
                             .nombreSabor(saborAsociado.getSabor().getNombre())
-                            .formatosDisponibles(obtenerFormatos(saborAsociado.getId(), saboresFormateados))
+                            .drinkContainersDisponibles(obtenerDrinkContainers(saborAsociado.getId(), saboresFormateados))
                             .build();
             resultado.add(saborResumido);
         }
@@ -63,18 +63,18 @@ public class ClienteServiceImp implements ClienteService {
         return resultado;
     }
 
-    private List<DrinkContainer> obtenerFormatos(Long idSaborAsociado, List<SaborFormateado> saboresFormateados) {
+    private List<DrinkContainer> obtenerDrinkContainers(Long idSaborAsociado, List<SaborFormateado> saboresFormateados) {
         List<DrinkContainer> resultado = new ArrayList<>();
         List<SaborFormateado> saboresFormateadosFiltrados = saboresFormateados
                 .stream()
                 .filter(saborFormateado -> saborFormateado.getSaborAsociado().getId() == idSaborAsociado).collect(Collectors.toList());
 
-        saboresFormateadosFiltrados.forEach(sabor -> resultado.add(obtenerFormatoInmutable(sabor)));
+        saboresFormateadosFiltrados.forEach(sabor -> resultado.add(obtenerDrinkContainerInmutable(sabor)));
 
         return resultado;
     }
 
-    private DrinkContainer obtenerFormatoInmutable(SaborFormateado sabor) {
+    private DrinkContainer obtenerDrinkContainerInmutable(SaborFormateado sabor) {
         DrinkContainer drinkContainer = new DrinkContainer();
         drinkContainer.setId(sabor.getDrinkContainer().getId());
         drinkContainer.setContainerName(sabor.getDrinkContainer().getContainerName());

@@ -79,7 +79,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">4</i>&nbsp;import dggaleriaapi.models.Marca;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.models.SaborAsociado;
 <i class="no-highlight">6</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
-<i class="no-highlight">7</i>&nbsp;import dggaleriaapi.services.FormatoService;
+<i class="no-highlight">7</i>&nbsp;import dggaleriaapi.services.DrinkContainerService;
 <i class="no-highlight">8</i>&nbsp;import dggaleriaapi.services.MarcaService;
 <i class="no-highlight">9</i>&nbsp;import dggaleriaapi.services.SaborAsociadoService;
 <i class="no-highlight">10</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
@@ -93,23 +93,23 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">18</i>&nbsp;public class GaleriaBebidasController {
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @Autowired
-<i class="no-highlight">21</i>&nbsp;    private FormatoService formatoService;
+<i class="no-highlight">21</i>&nbsp;    private DrinkContainerService drinkContainerService;
 <i class="no-highlight">22</i>&nbsp;    @Autowired
 <i class="no-highlight">23</i>&nbsp;    private MarcaService marcaService;
 <i class="no-highlight">24</i>&nbsp;    @Autowired
 <i class="no-highlight">25</i>&nbsp;    private SaborService saborAsociadoService;
 <i class="no-highlight">26</i>&nbsp;
-<b class="fc"><i class="no-highlight">27</i>&nbsp;    public GaleriaBebidasController(FormatoService formatoService, MarcaService marcaService, SaborService saborAsociadoService) {</b>
-<b class="fc"><i class="no-highlight">28</i>&nbsp;        this.formatoService = formatoService;</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    public GaleriaBebidasController(DrinkContainerService drinkContainerService, MarcaService marcaService, SaborService saborAsociadoService) {</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        this.drinkContainerService = drinkContainerService;</b>
 <b class="fc"><i class="no-highlight">29</i>&nbsp;        this.marcaService = marcaService;</b>
 <b class="fc"><i class="no-highlight">30</i>&nbsp;        this.saborAsociadoService = saborAsociadoService;</b>
 <i class="no-highlight">31</i>&nbsp;    }
 <i class="no-highlight">32</i>&nbsp;
-<i class="no-highlight">33</i>&nbsp;    @GetMapping(value = &quot;/formatos&quot;)
-<i class="no-highlight">34</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllFormatos(){
+<i class="no-highlight">33</i>&nbsp;    @GetMapping(value = &quot;/drinkContainers&quot;)
+<i class="no-highlight">34</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllDrinkContainers(){
 <i class="no-highlight">35</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">36</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">37</i>&nbsp;            GaleriaResponse resultado = formatoService.getAllFormatos();</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;            GaleriaResponse resultado = drinkContainerService.getAllDrinkContainers();</b>
 <b class="fc"><i class="no-highlight">38</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">39</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">40</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -117,11 +117,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">42</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">43</i>&nbsp;    }
 <i class="no-highlight">44</i>&nbsp;
-<i class="no-highlight">45</i>&nbsp;    @PostMapping(value = &quot;/formatos&quot;)
-<i class="no-highlight">46</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveFormato(@RequestParam(name = &quot;tipo&quot;) String tipo){
+<i class="no-highlight">45</i>&nbsp;    @PostMapping(value = &quot;/drinkContainers&quot;)
+<i class="no-highlight">46</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveDrinkContainer(@RequestParam(name = &quot;tipo&quot;) String tipo){
 <i class="no-highlight">47</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">48</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">49</i>&nbsp;            GaleriaResponse resultado = formatoService.saveFormato(tipo);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;            GaleriaResponse resultado = drinkContainerService.saveDrinkContainer(tipo);</b>
 <b class="fc"><i class="no-highlight">50</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">51</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">52</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -129,11 +129,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">54</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">55</i>&nbsp;    }
 <i class="no-highlight">56</i>&nbsp;
-<i class="no-highlight">57</i>&nbsp;    @PutMapping(value = &quot;/formatos&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">58</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateFormato(@RequestBody Formato drinkContainer){
+<i class="no-highlight">57</i>&nbsp;    @PutMapping(value = &quot;/drinkContainers&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
+<i class="no-highlight">58</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateDrinkContainer(@RequestBody DrinkContainer drinkContainer){
 <i class="no-highlight">59</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">60</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">61</i>&nbsp;            GaleriaResponse resultado = formatoService.updateFormato(drinkContainer);</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;            GaleriaResponse resultado = drinkContainerService.updateDrinkContainer(drinkContainer);</b>
 <b class="fc"><i class="no-highlight">62</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">63</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">64</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -141,11 +141,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">66</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">67</i>&nbsp;    }
 <i class="no-highlight">68</i>&nbsp;
-<i class="no-highlight">69</i>&nbsp;    @DeleteMapping(value = &quot;/formatos&quot;)
-<i class="no-highlight">70</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteFormato(@RequestParam(name = &quot;id-drinkContainer&quot;) Long idFormato){
+<i class="no-highlight">69</i>&nbsp;    @DeleteMapping(value = &quot;/drinkContainers&quot;)
+<i class="no-highlight">70</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteDrinkContainer(@RequestParam(name = &quot;id-drinkContainer&quot;) Long idDrinkContainer){
 <i class="no-highlight">71</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">72</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">73</i>&nbsp;            GaleriaResponse resultado = formatoService.deleteFormato(idFormato);</b>
+<b class="fc"><i class="no-highlight">73</i>&nbsp;            GaleriaResponse resultado = drinkContainerService.deleteDrinkContainer(idDrinkContainer);</b>
 <b class="fc"><i class="no-highlight">74</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">75</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">76</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>

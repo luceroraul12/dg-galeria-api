@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > FormatoServiceImp</title>
+  <title>Coverage Report > DrinkContainerServiceImp</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">dggaleriaapi.services.Imp</a>
 </div>
 
-<h1>Coverage Summary for Class: FormatoServiceImp (dggaleriaapi.services.Imp)</h1>
+<h1>Coverage Summary for Class: DrinkContainerServiceImp (dggaleriaapi.services.Imp)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">FormatoServiceImp</td>
+  <td class="name">DrinkContainerServiceImp</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -76,60 +76,60 @@ Current scope:     <a href="../../index.html">all classes</a>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.services.Imp;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.DrinkContainer;
-<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.FormatoRepository;
+<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.DrinkContainerRepository;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
-<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.FormatoService;
+<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.DrinkContainerService;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
 <i class="no-highlight">9</i>&nbsp;
 <i class="no-highlight">10</i>&nbsp;@Service
-<i class="no-highlight">11</i>&nbsp;public class FormatoServiceImp implements FormatoService {
+<i class="no-highlight">11</i>&nbsp;public class DrinkContainerServiceImp implements DrinkContainerService {
 <i class="no-highlight">12</i>&nbsp;
 <i class="no-highlight">13</i>&nbsp;    @Autowired
-<i class="no-highlight">14</i>&nbsp;    FormatoRepository formatoRepository;
+<i class="no-highlight">14</i>&nbsp;    DrinkContainerRepository drinkContainerRepository;
 <i class="no-highlight">15</i>&nbsp;
-<b class="fc"><i class="no-highlight">16</i>&nbsp;    public FormatoServiceImp(FormatoRepository formatoRepository) {</b>
-<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.formatoRepository = formatoRepository;</b>
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    public DrinkContainerServiceImp(DrinkContainerRepository drinkContainerRepository) {</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.drinkContainerRepository = drinkContainerRepository;</b>
 <i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @Override
-<i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAllFormatos() {
+<i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAllDrinkContainers() {
 <b class="fc"><i class="no-highlight">22</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">23</i>&nbsp;        respuesta.setFormatosCreados(</b>
-<b class="fc"><i class="no-highlight">24</i>&nbsp;                formatoRepository.findAll()</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        respuesta.setDrinkContainersCreados(</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;                drinkContainerRepository.findAll()</b>
 <i class="no-highlight">25</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">26</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">27</i>&nbsp;    }
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    @Override
-<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveFormato(String tipo) {
-<b class="fc"><i class="no-highlight">31</i>&nbsp;        Formato drinkContainer = new Formato();</b>
+<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveDrinkContainer(String tipo) {
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        DrinkContainer drinkContainer = new DrinkContainer();</b>
 <b class="fc"><i class="no-highlight">32</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
 <i class="no-highlight">33</i>&nbsp;
 <b class="fc"><i class="no-highlight">34</i>&nbsp;        drinkContainer.setTipo(tipo);</b>
-<b class="fc"><i class="no-highlight">35</i>&nbsp;        respuesta.setFormatoTrabajado(</b>
-<b class="fc"><i class="no-highlight">36</i>&nbsp;                formatoRepository.save(drinkContainer)</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        respuesta.setDrinkContainerTrabajado(</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;                drinkContainerRepository.save(drinkContainer)</b>
 <i class="no-highlight">37</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">38</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">39</i>&nbsp;    }
 <i class="no-highlight">40</i>&nbsp;
 <i class="no-highlight">41</i>&nbsp;    @Override
-<i class="no-highlight">42</i>&nbsp;    public GaleriaResponse updateFormato(Formato drinkContainer) {
+<i class="no-highlight">42</i>&nbsp;    public GaleriaResponse updateDrinkContainer(DrinkContainer drinkContainer) {
 <b class="fc"><i class="no-highlight">43</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
 <i class="no-highlight">44</i>&nbsp;
-<b class="fc"><i class="no-highlight">45</i>&nbsp;        respuesta.setFormatoTrabajado(</b>
-<b class="fc"><i class="no-highlight">46</i>&nbsp;                formatoRepository.save(drinkContainer)</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;        respuesta.setDrinkContainerTrabajado(</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;                drinkContainerRepository.save(drinkContainer)</b>
 <i class="no-highlight">47</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">48</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">49</i>&nbsp;    }
 <i class="no-highlight">50</i>&nbsp;
 <i class="no-highlight">51</i>&nbsp;    @Override
-<i class="no-highlight">52</i>&nbsp;    public GaleriaResponse deleteFormato(Long idFormato) {
-<b class="fc"><i class="no-highlight">53</i>&nbsp;        Formato drinkContainer = new Formato();</b>
+<i class="no-highlight">52</i>&nbsp;    public GaleriaResponse deleteDrinkContainer(Long idDrinkContainer) {
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        DrinkContainer drinkContainer = new DrinkContainer();</b>
 <b class="fc"><i class="no-highlight">54</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">55</i>&nbsp;        drinkContainer.setId(idFormato);</b>
-<b class="fc"><i class="no-highlight">56</i>&nbsp;        formatoRepository.delete(drinkContainer);</b>
-<b class="fc"><i class="no-highlight">57</i>&nbsp;        respuesta.setFormatoTrabajado(drinkContainer);</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        drinkContainer.setId(idDrinkContainer);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        drinkContainerRepository.delete(drinkContainer);</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        respuesta.setDrinkContainerTrabajado(drinkContainer);</b>
 <b class="fc"><i class="no-highlight">58</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">59</i>&nbsp;    }
 <i class="no-highlight">60</i>&nbsp;}
