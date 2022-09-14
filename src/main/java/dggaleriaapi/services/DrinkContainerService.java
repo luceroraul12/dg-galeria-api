@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public interface DrinkContainerService {
 
-    StockDataResponse getAllDrinkContainers();
-    DrinkContainerResponse saveDrinkContainer(String containerName) throws Exception;
+    StockDataResponse<DrinkContainer> getAllDrinkContainers();
+    StockDataResponse<DrinkContainer> saveDrinkContainer(DrinkContainer drinkContainer) throws Exception;
 
-    DrinkContainerResponse updateDrinkContainer(DrinkContainer drinkContainer) throws Exception;
+    StockDataResponse<DrinkContainer> updateDrinkContainer(DrinkContainer drinkContainer) throws Exception;
 
-    DrinkContainerResponse deleteDrinkContainer(Long idDrinkContainer) throws Exception;
+    StockDataResponse<DrinkContainer> deleteDrinkContainer(DrinkContainer drinkContainer) throws Exception;
 }

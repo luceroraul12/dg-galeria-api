@@ -21,66 +21,66 @@ public class DrinkContainerController {
     public ResponseEntity<StockDataResponse<DrinkContainer>> getAllDrinkContainers() {
         String succesMessage = "drinkContainers obtenidos";
         String badMessage = "error al adquirir drinkContainers";
-        StockDataResponse drinkContainerResponse = new StockDataResponse<>();
+        StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
         ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
             drinkContainerResponse = drinkContainerService.getAllDrinkContainers();
             drinkContainerResponse.setMessage(succesMessage);
-            response = new ResponseEntity<StockDataResponse<DrinkContainer>>(drinkContainerResponse, HttpStatus.OK);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
             drinkContainerResponse.setMessage(badMessage);
-            response = new ResponseEntity<StockDataResponse<DrinkContainer>>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
         return response;
     }
 
     @PostMapping
-    public ResponseEntity<DrinkContainerResponse> saveDrinkContainer(@RequestParam(name = "containerName") String containerName) {
-        String successMessage = "drinkContainer guardado";
-        String badMessage = "error al intentar guardar drinkContainer";
-        DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
-        ResponseEntity<DrinkContainerResponse> respuesta;
+    public ResponseEntity<StockDataResponse<DrinkContainer>> saveDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
+        String succesMessage = "drinkContainers obtenidos";
+        String badMessage = "error al adquirir drinkContainers";
+        StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
+        ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
-            drinkContainerResponse = drinkContainerService.saveDrinkContainer(containerName);
-            drinkContainerResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
+            drinkContainerResponse = drinkContainerService.saveDrinkContainer(drinkContainer);
+            drinkContainerResponse.setMessage(succesMessage);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
-            drinkContainerResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
+            drinkContainerResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
     @PutMapping
-    public ResponseEntity<DrinkContainerResponse> updateDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
-        String successMessage = "drinkContainer actualizado";
-        String badMessage = "error al intentar actualizar drinkContainer";
-        DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
-        ResponseEntity<DrinkContainerResponse> respuesta;
+    public ResponseEntity<StockDataResponse<DrinkContainer>> updateDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
+        String succesMessage = "drinkContainers obtenidos";
+        String badMessage = "error al adquirir drinkContainers";
+        StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
+        ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
             drinkContainerResponse = drinkContainerService.updateDrinkContainer(drinkContainer);
-            drinkContainerResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
+            drinkContainerResponse.setMessage(succesMessage);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
-            drinkContainerResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
+            drinkContainerResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 
     @DeleteMapping
-    public ResponseEntity<DrinkContainerResponse> deleteDrinkContainer(@RequestParam(value = "id") Long idDrinkContainer) {
-        String successMessage = "drinkContainer eliminado";
-        String badMessage = "error al intentar eliminar drinkContainer";
-        DrinkContainerResponse drinkContainerResponse = new DrinkContainerResponse();
-        ResponseEntity<DrinkContainerResponse> respuesta;
+    public ResponseEntity<StockDataResponse<DrinkContainer>> deleteDrinkContainer(@RequestBody DrinkContainer drinkContainer) {
+        String succesMessage = "drinkContainers obtenidos";
+        String badMessage = "error al adquirir drinkContainers";
+        StockDataResponse<DrinkContainer>  drinkContainerResponse = new StockDataResponse<DrinkContainer> ();
+        ResponseEntity<StockDataResponse<DrinkContainer>> response;
         try {
-            drinkContainerResponse = drinkContainerService.deleteDrinkContainer(idDrinkContainer);
-            drinkContainerResponse.setMensaje(successMessage);
-            respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.OK);
+            drinkContainerResponse = drinkContainerService.deleteDrinkContainer(drinkContainer);
+            drinkContainerResponse.setMessage(succesMessage);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.OK);
         } catch (Exception e) {
-            drinkContainerResponse.setMensaje(badMessage);
-            respuesta = new ResponseEntity<DrinkContainerResponse>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
+            drinkContainerResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(drinkContainerResponse, HttpStatus.BAD_REQUEST);
         }
-        return respuesta;
+        return response;
     }
 }

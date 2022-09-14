@@ -8,6 +8,10 @@ import dggaleriaapi.services.DrinkContainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class DrinkContainerServiceImp implements DrinkContainerService {
 
@@ -19,8 +23,8 @@ public class DrinkContainerServiceImp implements DrinkContainerService {
     }
 
     @Override
-    public StockDataResponse getAllDrinkContainers() {
-        StockDataResponse response = new StockDataResponse<>();
+    public StockDataResponse<DrinkContainer> getAllDrinkContainers() {
+        StockDataResponse<DrinkContainer>  response = new StockDataResponse<DrinkContainer> ();
         response.setStockDataResult(
                 drinkContainerRepository.findAll()
         );
@@ -28,43 +32,39 @@ public class DrinkContainerServiceImp implements DrinkContainerService {
     }
 
     @Override
-    public DrinkContainerResponse saveDrinkContainer(String containerName) throws Exception {
-        if (containerName.isEmpty()){
+    public StockDataResponse<DrinkContainer> saveDrinkContainer(DrinkContainer drinkContainer) throws Exception {
+        if (drinkContainer.getContainerName().isEmpty()){
             throw new Exception();
         }
-        DrinkContainer drinkContainer = new DrinkContainer();
-        DrinkContainerResponse respuesta = new DrinkContainerResponse();
+        StockDataResponse<DrinkContainer>  response = new StockDataResponse<DrinkContainer> ();
 
-        drinkContainer.setContainerName(containerName);
-        respuesta.setDrinkContainerTrabajado(
-                drinkContainerRepository.save(drinkContainer)
+        response.setStockDataResult(
+                List.of(drinkContainerRepository.save(drinkContainer))
         );
-        return respuesta;
+        return response;
     }
 
     @Override
-    public DrinkContainerResponse updateDrinkContainer(DrinkContainer drinkContainer) throws Exception {
+    public StockDataResponse<DrinkContainer> updateDrinkContainer(DrinkContainer drinkContainer) throws Exception {
         if (!drinkContainerRepository.existsById(drinkContainer.getId()) | drinkContainer.getContainerName().isEmpty()){
             throw new Exception();
         }
-        DrinkContainerResponse respuesta = new DrinkContainerResponse();
+        StockDataResponse<DrinkContainer>  respuesta = new StockDataResponse<DrinkContainer> ();
 
-        respuesta.setDrinkContainerTrabajado(
-                drinkContainerRepository.save(drinkContainer)
+        respuesta.setStockDataResult(
+                List.of(drinkContainerRepository.save(drinkContainer))
         );
         return respuesta;
     }
 
     @Override
-    public DrinkContainerResponse deleteDrinkContainer(Long idDrinkContainer) throws Exception {
-        if (!drinkContainerRepository.existsById(idDrinkContainer)){
+    public StockDataResponse<DrinkContainer>  deleteDrinkContainer(DrinkContainer drinkContainer) throws Exception {
+        if (!drinkContainerRepository.existsById(drinkContainer.getId())){
             throw new Exception("drinkContainer no existente");
         }
-        DrinkContainer drinkContainer = new DrinkContainer();
-        DrinkContainerResponse respuesta = new DrinkContainerResponse();
-        drinkContainer.setId(idDrinkContainer);
+        StockDataResponse<DrinkContainer>  respuesta = new StockDataResponse<DrinkContainer> ();
         drinkContainerRepository.delete(drinkContainer);
-        respuesta.setDrinkContainerTrabajado(drinkContainer);
+        respuesta.setStockDataResult(List.of(drinkContainer));
         return respuesta;
     }
 }
