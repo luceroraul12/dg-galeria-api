@@ -17,14 +17,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "branded_taste")
-public class BrandedTaste {
+public class BrandedTaste extends StockData {
     @Id
     @Column(name = "branded_taste_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "is_stocked")
     @ColumnDefault("true")
-    private Boolean estadoStock;
+    private Boolean isStocked;
 
     @ManyToOne
     @JoinColumn(name = "brands_id_fk")
