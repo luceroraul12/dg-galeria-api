@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > MarcaServiceImp</title>
+  <title>Coverage Report > BrandServiceImp</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">dggaleriaapi.services.Imp</a>
 </div>
 
-<h1>Coverage Summary for Class: MarcaServiceImp (dggaleriaapi.services.Imp)</h1>
+<h1>Coverage Summary for Class: BrandServiceImp (dggaleriaapi.services.Imp)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">MarcaServiceImp</td>
+  <td class="name">BrandServiceImp</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -75,57 +75,57 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.services.Imp;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Marca;
-<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.MarcaRepository;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.Brand;
+<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.repositories.BrandRepository;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
-<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.MarcaService;
+<i class="no-highlight">6</i>&nbsp;import dggaleriaapi.services.BrandService;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
 <i class="no-highlight">9</i>&nbsp;
 <i class="no-highlight">10</i>&nbsp;@Service
-<i class="no-highlight">11</i>&nbsp;public class MarcaServiceImp implements MarcaService {
+<i class="no-highlight">11</i>&nbsp;public class BrandServiceImp implements BrandService {
 <i class="no-highlight">12</i>&nbsp;
 <i class="no-highlight">13</i>&nbsp;    @Autowired
-<i class="no-highlight">14</i>&nbsp;    MarcaRepository marcaRepository;
+<i class="no-highlight">14</i>&nbsp;    BrandRepository brandRepository;
 <i class="no-highlight">15</i>&nbsp;
-<b class="fc"><i class="no-highlight">16</i>&nbsp;    public MarcaServiceImp(MarcaRepository marcaRepository) {</b>
-<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.marcaRepository = marcaRepository;</b>
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    public BrandServiceImp(BrandRepository brandRepository) {</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.brandRepository = brandRepository;</b>
 <i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @Override
 <i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAll() {
 <b class="fc"><i class="no-highlight">22</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">23</i>&nbsp;        respuesta.setMarcasCreadas(</b>
-<b class="fc"><i class="no-highlight">24</i>&nbsp;                marcaRepository.findAll()</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        respuesta.setBrandsCreadas(</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;                brandRepository.findAll()</b>
 <i class="no-highlight">25</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">26</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">27</i>&nbsp;    }
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    @Override
-<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveMarca(Marca marca) {
+<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse saveBrand(Brand brand) {
 <b class="fc"><i class="no-highlight">31</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">32</i>&nbsp;        respuesta.setMarcaTrabajada(</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;                marcaRepository.save(marca)</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;        respuesta.setBrandTrabajada(</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                brandRepository.save(brand)</b>
 <i class="no-highlight">34</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">36</i>&nbsp;    }
 <i class="no-highlight">37</i>&nbsp;
 <i class="no-highlight">38</i>&nbsp;    @Override
-<i class="no-highlight">39</i>&nbsp;    public GaleriaResponse updateMarca(Marca marca) {
+<i class="no-highlight">39</i>&nbsp;    public GaleriaResponse updateBrand(Brand brand) {
 <b class="fc"><i class="no-highlight">40</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">41</i>&nbsp;        respuesta.setMarcaTrabajada(</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;                marcaRepository.save(marca)</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;        respuesta.setBrandTrabajada(</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;                brandRepository.save(brand)</b>
 <i class="no-highlight">43</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">44</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">45</i>&nbsp;    }
 <i class="no-highlight">46</i>&nbsp;
 <i class="no-highlight">47</i>&nbsp;    @Override
-<i class="no-highlight">48</i>&nbsp;    public GaleriaResponse deleteMarca(Long idMarca) {
+<i class="no-highlight">48</i>&nbsp;    public GaleriaResponse deleteBrand(Long idBrand) {
 <b class="fc"><i class="no-highlight">49</i>&nbsp;        GaleriaResponse respuesta = new GaleriaResponse();</b>
-<b class="fc"><i class="no-highlight">50</i>&nbsp;        Marca marca = new Marca();</b>
-<b class="fc"><i class="no-highlight">51</i>&nbsp;        marca.setId(idMarca);</b>
-<b class="fc"><i class="no-highlight">52</i>&nbsp;        marcaRepository.delete(marca);</b>
-<b class="fc"><i class="no-highlight">53</i>&nbsp;        respuesta.setMarcaTrabajada(marca);</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        Brand brand = new Brand();</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        brand.setId(idBrand);</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        brandRepository.delete(brand);</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        respuesta.setBrandTrabajada(brand);</b>
 <b class="fc"><i class="no-highlight">54</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">55</i>&nbsp;    }
 <i class="no-highlight">56</i>&nbsp;}

@@ -9,10 +9,10 @@ VALUES
   ('1.5l'),
   ('2.25l'),
   ('3l');
--- insert para tabla de marcas
+-- insert para tabla de brands
 INSERT
 INTO
-  marcas
+  brands
   (nombre, enlace)
 VALUES
     ('Talca', 'https://scontent.fluq3-1.fna.fbcdn.net/v/t1.6435-9/57451118_1960636304062775_8817114632264089600_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFX3b88mrZROEanr65g08Tb5eB9NMDt9mbl4H00wO32Zt6slqElyC3fdGGiTB6Vfkx8TM3p5wKNWGN1O2r1ryMF&_nc_ohc=3x_-FCdPfd4AX-K2g46&tn=iDZ978rNQQka_R1T&_nc_ht=scontent.fluq3-1.fna&oh=00_AT_R5-H0bz0B3gVVmjcw2LzyqTJzw9gL4GrFF7A4gV7vMg&oe=633B0A75'),
@@ -37,11 +37,11 @@ VALUES
   ('Tinto Patero'),
   ('Tinto Dulce'),
   ('Esfumante');
---insert para tabla de sabores asociados a una marca
+--insert para tabla de sabores asociados a una brand
 INSERT
 INTO
   sabores_asociados
-  (estado_stock, marcas_id_fk, sabores_id_fk)
+  (estado_stock, brands_id_fk, sabores_id_fk)
 VALUES
   (true, 1, 1),
   (false, 1, 2),

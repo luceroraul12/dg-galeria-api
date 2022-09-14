@@ -50,14 +50,14 @@ public class SaborFormateadoController {
         }
         return respuesta;
     }
-    @GetMapping("/por-marca")
-    public ResponseEntity<SaborFormateadoResponse> getAllByIdMarca(@RequestParam(name = "id") Long idMarca) {
+    @GetMapping("/por-brand")
+    public ResponseEntity<SaborFormateadoResponse> getAllByIdBrand(@RequestParam(name = "id") Long idBrand) {
         String mensajeAfirmativo = "sabores encontrados";
         String mensajeNegativo = "error al buscar sabores";
         SaborFormateadoResponse saborFormateadoResponse = new SaborFormateadoResponse();
         ResponseEntity<SaborFormateadoResponse> respuesta;
         try {
-            saborFormateadoResponse = saborFormateadoService.getAllByIdMarca(idMarca);
+            saborFormateadoResponse = saborFormateadoService.getAllByIdBrand(idBrand);
             saborFormateadoResponse.setMensaje(mensajeAfirmativo);
             respuesta = new ResponseEntity<SaborFormateadoResponse>(saborFormateadoResponse, HttpStatus.OK);
         } catch (Exception e) {

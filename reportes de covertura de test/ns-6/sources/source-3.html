@@ -93,19 +93,19 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
 <i class="no-highlight">20</i>&nbsp;    @Override
-<i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAllByIdMarca(Long idMarca) {
+<i class="no-highlight">21</i>&nbsp;    public GaleriaResponse getAllByIdBrand(Long idBrand) {
 <b class="fc"><i class="no-highlight">22</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">23</i>&nbsp;        resultado.setSaboresCreados(</b>
-<b class="fc"><i class="no-highlight">24</i>&nbsp;            saborAsociadoRepository.findByMarca_Id(idMarca)</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;            saborAsociadoRepository.findByBrand_Id(idBrand)</b>
 <i class="no-highlight">25</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">26</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">27</i>&nbsp;    }
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    @Override
-<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse getAllByIdMarcayStock(Long idMarca) {
+<i class="no-highlight">30</i>&nbsp;    public GaleriaResponse getAllByIdBrandyStock(Long idBrand) {
 <b class="fc"><i class="no-highlight">31</i>&nbsp;        GaleriaResponse resultado = new GaleriaResponse();</b>
 <b class="fc"><i class="no-highlight">32</i>&nbsp;        resultado.setSaboresDisponibles(</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;                saborAsociadoRepository.getAllByIdMacaryStock(idMarca)</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                saborAsociadoRepository.getAllByIdMacaryStock(idBrand)</b>
 <i class="no-highlight">34</i>&nbsp;        );
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        return resultado;</b>
 <i class="no-highlight">36</i>&nbsp;    }

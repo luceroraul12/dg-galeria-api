@@ -34,14 +34,14 @@ public class SaborAsociadoController {
         }
         return respuesta;
     }
-    @GetMapping(value = "/por-marca")
-    public ResponseEntity<SaborAsociadoResponse> getAllByIdMarca(@RequestParam(name = "id") Long idMarca) {
-        String mensajeAfirmativo = "sabores asociados por marca encontrados";
-        String mensajeNegativo = "error al buscar sabores asociados por marca";
+    @GetMapping(value = "/por-brand")
+    public ResponseEntity<SaborAsociadoResponse> getAllByIdBrand(@RequestParam(name = "id") Long idBrand) {
+        String mensajeAfirmativo = "sabores asociados por brand encontrados";
+        String mensajeNegativo = "error al buscar sabores asociados por brand";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;
         try {
-            saborAsociadoResponse = saborAsociadoService.getAllByIdMarca(idMarca);
+            saborAsociadoResponse = saborAsociadoService.getAllByIdBrand(idBrand);
             saborAsociadoResponse.setMensaje(mensajeAfirmativo);
             respuesta = new ResponseEntity<SaborAsociadoResponse>(saborAsociadoResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -68,7 +68,7 @@ public class SaborAsociadoController {
     }
     @PostMapping(value = "/monton")
     public ResponseEntity<SaborAsociadoResponse> savePorMonton(@RequestBody List<SaborAsociado> saboresAsociados) {
-        String mensajeAfirmativo = "sabores asociados por marca creados";
+        String mensajeAfirmativo = "sabores asociados por brand creados";
         String mensajeNegativo = "error al crear sabores asociados";
         SaborAsociadoResponse saborAsociadoResponse = new SaborAsociadoResponse();
         ResponseEntity<SaborAsociadoResponse> respuesta;

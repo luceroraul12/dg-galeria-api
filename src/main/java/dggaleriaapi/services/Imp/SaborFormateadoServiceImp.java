@@ -42,10 +42,10 @@ public class SaborFormateadoServiceImp implements SaborFormateadoService {
     }
 
     @Override
-    public SaborFormateadoResponse getAllByIdMarca(Long idMarca) {
+    public SaborFormateadoResponse getAllByIdBrand(Long idBrand) {
         SaborFormateadoResponse respuesta = new SaborFormateadoResponse();
         respuesta.setSaboresFormateadosTrabajados(
-                saborFormateadoRepository.getAllByIdMarca(idMarca)
+                saborFormateadoRepository.getAllByIdBrand(idBrand)
         );
         return respuesta;
     }

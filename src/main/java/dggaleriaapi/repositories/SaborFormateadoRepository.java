@@ -18,8 +18,8 @@ public interface SaborFormateadoRepository extends JpaRepository<SaborFormateado
 
 
 
-    @Query("select s from SaborFormateado s where s.saborAsociado.marca.id = :id")
-    List<SaborFormateado> getAllByIdMarca(@Param("id") Long id);
+    @Query("select s from SaborFormateado s where s.saborAsociado.brand.id = :id")
+    List<SaborFormateado> getAllByIdBrand(@Param("id") Long id);
 
 
 

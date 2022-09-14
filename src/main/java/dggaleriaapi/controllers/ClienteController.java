@@ -1,6 +1,6 @@
 package dggaleriaapi.controllers;
 
-import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Brand;
 import dggaleriaapi.responses.ClienteDTOResponse;
 import dggaleriaapi.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +16,18 @@ public class ClienteController {
     ClienteService service;
     
     @GetMapping
-    public ResponseEntity<ClienteDTOResponse> getResumenByIdMarca(@RequestParam(name = "id-marca") Long idMarca){
+    public ResponseEntity<ClienteDTOResponse> getResumenByIdBrand(@RequestParam(name = "id-brand") Long idBrand){
         ClienteDTOResponse resultado;
         ResponseEntity<ClienteDTOResponse> respuesta;
 
         String mensajeAfirmativo = "resumen obtenido";
         String mensajeNegativo = "error al obtener resumen";
 
-        Marca marca = new Marca();
-        marca.setId(idMarca);
+        Brand brand = new Brand();
+        brand.setId(idBrand);
 
         try {
-            resultado = service.obtenerResumenPorMarca(marca);
+            resultado = service.obtenerResumenPorBrand(brand);
             resultado.setMensaje(mensajeAfirmativo);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.OK);
         } catch (Exception e) {

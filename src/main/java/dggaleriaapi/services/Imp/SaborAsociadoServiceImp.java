@@ -1,7 +1,7 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.SaborAsociado;
-import dggaleriaapi.repositories.MarcaRepository;
+import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.repositories.SaborAsociadoRepository;
 import dggaleriaapi.responses.SaborAsociadoResponse;
 import dggaleriaapi.services.SaborAsociadoService;
@@ -17,7 +17,7 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     SaborAsociadoRepository saborAsociadoRepository;
 
     @Autowired
-    MarcaRepository marcaRepository;
+    BrandRepository brandRepository;
 
     public SaborAsociadoServiceImp(SaborAsociadoRepository saborAsociadoRepository) {
         this.saborAsociadoRepository = saborAsociadoRepository;
@@ -33,22 +33,22 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
     }
 
     @Override
-    public SaborAsociadoResponse getAllByIdMarca(Long idMarca) throws Exception {
-        if (!saborAsociadoRepository.existByIdMarca(idMarca)){
+    public SaborAsociadoResponse getAllByIdBrand(Long idBrand) throws Exception {
+        if (!saborAsociadoRepository.existByIdBrand(idBrand)){
             throw new Exception();
         }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
         respuesta.setSaboresAsociadosTrabajados(
-            saborAsociadoRepository.findByMarca_Id(idMarca)
+            saborAsociadoRepository.findByBrand_Id(idBrand)
         );
         return respuesta;
     }
 
     @Override
     public SaborAsociadoResponse save(SaborAsociado saborAsociado) throws Exception {
-        boolean esMarcaRegistrada = marcaRepository.existsById(saborAsociado.getMarca().getId());
-        boolean esSaborYaAsociado = saborAsociadoRepository.existsByMarca_IdAndSabor_Id(saborAsociado.getMarca().getId(),saborAsociado.getSabor().getId());
-        if (!esMarcaRegistrada | esSaborYaAsociado){
+        boolean esBrandRegistrada = brandRepository.existsById(saborAsociado.getBrand().getId());
+        boolean esSaborYaAsociado = saborAsociadoRepository.existsByBrand_IdAndSabor_Id(saborAsociado.getBrand().getId(),saborAsociado.getSabor().getId());
+        if (!esBrandRegistrada | esSaborYaAsociado){
             throw new Exception();
         }
         SaborAsociadoResponse respuesta = new SaborAsociadoResponse();
@@ -72,8 +72,8 @@ public class SaborAsociadoServiceImp implements SaborAsociadoService {
 
     @Override
     public SaborAsociadoResponse update(SaborAsociado saborAsociado) throws Exception {
-        boolean esSaborAsociadoExistente = saborAsociadoRepository.existsByMarca_IdAndSabor_Id(
-                saborAsociado.getMarca().getId(),
+        boolean esSaborAsociadoExistente = saborAsociadoRepository.existsByBrand_IdAndSabor_Id(
+                saborAsociado.getBrand().getId(),
                 saborAsociado.getSabor().getId()
         );
         if (esSaborAsociadoExistente){

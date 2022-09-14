@@ -111,20 +111,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">26</i>&nbsp;    @JoinColumn(name = &quot;drinkContainers_id_fk&quot;)
 <b class="fc"><i class="no-highlight">27</i>&nbsp;    private DrinkContainer drinkContainer;</b>
 <i class="no-highlight">28</i>&nbsp;    @ManyToOne
-<i class="no-highlight">29</i>&nbsp;    @JoinColumn(name = &quot;marcas_id_fk&quot;)
-<b class="fc"><i class="no-highlight">30</i>&nbsp;    private Marca marca;</b>
+<i class="no-highlight">29</i>&nbsp;    @JoinColumn(name = &quot;brands_id_fk&quot;)
+<b class="fc"><i class="no-highlight">30</i>&nbsp;    private Brand brand;</b>
 <i class="no-highlight">31</i>&nbsp;
-<b class="fc"><i class="no-highlight">32</i>&nbsp;    public Sabor(Long id, String nombre, Marca marca) {</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;    public Sabor(Long id, String nombre, Brand brand) {</b>
 <b class="fc"><i class="no-highlight">33</i>&nbsp;        this.id = id;</b>
 <b class="fc"><i class="no-highlight">34</i>&nbsp;        this.nombre = nombre;</b>
-<b class="fc"><i class="no-highlight">35</i>&nbsp;        this.marca = marca;</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        this.brand = brand;</b>
 <i class="no-highlight">36</i>&nbsp;    }
 <i class="no-highlight">37</i>&nbsp;
-<b class="fc"><i class="no-highlight">38</i>&nbsp;    public Sabor(Long id, String nombre, Marca marca, Boolean estadoStock) {</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;    public Sabor(Long id, String nombre, Brand brand, Boolean estadoStock) {</b>
 <b class="fc"><i class="no-highlight">39</i>&nbsp;        this.id = id;</b>
 <b class="fc"><i class="no-highlight">40</i>&nbsp;        this.nombre = nombre;</b>
 <b class="fc"><i class="no-highlight">41</i>&nbsp;        this.estadoStock = estadoStock;</b>
-<b class="fc"><i class="no-highlight">42</i>&nbsp;        this.marca = marca;</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        this.brand = brand;</b>
 <i class="no-highlight">43</i>&nbsp;    }
 <i class="no-highlight">44</i>&nbsp;}
 </div>

@@ -27,8 +27,8 @@ public class SaborAsociado {
     private Boolean estadoStock;
 
     @ManyToOne
-    @JoinColumn(name = "marcas_id_fk")
-    private Marca marca;
+    @JoinColumn(name = "brands_id_fk")
+    private Brand brand;
 
     @ManyToOne
     @JoinColumn(name = "sabores_id_fk")

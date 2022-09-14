@@ -1,6 +1,6 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Brand;
 import dggaleriaapi.models.Sabor;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.responses.SaborAsociadoResponse;
@@ -35,23 +35,23 @@ class SaborAsociadoServiceImpTest {
     }
     @Test
     @Order(5)
-    void getAllByIdMarca() throws Exception {
-        SaborAsociadoResponse respuesta = service.getAllByIdMarca(1L);
+    void getAllByIdBrand() throws Exception {
+        SaborAsociadoResponse respuesta = service.getAllByIdBrand(1L);
         assertEquals(3, respuesta.getSaboresAsociadosTrabajados().size());
 
-        respuesta = service.getAllByIdMarca(2L);
+        respuesta = service.getAllByIdBrand(2L);
         assertEquals(0, respuesta.getSaboresAsociadosTrabajados().size());
 
-        respuesta = service.getAllByIdMarca(3L);
+        respuesta = service.getAllByIdBrand(3L);
         assertEquals(2, respuesta.getSaboresAsociadosTrabajados().size());
 
-        respuesta = service.getAllByIdMarca(5L);
+        respuesta = service.getAllByIdBrand(5L);
         assertEquals(2, respuesta.getSaboresAsociadosTrabajados().size());
 
-        respuesta = service.getAllByIdMarca(-1L);
+        respuesta = service.getAllByIdBrand(-1L);
         assertEquals(0, respuesta.getSaboresAsociadosTrabajados().size());
 
-        respuesta = service.getAllByIdMarca(100L);
+        respuesta = service.getAllByIdBrand(100L);
         assertEquals(0, respuesta.getSaboresAsociadosTrabajados().size());
     }
 
@@ -61,18 +61,18 @@ class SaborAsociadoServiceImpTest {
 
         Sabor sabor = new Sabor();
         sabor.setId(1L);
-        Marca marca = new Marca();
-        marca.setId(3L);
+        Brand brand = new Brand();
+        brand.setId(3L);
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setSabor(sabor);
-        saborAsociado.setMarca(marca);
+        saborAsociado.setBrand(brand);
 
         SaborAsociadoResponse respuesta = service.save(saborAsociado);
 
         assertEquals(8, respuesta.getSaborTrabajado().getId());
         //Valor por defecto declarado en la Entidad
         assertEquals(true, respuesta.getSaborTrabajado().getEstadoStock());
-        assertEquals(3, respuesta.getSaborTrabajado().getMarca().getId());
+        assertEquals(3, respuesta.getSaborTrabajado().getBrand().getId());
         assertEquals(1, respuesta.getSaborTrabajado().getSabor().getId());
     }
 
@@ -82,14 +82,14 @@ class SaborAsociadoServiceImpTest {
 
         Sabor sabor = new Sabor();
         sabor.setId(1L);
-        Marca marca = new Marca();
-        marca.setId(3L);
+        Brand brand = new Brand();
+        brand.setId(3L);
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setSabor(sabor);
-        saborAsociado.setMarca(marca);
+        saborAsociado.setBrand(brand);
         SaborAsociado saborAsociado2 = new SaborAsociado();
         saborAsociado2.setSabor(sabor);
-        saborAsociado2.setMarca(marca);
+        saborAsociado2.setBrand(brand);
         List<SaborAsociado> saborAsociados = Arrays.asList(saborAsociado, saborAsociado2);
         SaborAsociadoResponse respuesta = service.savePorMonton(saborAsociados);
 
@@ -102,17 +102,17 @@ class SaborAsociadoServiceImpTest {
     void update() throws Exception {
         Sabor sabor = new Sabor();
         sabor.setId(1L);
-        Marca marca = new Marca();
-        marca.setId(3L);
+        Brand brand = new Brand();
+        brand.setId(3L);
         SaborAsociado saborAsociado = new SaborAsociado();
         saborAsociado.setId(1L);
         saborAsociado.setSabor(sabor);
-        saborAsociado.setMarca(marca);
+        saborAsociado.setBrand(brand);
 
         SaborAsociadoResponse respuesta = service.update(saborAsociado);
 
         assertEquals(1, respuesta.getSaborTrabajado().getId());
-        assertEquals(3, respuesta.getSaborTrabajado().getMarca().getId());
+        assertEquals(3, respuesta.getSaborTrabajado().getBrand().getId());
         assertEquals(1, respuesta.getSaborTrabajado().getSabor().getId());
     }
 

@@ -76,11 +76,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.controllers;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.DrinkContainer;
-<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.models.Marca;
+<i class="no-highlight">4</i>&nbsp;import dggaleriaapi.models.Brand;
 <i class="no-highlight">5</i>&nbsp;import dggaleriaapi.models.SaborAsociado;
 <i class="no-highlight">6</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
 <i class="no-highlight">7</i>&nbsp;import dggaleriaapi.services.DrinkContainerService;
-<i class="no-highlight">8</i>&nbsp;import dggaleriaapi.services.MarcaService;
+<i class="no-highlight">8</i>&nbsp;import dggaleriaapi.services.BrandService;
 <i class="no-highlight">9</i>&nbsp;import dggaleriaapi.services.SaborAsociadoService;
 <i class="no-highlight">10</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">11</i>&nbsp;import org.springframework.http.HttpStatus;
@@ -95,13 +95,13 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">20</i>&nbsp;    @Autowired
 <i class="no-highlight">21</i>&nbsp;    private DrinkContainerService drinkContainerService;
 <i class="no-highlight">22</i>&nbsp;    @Autowired
-<i class="no-highlight">23</i>&nbsp;    private MarcaService marcaService;
+<i class="no-highlight">23</i>&nbsp;    private BrandService brandService;
 <i class="no-highlight">24</i>&nbsp;    @Autowired
 <i class="no-highlight">25</i>&nbsp;    private SaborService saborAsociadoService;
 <i class="no-highlight">26</i>&nbsp;
-<b class="fc"><i class="no-highlight">27</i>&nbsp;    public GaleriaBebidasController(DrinkContainerService drinkContainerService, MarcaService marcaService, SaborService saborAsociadoService) {</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    public GaleriaBebidasController(DrinkContainerService drinkContainerService, BrandService brandService, SaborService saborAsociadoService) {</b>
 <b class="fc"><i class="no-highlight">28</i>&nbsp;        this.drinkContainerService = drinkContainerService;</b>
-<b class="fc"><i class="no-highlight">29</i>&nbsp;        this.marcaService = marcaService;</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        this.brandService = brandService;</b>
 <b class="fc"><i class="no-highlight">30</i>&nbsp;        this.saborAsociadoService = saborAsociadoService;</b>
 <i class="no-highlight">31</i>&nbsp;    }
 <i class="no-highlight">32</i>&nbsp;
@@ -153,11 +153,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">78</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">79</i>&nbsp;    }
 <i class="no-highlight">80</i>&nbsp;
-<i class="no-highlight">81</i>&nbsp;    @GetMapping(value = &quot;/marcas&quot;)
-<i class="no-highlight">82</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllMarcas(){
+<i class="no-highlight">81</i>&nbsp;    @GetMapping(value = &quot;/brands&quot;)
+<i class="no-highlight">82</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllBrands(){
 <i class="no-highlight">83</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">84</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">85</i>&nbsp;            GaleriaResponse resultado = marcaService.getAll();</b>
+<b class="fc"><i class="no-highlight">85</i>&nbsp;            GaleriaResponse resultado = brandService.getAll();</b>
 <b class="fc"><i class="no-highlight">86</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">87</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">88</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -165,11 +165,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">90</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">91</i>&nbsp;    }
 <i class="no-highlight">92</i>&nbsp;
-<i class="no-highlight">93</i>&nbsp;    @PostMapping(value = &quot;/marcas&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">94</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveMarca(@RequestBody Marca marca){
+<i class="no-highlight">93</i>&nbsp;    @PostMapping(value = &quot;/brands&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
+<i class="no-highlight">94</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveBrand(@RequestBody Brand brand){
 <i class="no-highlight">95</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">96</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">97</i>&nbsp;            GaleriaResponse resultado = marcaService.saveMarca(marca);</b>
+<b class="fc"><i class="no-highlight">97</i>&nbsp;            GaleriaResponse resultado = brandService.saveBrand(brand);</b>
 <b class="fc"><i class="no-highlight">98</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">99</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">100</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -177,11 +177,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">102</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">103</i>&nbsp;    }
 <i class="no-highlight">104</i>&nbsp;
-<i class="no-highlight">105</i>&nbsp;    @PutMapping(value = &quot;/marcas&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">106</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateMarca(@RequestBody Marca marca){
+<i class="no-highlight">105</i>&nbsp;    @PutMapping(value = &quot;/brands&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
+<i class="no-highlight">106</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateBrand(@RequestBody Brand brand){
 <i class="no-highlight">107</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">108</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">109</i>&nbsp;            GaleriaResponse resultado = marcaService.updateMarca(marca);</b>
+<b class="fc"><i class="no-highlight">109</i>&nbsp;            GaleriaResponse resultado = brandService.updateBrand(brand);</b>
 <b class="fc"><i class="no-highlight">110</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">111</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">112</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -189,11 +189,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">114</i>&nbsp;        return respuesta;</b>
 <i class="no-highlight">115</i>&nbsp;    }
 <i class="no-highlight">116</i>&nbsp;
-<i class="no-highlight">117</i>&nbsp;    @DeleteMapping(value = &quot;/marcas&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">118</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteMarca(@RequestBody Marca marca){
+<i class="no-highlight">117</i>&nbsp;    @DeleteMapping(value = &quot;/brands&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
+<i class="no-highlight">118</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteBrand(@RequestBody Brand brand){
 <i class="no-highlight">119</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">120</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">121</i>&nbsp;            GaleriaResponse resultado = marcaService.deleteMarca(marca.getId());</b>
+<b class="fc"><i class="no-highlight">121</i>&nbsp;            GaleriaResponse resultado = brandService.deleteBrand(brand.getId());</b>
 <b class="fc"><i class="no-highlight">122</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">123</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">124</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -203,10 +203,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">128</i>&nbsp;
 <i class="no-highlight">129</i>&nbsp;
 <i class="no-highlight">130</i>&nbsp;    @GetMapping(value = &quot;/sabores&quot;)
-<i class="no-highlight">131</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllSaboresByIdMarca(@RequestParam(name = &quot;id-marca&quot;) Long id){
+<i class="no-highlight">131</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllSaboresByIdBrand(@RequestParam(name = &quot;id-brand&quot;) Long id){
 <i class="no-highlight">132</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">133</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">134</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarca(id);</b>
+<b class="fc"><i class="no-highlight">134</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.getAllByIdBrand(id);</b>
 <b class="fc"><i class="no-highlight">135</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">136</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">137</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -215,10 +215,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">140</i>&nbsp;    }
 <i class="no-highlight">141</i>&nbsp;
 <i class="no-highlight">142</i>&nbsp;    @GetMapping(value = &quot;/sabores/con-stock&quot;)
-<i class="no-highlight">143</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllSaboresByIdMarcayEnStock(@RequestParam(name = &quot;id-marca&quot;) Long id) {
+<i class="no-highlight">143</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; getAllSaboresByIdBrandyEnStock(@RequestParam(name = &quot;id-brand&quot;) Long id) {
 <i class="no-highlight">144</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">145</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">146</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.getAllByIdMarcayStock(id);</b>
+<b class="fc"><i class="no-highlight">146</i>&nbsp;            GaleriaResponse resultado = saborAsociadoService.getAllByIdBrandyStock(id);</b>
 <b class="fc"><i class="no-highlight">147</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">148</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">149</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>

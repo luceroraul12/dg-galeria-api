@@ -13,7 +13,7 @@ public interface SaborFormateadoService {
 
     SaborFormateadoResponse getBySaborAsociadoId(SaborFormateado saborFormateado);
 
-    SaborFormateadoResponse getAllByIdMarca(Long idMarca);
+    SaborFormateadoResponse getAllByIdBrand(Long idBrand);
 
     SaborFormateadoResponse save(SaborFormateado saborFormateado) throws Exception;
 

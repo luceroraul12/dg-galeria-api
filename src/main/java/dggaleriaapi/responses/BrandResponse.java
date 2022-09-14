@@ -1,6 +1,6 @@
 package dggaleriaapi.responses;
 
-import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Brand;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +8,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class MarcaResponse {
-    private Marca marcaTrabajada;
-    private List<Marca> marcasTrabajadas;
+public class BrandResponse {
+    private Brand brandTrabajada;
+    private List<Brand> brandsTrabajadas;
     private String mensaje;
 
 }

@@ -3,10 +3,10 @@ package dggaleriaapi.services.Imp;
 import dggaleriaapi.dto.ClienteDTO;
 import dggaleriaapi.dto.SaborResumenDTO;
 import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Brand;
 import dggaleriaapi.models.SaborAsociado;
 import dggaleriaapi.models.SaborFormateado;
-import dggaleriaapi.repositories.MarcaRepository;
+import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.repositories.SaborAsociadoRepository;
 import dggaleriaapi.repositories.SaborFormateadoRepository;
 import dggaleriaapi.responses.ClienteDTOResponse;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class ClienteServiceImp implements ClienteService {
 
     @Autowired
-    MarcaRepository marcaRepository;
+    BrandRepository brandRepository;
     @Autowired
     SaborAsociadoRepository saborAsociadoRepository;
     @Autowired
@@ -30,24 +30,24 @@ public class ClienteServiceImp implements ClienteService {
 
 
     @Override
-    public ClienteDTOResponse obtenerResumenPorMarca(Marca marca) {
+    public ClienteDTOResponse obtenerResumenPorBrand(Brand brand) {
 
         ClienteDTO cliente = new ClienteDTO();
         ClienteDTOResponse respuesta = new ClienteDTOResponse();
 
-        cliente.setMarcaElegida(marcaRepository.findById(marca.getId()).get());
+        cliente.setBrandElegida(brandRepository.findById(brand.getId()).get());
 
-        cliente.setSaboresResumidos(generarSaboresResumidos(marca.getId()));
+        cliente.setSaboresResumidos(generarSaboresResumidos(brand.getId()));
 
         respuesta.setResumen(cliente);
 
         return respuesta;
     }
 
-    private List<SaborResumenDTO> generarSaboresResumidos(Long idMarca) {
+    private List<SaborResumenDTO> generarSaboresResumidos(Long idBrand) {
 
-        List<SaborAsociado> saboresAsociados = saborAsociadoRepository.findByMarca_Id(idMarca);
-        List<SaborFormateado> saboresFormateados = saborFormateadoRepository.getAllByIdMarca(idMarca);
+        List<SaborAsociado> saboresAsociados = saborAsociadoRepository.findByBrand_Id(idBrand);
+        List<SaborFormateado> saboresFormateados = saborFormateadoRepository.getAllByIdBrand(idBrand);
         List<SaborResumenDTO> resultado = new ArrayList<>();
         SaborResumenDTO saborResumido;
 

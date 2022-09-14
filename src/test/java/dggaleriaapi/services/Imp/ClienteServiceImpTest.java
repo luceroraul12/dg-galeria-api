@@ -1,6 +1,6 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.Marca;
+import dggaleriaapi.models.Brand;
 import dggaleriaapi.responses.ClienteDTOResponse;
 import dggaleriaapi.services.ClienteService;
 import org.junit.jupiter.api.Test;
@@ -15,10 +15,10 @@ class ClienteServiceImpTest {
     ClienteService service;
 
     @Test
-    void obtenerResumenPorMarca() {
-        Marca marca = new Marca();
-        marca.setId(3L);
-        ClienteDTOResponse respuesta = service.obtenerResumenPorMarca(marca);
+    void obtenerResumenPorBrand() {
+        Brand brand = new Brand();
+        brand.setId(3L);
+        ClienteDTOResponse respuesta = service.obtenerResumenPorBrand(brand);
         System.out.println(respuesta);
         assertEquals(2, respuesta.getResumen().getSaboresResumidos().get(0).getDrinkContainersDisponibles().size());
         assertEquals(1, respuesta.getResumen().getSaboresResumidos().get(1).getDrinkContainersDisponibles().size());

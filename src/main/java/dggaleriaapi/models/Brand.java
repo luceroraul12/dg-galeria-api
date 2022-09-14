@@ -11,10 +11,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "marcas")
-public class Marca {
+@Table(name = "brands")
+public class Brand {
     @Id
-    @Column(name = "marcas_id_pk", nullable = false)
+    @Column(name = "brands_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "nombre", nullable = false)
@@ -25,7 +25,7 @@ public class Marca {
     @ColumnDefault("true")
     private Boolean estadoStock = true;
 
-    public Marca(Long id, String nombre) {
+    public Brand(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
