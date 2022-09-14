@@ -1,11 +1,11 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.Sabor;
-import dggaleriaapi.models.SaborAsociado;
-import dggaleriaapi.responses.SaborAsociadoResponse;
-import dggaleriaapi.responses.SaborResponse;
-import dggaleriaapi.services.SaborAsociadoService;
+import dggaleriaapi.models.Taste;
+import dggaleriaapi.models.TasteAsociado;
+import dggaleriaapi.responses.TasteAsociadoResponse;
+import dggaleriaapi.responses.TasteResponse;
+import dggaleriaapi.services.TasteAsociadoService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -22,108 +22,108 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class SaborAsociadoServiceImpTest {
+class TasteAsociadoServiceImpTest {
 
     @Autowired
-    SaborAsociadoService service;
+    TasteAsociadoService service;
 
     @Test()
     @Order(6)
     void getAll(){
-        SaborAsociadoResponse respuesta = service.getAll();
-        assertEquals(7, respuesta.getSaboresAsociadosTrabajados().size());
+        TasteAsociadoResponse respuesta = service.getAll();
+        assertEquals(7, respuesta.getTasteesAsociadosTrabajados().size());
     }
     @Test
     @Order(5)
     void getAllByIdBrand() throws Exception {
-        SaborAsociadoResponse respuesta = service.getAllByIdBrand(1L);
-        assertEquals(3, respuesta.getSaboresAsociadosTrabajados().size());
+        TasteAsociadoResponse respuesta = service.getAllByIdBrand(1L);
+        assertEquals(3, respuesta.getTasteesAsociadosTrabajados().size());
 
         respuesta = service.getAllByIdBrand(2L);
-        assertEquals(0, respuesta.getSaboresAsociadosTrabajados().size());
+        assertEquals(0, respuesta.getTasteesAsociadosTrabajados().size());
 
         respuesta = service.getAllByIdBrand(3L);
-        assertEquals(2, respuesta.getSaboresAsociadosTrabajados().size());
+        assertEquals(2, respuesta.getTasteesAsociadosTrabajados().size());
 
         respuesta = service.getAllByIdBrand(5L);
-        assertEquals(2, respuesta.getSaboresAsociadosTrabajados().size());
+        assertEquals(2, respuesta.getTasteesAsociadosTrabajados().size());
 
         respuesta = service.getAllByIdBrand(-1L);
-        assertEquals(0, respuesta.getSaboresAsociadosTrabajados().size());
+        assertEquals(0, respuesta.getTasteesAsociadosTrabajados().size());
 
         respuesta = service.getAllByIdBrand(100L);
-        assertEquals(0, respuesta.getSaboresAsociadosTrabajados().size());
+        assertEquals(0, respuesta.getTasteesAsociadosTrabajados().size());
     }
 
     @Test
     @Order(1)
     void save() throws Exception {
 
-        Sabor sabor = new Sabor();
-        sabor.setId(1L);
+        Taste taste = new Taste();
+        taste.setId(1L);
         Brand brand = new Brand();
         brand.setId(3L);
-        SaborAsociado saborAsociado = new SaborAsociado();
-        saborAsociado.setSabor(sabor);
-        saborAsociado.setBrand(brand);
+        TasteAsociado tasteAsociado = new TasteAsociado();
+        tasteAsociado.setTaste(taste);
+        tasteAsociado.setBrand(brand);
 
-        SaborAsociadoResponse respuesta = service.save(saborAsociado);
+        TasteAsociadoResponse respuesta = service.save(tasteAsociado);
 
-        assertEquals(8, respuesta.getSaborTrabajado().getId());
+        assertEquals(8, respuesta.getTasteTrabajado().getId());
         //Valor por defecto declarado en la Entidad
-        assertEquals(true, respuesta.getSaborTrabajado().getEstadoStock());
-        assertEquals(3, respuesta.getSaborTrabajado().getBrand().getId());
-        assertEquals(1, respuesta.getSaborTrabajado().getSabor().getId());
+        assertEquals(true, respuesta.getTasteTrabajado().getEstadoStock());
+        assertEquals(3, respuesta.getTasteTrabajado().getBrand().getId());
+        assertEquals(1, respuesta.getTasteTrabajado().getTaste().getId());
     }
 
     @Test
     @Order(2)
     void savePorMonton() throws Exception {
 
-        Sabor sabor = new Sabor();
-        sabor.setId(1L);
+        Taste taste = new Taste();
+        taste.setId(1L);
         Brand brand = new Brand();
         brand.setId(3L);
-        SaborAsociado saborAsociado = new SaborAsociado();
-        saborAsociado.setSabor(sabor);
-        saborAsociado.setBrand(brand);
-        SaborAsociado saborAsociado2 = new SaborAsociado();
-        saborAsociado2.setSabor(sabor);
-        saborAsociado2.setBrand(brand);
-        List<SaborAsociado> saborAsociados = Arrays.asList(saborAsociado, saborAsociado2);
-        SaborAsociadoResponse respuesta = service.savePorMonton(saborAsociados);
+        TasteAsociado tasteAsociado = new TasteAsociado();
+        tasteAsociado.setTaste(taste);
+        tasteAsociado.setBrand(brand);
+        TasteAsociado tasteAsociado2 = new TasteAsociado();
+        tasteAsociado2.setTaste(taste);
+        tasteAsociado2.setBrand(brand);
+        List<TasteAsociado> tasteAsociados = Arrays.asList(tasteAsociado, tasteAsociado2);
+        TasteAsociadoResponse respuesta = service.savePorMonton(tasteAsociados);
 
-        assertEquals(9, respuesta.getSaboresAsociadosTrabajados().get(0).getId());
-        assertEquals(10, respuesta.getSaboresAsociadosTrabajados().get(1).getId());
+        assertEquals(9, respuesta.getTasteesAsociadosTrabajados().get(0).getId());
+        assertEquals(10, respuesta.getTasteesAsociadosTrabajados().get(1).getId());
     }
 
     @Test
     @Order(3)
     void update() throws Exception {
-        Sabor sabor = new Sabor();
-        sabor.setId(1L);
+        Taste taste = new Taste();
+        taste.setId(1L);
         Brand brand = new Brand();
         brand.setId(3L);
-        SaborAsociado saborAsociado = new SaborAsociado();
-        saborAsociado.setId(1L);
-        saborAsociado.setSabor(sabor);
-        saborAsociado.setBrand(brand);
+        TasteAsociado tasteAsociado = new TasteAsociado();
+        tasteAsociado.setId(1L);
+        tasteAsociado.setTaste(taste);
+        tasteAsociado.setBrand(brand);
 
-        SaborAsociadoResponse respuesta = service.update(saborAsociado);
+        TasteAsociadoResponse respuesta = service.update(tasteAsociado);
 
-        assertEquals(1, respuesta.getSaborTrabajado().getId());
-        assertEquals(3, respuesta.getSaborTrabajado().getBrand().getId());
-        assertEquals(1, respuesta.getSaborTrabajado().getSabor().getId());
+        assertEquals(1, respuesta.getTasteTrabajado().getId());
+        assertEquals(3, respuesta.getTasteTrabajado().getBrand().getId());
+        assertEquals(1, respuesta.getTasteTrabajado().getTaste().getId());
     }
 
     @Test
     @Order(4)
     void delete() throws Exception {
-        SaborAsociado saborAsociado = new SaborAsociado();
-        saborAsociado.setId(1L);
-        SaborAsociadoResponse respuesta = service.delete(saborAsociado);
+        TasteAsociado tasteAsociado = new TasteAsociado();
+        tasteAsociado.setId(1L);
+        TasteAsociadoResponse respuesta = service.delete(tasteAsociado);
 
 
-        assertEquals(1, respuesta.getSaborTrabajado().getId());
+        assertEquals(1, respuesta.getTasteTrabajado().getId());
     }
 }

@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "sabores")
-public class Sabor {
+@Table(name = "tastees")
+public class Taste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sabores_id_pk", nullable = false)
+    @Column(name = "tastees_id_pk", nullable = false)
     private Long id;
     @Column(name = "nombre", nullable = false)
     private String nombre;

@@ -10,5 +10,5 @@ import java.util.List;
 @Setter
 public class ClienteDTO {
     private Brand brandElegida;
-    private List<SaborResumenDTO> saboresResumidos;
+    private List<TasteResumenDTO> tasteesResumidos;
 }

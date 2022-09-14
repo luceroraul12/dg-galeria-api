@@ -8,11 +8,11 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "sabores_formateados")
-public class SaborFormateado {
+@Table(name = "tastees_formateados")
+public class TasteFormateado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sabores_formateados_id_pk", nullable = false)
+    @Column(name = "tastees_formateados_id_pk", nullable = false)
     private Long id;
     @Column(name = "is_stocked")
     @ColumnDefault("true")
@@ -21,6 +21,6 @@ public class SaborFormateado {
     @JoinColumn(name = "drink_container_id_fk")
     private DrinkContainer drinkContainer;
     @ManyToOne
-    @JoinColumn(name = "sabores_asociados_id_fk")
-    private SaborAsociado saborAsociado;
+    @JoinColumn(name = "tastees_asociados_id_fk")
+    private TasteAsociado tasteAsociado;
 }

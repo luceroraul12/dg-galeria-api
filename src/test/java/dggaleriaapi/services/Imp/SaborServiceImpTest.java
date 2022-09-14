@@ -1,8 +1,8 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.Sabor;
-import dggaleriaapi.responses.SaborResponse;
-import dggaleriaapi.services.SaborService;
+import dggaleriaapi.models.Taste;
+import dggaleriaapi.responses.TasteResponse;
+import dggaleriaapi.services.TasteService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -19,60 +19,60 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class SaborServiceImpTest {
+class TasteServiceImpTest {
 
     @Autowired
-    SaborService saborService;
+    TasteService tasteService;
 
     @Test
     void getAll() {
-        SaborResponse respuesta = saborService.getAll();
-        assertEquals(10, respuesta.getSaboresTrabajados().size());
+        TasteResponse respuesta = tasteService.getAll();
+        assertEquals(10, respuesta.getTasteesTrabajados().size());
     }
 
     @Test
     @Order(1)
     void save() throws Exception {
-        Sabor sabor = new Sabor();
-        sabor.setNombre("MANAWA");
-        SaborResponse respuesta = saborService.save(sabor);
-        assertEquals(11, respuesta.getSaborTrabajado().getId());
-        assertEquals(sabor.getNombre(), respuesta.getSaborTrabajado().getNombre());
+        Taste taste = new Taste();
+        taste.setNombre("MANAWA");
+        TasteResponse respuesta = tasteService.save(taste);
+        assertEquals(11, respuesta.getTasteTrabajado().getId());
+        assertEquals(taste.getNombre(), respuesta.getTasteTrabajado().getNombre());
     }
 
     @Test
     @Order(2)
     void savePorMonton() throws Exception {
-        Sabor sabor1 = new Sabor();
-        Sabor sabor2 = new Sabor();
-        List<Sabor> sabores = new ArrayList<>();
-        sabor1.setNombre("AWA MANANTIAL");
-        sabores.add(sabor1);
-        sabor2.setNombre("Narampol");
-        sabores.add(sabor2);
-        SaborResponse respuesta = saborService.savePorMonton(sabores);
-        assertEquals(12, respuesta.getSaboresTrabajados().get(0).getId());
-        assertEquals("AWA MANANTIAL", respuesta.getSaboresTrabajados().get(0).getNombre());
-        assertEquals(13, respuesta.getSaboresTrabajados().get(1).getId());
-        assertEquals("Narampol", respuesta.getSaboresTrabajados().get(1).getNombre());
+        Taste taste1 = new Taste();
+        Taste taste2 = new Taste();
+        List<Taste> tastees = new ArrayList<>();
+        taste1.setNombre("AWA MANANTIAL");
+        tastees.add(taste1);
+        taste2.setNombre("Narampol");
+        tastees.add(taste2);
+        TasteResponse respuesta = tasteService.savePorMonton(tastees);
+        assertEquals(12, respuesta.getTasteesTrabajados().get(0).getId());
+        assertEquals("AWA MANANTIAL", respuesta.getTasteesTrabajados().get(0).getNombre());
+        assertEquals(13, respuesta.getTasteesTrabajados().get(1).getId());
+        assertEquals("Narampol", respuesta.getTasteesTrabajados().get(1).getNombre());
 
     }
 
     @Test
     void update() throws Exception {
-        Sabor sabor = new Sabor();
-        sabor.setId(1L);
-        sabor.setNombre("MANAWA");
-        saborService.update(sabor);
-        SaborResponse respuesta = saborService.getAll();
-        assertEquals("MANAWA", respuesta.getSaboresTrabajados().get(0).getNombre());
+        Taste taste = new Taste();
+        taste.setId(1L);
+        taste.setNombre("MANAWA");
+        tasteService.update(taste);
+        TasteResponse respuesta = tasteService.getAll();
+        assertEquals("MANAWA", respuesta.getTasteesTrabajados().get(0).getNombre());
     }
 
     @Test
     void delete() throws Exception {
-        Sabor sabor = new Sabor();
-        sabor.setId(1L);
-        SaborResponse respuesta = saborService.delete(sabor);
-        assertEquals(1, respuesta.getSaborTrabajado().getId());
+        Taste taste = new Taste();
+        taste.setId(1L);
+        TasteResponse respuesta = tasteService.delete(taste);
+        assertEquals(1, respuesta.getTasteTrabajado().getId());
     }
 }

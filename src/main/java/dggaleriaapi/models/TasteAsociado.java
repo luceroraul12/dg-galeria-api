@@ -16,10 +16,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "sabores_asociados")
-public class SaborAsociado {
+@Table(name = "tastees_asociados")
+public class TasteAsociado {
     @Id
-    @Column(name = "sabores_asociados_id_pk", nullable = false)
+    @Column(name = "tastees_asociados_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "is_stocked")
@@ -31,6 +31,6 @@ public class SaborAsociado {
     private Brand brand;
 
     @ManyToOne
-    @JoinColumn(name = "sabores_id_fk")
-    private Sabor sabor;
+    @JoinColumn(name = "tastees_id_fk")
+    private Taste taste;
 }

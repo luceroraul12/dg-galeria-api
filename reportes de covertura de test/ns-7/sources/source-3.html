@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > SaborRepository</title>
+  <title>Coverage Report > TasteRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">dggaleriaapi.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: SaborRepository (dggaleriaapi.repositories)</h1>
+<h1>Coverage Summary for Class: TasteRepository (dggaleriaapi.repositories)</h1>
 
 <table class="coverageStats">
 
@@ -28,16 +28,16 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$btW4aH69</td>
+    <td class="name">TasteRepository$MockitoMock$btW4aH69</td>
   </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$btW4aH69$auxiliary$1bj4rUSb</td>
+    <td class="name">TasteRepository$MockitoMock$btW4aH69$auxiliary$1bj4rUSb</td>
   </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$btW4aH69$auxiliary$38inTkzx</td>
+    <td class="name">TasteRepository$MockitoMock$btW4aH69$auxiliary$38inTkzx</td>
   </tr>
   <tr>
-    <td class="name">SaborRepository$MockitoMock$btW4aH69$auxiliary$HnB8zwKf</td>
+    <td class="name">TasteRepository$MockitoMock$btW4aH69$auxiliary$HnB8zwKf</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -51,17 +51,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package dggaleriaapi.repositories;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.SaborAsociado;
+<i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.TasteAsociado;
 <i class="no-highlight">4</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
 <i class="no-highlight">5</i>&nbsp;import org.springframework.data.jpa.repository.Query;
 <i class="no-highlight">6</i>&nbsp;
 <i class="no-highlight">7</i>&nbsp;import java.util.List;
 <i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;public interface SaborRepository extends JpaRepository&lt;Sabor, Long&gt; {
-<i class="no-highlight">10</i>&nbsp;    List&lt;Sabor&gt; findByBrand_Id(Long id);
+<i class="no-highlight">9</i>&nbsp;public interface TasteRepository extends JpaRepository&lt;Taste, Long&gt; {
+<i class="no-highlight">10</i>&nbsp;    List&lt;Taste&gt; findByBrand_Id(Long id);
 <i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;    @Query(&quot;select s from Sabor s where s.brand.id = ?1 and s.estadoStock = true&quot;)
-<i class="no-highlight">13</i>&nbsp;    List&lt;Sabor&gt; getAllByIdMacaryStock(Long id);
+<i class="no-highlight">12</i>&nbsp;    @Query(&quot;select s from Taste s where s.brand.id = ?1 and s.estadoStock = true&quot;)
+<i class="no-highlight">13</i>&nbsp;    List&lt;Taste&gt; getAllByIdMacaryStock(Long id);
 <i class="no-highlight">14</i>&nbsp;
 <i class="no-highlight">15</i>&nbsp;}
 </div>

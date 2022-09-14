@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.util.List;
 @Getter
 @Builder
-public class SaborResumenDTO {
-    private String nombreSabor;
+public class TasteResumenDTO {
+    private String nombreTaste;
     private List<DrinkContainer> drinkContainersDisponibles;
 }

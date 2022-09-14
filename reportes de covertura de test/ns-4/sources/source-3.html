@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > Sabor</title>
+  <title>Coverage Report > Taste</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">dggaleriaapi.models</a>
 </div>
 
-<h1>Coverage Summary for Class: Sabor (dggaleriaapi.models)</h1>
+<h1>Coverage Summary for Class: Taste (dggaleriaapi.models)</h1>
 
 <table class="coverageStats">
 
@@ -36,7 +36,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Sabor</td>
+  <td class="name">Taste</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -55,7 +55,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 </tr>
   <tr>
-    <td class="name">Sabor$HibernateProxy$xZQkq2GD</td>
+    <td class="name">Taste$HibernateProxy$xZQkq2GD</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -97,10 +97,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">12</i>&nbsp;@Setter</b>
 <b class="fc"><i class="no-highlight">13</i>&nbsp;@NoArgsConstructor</b>
 <b class="fc"><i class="no-highlight">14</i>&nbsp;@ToString</b>
-<i class="no-highlight">15</i>&nbsp;@Table(name = &quot;sabores&quot;)
-<i class="no-highlight">16</i>&nbsp;public class Sabor {
+<i class="no-highlight">15</i>&nbsp;@Table(name = &quot;tastees&quot;)
+<i class="no-highlight">16</i>&nbsp;public class Taste {
 <i class="no-highlight">17</i>&nbsp;    @Id
-<i class="no-highlight">18</i>&nbsp;    @Column(name = &quot;sabores_id_pk&quot;, nullable = false)
+<i class="no-highlight">18</i>&nbsp;    @Column(name = &quot;tastees_id_pk&quot;, nullable = false)
 <i class="no-highlight">19</i>&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
 <b class="fc"><i class="no-highlight">20</i>&nbsp;    private Long id;</b>
 <i class="no-highlight">21</i>&nbsp;    @Column(name = &quot;nombre&quot;)
@@ -114,13 +114,13 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">29</i>&nbsp;    @JoinColumn(name = &quot;brands_id_fk&quot;)
 <b class="fc"><i class="no-highlight">30</i>&nbsp;    private Brand brand;</b>
 <i class="no-highlight">31</i>&nbsp;
-<b class="fc"><i class="no-highlight">32</i>&nbsp;    public Sabor(Long id, String nombre, Brand brand) {</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;    public Taste(Long id, String nombre, Brand brand) {</b>
 <b class="fc"><i class="no-highlight">33</i>&nbsp;        this.id = id;</b>
 <b class="fc"><i class="no-highlight">34</i>&nbsp;        this.nombre = nombre;</b>
 <b class="fc"><i class="no-highlight">35</i>&nbsp;        this.brand = brand;</b>
 <i class="no-highlight">36</i>&nbsp;    }
 <i class="no-highlight">37</i>&nbsp;
-<b class="fc"><i class="no-highlight">38</i>&nbsp;    public Sabor(Long id, String nombre, Brand brand, Boolean estadoStock) {</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;    public Taste(Long id, String nombre, Brand brand, Boolean estadoStock) {</b>
 <b class="fc"><i class="no-highlight">39</i>&nbsp;        this.id = id;</b>
 <b class="fc"><i class="no-highlight">40</i>&nbsp;        this.nombre = nombre;</b>
 <b class="fc"><i class="no-highlight">41</i>&nbsp;        this.estadoStock = estadoStock;</b>
