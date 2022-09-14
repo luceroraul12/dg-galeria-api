@@ -40,7 +40,7 @@ VALUES
 --insert para tabla de tastees asociados a una brand
 INSERT
 INTO
-  tastees_asociados
+  branded_taste
   (is_stocked, brands_id_fk, tastees_id_fk)
 VALUES
   (true, 1, 1),
@@ -54,7 +54,7 @@ VALUES
 INSERT
 INTO
   tastees_formateados
-  (drink_container_id_fk, tastees_asociados_id_fk)
+  (drink_container_id_fk, branded_taste_id_fk)
 VALUES
     (1, 1),
     (1, 3),

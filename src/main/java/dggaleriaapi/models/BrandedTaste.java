@@ -16,10 +16,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "tastees_asociados")
+@Table(name = "branded_taste")
 public class BrandedTaste {
     @Id
-    @Column(name = "tastees_asociados_id_pk", nullable = false)
+    @Column(name = "branded_taste_id_pk", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "is_stocked")
