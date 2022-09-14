@@ -26,7 +26,7 @@ public class TasteServiceImp implements TasteService {
 
     @Override
     public TasteResponse save(Taste taste) throws Exception {
-        if (taste.getNombre().isEmpty()){
+        if (taste.getTasteName().isEmpty()){
             throw new Exception();
         }
         TasteResponse respuesta = new TasteResponse();
@@ -52,7 +52,7 @@ public class TasteServiceImp implements TasteService {
 
     @Override
     public TasteResponse update(Taste taste) throws Exception {
-        if (!tasteRepository.existsById(taste.getId()) | taste.getNombre().isEmpty()){
+        if (!tasteRepository.existsById(taste.getId()) | taste.getTasteName().isEmpty()){
             throw new Exception();
         }
         TasteResponse respuesta = new TasteResponse();

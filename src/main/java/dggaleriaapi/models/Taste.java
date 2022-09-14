@@ -16,9 +16,9 @@ public class Taste {
     @Column(name = "tastees_id_pk", nullable = false)
     private Long id;
     @Column(name = "taste_name", nullable = false)
-    private String nombre;
+    private String tasteName;
     @Column(name = "is_stocked")
     @ColumnDefault("true")
-    private Boolean estadoStock;
+    private Boolean isStocked;
 
 }

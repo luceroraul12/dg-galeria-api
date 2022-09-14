@@ -53,7 +53,7 @@ public class ClienteServiceImp implements ClienteService {
 
         for (BrandedTaste brandedTaste : tasteesAsociados){
             tasteResumido = TasteResumenDTO.builder()
-                            .nombreTaste(brandedTaste.getTaste().getNombre())
+                            .nombreTaste(brandedTaste.getTaste().getTasteName())
                             .drinkContainersDisponibles(obtenerDrinkContainers(brandedTaste.getId(), tasteesFormateados))
                             .build();
             resultado.add(tasteResumido);
