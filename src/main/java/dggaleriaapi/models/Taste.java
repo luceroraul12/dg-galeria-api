@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "tastees")
-public class Taste {
+public class Taste extends StockData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tastees_id_pk", nullable = false)
