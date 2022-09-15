@@ -28,11 +28,11 @@ public class CustomerController {
 
         try {
             resultado = service.obtenerResumenPorBrand(brand);
-            resultado.setMensaje(successMessage);
+            resultado.setMessage(successMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.OK);
         } catch (Exception e) {
             resultado = new CustomerDTOResponse();
-            resultado.setMensaje(badMessage);
+            resultado.setMessage(badMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.BAD_REQUEST);
         }
         return respuesta;

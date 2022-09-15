@@ -35,11 +35,11 @@ public class CustomerServiceImp implements CustomerService {
         CustomerDTO customer = new CustomerDTO();
         CustomerDTOResponse respuesta = new CustomerDTOResponse();
 
-        customer.setBrandElegida(brandRepository.findById(brand.getId()).get());
+        customer.setBrandSelected(brandRepository.findById(brand.getId()).get());
 
-        customer.setTasteesResumidos(generarTasteesResumidos(brand.getId()));
+        customer.setTasteResults(generarTasteesResumidos(brand.getId()));
 
-        respuesta.setResumen(customer);
+        respuesta.setCustomerResult(customer);
 
         return respuesta;
     }
@@ -53,8 +53,8 @@ public class CustomerServiceImp implements CustomerService {
 
         for (BrandedTaste brandedTaste : tasteesAsociados){
             tasteResumido = TasteResumenDTO.builder()
-                            .nombreTaste(brandedTaste.getTaste().getTasteName())
-                            .drinkContainersDisponibles(obtenerDrinkContainers(brandedTaste.getId(), tasteesFormateados))
+                            .tasteName(brandedTaste.getTaste().getTasteName())
+                            .drinkContainersAvailable(obtenerDrinkContainers(brandedTaste.getId(), tasteesFormateados))
                             .build();
             resultado.add(tasteResumido);
         }

@@ -8,6 +8,6 @@ import java.util.List;
 @Getter
 @Builder
 public class TasteResumenDTO {
-    private String nombreTaste;
-    private List<DrinkContainer> drinkContainersDisponibles;
+    private String tasteName;
+    private List<DrinkContainer> drinkContainersAvailable;
 }

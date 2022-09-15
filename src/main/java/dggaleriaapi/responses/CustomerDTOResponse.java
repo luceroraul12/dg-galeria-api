@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerDTOResponse {
-    private CustomerDTO resumen;
-    private String mensaje;
+    private CustomerDTO customerResult;
+    private String message;
 }

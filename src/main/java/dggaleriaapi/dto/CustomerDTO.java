@@ -9,6 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 public class CustomerDTO {
-    private Brand brandElegida;
-    private List<TasteResumenDTO> tasteesResumidos;
+    private Brand brandSelected;
+    private List<TasteResumenDTO> tasteResults;
 }
