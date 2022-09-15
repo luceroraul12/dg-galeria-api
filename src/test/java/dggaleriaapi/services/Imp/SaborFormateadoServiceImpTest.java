@@ -168,7 +168,7 @@ class DrinkContaineredTasteServiceImpTest {
 
         assertEquals(1, respuesta.getDrinkContaineredTasteTrabajado().getId());
         assertEquals(2, respuesta.getDrinkContaineredTasteTrabajado().getBrandedTaste().getId());
-        assertEquals(true, respuesta.getDrinkContaineredTasteTrabajado().getEstadoStock());
+        assertEquals(true, respuesta.getDrinkContaineredTasteTrabajado().getIsStocked());
         assertEquals(1, respuesta.getDrinkContaineredTasteTrabajado().getDrinkContainer().getId());
     }
 

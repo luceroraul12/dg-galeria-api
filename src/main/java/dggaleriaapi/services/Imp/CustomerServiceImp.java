@@ -78,7 +78,7 @@ public class CustomerServiceImp implements CustomerService {
         DrinkContainer drinkContainer = new DrinkContainer();
         drinkContainer.setId(taste.getDrinkContainer().getId());
         drinkContainer.setContainerName(taste.getDrinkContainer().getContainerName());
-        drinkContainer.setIsStocked(taste.getEstadoStock());
+        drinkContainer.setIsStocked(taste.getIsStocked());
         return drinkContainer;
     }
 

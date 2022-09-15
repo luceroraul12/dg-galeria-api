@@ -1,11 +1,13 @@
 package dggaleriaapi.services.Imp;
 
+import dggaleriaapi.models.Brand;
 import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.repositories.DrinkContainerRepository;
 import dggaleriaapi.repositories.DrinkContaineredTasteRepository;
 import dggaleriaapi.responses.DrinkContaineredTasteResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.DrinkContaineredTasteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,35 +25,35 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     DrinkContainerRepository drinkContainerRepository;
 
     @Override
-    public DrinkContaineredTasteResponse getAll() {
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
-        respuesta.setTasteesFormateadosTrabajados(
+    public StockDataResponse<DrinkContaineredTaste> getAll() {
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
                 drinkContaineredTasteRepository.findAll()
         );
         return respuesta;
     }
 
     @Override
-    public DrinkContaineredTasteResponse getByBrandedTasteId(DrinkContaineredTaste drinkContaineredTaste) {
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
-        Long idBrandedTaste = drinkContaineredTaste.getBrandedTaste().getId();
-        respuesta.setTasteesFormateadosTrabajados(
-                drinkContaineredTasteRepository.findByBrandedTaste_Id(idBrandedTaste)
+    public StockDataResponse<DrinkContaineredTaste> getByBrandedTasteId(BrandedTaste brandedTaste) {
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
+                drinkContaineredTasteRepository.findByBrandedTaste_Id(brandedTaste.getId())
         );
         return respuesta;
     }
 
     @Override
-    public DrinkContaineredTasteResponse getAllByIdBrand(Long idBrand) {
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
-        respuesta.setTasteesFormateadosTrabajados(
-                drinkContaineredTasteRepository.getAllByIdBrand(idBrand)
+    public StockDataResponse<DrinkContaineredTaste> getAllByIdBrand(Brand brand) {
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
+                drinkContaineredTasteRepository.getAllByIdBrand(brand.getId())
         );
         return respuesta;
+
     }
 
     @Override
-    public DrinkContaineredTasteResponse save(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
+    public StockDataResponse<DrinkContaineredTaste> save(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         boolean esTasteExistente = drinkContaineredTasteRepository.existsByDrinkContainer_IdAndBrandedTaste_Id(
                 drinkContaineredTaste.getDrinkContainer().getId(),
                 drinkContaineredTaste.getBrandedTaste().getId()
@@ -59,70 +61,70 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
         if (esTasteExistente){
             throw new Exception();
         }
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
-        respuesta.setDrinkContaineredTasteTrabajado(
-                drinkContaineredTasteRepository.save(drinkContaineredTaste)
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
+                List.of(drinkContaineredTasteRepository.save(drinkContaineredTaste))
         );
         return respuesta;
     }
 
     @Override
-    public DrinkContaineredTasteResponse saveInicial(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
+    public StockDataResponse<DrinkContaineredTaste> saveInicial(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         List<DrinkContaineredTaste> tasteesFormateadosGenerados = generarDrinkContainersParaBrandedTaste(drinkContaineredTaste);
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
         return savePorMonton(tasteesFormateadosGenerados);
     }
 
     @Override
-    public DrinkContaineredTasteResponse savePorMonton(List<DrinkContaineredTaste> tasteesFormateados) throws Exception {
-        if (tasteesFormateados == null){
+    public StockDataResponse<DrinkContaineredTaste> savePorMonton(List<DrinkContaineredTaste> drinkContaineredTastes) throws Exception {
+        if (drinkContaineredTastes == null){
             throw new Exception();
         }
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
-        respuesta.setTasteesFormateadosTrabajados(
-                drinkContaineredTasteRepository.saveAll(tasteesFormateados)
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
+                drinkContaineredTasteRepository.saveAll(drinkContaineredTastes)
         );
         return respuesta;
     }
 
     @Override
-    public DrinkContaineredTasteResponse savePorMontonInicial(List<DrinkContaineredTaste> tasteesFormateados) throws Exception {
+    public StockDataResponse<DrinkContaineredTaste> savePorMontonInicial(List<DrinkContaineredTaste> tasteesFormateados) throws Exception {
         if(tasteesFormateados == null){
             throw new Exception();
         }
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
         List<DrinkContaineredTaste> conjuntoTasteesFormateados = new ArrayList<>();
         for (DrinkContaineredTaste drinkContaineredTaste : tasteesFormateados) {
             conjuntoTasteesFormateados.addAll(
-                    saveInicial(drinkContaineredTaste).getTasteesFormateadosTrabajados()
+                    saveInicial(drinkContaineredTaste).getStockDataResult()
             );
         }
-        respuesta.setTasteesFormateadosTrabajados(conjuntoTasteesFormateados);
+        respuesta.setStockDataResult(conjuntoTasteesFormateados);
         return respuesta;
     }
 
     @Override
-    public DrinkContaineredTasteResponse update(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
+    public StockDataResponse<DrinkContaineredTaste> update(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         if (drinkContaineredTasteRepository.existsByDrinkContainer_IdAndBrandedTaste_Id(
                 drinkContaineredTaste.getDrinkContainer().getId(),
                 drinkContaineredTaste.getBrandedTaste().getId()
         )){
             throw new Exception();
         }
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
-        drinkContaineredTasteRepository.save(drinkContaineredTaste);
-        respuesta.setDrinkContaineredTasteTrabajado(drinkContaineredTaste);
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
+                List.of(drinkContaineredTasteRepository.save(drinkContaineredTaste))
+        );
         return respuesta;
     }
 
     @Override
-    public DrinkContaineredTasteResponse delete(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
+    public StockDataResponse<DrinkContaineredTaste> delete(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         if (!drinkContaineredTasteRepository.existsById(drinkContaineredTaste.getId())){
             throw new Exception();
         }
-        DrinkContaineredTasteResponse respuesta = new DrinkContaineredTasteResponse();
         drinkContaineredTasteRepository.delete(drinkContaineredTaste);
-        respuesta.setDrinkContaineredTasteTrabajado(drinkContaineredTaste);
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(List.of(drinkContaineredTaste));
         return respuesta;
     }
 
@@ -141,7 +143,7 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
 
         return resultado;
     }
-
+    //TODO ver esta función
     private DrinkContaineredTaste generarTasteInmutable(DrinkContainer drinkContainer, DrinkContaineredTaste drinkContaineredTaste) {
 
         DrinkContaineredTaste taste = new DrinkContaineredTaste();

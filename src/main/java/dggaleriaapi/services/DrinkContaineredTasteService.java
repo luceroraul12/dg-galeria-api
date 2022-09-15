@@ -1,7 +1,10 @@
 package dggaleriaapi.services;
 
+import dggaleriaapi.models.Brand;
+import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.responses.DrinkContaineredTasteResponse;
+import dggaleriaapi.responses.StockDataResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,21 +12,21 @@ import java.util.List;
 @Service
 public interface DrinkContaineredTasteService {
 
-    DrinkContaineredTasteResponse getAll();
+    StockDataResponse<DrinkContaineredTaste> getAll();
 
-    DrinkContaineredTasteResponse getByBrandedTasteId(DrinkContaineredTaste drinkContaineredTaste);
+    StockDataResponse<DrinkContaineredTaste> getByBrandedTasteId(BrandedTaste brandedTaste);
 
-    DrinkContaineredTasteResponse getAllByIdBrand(Long idBrand);
+    StockDataResponse<DrinkContaineredTaste> getAllByIdBrand(Brand brand);
 
-    DrinkContaineredTasteResponse save(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> save(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
 
-    DrinkContaineredTasteResponse saveInicial(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> saveInicial(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
 
-    DrinkContaineredTasteResponse savePorMonton(List<DrinkContaineredTaste> tasteesFormateados) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> savePorMonton(List<DrinkContaineredTaste> tasteesFormateados) throws Exception;
 
-    DrinkContaineredTasteResponse savePorMontonInicial(List<DrinkContaineredTaste> tasteesFormateados) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> savePorMontonInicial(List<DrinkContaineredTaste> tasteesFormateados) throws Exception;
 
-    DrinkContaineredTasteResponse update(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> update(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
 
-    DrinkContaineredTasteResponse delete(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> delete(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
 }
