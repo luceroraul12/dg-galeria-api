@@ -3,7 +3,6 @@ package dggaleriaapi.controllers;
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
-import dggaleriaapi.responses.DrinkContaineredTasteResponse;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.DrinkContaineredTasteService;
 import org.springframework.beans.factory.annotation.Autowired;

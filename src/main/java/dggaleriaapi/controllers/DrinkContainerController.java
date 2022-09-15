@@ -1,7 +1,6 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.responses.DrinkContainerResponse;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.DrinkContainerService;
 import org.springframework.beans.factory.annotation.Autowired;

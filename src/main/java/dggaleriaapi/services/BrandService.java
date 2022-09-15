@@ -1,7 +1,6 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.responses.BrandResponse;
 import dggaleriaapi.responses.StockDataResponse;
 import org.springframework.stereotype.Service;
 

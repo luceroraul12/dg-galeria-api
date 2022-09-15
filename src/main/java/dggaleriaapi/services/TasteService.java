@@ -2,7 +2,6 @@ package dggaleriaapi.services;
 
 import dggaleriaapi.models.Taste;
 import dggaleriaapi.responses.StockDataResponse;
-import dggaleriaapi.responses.TasteResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

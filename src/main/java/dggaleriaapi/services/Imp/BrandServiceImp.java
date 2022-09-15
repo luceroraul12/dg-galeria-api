@@ -2,7 +2,6 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.repositories.BrandRepository;
-import dggaleriaapi.responses.BrandResponse;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;

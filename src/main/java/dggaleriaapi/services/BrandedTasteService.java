@@ -1,8 +1,6 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.BrandedTaste;
-import dggaleriaapi.models.Taste;
-import dggaleriaapi.responses.BrandedTasteResponse;
 import dggaleriaapi.responses.StockDataResponse;
 
 import java.util.List;

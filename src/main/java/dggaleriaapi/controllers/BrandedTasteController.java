@@ -1,8 +1,6 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.BrandedTaste;
-import dggaleriaapi.models.Taste;
-import dggaleriaapi.responses.BrandedTasteResponse;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandedTasteService;
 import org.springframework.beans.factory.annotation.Autowired;
