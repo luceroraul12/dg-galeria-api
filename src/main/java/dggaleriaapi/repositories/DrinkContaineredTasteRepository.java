@@ -10,11 +10,14 @@ import java.util.List;
 public interface DrinkContaineredTasteRepository extends JpaRepository<DrinkContaineredTaste, Long> {
     List<DrinkContaineredTaste> findByBrandedTaste_Id(Long id);
 
-//    @Query("select (count(s) > 0) from DrinkContaineredTaste s where s.drinkContainer.id = :id and s.brandedTaste.id = :id1")
-//    boolean existsByDrinkContainer_IdAndBrandedTaste_Id(@Param("id") Long idDrinkContainer, @Param("id1") Long idBrandedTaste);
-
     @Query("select (count(s) > 0) from DrinkContaineredTaste s where s.drinkContainer.id = :id and s.brandedTaste.id = :id1")
     boolean existsByDrinkContainer_IdAndBrandedTaste_Id(@Param("id") Long idDrinkContainer, @Param("id1") Long idBrandedTaste);
+
+    @Query("""
+            select (count(d) > 0) from DrinkContaineredTaste d
+            where d.id = :id and d.drinkContainer.id = :id1 and d.brandedTaste.id = :id2 and d.isStocked = :isStocked""")
+    boolean isExistWithoutChanges(@Param("id") Long idDrinkContainerTaste, @Param("id1") Long idDrinkContainer, @Param("id2") Long idBrandedTaste, @Param("isStocked") Boolean isStocked);
+
 
 
 

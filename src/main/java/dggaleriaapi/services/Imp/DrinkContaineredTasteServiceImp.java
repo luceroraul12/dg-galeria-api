@@ -103,9 +103,11 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
 
     @Override
     public StockDataResponse<DrinkContaineredTaste> update(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
-        if (drinkContaineredTasteRepository.existsByDrinkContainer_IdAndBrandedTaste_Id(
+        if (drinkContaineredTasteRepository.isExistWithoutChanges(
+                drinkContaineredTaste.getId(),
                 drinkContaineredTaste.getDrinkContainer().getId(),
-                drinkContaineredTaste.getBrandedTaste().getId()
+                drinkContaineredTaste.getBrandedTaste().getId(),
+                drinkContaineredTaste.getIsStocked()
         )){
             throw new Exception();
         }
