@@ -72,9 +72,11 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
 
     @Override
     public StockDataResponse<BrandedTaste> update(BrandedTaste brandedTaste) throws Exception {
-        boolean esBrandedTasteExistente = brandedTasteRepository.existsByBrand_IdAndTaste_Id(
+        boolean esBrandedTasteExistente = brandedTasteRepository.isExistWithoutChanges(
+                brandedTaste.getId(),
                 brandedTaste.getBrand().getId(),
-                brandedTaste.getTaste().getId()
+                brandedTaste.getTaste().getId(),
+                brandedTaste.getIsStocked()
         );
         if (esBrandedTasteExistente){
             throw new Exception();
