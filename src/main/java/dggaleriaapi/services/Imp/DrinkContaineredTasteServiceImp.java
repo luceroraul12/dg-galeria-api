@@ -123,6 +123,22 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     }
 
     @Override
+    public StockDataResponse<DrinkContaineredTaste> changeStockState(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
+        if (drinkContaineredTaste.getIsStocked() == null){
+            throw new Exception();
+        }
+        drinkContaineredTasteRepository.updateIsStockedById(
+                drinkContaineredTaste.getIsStocked(),
+                drinkContaineredTaste.getId()
+        );
+        StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
+        respuesta.setStockDataResult(
+                List.of(drinkContaineredTaste)
+        );
+        return respuesta;
+    }
+
+    @Override
     public StockDataResponse<DrinkContaineredTaste> delete(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         if (!drinkContaineredTasteRepository.existsById(drinkContaineredTaste.getId())){
             throw new Exception();

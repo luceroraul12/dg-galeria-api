@@ -26,6 +26,7 @@ public interface DrinkContaineredTasteService {
     StockDataResponse<DrinkContaineredTaste> savePorMontonInicial(List<DrinkContaineredTaste> tasteesFormateados) throws Exception;
 
     StockDataResponse<DrinkContaineredTaste> update(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
+    StockDataResponse<DrinkContaineredTaste> changeStockState(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
 
     StockDataResponse<DrinkContaineredTaste> delete(DrinkContaineredTaste drinkContaineredTaste) throws Exception;
 }

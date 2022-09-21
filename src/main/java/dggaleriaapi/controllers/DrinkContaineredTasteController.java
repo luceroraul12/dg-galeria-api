@@ -151,6 +151,23 @@ public class DrinkContaineredTasteController {
         return respuesta;
     }
 
+    @PatchMapping
+    public ResponseEntity<StockDataResponse<DrinkContaineredTaste>> chacheStockState(@RequestBody DrinkContaineredTaste drinkContaineredTaste) {
+        String successMessage = "tastee formateado stock state actualizado";
+        String badMessage = "error al actualizar taste formateado stock state";
+        StockDataResponse<DrinkContaineredTaste> drinkContaineredTasteResponse = new StockDataResponse<DrinkContaineredTaste>();
+        ResponseEntity<StockDataResponse<DrinkContaineredTaste>> respuesta;
+        try {
+            drinkContaineredTasteResponse = drinkContaineredTasteService.changeStockState(drinkContaineredTaste);
+            drinkContaineredTasteResponse.setMessage(successMessage);
+            respuesta = new ResponseEntity<StockDataResponse<DrinkContaineredTaste>>(drinkContaineredTasteResponse, HttpStatus.OK);
+        } catch (Exception e) {
+            drinkContaineredTasteResponse.setMessage(badMessage);
+            respuesta = new ResponseEntity<StockDataResponse<DrinkContaineredTaste>>(drinkContaineredTasteResponse, HttpStatus.BAD_REQUEST);
+        }
+        return respuesta;
+    }
+
     @DeleteMapping
     public ResponseEntity<StockDataResponse<DrinkContaineredTaste>> delete(@RequestBody DrinkContaineredTaste drinkContaineredTaste) {
         String successMessage = "taste formateado eliminado";
