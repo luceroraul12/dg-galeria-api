@@ -78,6 +78,12 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
         if (drinkContaineredTastes == null){
             throw new Exception();
         }
+        drinkContaineredTastes.removeIf(item -> {
+            return drinkContaineredTasteRepository.isExistWithoutChanges(
+                    item.getDrinkContainer().getId(),
+                    item.getBrandedTaste().getId()
+            );
+        });
         StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
         respuesta.setStockDataResult(
                 drinkContaineredTasteRepository.saveAll(drinkContaineredTastes)
@@ -104,10 +110,8 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     @Override
     public StockDataResponse<DrinkContaineredTaste> update(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         if (drinkContaineredTasteRepository.isExistWithoutChanges(
-                drinkContaineredTaste.getId(),
                 drinkContaineredTaste.getDrinkContainer().getId(),
-                drinkContaineredTaste.getBrandedTaste().getId(),
-                drinkContaineredTaste.getIsStocked()
+                drinkContaineredTaste.getBrandedTaste().getId()
         )){
             throw new Exception();
         }

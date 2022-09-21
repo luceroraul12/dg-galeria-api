@@ -18,9 +18,9 @@ public class DrinkContaineredTaste extends StockData {
     @ColumnDefault("true")
     private Boolean isStocked = true;
     @ManyToOne
-    @JoinColumn(name = "drink_container_id_fk")
+    @JoinColumn(name = "drink_container_id_fk",unique = true)
     private DrinkContainer drinkContainer;
     @ManyToOne
-    @JoinColumn(name = "branded_taste_id_fk")
+    @JoinColumn(name = "branded_taste_id_fk", unique = true)
     private BrandedTaste brandedTaste;
 }

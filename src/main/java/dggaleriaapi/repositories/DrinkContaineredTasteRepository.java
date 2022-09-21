@@ -15,8 +15,8 @@ public interface DrinkContaineredTasteRepository extends JpaRepository<DrinkCont
 
     @Query("""
             select (count(d) > 0) from DrinkContaineredTaste d
-            where d.id = :id and d.drinkContainer.id = :id1 and d.brandedTaste.id = :id2 and d.isStocked = :isStocked""")
-    boolean isExistWithoutChanges(@Param("id") Long idDrinkContainerTaste, @Param("id1") Long idDrinkContainer, @Param("id2") Long idBrandedTaste, @Param("isStocked") Boolean isStocked);
+            where d.drinkContainer.id = :id1 and d.brandedTaste.id = :id2 """)
+    boolean isExistWithoutChanges( @Param("id1") Long idDrinkContainer, @Param("id2") Long idBrandedTaste);
 
 
 
