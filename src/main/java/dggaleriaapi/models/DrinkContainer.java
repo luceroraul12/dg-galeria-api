@@ -21,13 +21,13 @@ public class DrinkContainer extends StockData{
     private Long id;
 
     @Column(name ="container_name", nullable = false)
-    private String containerName;
+    private Integer containerName;
 
     @Column(name ="is_stocked")
     @ColumnDefault("true")
     private Boolean isStocked = true;
 
-    public DrinkContainer(Long id, String containerName) {
+    public DrinkContainer(Long id, Integer containerName) {
         this.id = id;
         this.containerName = containerName;
     }

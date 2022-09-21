@@ -30,7 +30,7 @@ public class DrinkContainerServiceImp implements DrinkContainerService {
 
     @Override
     public StockDataResponse<DrinkContainer> saveDrinkContainer(DrinkContainer drinkContainer) throws Exception {
-        if (drinkContainer.getContainerName().isEmpty() | drinkContainerRepository.isExistByName(drinkContainer.getContainerName())){
+        if (drinkContainerRepository.isExistByName(drinkContainer.getContainerName())){
             throw new Exception();
         }
         StockDataResponse<DrinkContainer>  response = new StockDataResponse<DrinkContainer> ();
