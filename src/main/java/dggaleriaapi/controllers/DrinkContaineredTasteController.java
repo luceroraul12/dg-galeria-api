@@ -101,7 +101,7 @@ public class DrinkContaineredTasteController {
         return respuesta;
     }
 
-    @PostMapping("/save-monton")
+    @PostMapping("/monton")
     public ResponseEntity<StockDataResponse<DrinkContaineredTaste>> savePorMonton(@RequestBody List<DrinkContaineredTaste> tasteesFormateados) {
         String successMessage = "tastees formateados por monton creados";
         String badMessage = "error al crear tastees formateados por monton";
