@@ -26,7 +26,8 @@ public class TasteServiceImp implements TasteService {
 
     @Override
     public StockDataResponse<Taste> save(Taste taste) throws Exception {
-        if (taste.getTasteName().isEmpty()){
+        if (taste.getTasteName().isEmpty()
+            | tasteRepository.existsByTasteName(taste.getTasteName())){
             throw new Exception();
         }
         StockDataResponse<Taste> respuesta = new StockDataResponse<Taste>();
