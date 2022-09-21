@@ -27,10 +27,10 @@ public class BrandedTaste extends StockData {
     private Boolean isStocked;
 
     @ManyToOne
-    @JoinColumn(name = "brands_id_fk")
+    @JoinColumn(name = "brands_id_fk", unique = true)
     private Brand brand;
 
     @ManyToOne
-    @JoinColumn(name = "tastees_id_fk")
+    @JoinColumn(name = "tastees_id_fk", unique = true)
     private Taste taste;
 }

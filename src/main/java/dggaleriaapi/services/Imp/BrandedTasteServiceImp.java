@@ -63,6 +63,10 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
         if (brandedtastees == null){
             throw new Exception();
         }
+        brandedtastees.removeIf(item -> brandedTasteRepository.existsByBrand_IdAndTaste_Id(
+                item.getBrand().getId(),
+                item.getTaste().getId()
+        ));
         StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
         respuesta.setStockDataResult(
                 brandedTasteRepository.saveAll(brandedtastees)
