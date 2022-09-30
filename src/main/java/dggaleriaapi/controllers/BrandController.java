@@ -100,4 +100,10 @@ public class BrandController {
         }
         return response;
     }
+
+    @GetMapping("download-images")
+    public ResponseEntity<String> downloadImage(){
+        brandService.downloadImages();
+        return new ResponseEntity<>("imagenes descargadas", HttpStatus.OK);
+    }
 }

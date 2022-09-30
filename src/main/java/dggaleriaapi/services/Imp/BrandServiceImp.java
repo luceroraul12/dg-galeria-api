@@ -4,6 +4,7 @@ import dggaleriaapi.models.Brand;
 import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandService;
+import dggaleriaapi.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,8 @@ import java.util.List;
 @Service
 public class BrandServiceImp implements BrandService {
 
+    @Autowired
+    ImageService imageService;
     @Autowired
     BrandRepository brandRepository;
 
@@ -77,5 +80,16 @@ public class BrandServiceImp implements BrandService {
                 List.of(brand)
         );
         return respuesta;
+    }
+
+    @Override
+    public void downloadImages() {
+        brandRepository.findAll().forEach(b -> {
+            imageService.createImage(
+                    b.getId().toString(),
+                    b.getUrl(),
+                    "brand"
+            );
+        });
     }
 }

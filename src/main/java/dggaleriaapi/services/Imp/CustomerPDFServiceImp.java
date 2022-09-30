@@ -16,6 +16,7 @@ import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.services.BrandService;
 import dggaleriaapi.services.CustomerService;
 import dggaleriaapi.services.DrinkContaineredTasteService;
+import dggaleriaapi.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,9 @@ public class CustomerPDFServiceImp {
 
     @Autowired
     DrinkContaineredTasteService drinkContaineredTasteService;
+
+    @Autowired
+    ImageService imageService;
 
     @Autowired
     CustomerService customerService;
@@ -126,7 +130,7 @@ public class CustomerPDFServiceImp {
         data.sort((a,b) -> a.getBrandSelected().getBrandName().compareTo(b.getBrandSelected().getBrandName()));
     }
 
-    private static void generateTables(Document document, List<CustomerDTO> customerList) throws IOException {
+    private void generateTables(Document document, List<CustomerDTO> customerList) throws IOException {
 
         Table imageTable;
         Table tastesTable;
@@ -136,12 +140,19 @@ public class CustomerPDFServiceImp {
         Cell tamanioCell;
 
 
+
         for (CustomerDTO customer : customerList){
 
             Brand brand = customer.getBrandSelected();
             List<TasteResumenDTO> tasteResumenDTOList = customer.getTasteResults();
 
-            Image brandImage = Image.getInstance(new URL(brand.getUrl()));
+
+            Image brandImage = Image.getInstance(
+                    imageService.getImage(
+                            brand.getId().toString(),
+                            "brand"
+                    )
+            );
             brandImage.scaleAbsolute(150,150);
 
             imageTable = new Table(2);
