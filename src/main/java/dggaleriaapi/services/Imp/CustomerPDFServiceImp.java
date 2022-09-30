@@ -1,7 +1,6 @@
 package dggaleriaapi.services.Imp;
 
 
-import antlr.StringUtils;
 import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
@@ -12,11 +11,9 @@ import com.lowagie.text.pdf.PdfWriter;
 import dggaleriaapi.dto.CustomerDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.services.BrandService;
-import dggaleriaapi.services.BrandedTasteService;
 import dggaleriaapi.services.CustomerService;
 import dggaleriaapi.services.DrinkContaineredTasteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +22,9 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -45,67 +40,6 @@ public class CustomerPDFServiceImp {
 
     @Autowired
     BrandService brandService;
-
-
-    private void writeTableHeader(PdfPTable table) {
-        PdfPCell cell = new PdfPCell();
-        cell.setBackgroundColor(Color.BLUE);
-        cell.setPadding(5);
-
-        com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA);
-        font.setColor(Color.WHITE);
-
-        cell.setPhrase(new Phrase("Marca", font));
-        table.addCell(cell);
-
-        cell.setPhrase(new Phrase("Sabor", font));
-        table.addCell(cell);
-
-        cell.setPhrase(new Phrase("Tamaño", font));
-        table.addCell(cell);
-    }
-
-    private void writeTableData(PdfPTable table) {
-
-        List<DrinkContaineredTaste> drinkContaineredTasteList = drinkContaineredTasteService.getAll().getStockDataResult();
-
-        sortDrink(drinkContaineredTasteList);
-
-            String brandName;
-            String tasteName;
-            String drinkContainerName;
-        for (DrinkContaineredTaste drink : drinkContaineredTasteList) {
-            brandName = drink.getBrandedTaste().getBrand().getBrandName().toUpperCase();
-            tasteName = drink.getBrandedTaste().getTaste().getTasteName().toUpperCase();
-            drinkContainerName = adaptContainerName(
-                    drink.getDrinkContainer().getContainerName());
-
-            table.addCell(brandName);
-            table.addCell(tasteName);
-            table.addCell(drinkContainerName);
-        }
-    }
-
-    private void sortDrink(List<DrinkContaineredTaste> drinkContaineredTasteList) {
-
-
-        drinkContaineredTasteList.sort((d1, d2) -> {
-            return 0;
-        });
-
-        drinkContaineredTasteList.sort((d1, d2) -> {
-            return d1.getBrandedTaste().getTaste().getTasteName().compareTo(
-                    d2.getBrandedTaste().getTaste().getTasteName()
-            );
-        });
-
-        drinkContaineredTasteList.sort((d1, d2) -> {
-            return d1.getBrandedTaste().getBrand().getBrandName().compareTo(
-                    d2.getBrandedTaste().getBrand().getBrandName()
-            );
-        });
-
-    }
 
     private static String adaptContainerName(Integer ammo){
         String ammoPreFix;
@@ -142,14 +76,14 @@ public class CustomerPDFServiceImp {
         document.add(p);
 
 
-        generateTables(document, getAllCustomerDTO());
+        generateTables(document, getAllCustomerDTOOrdered());
 
 
         document.close();
 
     }
 
-    private List<CustomerDTO> getAllCustomerDTO() {
+    private List<CustomerDTO> getAllCustomerDTOOrdered() {
         List<CustomerDTO> result = new ArrayList<>();
         List<Brand> brands = brandService.getAll().getStockDataResult();
         brands.forEach(b -> {
@@ -157,7 +91,39 @@ public class CustomerPDFServiceImp {
                     customerService.obtenerResumenPorBrand(b).getCustomerResult()
             );
         });
+        orderCustomerDTO(result);
         return result;
+    }
+
+    private void orderCustomerDTO(List<CustomerDTO> result) {
+
+        orderByBrandName(result);
+        orderByTasteName(result);
+        orderByDrinkContainerAsc(result);
+
+    }
+
+    private void orderByDrinkContainerAsc(List<CustomerDTO> data) {
+
+        data.forEach(d -> {
+            d.getTasteResults().forEach( t -> {
+                t.getDrinkContainersAvailable().sort( (dc1, dc2) -> {
+                    return dc1.getContainerName() - dc2.getContainerName();
+                });
+            });
+        });
+    }
+
+    private void orderByTasteName(List<CustomerDTO> data) {
+        data.forEach(d -> {
+            d.getTasteResults().sort((a, b) ->{
+                return a.getTasteName().compareTo(b.getTasteName());
+            });
+        });
+    }
+
+    private void orderByBrandName(List<CustomerDTO> data) {
+        data.sort((a,b) -> a.getBrandSelected().getBrandName().compareTo(b.getBrandSelected().getBrandName()));
     }
 
     private static void generateTables(Document document, List<CustomerDTO> customerList) throws IOException {
@@ -239,10 +205,5 @@ public class CustomerPDFServiceImp {
             document.add(tastesTable);
 
         }
-
-
-
     }
-
-
 }
