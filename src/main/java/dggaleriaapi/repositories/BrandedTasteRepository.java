@@ -2,8 +2,10 @@ package dggaleriaapi.repositories;
 
 import dggaleriaapi.models.BrandedTaste;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +25,12 @@ public interface BrandedTasteRepository extends JpaRepository<BrandedTaste, Long
             select (count(b) > 0) from BrandedTaste b
             where b.id = ?1 and b.brand.id = ?2 and b.taste.id = ?3 and b.isStocked = ?4""")
     boolean isExistWithoutChanges(Long idBrandedTaste, Long idBrand, Long idTaste, Boolean isStocked);
+
+    @Transactional
+    @Modifying
+    @Query("update BrandedTaste b set b.isStocked = :isStocked where b.id = :id")
+    int changeStockState(@Param("isStocked") Boolean isStocked, @Param("id") Long id);
+
 
 
 

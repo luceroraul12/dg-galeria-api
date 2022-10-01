@@ -93,6 +93,19 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
     }
 
     @Override
+    public StockDataResponse<BrandedTaste> changeStockState(BrandedTaste brandedTaste) throws Exception {
+        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+        brandedTasteRepository.changeStockState(
+                brandedTaste.getIsStocked(),
+                brandedTaste.getId()
+        );
+        respuesta.setStockDataResult(
+                List.of(brandedTasteRepository.save(brandedTaste))
+        );
+        return respuesta;
+    }
+
+    @Override
     public StockDataResponse<BrandedTaste> delete(BrandedTaste brandedTaste) throws Exception {
         if (!/**/brandedTasteRepository.existsById(brandedTaste.getId())){
             throw new Exception();

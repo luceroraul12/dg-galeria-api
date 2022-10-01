@@ -14,6 +14,9 @@ public interface BrandedTasteService {
 
     StockDataResponse<BrandedTaste> update(BrandedTaste brandedTaste) throws Exception;
 
+    StockDataResponse<BrandedTaste> changeStockState(BrandedTaste brandedTaste) throws Exception;
+
+
     StockDataResponse<BrandedTaste> delete(BrandedTaste brandedTaste) throws Exception;
 
 }

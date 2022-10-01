@@ -98,6 +98,22 @@ public class BrandedTasteController {
         }
         return response;
     }
+    @PatchMapping
+    public ResponseEntity<StockDataResponse<BrandedTaste>> changeStockState(@RequestBody BrandedTaste brandedTaste) {
+        String successMessage = "taste asociado actualizado";
+        String badMessage = "error al actualizar taste asociado";
+        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
+        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        try {
+            brandResponse = brandedTasteService.changeStockState(brandedTaste);
+            brandResponse.setMessage(successMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
+        } catch (Exception e) {
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
+        }
+        return response;
+    }
     @DeleteMapping
     public ResponseEntity<StockDataResponse<BrandedTaste>> delete(@RequestBody BrandedTaste brandedTaste) {
         String successMessage = "taste asociado eliminado";
