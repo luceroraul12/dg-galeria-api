@@ -47,6 +47,8 @@ public class BrandServiceImp implements BrandService {
     public StockDataResponse<Brand> saveBrand(Brand brand) throws Exception {
         if (brand.getBrandName().isEmpty()
                 | brand.getUrl().isEmpty()
+                | imageService.isURLValid(brand.getUrl())
+                | imageService.isURLValid(brand.getUrlIconic())
                 | brandRepository.existsByBrandName(brand.getBrandName())){
             throw new Exception();
         }
@@ -59,7 +61,11 @@ public class BrandServiceImp implements BrandService {
 
     @Override
     public StockDataResponse<Brand> updateBrand(Brand brand) throws Exception {
-        if (brand.getBrandName().isEmpty() | brand.getUrl().isEmpty() | !brandRepository.existsById(brand.getId())){
+        if (brand.getBrandName().isEmpty()
+                | brand.getUrl().isEmpty()
+                | imageService.isURLValid(brand.getUrl())
+                | imageService.isURLValid(brand.getUrlIconic())
+                | !brandRepository.existsByBrandName(brand.getBrandName())){
             throw new Exception();
         }
         StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();

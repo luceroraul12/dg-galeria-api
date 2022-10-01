@@ -4,6 +4,7 @@ import dggaleriaapi.services.ImageService;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Service
@@ -31,5 +32,16 @@ public class ImageServiceImp implements ImageService {
     public void deleteImage(String fileName, String folderName) {
         File file = new File("src/main/resources/static/images/"+folderName+"/"+fileName+".jpg");
         file.delete();
+    }
+
+    @Override
+    public boolean isURLValid(String urlImage) throws IOException {
+        URL url = new URL(urlImage);
+        HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+        huc.setInstanceFollowRedirects(false);
+
+        int responseCode = huc.getResponseCode();
+
+        return HttpURLConnection.HTTP_OK != responseCode;
     }
 }
