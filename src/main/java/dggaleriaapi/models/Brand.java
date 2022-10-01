@@ -20,6 +20,8 @@ public class Brand extends StockData {
     private String brandName;
     @Column(name = "brands_url", columnDefinition = "TEXT",nullable = false)
     private String url;
+    @Column(name = "brands_iconic_url", columnDefinition = "TEXT", nullable = false)
+    private String urlIconic;
     @Column(name = "brands_is_stocked")
     @ColumnDefault("true")
     private Boolean isStocked = true;
