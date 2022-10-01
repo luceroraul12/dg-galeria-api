@@ -14,6 +14,7 @@ public interface BrandService {
     StockDataResponse<Brand> saveBrand(Brand brand) throws Exception;
     StockDataResponse<Brand> updateBrand(Brand brand) throws Exception;
     StockDataResponse<Brand> deleteBrand(Brand brand) throws Exception;
+    StockDataResponse<Brand> changeStockState(Brand brand) throws Exception;
 
     void downloadAllImages();
 

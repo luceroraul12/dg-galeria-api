@@ -84,6 +84,23 @@ public class BrandController {
         return response;
     }
 
+    @PatchMapping
+    public ResponseEntity<StockDataResponse<Brand>> updateStockState(@RequestBody Brand brand) {
+        String successMessage = "estado de brand actualizado";
+        String badMessage = "error al actualizar el estado de brand";
+        StockDataResponse<Brand>  brandResponse = new StockDataResponse<Brand> ();
+        ResponseEntity<StockDataResponse<Brand>> response;
+        try {
+            brandResponse = brandService.changeStockState(brand);
+            brandResponse.setMessage(successMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
+        } catch (Exception e) {
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
+        }
+        return response;
+    }
+
     @DeleteMapping
     public ResponseEntity<StockDataResponse<Brand>> deleteBrand(@RequestBody Brand brand) {
         String successMessage = "brand eliminada";

@@ -89,6 +89,19 @@ public class BrandServiceImp implements BrandService {
     }
 
     @Override
+    public StockDataResponse<Brand> changeStockState(Brand brand) throws Exception {
+        brandRepository.updateStockState(
+                brand.getIsStocked(),
+                brand.getId()
+        );
+        StockDataResponse<Brand> respuesta = new StockDataResponse<>();
+        respuesta.setStockDataResult(
+                List.of(brand)
+        );
+        return respuesta;
+    }
+
+    @Override
     public void downloadAllImages() {
         brandRepository.findAll().forEach(b -> {
             imageService.createImage(
