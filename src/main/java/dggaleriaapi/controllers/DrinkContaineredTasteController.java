@@ -120,7 +120,7 @@ public class DrinkContaineredTasteController {
 
     @PostMapping("/save-monton-inicial")
     public ResponseEntity<StockDataResponse<DrinkContaineredTaste>> savePorMontonInicial(@RequestBody List<DrinkContaineredTaste> tasteesFormateados) {
-        String successMessage = "tastees formateados por monton inicial creados";
+        String successMessage = "tastees2 formateados por monton inicial creados";
         String badMessage = "error al crear tastees formateados inicial por monton";
         StockDataResponse<DrinkContaineredTaste> drinkContaineredTasteResponse = new StockDataResponse<DrinkContaineredTaste>();
         ResponseEntity<StockDataResponse<DrinkContaineredTaste>> respuesta;
