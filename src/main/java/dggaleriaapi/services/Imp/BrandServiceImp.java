@@ -109,6 +109,13 @@ public class BrandServiceImp implements BrandService {
 
     @Override
     public void deleteImagesByBrand(Brand brand) {
-
+        imageService.deleteImage(
+                brand.getId().toString(),
+                "brand"
+        );
+        imageService.deleteImage(
+                brand.getId().toString(),
+                "brand.iconic"
+        );
     }
 }
