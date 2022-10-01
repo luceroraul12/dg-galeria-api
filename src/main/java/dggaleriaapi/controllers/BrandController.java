@@ -103,7 +103,7 @@ public class BrandController {
 
     @GetMapping("download-images")
     public ResponseEntity<String> downloadImage(){
-        brandService.downloadImages();
+        brandService.downloadAllImages();
         return new ResponseEntity<>("imagenes descargadas", HttpStatus.OK);
     }
 }

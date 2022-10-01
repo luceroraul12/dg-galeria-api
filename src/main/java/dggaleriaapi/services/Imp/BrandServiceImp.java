@@ -83,7 +83,7 @@ public class BrandServiceImp implements BrandService {
     }
 
     @Override
-    public void downloadImages() {
+    public void downloadAllImages() {
         brandRepository.findAll().forEach(b -> {
             imageService.createImage(
                     b.getId().toString(),
@@ -91,5 +91,24 @@ public class BrandServiceImp implements BrandService {
                     "brand"
             );
         });
+    }
+
+    @Override
+    public void downloadImagesByBrand(Brand brand) {
+        imageService.createImage(
+                brand.getId().toString(),
+                brand.getUrl(),
+                "brand"
+        );
+        imageService.createImage(
+                brand.getId().toString(),
+                brand.getUrlIconic(),
+                "brand.iconic"
+        );
+    }
+
+    @Override
+    public void deleteImagesByBrand(Brand brand) {
+
     }
 }
