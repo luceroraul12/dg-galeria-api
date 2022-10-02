@@ -53,8 +53,10 @@ public class BrandServiceImp implements BrandService {
             throw new Exception();
         }
         StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
+        Brand brandSaved = brandRepository.save(brand);
+        downloadImagesByBrand(brandSaved);
         respuesta.setStockDataResult(
-                List.of(brandRepository.save(brand))
+                List.of(brandSaved)
         );
         return respuesta;
     }
@@ -80,6 +82,7 @@ public class BrandServiceImp implements BrandService {
         if (!brandRepository.existsById(brand.getId())){
             throw new Exception();
         }
+        deleteImagesByBrand(brand);
         StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
         brandRepository.deleteById(brand.getId());
         respuesta.setStockDataResult(
