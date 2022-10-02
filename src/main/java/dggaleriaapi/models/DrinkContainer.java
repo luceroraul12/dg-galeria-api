@@ -1,9 +1,6 @@
 package dggaleriaapi.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -13,6 +10,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
+@Builder
+@AllArgsConstructor
 @Table(name = "drink_containers")
 public class DrinkContainer extends StockData{
     @Id
@@ -26,9 +25,4 @@ public class DrinkContainer extends StockData{
     @Column(name ="is_stocked")
     @ColumnDefault("true")
     private Boolean isStocked = true;
-
-    public DrinkContainer(Long id, Integer containerName) {
-        this.id = id;
-        this.containerName = containerName;
-    }
 }

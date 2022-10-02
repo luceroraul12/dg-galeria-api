@@ -54,6 +54,7 @@ public class CustomerServiceImp implements CustomerService {
         for (BrandedTaste brandedTaste : tasteesAsociados){
             tasteResumido = TasteResumenDTO.builder()
                             .tasteName(brandedTaste.getTaste().getTasteName())
+                            .stockState(brandedTaste.getTaste().getIsStocked() & brandedTaste.getIsStocked())
                             .drinkContainersAvailable(obtenerDrinkContainers(brandedTaste.getId(), tasteesFormateados))
                             .build();
             resultado.add(tasteResumido);
@@ -65,12 +66,12 @@ public class CustomerServiceImp implements CustomerService {
 
     private List<DrinkContainer> obtenerDrinkContainers(Long idBrandedTaste, List<DrinkContaineredTaste> tasteesFormateados) {
         List<DrinkContainer> resultado = new ArrayList<>();
+
         List<DrinkContaineredTaste> tasteesFormateadosFiltrados = tasteesFormateados
                 .stream()
                 .filter(drinkContaineredTaste -> drinkContaineredTaste.getBrandedTaste().getId() == idBrandedTaste).collect(Collectors.toList());
 
         tasteesFormateadosFiltrados.forEach(taste -> resultado.add(obtenerDrinkContainerInmutable(taste)));
-
         return resultado;
     }
 

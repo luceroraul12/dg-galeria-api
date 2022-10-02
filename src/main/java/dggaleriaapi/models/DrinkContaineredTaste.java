@@ -8,7 +8,10 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Builder
 @Table(name = "tastees_formateados")
+@NoArgsConstructor
+@AllArgsConstructor
 public class DrinkContaineredTaste extends StockData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

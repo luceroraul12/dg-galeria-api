@@ -9,5 +9,6 @@ import java.util.List;
 @Builder
 public class TasteResumenDTO {
     private String tasteName;
+    private boolean stockState;
     private List<DrinkContainer> drinkContainersAvailable;
 }
