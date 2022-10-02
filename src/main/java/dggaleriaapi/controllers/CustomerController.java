@@ -42,8 +42,9 @@ public class CustomerController {
             resultado.setMessage(successMessage);
             respuesta = new ResponseEntity<>(resultado, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             resultado = new CustomerDTOResponse();
-            resultado.setMessage(badMessage);
+            resultado.setMessage(e.getMessage());
             respuesta = new ResponseEntity<>(resultado, HttpStatus.BAD_REQUEST);
         }
         return respuesta;
