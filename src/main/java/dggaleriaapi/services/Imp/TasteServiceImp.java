@@ -30,6 +30,7 @@ public class TasteServiceImp implements TasteService {
             | tasteRepository.existsByTasteName(taste.getTasteName())){
             throw new Exception();
         }
+        taste.setIsStocked(true);
         StockDataResponse<Taste> respuesta = new StockDataResponse<Taste>();
         respuesta.setStockDataResult(
                 List.of(tasteRepository.save(taste))
