@@ -43,14 +43,23 @@ public class CustomerPDFServiceImp {
 
     private static String adaptContainerName(Integer ammo){
         String ammoPreFix;
-        int ammoFix;
+        int ammoIntFix;
+        double ammoDoubleFix;
+        String ammoFix;
         String result;
         if (ammo >= 1000){
             ammoPreFix = "Lts";
-            ammoFix = ammo / 1000;
+            ammoDoubleFix = ammo / 1000.0;
+            int partInt = (int)ammoDoubleFix;
+            double partDecimal = ammoDoubleFix - partInt;
+            if (partDecimal == 0.0){
+                ammoFix = String.valueOf(partInt);
+            } else {
+                ammoFix = String.valueOf(ammoDoubleFix);
+            }
         } else {
             ammoPreFix = "ml";
-            ammoFix = ammo;
+            ammoFix = String.valueOf(ammo);
         }
         result = ammoFix + ammoPreFix + " ";
         return result;
