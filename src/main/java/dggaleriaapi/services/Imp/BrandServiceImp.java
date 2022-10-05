@@ -112,6 +112,11 @@ public class BrandServiceImp implements BrandService {
                     b.getUrl(),
                     "brand"
             );
+            imageService.createImage(
+                    b.getId().toString(),
+                    b.getUrlIconic(),
+                    "brand.iconic"
+            );
         });
     }
 
