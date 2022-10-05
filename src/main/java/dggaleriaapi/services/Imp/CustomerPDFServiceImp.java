@@ -5,14 +5,11 @@ import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
 import com.lowagie.text.alignment.HorizontalAlignment;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import dggaleriaapi.dto.CustomerDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
 import dggaleriaapi.models.Brand;
 import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.services.BrandService;
 import dggaleriaapi.services.CustomerService;
 import dggaleriaapi.services.DrinkContaineredTasteService;
@@ -23,7 +20,6 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +65,11 @@ public class CustomerPDFServiceImp {
         Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         font.setSize(18);
         font.setColor(Color.BLUE);
+
+        Image imageLogo = Image.getInstance("src/main/resources/static/images/favicon.png");
+        imageLogo.scaleAbsolute(200,200);
+        imageLogo.setAlignment(Element.ALIGN_CENTER);
+        document.add(imageLogo);
 
         Paragraph p = new Paragraph("Distribuidora Gustavo", font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
@@ -175,7 +176,15 @@ public class CustomerPDFServiceImp {
 
             iconicBrandCell = new Cell();
             iconicBrandCell.setHorizontalAlignment(HorizontalAlignment.CENTER);
-            iconicBrandCell.add(brandImage);
+            Image iconicImage = Image.getInstance(
+                    imageService.getImage(
+                            brand.getId().toString(),
+                            "brand.iconic"
+                    )
+            );
+            iconicImage.scaleAbsolute(150,150);
+
+            iconicBrandCell.add(iconicImage);
             iconicBrandCell.add(new Chunk("PRODUCTO ICONICO "));
             imageTable.addCell(iconicBrandCell,0,1);
 
