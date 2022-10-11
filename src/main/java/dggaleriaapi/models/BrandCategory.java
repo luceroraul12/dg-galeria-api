@@ -1,8 +1,6 @@
 package dggaleriaapi.models;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,17 +8,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
 @Table(name = "brand_category")
+@NoArgsConstructor
 public class BrandCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "brand_category_name", nullable = false)
     private String categoryName;
 
-    public BrandCategory() {
-    }
 
 }

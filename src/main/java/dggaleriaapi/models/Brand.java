@@ -26,6 +26,10 @@ public class Brand extends StockData {
     @ColumnDefault("true")
     private Boolean isStocked = true;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_category_id_fk")
+    private BrandCategory brandCategory;
+
     public Brand(Long id, String brandName) {
         this.id = id;
         this.brandName = brandName;
