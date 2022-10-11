@@ -111,7 +111,7 @@ public class CustomerPDFServiceImp {
 
     private void orderCustomerDTO(List<CustomerDTO> result) {
 
-        orderByBrandName(result);
+        orderByBrandNameAndCategory(result);
         orderByTasteName(result);
         orderByDrinkContainerAsc(result);
 
@@ -136,8 +136,11 @@ public class CustomerPDFServiceImp {
         });
     }
 
-    private void orderByBrandName(List<CustomerDTO> data) {
+    private void orderByBrandNameAndCategory(List<CustomerDTO> data) {
         data.sort((a,b) -> a.getBrandSelected().getBrandName().compareTo(b.getBrandSelected().getBrandName()));
+        data.sort((a,b) -> a.getBrandSelected().getBrandCategory().getCategoryName().compareTo(
+                b.getBrandSelected().getBrandCategory().getCategoryName()
+        ));
     }
 
     private void generateTables(Document document, List<CustomerDTO> customerList) throws IOException {
@@ -204,7 +207,9 @@ public class CustomerPDFServiceImp {
             Font font = new Font();
             font.setColor(Color.BLUE);
             font.setSize(15);
-            Paragraph p = new Paragraph(brand.getBrandName().toUpperCase(),font);
+            Paragraph p = new Paragraph(
+                    brand.getBrandName().toUpperCase()+" ("+brand.getBrandCategory().getCategoryName().toUpperCase()+")"
+                    ,font);
             p.setAlignment(Element.ALIGN_CENTER);
             p.setSpacingBefore(10);
 
