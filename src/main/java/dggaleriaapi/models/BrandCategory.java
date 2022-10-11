@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "brand_category")
 @NoArgsConstructor
-public class BrandCategory {
+public class BrandCategory extends StockData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

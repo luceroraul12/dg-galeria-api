@@ -1,6 +1,8 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Brand;
+import dggaleriaapi.models.BrandCategory;
+import dggaleriaapi.repositories.BrandCategoryRepository;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class BrandController {
     @Autowired
     BrandService brandService;
 
+    @Autowired
+    BrandCategoryRepository brandCategoryRepository;
+
     @GetMapping
     public ResponseEntity<StockDataResponse<Brand>> getAll() {
         String succesMessage = "brand obtenidos";
@@ -24,6 +29,22 @@ public class BrandController {
         ResponseEntity<StockDataResponse<Brand>> response;
         try {
             brandResponse = brandService.getAll();
+            brandResponse.setMessage(succesMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
+        } catch (Exception e) {
+            brandResponse.setMessage(badMessage);
+            response = new ResponseEntity<>(brandResponse, HttpStatus.BAD_REQUEST);
+        }
+        return response;
+    }
+    @GetMapping(value = "/categories")
+    public ResponseEntity<StockDataResponse<BrandCategory>> getAllCategories() {
+        String succesMessage = "categorias de brands obtenidas";
+        String badMessage = "error al obtener categoria de brands";
+        StockDataResponse<BrandCategory>  brandResponse = new StockDataResponse<BrandCategory> ();
+        ResponseEntity<StockDataResponse<BrandCategory>> response;
+        try {
+            brandResponse.setStockDataResult(brandCategoryRepository.findAll());
             brandResponse.setMessage(succesMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
