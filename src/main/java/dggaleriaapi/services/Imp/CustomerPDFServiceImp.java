@@ -14,6 +14,7 @@ import dggaleriaapi.services.BrandService;
 import dggaleriaapi.services.CustomerService;
 import dggaleriaapi.services.DrinkContaineredTasteService;
 import dggaleriaapi.services.ImageService;
+import dggaleriaapi.util.BrandInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,20 +74,37 @@ public class CustomerPDFServiceImp {
         document.open();
         Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         font.setSize(18);
-        font.setColor(Color.BLUE);
+        font.setColor(242,70,70);
+
+        Paragraph p = new Paragraph("Distribuidora Gustavo", font);
+        p.setAlignment(Paragraph.ALIGN_CENTER);
+        document.add(p);
 
         Image imageLogo = Image.getInstance("src/main/resources/static/images/favicon.png");
         imageLogo.scaleAbsolute(200,200);
         imageLogo.setAlignment(Element.ALIGN_CENTER);
         document.add(imageLogo);
 
-        Paragraph p = new Paragraph("Distribuidora Gustavo", font);
+        p = new Paragraph(BrandInfo.lema, font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
-
         document.add(p);
+
+
         font.setSize(10);
         p = new Paragraph("Fecha de emision: "+ LocalDate.now().toString(),font);
         p.setAlignment(Paragraph.ALIGN_RIGHT);
+        document.add(p);
+
+        p = new Paragraph(String.format("Dirección: %s", BrandInfo.address), font);
+        p.setAlignment(Paragraph.ALIGN_LEFT);
+        document.add(p);
+
+        p = new Paragraph(String.format("TEL: %s", BrandInfo.phoneLocal), font);
+        p.setAlignment(Paragraph.ALIGN_LEFT);
+        document.add(p);
+
+        p = new Paragraph(String.format("CEL: %s", BrandInfo.phoneDirect), font);
+        p.setAlignment(Paragraph.ALIGN_LEFT);
         document.add(p);
 
 
