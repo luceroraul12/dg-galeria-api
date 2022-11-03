@@ -5,6 +5,8 @@ import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
 import com.lowagie.text.alignment.HorizontalAlignment;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfTable;
 import com.lowagie.text.pdf.PdfWriter;
 import dggaleriaapi.dto.CustomerDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
@@ -42,6 +44,9 @@ public class CustomerPDFServiceImp {
     @Autowired
     BrandService brandService;
 
+    private Color colorDefault = new Color(242,70,70);
+
+
     private static String adaptContainerName(Integer ammo){
         String ammoPreFix;
         int ammoIntFix;
@@ -74,7 +79,7 @@ public class CustomerPDFServiceImp {
         document.open();
         Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         font.setSize(18);
-        font.setColor(242,70,70);
+        font.setColor(colorDefault);
 
         Paragraph p = new Paragraph("Distribuidora Gustavo", font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
@@ -109,9 +114,43 @@ public class CustomerPDFServiceImp {
 
 
         generateTables(document, getAllCustomerDTOOrdered());
-
+//        generateTablesDifferent(document, getAllCustomerDTOOrdered());
 
         document.close();
+
+    }
+
+    private void generateTablesDifferent(Document document, List<CustomerDTO> allCustomerDTOOrdered) {
+
+        // Remark: You MUST know the number of columns when constructing a Table.
+        //         The number of rows is not important.
+        Table table = new Table(3);
+        table.setBorderWidth(1);
+        table.setBorderColor(new Color(0, 0, 255));
+        table.setPadding(5);
+        table.setSpacing(5);
+        Cell cell = new Cell("header");
+        cell.setHeader(true);
+        cell.setColspan(3);
+        table.addCell(cell);
+        table.endHeaders();
+        cell = new Cell("example cell with colspan 1 and rowspan 2");
+        cell.setRowspan(2);
+        cell.setBorderColor(new Color(255, 0, 0));
+        table.addCell(cell);
+        table.addCell("1.1");
+        table.addCell("2.1");
+        table.addCell("1.2");
+        table.addCell("2.2");
+        table.addCell("cell test1");
+        cell = new Cell("big cell");
+        cell.setRowspan(2);
+        cell.setColspan(2);
+        table.addCell(cell);
+        table.addCell("cell test2");
+
+        PdfPTable pdfTable = new PdfPTable(8);
+        document.add(table);
 
     }
 
@@ -156,9 +195,9 @@ public class CustomerPDFServiceImp {
 
     private void orderByBrandNameAndCategory(List<CustomerDTO> data) {
         data.sort((a,b) -> a.getBrandSelected().getBrandName().compareTo(b.getBrandSelected().getBrandName()));
-        data.sort((a,b) -> a.getBrandSelected().getBrandCategory().getCategoryName().compareTo(
-                b.getBrandSelected().getBrandCategory().getCategoryName()
-        ));
+        data.sort((a,b) ->
+                (int) (a.getBrandSelected().getBrandCategory().getId() - b.getBrandSelected().getBrandCategory().getId())
+        );
     }
 
     private void generateTables(Document document, List<CustomerDTO> customerList) throws IOException {
@@ -191,12 +230,14 @@ public class CustomerPDFServiceImp {
             imageTable.setPadding(5);
             imageTable.setSpacing(5);
             imageTable.setWidth(100);
+            imageTable.setTableFitsPage(false);
 
             tastesTable = new Table(2);
             tastesTable.setBorderWidth(1);
             tastesTable.setPadding(5);
             tastesTable.setSpacing(5);
             tastesTable.setWidth(100);
+            tastesTable.setTableFitsPage(false);
 
             brandCell = new Cell();
             brandCell.setHorizontalAlignment(HorizontalAlignment.CENTER);
@@ -223,7 +264,7 @@ public class CustomerPDFServiceImp {
             contenedorSaboresCell.setRowspan(2);
 
             Font font = new Font();
-            font.setColor(Color.BLUE);
+            font.setColor(colorDefault);
             font.setSize(15);
             Paragraph p = new Paragraph(
                     brand.getBrandName().toUpperCase()+" ("+brand.getBrandCategory().getCategoryName().toUpperCase()+")"
@@ -251,11 +292,16 @@ public class CustomerPDFServiceImp {
                 contenedorSaboresCell.add(tastesTable);
 
             }
+            imageTable.setTableFitsPage(false);
+            imageTable.setCellsFitPage(false);
+            tastesTable.setTableFitsPage(false);
+            tastesTable.setCellsFitPage(false);
+
+
 
             document.add(p);
             document.add(imageTable);
             document.add(tastesTable);
-
         }
     }
 }
