@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "drink_containers")
 public class DrinkContainer extends StockData{
     @Id
-    @Column(name = "drinkContainers_id_pk", nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

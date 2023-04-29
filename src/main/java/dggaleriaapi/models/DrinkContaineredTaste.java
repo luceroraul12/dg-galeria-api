@@ -9,21 +9,21 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-@Table(name = "tastees_formateados")
+@Table(name = "branded_taste_has_container")
 @NoArgsConstructor
 @AllArgsConstructor
 public class DrinkContaineredTaste extends StockData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tastees_formateados_id_pk", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "is_stocked")
     @ColumnDefault("true")
     private Boolean isStocked = true;
     @ManyToOne
-    @JoinColumn(name = "drink_container_id_fk",unique = true)
+    @JoinColumn(name = "drink_container_id",unique = true)
     private DrinkContainer drinkContainer;
     @ManyToOne
-    @JoinColumn(name = "branded_taste_id_fk", unique = true)
-    private BrandedTaste brandedTaste;
+    @JoinColumn(name = "branded_taste_id", unique = true)
+    private BrandHasTaste brandHasTaste;
 }

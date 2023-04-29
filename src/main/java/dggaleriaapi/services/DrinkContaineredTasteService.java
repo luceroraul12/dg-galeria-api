@@ -1,7 +1,7 @@
 package dggaleriaapi.services;
 
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.responses.StockDataResponse;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public interface DrinkContaineredTasteService {
 
     StockDataResponse<DrinkContaineredTaste> getAll();
 
-    StockDataResponse<DrinkContaineredTaste> getByBrandedTasteId(BrandedTaste brandedTaste);
+    StockDataResponse<DrinkContaineredTaste> getByBrandedTasteId(BrandHasTaste brandHasTaste);
 
     StockDataResponse<DrinkContaineredTaste> getAllByIdBrand(Brand brand);
 

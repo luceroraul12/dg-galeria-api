@@ -1,6 +1,6 @@
 package dggaleriaapi.services.Imp;
 
-import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.repositories.BrandedTasteRepository;
 import dggaleriaapi.responses.StockDataResponse;
@@ -24,8 +24,8 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> getAll() {
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+    public StockDataResponse<BrandHasTaste> getAll() {
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
         respuesta.setStockDataResult(
                 brandedTasteRepository.findAll()
         );
@@ -33,33 +33,33 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> getAllByIdBrand(BrandedTaste brandedTaste) throws Exception {
-        if (!brandedTasteRepository.existByIdBrand(brandedTaste.getId())){
+    public StockDataResponse<BrandHasTaste> getAllByIdBrand(BrandHasTaste brandHasTaste) throws Exception {
+        if (!brandedTasteRepository.existByIdBrand(brandHasTaste.getId())){
             throw new Exception();
         }
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
         respuesta.setStockDataResult(
-                brandedTasteRepository.findByBrand_Id(brandedTaste.getId())
+                brandedTasteRepository.findByBrandId(brandHasTaste.getId())
         );
         return respuesta;
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> save(BrandedTaste brandedTaste) throws Exception {
-        boolean esBrandRegistrada = brandRepository.existsById(brandedTaste.getBrand().getId());
-        boolean esTasteYaAsociado = brandedTasteRepository.existsByBrand_IdAndTaste_Id(brandedTaste.getBrand().getId(),brandedTaste.getTaste().getId());
+    public StockDataResponse<BrandHasTaste> save(BrandHasTaste brandHasTaste) throws Exception {
+        boolean esBrandRegistrada = brandRepository.existsById(brandHasTaste.getBrand().getId());
+        boolean esTasteYaAsociado = brandedTasteRepository.existsByBrand_IdAndTaste_Id(brandHasTaste.getBrand().getId(), brandHasTaste.getTaste().getId());
         if (!esBrandRegistrada | esTasteYaAsociado){
             throw new Exception();
         }
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
         respuesta.setStockDataResult(
-                List.of(brandedTasteRepository.save(brandedTaste))
+                List.of(brandedTasteRepository.save(brandHasTaste))
         );
         return respuesta;
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> savePorMonton(List<BrandedTaste> brandedtastees) throws Exception {
+    public StockDataResponse<BrandHasTaste> savePorMonton(List<BrandHasTaste> brandedtastees) throws Exception {
         if (brandedtastees == null){
             throw new Exception();
         }
@@ -67,7 +67,7 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
                 item.getBrand().getId(),
                 item.getTaste().getId()
         ));
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
         respuesta.setStockDataResult(
                 brandedTasteRepository.saveAll(brandedtastees)
         );
@@ -75,45 +75,45 @@ public class BrandedTasteServiceImp implements BrandedTasteService {
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> update(BrandedTaste brandedTaste) throws Exception {
+    public StockDataResponse<BrandHasTaste> update(BrandHasTaste brandHasTaste) throws Exception {
         boolean esBrandedTasteExistente = brandedTasteRepository.isExistWithoutChanges(
-                brandedTaste.getId(),
-                brandedTaste.getBrand().getId(),
-                brandedTaste.getTaste().getId(),
-                brandedTaste.getIsStocked()
+                brandHasTaste.getId(),
+                brandHasTaste.getBrand().getId(),
+                brandHasTaste.getTaste().getId(),
+                brandHasTaste.getIsStocked()
         );
         if (esBrandedTasteExistente){
             throw new Exception();
         }
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
         respuesta.setStockDataResult(
-                List.of(brandedTasteRepository.save(brandedTaste))
+                List.of(brandedTasteRepository.save(brandHasTaste))
         );
         return respuesta;
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> changeStockState(BrandedTaste brandedTaste) throws Exception {
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
+    public StockDataResponse<BrandHasTaste> changeStockState(BrandHasTaste brandHasTaste) throws Exception {
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
         brandedTasteRepository.changeStockState(
-                brandedTaste.getIsStocked(),
-                brandedTaste.getId()
+                brandHasTaste.getIsStocked(),
+                brandHasTaste.getId()
         );
         respuesta.setStockDataResult(
-                List.of(brandedTasteRepository.save(brandedTaste))
+                List.of(brandedTasteRepository.save(brandHasTaste))
         );
         return respuesta;
     }
 
     @Override
-    public StockDataResponse<BrandedTaste> delete(BrandedTaste brandedTaste) throws Exception {
-        if (!/**/brandedTasteRepository.existsById(brandedTaste.getId())){
+    public StockDataResponse<BrandHasTaste> delete(BrandHasTaste brandHasTaste) throws Exception {
+        if (!/**/brandedTasteRepository.existsById(brandHasTaste.getId())){
             throw new Exception();
         }
-        StockDataResponse<BrandedTaste> respuesta = new StockDataResponse<BrandedTaste>();
-        brandedTasteRepository.deleteById(brandedTaste.getId());
+        StockDataResponse<BrandHasTaste> respuesta = new StockDataResponse<BrandHasTaste>();
+        brandedTasteRepository.deleteById(brandHasTaste.getId());
         respuesta.setStockDataResult(
-                List.of(brandedTaste)
+                List.of(brandHasTaste)
         );
         return respuesta;
     }

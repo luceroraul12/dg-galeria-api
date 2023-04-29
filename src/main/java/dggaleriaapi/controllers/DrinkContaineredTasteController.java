@@ -1,7 +1,7 @@
 package dggaleriaapi.controllers;
 
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.DrinkContaineredTasteService;
@@ -37,13 +37,13 @@ public class DrinkContaineredTasteController {
         return respuesta;
     }
     @GetMapping("/taste-asociado")
-    public ResponseEntity<StockDataResponse<DrinkContaineredTaste>> getByBrandedTasteId(@RequestBody BrandedTaste brandedTaste) {
+    public ResponseEntity<StockDataResponse<DrinkContaineredTaste>> getByBrandedTasteId(@RequestBody BrandHasTaste brandHasTaste) {
         String successMessage = "tastees encontrados";
         String badMessage = "error al buscar tastees";
         StockDataResponse<DrinkContaineredTaste> drinkContaineredTasteResponse = new StockDataResponse<DrinkContaineredTaste>();
         ResponseEntity<StockDataResponse<DrinkContaineredTaste>> respuesta;
         try {
-            drinkContaineredTasteResponse = drinkContaineredTasteService.getByBrandedTasteId(brandedTaste);
+            drinkContaineredTasteResponse = drinkContaineredTasteService.getByBrandedTasteId(brandHasTaste);
             drinkContaineredTasteResponse.setMessage(successMessage);
             respuesta = new ResponseEntity<StockDataResponse<DrinkContaineredTaste>>(drinkContaineredTasteResponse, HttpStatus.OK);
         } catch (Exception e) {

@@ -62,3 +62,25 @@ VALUES
     (2, 4),
     (3, 5),
     (4, 4);
+
+
+--agrego paquetes default
+insert into packages(description, amount)
+	values
+	('Unitario',1),
+	('Six', 6),
+	('Mega', 12),
+	('Hyper', 24);
+
+
+--agrego los paquetes que alina me confirmo
+insert into brand_category_has_package (package_id, brand_category_id)
+values
+((select id from packages where description = 'Six'), (select id from brand_category where brand_category.brand_category_name = 'Gaseosas')),
+((select id from packages where description = 'Hyper'), (select id from brand_category where brand_category.brand_category_name = 'Cervezas'));
+--agrego el resto de categorias como paquete x6
+insert into brand_category_has_package (package_id, brand_category_id)
+(select p.id, bc.id from brand_category bc, packages p
+	where p.amount = 6
+		and bc.brand_category_name not in ('Gaseosas', 'Cervezas'));
+

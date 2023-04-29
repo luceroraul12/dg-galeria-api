@@ -5,9 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 
@@ -16,10 +13,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "branded_taste")
-public class BrandedTaste extends StockData {
+@Table(name = "branded_has_taste")
+public class BrandHasTaste extends StockData {
     @Id
-    @Column(name = "branded_taste_id_pk", nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "is_stocked")
@@ -27,10 +24,10 @@ public class BrandedTaste extends StockData {
     private Boolean isStocked;
 
     @ManyToOne
-    @JoinColumn(name = "brands_id_fk", unique = true)
+    @JoinColumn(name = "brands_id", unique = true)
     private Brand brand;
 
     @ManyToOne
-    @JoinColumn(name = "tastees_id_fk", unique = true)
+    @JoinColumn(name = "tastees_id", unique = true)
     private Taste taste;
 }

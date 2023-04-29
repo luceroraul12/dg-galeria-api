@@ -1,22 +1,22 @@
 package dggaleriaapi.services;
 
-import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.responses.StockDataResponse;
 
 import java.util.List;
 
 public interface BrandedTasteService {
 
-    StockDataResponse<BrandedTaste> getAll();
-    StockDataResponse<BrandedTaste> getAllByIdBrand(BrandedTaste brandedTaste) throws Exception;
-    StockDataResponse<BrandedTaste> save(BrandedTaste brandedTaste) throws Exception;
-    StockDataResponse<BrandedTaste> savePorMonton(List<BrandedTaste> tasteesAsociados) throws Exception;
+    StockDataResponse<BrandHasTaste> getAll();
+    StockDataResponse<BrandHasTaste> getAllByIdBrand(BrandHasTaste brandHasTaste) throws Exception;
+    StockDataResponse<BrandHasTaste> save(BrandHasTaste brandHasTaste) throws Exception;
+    StockDataResponse<BrandHasTaste> savePorMonton(List<BrandHasTaste> tasteesAsociados) throws Exception;
 
-    StockDataResponse<BrandedTaste> update(BrandedTaste brandedTaste) throws Exception;
+    StockDataResponse<BrandHasTaste> update(BrandHasTaste brandHasTaste) throws Exception;
 
-    StockDataResponse<BrandedTaste> changeStockState(BrandedTaste brandedTaste) throws Exception;
+    StockDataResponse<BrandHasTaste> changeStockState(BrandHasTaste brandHasTaste) throws Exception;
 
 
-    StockDataResponse<BrandedTaste> delete(BrandedTaste brandedTaste) throws Exception;
+    StockDataResponse<BrandHasTaste> delete(BrandHasTaste brandHasTaste) throws Exception;
 
 }

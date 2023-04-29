@@ -1,8 +1,8 @@
 package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.models.Brand;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.repositories.DrinkContainerRepository;
 import dggaleriaapi.repositories.DrinkContaineredTasteRepository;
@@ -33,10 +33,10 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     }
 
     @Override
-    public StockDataResponse<DrinkContaineredTaste> getByBrandedTasteId(BrandedTaste brandedTaste) {
+    public StockDataResponse<DrinkContaineredTaste> getByBrandedTasteId(BrandHasTaste brandHasTaste) {
         StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
         respuesta.setStockDataResult(
-                drinkContaineredTasteRepository.findByBrandedTaste_Id(brandedTaste.getId())
+                drinkContaineredTasteRepository.findByBrandHasTaste_Id(brandHasTaste.getId())
         );
         return respuesta;
     }
@@ -55,7 +55,7 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     public StockDataResponse<DrinkContaineredTaste> save(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         boolean esTasteExistente = drinkContaineredTasteRepository.existsByDrinkContainer_IdAndBrandedTaste_Id(
                 drinkContaineredTaste.getDrinkContainer().getId(),
-                drinkContaineredTaste.getBrandedTaste().getId()
+                drinkContaineredTaste.getBrandHasTaste().getId()
         );
         if (esTasteExistente){
             throw new Exception();
@@ -81,7 +81,7 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
         drinkContaineredTastes.removeIf(item -> {
             return drinkContaineredTasteRepository.isExistWithoutChanges(
                     item.getDrinkContainer().getId(),
-                    item.getBrandedTaste().getId()
+                    item.getBrandHasTaste().getId()
             );
         });
         StockDataResponse<DrinkContaineredTaste> respuesta = new StockDataResponse<DrinkContaineredTaste>();
@@ -111,7 +111,7 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     public StockDataResponse<DrinkContaineredTaste> update(DrinkContaineredTaste drinkContaineredTaste) throws Exception {
         if (drinkContaineredTasteRepository.isExistWithoutChanges(
                 drinkContaineredTaste.getDrinkContainer().getId(),
-                drinkContaineredTaste.getBrandedTaste().getId()
+                drinkContaineredTaste.getBrandHasTaste().getId()
         )){
             throw new Exception();
         }
@@ -168,12 +168,12 @@ public class DrinkContaineredTasteServiceImp implements DrinkContaineredTasteSer
     private DrinkContaineredTaste generarTasteInmutable(DrinkContainer drinkContainer, DrinkContaineredTaste drinkContaineredTaste) {
 
         DrinkContaineredTaste taste = new DrinkContaineredTaste();
-        BrandedTaste brandedTaste = new BrandedTaste();
+        BrandHasTaste brandHasTaste = new BrandHasTaste();
         DrinkContainer drinkContainer1 = new DrinkContainer();
 
         drinkContainer1.setId(drinkContainer.getId().longValue());
-        brandedTaste.setId(drinkContaineredTaste.getBrandedTaste().getId());
-        taste.setBrandedTaste(brandedTaste);
+        brandHasTaste.setId(drinkContaineredTaste.getBrandHasTaste().getId());
+        taste.setBrandHasTaste(brandHasTaste);
         taste.setDrinkContainer(drinkContainer1);
 
         return taste;

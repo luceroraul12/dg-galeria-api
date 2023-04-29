@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Taste extends StockData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tastees_id_pk", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "taste_name", nullable = false)
     private String tasteName;

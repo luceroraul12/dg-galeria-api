@@ -1,6 +1,6 @@
 package dggaleriaapi.controllers;
 
-import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.responses.StockDataResponse;
 import dggaleriaapi.services.BrandedTasteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ public class BrandedTasteController {
     BrandedTasteService brandedTasteService;
 
     @GetMapping
-    public ResponseEntity<StockDataResponse<BrandedTaste>> getAll() {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> getAll() {
         String successMessage = "tastees asociados encontrados";
         String badMessage = "error al buscar tastees asociados";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
             brandResponse = brandedTasteService.getAll();
             brandResponse.setMessage(successMessage);
@@ -35,13 +35,13 @@ public class BrandedTasteController {
         return response;
     }
     @GetMapping(value = "/id")
-    public ResponseEntity<StockDataResponse<BrandedTaste>> getAllByIdBrand(@RequestBody BrandedTaste brandedTaste) {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> getAllByIdBrand(@RequestBody BrandHasTaste brandHasTaste) {
         String successMessage = "tastees asociados por brand encontrados";
         String badMessage = "error al buscar tastees asociados por brand";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
-            brandResponse = brandedTasteService.getAllByIdBrand(brandedTaste);
+            brandResponse = brandedTasteService.getAllByIdBrand(brandHasTaste);
             brandResponse.setMessage(successMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -51,13 +51,13 @@ public class BrandedTasteController {
         return response;
     }
     @PostMapping
-    public ResponseEntity<StockDataResponse<BrandedTaste>> save(@RequestBody BrandedTaste brandedTaste) {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> save(@RequestBody BrandHasTaste brandHasTaste) {
         String successMessage = "taste asociado creado";
         String badMessage = "error al crear taste asociado";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
-            brandResponse = brandedTasteService.save(brandedTaste);
+            brandResponse = brandedTasteService.save(brandHasTaste);
             brandResponse.setMessage(successMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -67,13 +67,13 @@ public class BrandedTasteController {
         return response;
     }
     @PostMapping(value = "/monton")
-    public ResponseEntity<StockDataResponse<BrandedTaste>> savePorMonton(@RequestBody List<BrandedTaste> brandedTastes) {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> savePorMonton(@RequestBody List<BrandHasTaste> brandHasTastes) {
         String successMessage = "tastees asociados por brand creados";
         String badMessage = "error al crear tastees asociados";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
-            brandResponse = brandedTasteService.savePorMonton(brandedTastes);
+            brandResponse = brandedTasteService.savePorMonton(brandHasTastes);
             brandResponse.setMessage(successMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -83,13 +83,13 @@ public class BrandedTasteController {
         return response;
     }
     @PutMapping
-    public ResponseEntity<StockDataResponse<BrandedTaste>> update(@RequestBody BrandedTaste brandedTaste) {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> update(@RequestBody BrandHasTaste brandHasTaste) {
         String successMessage = "taste asociado actualizado";
         String badMessage = "error al actualizar taste asociado";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
-            brandResponse = brandedTasteService.update(brandedTaste);
+            brandResponse = brandedTasteService.update(brandHasTaste);
             brandResponse.setMessage(successMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -99,13 +99,13 @@ public class BrandedTasteController {
         return response;
     }
     @PatchMapping
-    public ResponseEntity<StockDataResponse<BrandedTaste>> changeStockState(@RequestBody BrandedTaste brandedTaste) {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> changeStockState(@RequestBody BrandHasTaste brandHasTaste) {
         String successMessage = "taste asociado actualizado";
         String badMessage = "error al actualizar taste asociado";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
-            brandResponse = brandedTasteService.changeStockState(brandedTaste);
+            brandResponse = brandedTasteService.changeStockState(brandHasTaste);
             brandResponse.setMessage(successMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {
@@ -115,13 +115,13 @@ public class BrandedTasteController {
         return response;
     }
     @DeleteMapping
-    public ResponseEntity<StockDataResponse<BrandedTaste>> delete(@RequestBody BrandedTaste brandedTaste) {
+    public ResponseEntity<StockDataResponse<BrandHasTaste>> delete(@RequestBody BrandHasTaste brandHasTaste) {
         String successMessage = "taste asociado eliminado";
         String badMessage = "error al eliminar taste asociado";
-        StockDataResponse<BrandedTaste>  brandResponse = new StockDataResponse<BrandedTaste> ();
-        ResponseEntity<StockDataResponse<BrandedTaste>> response;
+        StockDataResponse<BrandHasTaste>  brandResponse = new StockDataResponse<>();
+        ResponseEntity<StockDataResponse<BrandHasTaste>> response;
         try {
-            brandResponse = brandedTasteService.delete(brandedTaste);
+            brandResponse = brandedTasteService.delete(brandHasTaste);
             brandResponse.setMessage(successMessage);
             response = new ResponseEntity<>(brandResponse, HttpStatus.OK);
         } catch (Exception e) {

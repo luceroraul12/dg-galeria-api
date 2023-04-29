@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "brands")
 public class Brand extends StockData {
     @Id
-    @Column(name = "brands_id_pk", nullable = false)
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "brands_name", nullable = false)
@@ -27,7 +27,7 @@ public class Brand extends StockData {
     private Boolean isStocked = true;
 
     @ManyToOne
-    @JoinColumn(name = "brand_category_id_fk")
+    @JoinColumn(name = "brand_category_id")
     private BrandCategory brandCategory;
 
     public Brand(Long id, String brandName) {

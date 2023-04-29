@@ -2,9 +2,9 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.dto.CustomerDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
+import dggaleriaapi.models.BrandHasTaste;
 import dggaleriaapi.models.DrinkContainer;
 import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.BrandedTaste;
 import dggaleriaapi.models.DrinkContaineredTaste;
 import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.repositories.BrandedTasteRepository;
@@ -46,16 +46,16 @@ public class CustomerServiceImp implements CustomerService {
 
     private List<TasteResumenDTO> generarTasteesResumidos(Long idBrand) {
 
-        List<BrandedTaste> tasteesAsociados = brandedTasteRepository.findByBrand_Id(idBrand);
+        List<BrandHasTaste> tasteesAsociados = brandedTasteRepository.findByBrandId(idBrand);
         List<DrinkContaineredTaste> tasteesFormateados = drinkContaineredTasteRepository.getAllByIdBrand(idBrand);
         List<TasteResumenDTO> resultado = new ArrayList<>();
         TasteResumenDTO tasteResumido;
 
-        for (BrandedTaste brandedTaste : tasteesAsociados){
+        for (BrandHasTaste brandHasTaste : tasteesAsociados){
             tasteResumido = TasteResumenDTO.builder()
-                            .tasteName(brandedTaste.getTaste().getTasteName())
-                            .stockState(brandedTaste.getTaste().getIsStocked() & brandedTaste.getIsStocked())
-                            .drinkContainersAvailable(obtenerDrinkContainers(brandedTaste.getId(), tasteesFormateados))
+                            .tasteName(brandHasTaste.getTaste().getTasteName())
+                            .stockState(brandHasTaste.getTaste().getIsStocked() & brandHasTaste.getIsStocked())
+                            .drinkContainersAvailable(obtenerDrinkContainers(brandHasTaste.getId(), tasteesFormateados))
                             .build();
             resultado.add(tasteResumido);
         }
@@ -69,7 +69,7 @@ public class CustomerServiceImp implements CustomerService {
 
         List<DrinkContaineredTaste> tasteesFormateadosFiltrados = tasteesFormateados
                 .stream()
-                .filter(drinkContaineredTaste -> drinkContaineredTaste.getBrandedTaste().getId() == idBrandedTaste).collect(Collectors.toList());
+                .filter(drinkContaineredTaste -> drinkContaineredTaste.getBrandHasTaste().getId() == idBrandedTaste).collect(Collectors.toList());
 
         tasteesFormateadosFiltrados.forEach(taste -> resultado.add(obtenerDrinkContainerInmutable(taste)));
         return resultado;

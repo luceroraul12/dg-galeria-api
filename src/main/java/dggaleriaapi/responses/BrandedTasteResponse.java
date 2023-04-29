@@ -1,6 +1,6 @@
 package dggaleriaapi.responses;
 
-import dggaleriaapi.models.BrandedTaste;
+import dggaleriaapi.models.BrandHasTaste;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +10,8 @@ import java.util.List;
 @Setter
 public class BrandedTasteResponse {
 
-    private List<BrandedTaste> tasteesAsociadosTrabajados;
-    private BrandedTaste tasteTrabajado;
+    private List<BrandHasTaste> tasteesAsociadosTrabajados;
+    private BrandHasTaste tasteTrabajado;
     private String mensaje;
 
 

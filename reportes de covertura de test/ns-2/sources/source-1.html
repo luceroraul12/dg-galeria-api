@@ -77,7 +77,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import dggaleriaapi.models.DrinkContainer;
 <i class="no-highlight">4</i>&nbsp;import dggaleriaapi.models.Brand;
-<i class="no-highlight">5</i>&nbsp;import dggaleriaapi.models.BrandedTaste;
+<i class="no-highlight">5</i>&nbsp;import dggaleriaapi.models.BrandHasTaste;
 <i class="no-highlight">6</i>&nbsp;import dggaleriaapi.responses.GaleriaResponse;
 <i class="no-highlight">7</i>&nbsp;import dggaleriaapi.services.DrinkContainerService;
 <i class="no-highlight">8</i>&nbsp;import dggaleriaapi.services.BrandService;
@@ -227,10 +227,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">152</i>&nbsp;    }
 <i class="no-highlight">153</i>&nbsp;
 <i class="no-highlight">154</i>&nbsp;    @PostMapping(value = &quot;/tastees&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">155</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveTaste(@RequestBody Taste brandedTaste){
+<i class="no-highlight">155</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; saveTaste(@RequestBody Taste brandHasTaste){
 <i class="no-highlight">156</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">157</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">158</i>&nbsp;            GaleriaResponse resultado = brandedTasteService.saveTaste(brandedTaste);</b>
+<b class="fc"><i class="no-highlight">158</i>&nbsp;            GaleriaResponse resultado = brandedTasteService.saveTaste(brandHasTaste);</b>
 <b class="fc"><i class="no-highlight">159</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">160</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">161</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -239,10 +239,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">164</i>&nbsp;    }
 <i class="no-highlight">165</i>&nbsp;
 <i class="no-highlight">166</i>&nbsp;    @PutMapping(value = &quot;/tastees&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">167</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateTaste(@RequestBody Taste brandedTaste){
+<i class="no-highlight">167</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; updateTaste(@RequestBody Taste brandHasTaste){
 <i class="no-highlight">168</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">169</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">170</i>&nbsp;            GaleriaResponse resultado = brandedTasteService.updateTaste(brandedTaste);</b>
+<b class="fc"><i class="no-highlight">170</i>&nbsp;            GaleriaResponse resultado = brandedTasteService.updateTaste(brandHasTaste);</b>
 <b class="fc"><i class="no-highlight">171</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">172</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">173</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
@@ -251,10 +251,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">176</i>&nbsp;    }
 <i class="no-highlight">177</i>&nbsp;
 <i class="no-highlight">178</i>&nbsp;    @DeleteMapping(value = &quot;/tastees&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
-<i class="no-highlight">179</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteTaste(@RequestBody Taste brandedTaste){
+<i class="no-highlight">179</i>&nbsp;    public ResponseEntity&lt;GaleriaResponse&gt; deleteTaste(@RequestBody Taste brandHasTaste){
 <i class="no-highlight">180</i>&nbsp;        ResponseEntity&lt;GaleriaResponse&gt; respuesta;
 <i class="no-highlight">181</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">182</i>&nbsp;            GaleriaResponse resultado = brandedTasteService.deleteTaste(brandedTaste);</b>
+<b class="fc"><i class="no-highlight">182</i>&nbsp;            GaleriaResponse resultado = brandedTasteService.deleteTaste(brandHasTaste);</b>
 <b class="fc"><i class="no-highlight">183</i>&nbsp;            respuesta = new ResponseEntity&lt;GaleriaResponse&gt;(resultado, HttpStatus.OK);</b>
 <b class="nc"><i class="no-highlight">184</i>&nbsp;        } catch (Exception e) {</b>
 <b class="nc"><i class="no-highlight">185</i>&nbsp;            respuesta = new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</b>
