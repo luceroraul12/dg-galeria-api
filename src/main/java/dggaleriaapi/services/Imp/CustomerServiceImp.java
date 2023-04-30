@@ -2,14 +2,13 @@ package dggaleriaapi.services.Imp;
 
 import dggaleriaapi.dto.CustomerDTO;
 import dggaleriaapi.dto.TasteResumenDTO;
-import dggaleriaapi.models.BrandHasTaste;
-import dggaleriaapi.models.DrinkContainer;
-import dggaleriaapi.models.Brand;
-import dggaleriaapi.models.DrinkContaineredTaste;
+import dggaleriaapi.models.*;
+import dggaleriaapi.models.Package;
 import dggaleriaapi.repositories.BrandRepository;
 import dggaleriaapi.repositories.BrandedTasteRepository;
 import dggaleriaapi.repositories.DrinkContaineredTasteRepository;
 import dggaleriaapi.responses.CustomerDTOResponse;
+import dggaleriaapi.services.BrandCategoryHasPackageService;
 import dggaleriaapi.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +26,9 @@ public class CustomerServiceImp implements CustomerService {
     BrandedTasteRepository brandedTasteRepository;
     @Autowired
     DrinkContaineredTasteRepository drinkContaineredTasteRepository;
+
+    @Autowired
+    private BrandCategoryHasPackageService brandCategoryHasPackageService;
 
 
     @Override
@@ -48,15 +50,19 @@ public class CustomerServiceImp implements CustomerService {
 
         List<BrandHasTaste> tasteesAsociados = brandedTasteRepository.findByBrandId(idBrand);
         List<DrinkContaineredTaste> tasteesFormateados = drinkContaineredTasteRepository.getAllByIdBrand(idBrand);
+        List<Package> packages = brandCategoryHasPackageService.getPackagesByBrandId(idBrand);
         List<TasteResumenDTO> resultado = new ArrayList<>();
         TasteResumenDTO tasteResumido;
 
         for (BrandHasTaste brandHasTaste : tasteesAsociados){
             tasteResumido = TasteResumenDTO.builder()
-                            .tasteName(brandHasTaste.getTaste().getTasteName())
-                            .stockState(brandHasTaste.getTaste().getIsStocked() & brandHasTaste.getIsStocked())
-                            .drinkContainersAvailable(obtenerDrinkContainers(brandHasTaste.getId(), tasteesFormateados))
-                            .build();
+                    .id(brandHasTaste.getId())
+                    .brandName(brandHasTaste.getBrand().getBrandName())
+                    .tasteName(brandHasTaste.getTaste().getTasteName())
+                    .stockState(brandHasTaste.getTaste().getIsStocked() & brandHasTaste.getIsStocked())
+                    .drinkContainersAvailable(obtenerDrinkContainers(brandHasTaste.getId(), tasteesFormateados))
+                    .packageAvailable(packages)
+                    .build();
             resultado.add(tasteResumido);
         }
 
