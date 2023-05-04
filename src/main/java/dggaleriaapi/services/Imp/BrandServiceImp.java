@@ -47,11 +47,8 @@ public class BrandServiceImp implements BrandService {
     public StockDataResponse<Brand> saveBrand(Brand brand) throws Exception {
         if (brand.getBrandName().isEmpty()
                 | brand.getUrl().isEmpty()
-                | imageService.isURLValid(brand.getUrl())
-                | imageService.isURLValid(brand.getUrlIconic())
-                | brandRepository.existsByBrandName(brand.getBrandName())){
+                | brandRepository.existsByBrandName(brand.getBrandName()))
             throw new Exception();
-        }
         StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
         Brand brandSaved = brandRepository.save(brand);
         downloadImagesByBrand(brandSaved);
@@ -65,11 +62,8 @@ public class BrandServiceImp implements BrandService {
     public StockDataResponse<Brand> updateBrand(Brand brand) throws Exception {
         if (brand.getBrandName().isEmpty()
                 | brand.getUrl().isEmpty()
-                | imageService.isURLValid(brand.getUrl())
-                | imageService.isURLValid(brand.getUrlIconic())
-                | !brandRepository.existsByBrandName(brand.getBrandName())){
+                | !brandRepository.existsByBrandName(brand.getBrandName()))
             throw new Exception();
-        }
         StockDataResponse<Brand> respuesta = new StockDataResponse<Brand>();
         respuesta.setStockDataResult(
                 List.of(brandRepository.save(brand))
